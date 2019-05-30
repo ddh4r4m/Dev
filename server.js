@@ -5,6 +5,10 @@ const connectDB =require('./config/db');
 //Connect Database
 connectDB();
 
+//Init MiddlewARE
+//app.use('bosy-parser.json()');  <--- Old Version
+app.use(express.json({extended : false}));
+
 app.get('/',(req,res)=>res.send('API Running'));
 
 app.use('/api/users', require('./routes/api/users'));

@@ -22,7 +22,7 @@ export const getPosts = () => async dispatch => {
 export const addPost = formData => async dispatch => {
   const config = {
     headers: {
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     }
   };
 
@@ -33,7 +33,7 @@ export const addPost = formData => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Post Created'), 'success');
+    dispatch(setAlert('Post Created', 'success'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,

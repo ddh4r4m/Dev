@@ -12,10 +12,10 @@ const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Developer Connector</h1>
+          <h1 className='x-large'>Atrocity Act Help</h1>
           <p className='lead'>
-            Create a developer profile/portfolio, share posts and get help from
-            other developers
+            File a FIR under Atrocity Act Protection and get help from other
+            officials
           </p>
           <div className='buttons'>
             <Link to='/register' className='btn btn-primary'>

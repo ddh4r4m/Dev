@@ -23,7 +23,7 @@ const ProfileItem = ({
         <Link to={`/profile/${_id}`} className='btn btn-primary'>
           View Profile
         </Link>
-        <Link to={`/profile/${_id}`} className='btn btn-primary'>
+        <Link to={`/edit-profilebyid/${_id}`} className='btn btn-primary'>
           Edit Profile
         </Link>
       </div>

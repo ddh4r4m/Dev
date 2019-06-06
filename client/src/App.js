@@ -7,9 +7,14 @@ import Alert from './components/layout/Alert';
 import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
+import CreateUserdata from './components/usersdata-forms/CreateUserdata';
+import EditUserdata from './components/usersdata-forms/EditUserdata';
 import EditProfile from './components/profile-forms/EditProfile';
+import EditProfileById from './components/profile/EditProfileById';
 import Posts from './components/posts/Posts';
 import Profiles from './components/profiles/Profiles';
+import Usersdata from './components/usersdata/Usersdata';
+import Profile from './components/profile/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
 import './App.css';
 
@@ -40,6 +45,8 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/profiles' component={Profiles} />
+              <Route exact path='/usersdata' component={Usersdata} />
+              <Route exact path='/profile/:id' component={Profile} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute exact path='/posts' component={Posts} />
               <PrivateRoute
@@ -49,8 +56,23 @@ const App = () => {
               />
               <PrivateRoute
                 exact
+                path='/create-userdata'
+                component={CreateUserdata}
+              />
+              <PrivateRoute
+                exact
                 path='/edit-profile'
                 component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-userdata/:id'
+                component={EditUserdata}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-profilebyid/:id'
+                component={EditProfileById}
               />
             </Switch>
           </section>

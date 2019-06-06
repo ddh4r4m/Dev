@@ -7,7 +7,7 @@ import {
   CLEAR_PROFILE
 } from './types';
 
-//Get Posts
+//Get Current Profile
 export const getCurrentProfile = () => async dispatch => {
   try {
     const res = await axios.get('/api/profile/me');
@@ -61,7 +61,7 @@ export const createProfile = (
   }
 };
 
-//Get Profiles
+//Get all Profiles
 export const getProfiles = () => async dispatch => {
   dispatch({ type: CLEAR_PROFILE });
 
@@ -82,11 +82,12 @@ export const getProfiles = () => async dispatch => {
 //Get ProfilesbyID
 export const getProfileById = userId => async dispatch => {
   try {
-    const res = await axios.get(`/api/profile/${userId}`);
+    const res = await axios.get(`/api/profile/user/${userId}`);
     dispatch({
-      type: GET_PROFILES,
+      type: GET_PROFILE,
       payload: res.data
     });
+    // console.log(res.data);
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,

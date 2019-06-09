@@ -30,9 +30,41 @@ const UserdataSchema = new mongoose.Schema({
         ref: 'users'
       },
 
-      text: {
-        type: String,
-        required: true
+      year: {
+        type: String
+      },
+      policestation: {
+        type: String
+      },
+      crimeregisterno: {
+        type: String
+      },
+      dateofcrime: {
+        type: String
+      },
+      regdateofcrime: {
+        type: String
+      },
+      victimdetails: {
+        type: String
+      },
+      natureofcrime: {
+        type: String
+      },
+      sections: {
+        type: String
+      },
+      chargesheetdate: {
+        type: String
+      },
+      policeinvestigation: {
+        type: String
+      },
+      courtresults: {
+        type: String
+      },
+      financialsupport: {
+        type: String
       },
       name: {
         type: String

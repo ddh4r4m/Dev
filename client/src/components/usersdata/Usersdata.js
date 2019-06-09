@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getUsersdata } from '../../actions/userdata';
 import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
@@ -14,7 +15,9 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      Data
+      <Link to='create-userdata' className='btn btn-primary'>
+        Create New Userdata
+      </Link>
       <div className='userdata'>
         {usersdata.length > 0 ? (
           usersdata.map(userdata => (

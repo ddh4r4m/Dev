@@ -28,7 +28,19 @@ router.post(
     try {
       //const user = await User.findById(req.user.id).select('-password');
       const newUserdata = new Userdata({
-        text: req.body.text
+        text: req.body.text,
+        year: req.body.year,
+        policestation: req.body.policestation,
+        crimeregisterno: req.body.crimeregisterno,
+        dateofcrime: req.body.dateofcrime,
+        regdateofcrime: req.body.regdateofcrime,
+        victimdetails: req.body.victimdetails,
+        natureofcrime: req.body.natureofcrime,
+        sections: req.body.sections,
+        chargesheetdate: req.body.chargesheetdate,
+        policeinvestigation: req.body.policeinvestigation,
+        courtresults: req.body.courtresults,
+        financialsupport: req.body.financialsupport
         // name: user.name,
         // avatar: user.avatar,
         // user: req.user.id
@@ -89,6 +101,18 @@ router.put('/:id', auth, async (req, res) => {
       return res.status(404).json({ msg: 'userdata not found' });
     } else {
       userdata.text = req.body.text;
+      userdata.year = req.body.year;
+      userdata.policestation = req.body.policestation;
+      userdata.crimeregisterno = req.body.crimeregisterno;
+      userdata.dateofcrime = req.body.dateofcrime;
+      userdata.regdateofcrime = req.body.regdateofcrime;
+      userdata.victimdetails = req.body.victimdetails;
+      userdata.natureofcrime = req.body.natureofcrime;
+      userdata.sections = req.body.sections;
+      userdata.chargesheetdate = req.body.chargesheetdate;
+      userdata.policeinvestigation = req.body.policeinvestigation;
+      userdata.courtresults = req.body.courtresults;
+      userdata.financialsupport = req.body.financialsupport;
     }
 
     // const newUserdata = new Userdata({

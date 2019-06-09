@@ -14,6 +14,18 @@ const EditUserdataById = ({
 }) => {
   const [formData, setFormData] = useState({
     text: '',
+    year: '',
+    policestation: '',
+    crimeregisterno: '',
+    dateofcrime: '',
+    regdateofcrime: '',
+    victimdetails: '',
+    natureofcrime: '',
+    sections: '',
+    chargesheetdate: '',
+    policeinvestigation: '',
+    courtresults: '',
+    financialsupport: '',
     twitter: '',
     facebook: '',
     linkedin: '',
@@ -27,12 +39,59 @@ const EditUserdataById = ({
     getUserdataById(match.params.id);
 
     setFormData({
-      text: loading || !userdata.text ? '' : userdata.text
+      text: loading || !userdata.text ? '' : userdata.text,
+      year: loading || !userdata.year ? '' : userdata.year,
+      policestation:
+        loading || !userdata.policestation ? '' : userdata.policestation,
+      crimeregisterno:
+        loading || !userdata.crimeregisterno ? '' : userdata.crimeregisterno,
+      dateofcrime: loading || !userdata.dateofcrime ? '' : userdata.dateofcrime,
+      regdateofcrime:
+        loading || !userdata.regdateofcrime ? '' : userdata.regdateofcrime,
+      victimdetails:
+        loading || !userdata.victimdetails ? '' : userdata.victimdetails,
+      natureofcrime:
+        loading || !userdata.natureofcrime ? '' : userdata.natureofcrime,
+      sections: loading || !userdata.sections ? '' : userdata.sections,
+      chargesheetdate:
+        loading || !userdata.chargesheetdate ? '' : userdata.chargesheetdate,
+      policeinvestigation:
+        loading || !userdata.policeinvestigation
+          ? ''
+          : userdata.policeinvestigation,
+      courtresults:
+        loading || !userdata.courtresults ? '' : userdata.courtresults,
+      financialsupport:
+        loading || !userdata.financialsupport ? '' : userdata.financialsupport,
+      twitter: loading || !userdata.twitter ? '' : userdata.twitter,
+      facebook: loading || !userdata.facebook ? '' : userdata.facebook,
+      linkedin: loading || !userdata.linkedin ? '' : userdata.linkedin,
+      youtube: loading || !userdata.youtube ? '' : userdata.youtube,
+      instagram: loading || !userdata.instagram ? '' : userdata.instagram
       //   text: 'Helo'
     });
   }, [loading, getUserdataById, match]);
 
-  const { text, twitter, facebook, linkedin, youtube, instagram } = formData;
+  const {
+    text,
+    year,
+    policestation,
+    crimeregisterno,
+    dateofcrime,
+    regdateofcrime,
+    victimdetails,
+    natureofcrime,
+    sections,
+    chargesheetdate,
+    policeinvestigation,
+    courtresults,
+    financialsupport,
+    twitter,
+    facebook,
+    linkedin,
+    youtube,
+    instagram
+  } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -69,7 +128,114 @@ const EditUserdataById = ({
                 Could be your own company or one you work for
               </small>
             </div>
-
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Year of Crime'
+                name='year'
+                value={year}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Name of Police Station'
+                name='policestation'
+                value={policestation}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Register No.'
+                name='crimeregisterno'
+                value={crimeregisterno}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Date When Crime Happened'
+                name='dateofcrime'
+                value={dateofcrime}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Date when FIR was Registered'
+                name='regdateofcrime'
+                value={regdateofcrime}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Details of Victim'
+                name='victimdetails'
+                value={victimdetails}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Nature of Crime e.g: Murder '
+                name='natureofcrime'
+                value={natureofcrime}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Penal Codes Applicable'
+                name='sections'
+                value={sections}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Date When Chargesheet was filed in the court'
+                name='chargesheetdate'
+                value={chargesheetdate}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Details from Police Investigation'
+                name='policeinvestigation'
+                value={policeinvestigation}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Court Results'
+                name='courtresults'
+                value={courtresults}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Financial Support to be Provided'
+                name='financialsupport'
+                value={financialsupport}
+                onChange={e => onChange(e)}
+              />
+            </div>
             <div className='my-2'>
               <button
                 onClick={() => toggleSocialInputs(!displaySocialInputs)}

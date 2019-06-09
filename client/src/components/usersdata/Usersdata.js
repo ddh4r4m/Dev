@@ -15,8 +15,12 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <Link to='create-userdata' className='btn btn-primary'>
-        Create New Userdata
+      <Link
+        to='create-userdata'
+        className='btn btn-primary'
+        style={{ marginBottom: '20px' }}
+      >
+        Create New FIR
       </Link>
       <div className='userdata'>
         {usersdata.length > 0 ? (
@@ -24,7 +28,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             <UserdataItem key={userdata._id} userdata={userdata} />
           ))
         ) : (
-          <h4>No Usersdata Found</h4>
+          <h4>No FIR Data Found</h4>
         )}
       </div>
       {console.log('HI')}

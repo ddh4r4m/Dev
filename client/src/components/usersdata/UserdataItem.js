@@ -9,10 +9,7 @@ const ProfileItem = ({ userdata: { text, _id } }) => (
       <div>
         <h2>{text}</h2>
         <Link to={`/userdata/${_id}`} className='btn btn-primary'>
-          View Userdata
-        </Link>
-        <Link to={`/edit-userdata/${_id}`} className='btn btn-primary'>
-          Edit Userdata
+          View FIR
         </Link>
       </div>
     </div>

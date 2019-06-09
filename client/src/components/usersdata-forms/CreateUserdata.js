@@ -7,6 +7,18 @@ import { createUserdata } from '../../actions/userdata';
 const CreateUserdata = ({ createUserdata, history }) => {
   const [formData, setFormData] = useState({
     text: '',
+    year: '',
+    policestation: '',
+    crimeregisterno: '',
+    dateofcrime: '',
+    regdateofcrime: '',
+    victimdetails: '',
+    natureofcrime: '',
+    sections: '',
+    chargesheetdate: '',
+    policeinvestigation: '',
+    courtresults: '',
+    financialsupport: '',
     twitter: '',
     facebook: '',
     linkedin: '',
@@ -16,7 +28,26 @@ const CreateUserdata = ({ createUserdata, history }) => {
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
-  const { text, twitter, facebook, linkedin, youtube, instagram } = formData;
+  const {
+    text,
+    year,
+    policestation,
+    crimeregisterno,
+    dateofcrime,
+    regdateofcrime,
+    victimdetails,
+    natureofcrime,
+    sections,
+    chargesheetdate,
+    policeinvestigation,
+    courtresults,
+    financialsupport,
+    twitter,
+    facebook,
+    linkedin,
+    youtube,
+    instagram
+  } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,7 +77,114 @@ const CreateUserdata = ({ createUserdata, history }) => {
             Could be your own company or one you work for
           </small>
         </div>
-
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Year of Crime'
+            name='year'
+            value={year}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Name of Police Station'
+            name='policestation'
+            value={policestation}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Register No.'
+            name='crimeregisterno'
+            value={crimeregisterno}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Date When Crime Happened'
+            name='dateofcrime'
+            value={dateofcrime}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Date when FIR was Registered'
+            name='regdateofcrime'
+            value={regdateofcrime}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Details of Victim'
+            name='victimdetails'
+            value={victimdetails}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Nature of Crime e.g: Murder '
+            name='natureofcrime'
+            value={natureofcrime}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Penal Codes Applicable'
+            name='sections'
+            value={sections}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Date When Chargesheet was filed in the court'
+            name='chargesheetdate'
+            value={chargesheetdate}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Details from Police Investigation'
+            name='policeinvestigation'
+            value={policeinvestigation}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Court Results'
+            name='courtresults'
+            value={courtresults}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Financial Support to be Provided'
+            name='financialsupport'
+            value={financialsupport}
+            onChange={e => onChange(e)}
+          />
+        </div>
         <div className='my-2'>
           <button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}

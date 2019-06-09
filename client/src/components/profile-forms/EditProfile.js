@@ -41,7 +41,7 @@ const EditProfile = ({
         loading || !profile.githubusername ? '' : profile.githubusername,
       bio: loading || !profile.bio ? '' : profile.bio
     });
-  }, [loading, profile, getCurrentProfile]);
+  }, [loading, getCurrentProfile]);
 
   const {
     company,
@@ -232,7 +232,7 @@ const EditProfile = ({
         )}
 
         <input type='submit' className='btn btn-primary my-1' />
-        <Link className='btn btn-light my-1' href='/dashboard'>
+        <Link to='/dashboard' className='btn btn-light my-1'>
           Go Back
         </Link>
       </form>

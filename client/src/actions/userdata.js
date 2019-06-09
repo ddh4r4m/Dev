@@ -4,7 +4,7 @@ import {
   GET_USERSDATA,
   USERDATA_ERROR,
   GET_USERDATA,
-  CLEAR_USERDATA
+  CLEAR_USERSDATA
 } from './types';
 
 //Get Posts
@@ -88,8 +88,8 @@ export const editUserdata = (
       setAlert(edit ? 'Userdata Updated' : 'Userdata Created', 'success')
     );
 
-    if (!edit) {
-      history.push('/dashboard');
+    if (edit) {
+      history.push(`/userdata/${userId}`);
     }
   } catch (err) {
     const errors = err.response.data.errors;
@@ -124,13 +124,14 @@ export const editUserdata = (
 
 //Get UserdataById
 export const getUserdataById = userdataId => async dispatch => {
+  // dispatch({ type: CLEAR_USERSDATA });
   try {
     const res = await axios.get(`/api/userdata/${userdataId}`);
     dispatch({
       type: GET_USERDATA,
       payload: res.data
     });
-    console.log(res.data);
+    // console.log(res.data);
   } catch (err) {
     dispatch({
       type: USERDATA_ERROR,

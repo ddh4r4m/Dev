@@ -30,7 +30,7 @@ const EditUserdataById = ({
       text: loading || !userdata.text ? '' : userdata.text
       //   text: 'Helo'
     });
-  }, [loading, getUserdataById, match, userdata]);
+  }, [loading, getUserdataById, match]);
 
   const { text, twitter, facebook, linkedin, youtube, instagram } = formData;
 
@@ -39,12 +39,14 @@ const EditUserdataById = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    editUserdata(formData, history);
+    editUserdata(match.params.id, formData, history);
   };
 
   return (
     <Fragment>
-      {loading ? (
+      {userdata === null || loading ? (
+        <Spinner />
+      ) : userdata === null ? (
         <Spinner />
       ) : (
         <Fragment>

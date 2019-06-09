@@ -2,6 +2,7 @@ import {
   GET_USERDATA,
   USERDATA_ERROR,
   CLEAR_USERDATA,
+  CLEAR_USERSDATA,
   GET_USERSDATA
 } from '../actions/types';
 
@@ -26,7 +27,7 @@ export default function(state = initialState, action) {
     case GET_USERSDATA:
       return {
         ...state,
-        userdata: payload,
+        usersdata: payload,
         loading: false
       };
     case USERDATA_ERROR:
@@ -39,6 +40,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         userdata: null,
+        repos: [],
+        loading: false
+      };
+    case CLEAR_USERSDATA:
+      return {
+        ...state,
+        usersdata: [],
         repos: [],
         loading: false
       };

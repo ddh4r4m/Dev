@@ -5,7 +5,7 @@ import { getUsersdata } from '../../actions/userdata';
 import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
 
-const Usersdata = ({ getUsersdata, userdata: { userdata, loading } }) => {
+const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   useEffect(() => {
     getUsersdata();
   }, [getUsersdata]);
@@ -16,8 +16,8 @@ const Usersdata = ({ getUsersdata, userdata: { userdata, loading } }) => {
     <Fragment>
       Data
       <div className='userdata'>
-        {userdata.length > 0 ? (
-          userdata.map(userdata => (
+        {usersdata.length > 0 ? (
+          usersdata.map(userdata => (
             <UserdataItem key={userdata._id} userdata={userdata} />
           ))
         ) : (

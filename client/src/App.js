@@ -15,6 +15,7 @@ import Posts from './components/posts/Posts';
 import Profiles from './components/profiles/Profiles';
 import Usersdata from './components/usersdata/Usersdata';
 import Profile from './components/profile/Profile';
+import Userdata from './components/userdata/Userdata';
 import PrivateRoute from './components/routing/PrivateRoute';
 import './App.css';
 
@@ -47,6 +48,7 @@ const App = () => {
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/usersdata' component={Usersdata} />
               <Route exact path='/profile/:id' component={Profile} />
+              <Route exact path='/userdata/:id' component={Userdata} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute exact path='/posts' component={Posts} />
               <PrivateRoute

@@ -13,7 +13,6 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     <h1>loading..</h1>
   ) : (
     <Fragment>
-      Data
       <PostForm />
       <div className='posts'>
         {posts.map(post => (

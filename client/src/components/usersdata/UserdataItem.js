@@ -2,17 +2,19 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const ProfileItem = ({ userdata: { text, _id } }) => (
+const ProfileItem = ({ userdata: { text, year, policestation, _id } }) => (
   <Fragment>
-    <div className='profile bg-light'>
-      {/* <img src={avatar} alt='' className='round-img' /> */}
-      <div>
-        <h2>{text}</h2>
+    <tr>
+      <td>{year}</td>
+      <td>{text}</td>
+      <td>{policestation}</td>
+      <td>{text}</td>
+      <td>
         <Link to={`/userdata/${_id}`} className='btn btn-primary'>
           View FIR
         </Link>
-      </div>
-    </div>
+      </td>
+    </tr>
   </Fragment>
 );
 

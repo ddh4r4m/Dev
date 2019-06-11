@@ -55,10 +55,10 @@ const UserdataSchema = new mongoose.Schema({
     type: String
   },
   dateofcrime: {
-    type: String
+    type: Date
   },
   regdateofcrime: {
-    type: String
+    type: Date
   },
   victimdetails: {
     type: String
@@ -70,7 +70,7 @@ const UserdataSchema = new mongoose.Schema({
     type: String
   },
   chargesheetdate: {
-    type: String
+    type: Date
   },
   policeinvestigation: {
     type: String

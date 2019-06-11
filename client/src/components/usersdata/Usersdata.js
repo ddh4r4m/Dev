@@ -23,13 +23,25 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
         Create New FIR
       </Link>
       <div className='userdata'>
-        {usersdata.length > 0 ? (
-          usersdata.map(userdata => (
-            <UserdataItem key={userdata._id} userdata={userdata} />
-          ))
-        ) : (
-          <h4>No FIR Data Found</h4>
-        )}
+        <table>
+          <thead>
+            <tr>
+              <th>YEAR</th>
+              <th>Serial No.</th>
+              <th>POLICE STATION</th>
+              <th>Serial No.</th>
+            </tr>
+          </thead>
+          <tbody>
+            {usersdata.length > 0 ? (
+              usersdata.map(userdata => (
+                <UserdataItem key={userdata._id} userdata={userdata} />
+              ))
+            ) : (
+              <h4>No FIR Data Found</h4>
+            )}
+          </tbody>
+        </table>
       </div>
       {console.log('HI')}
     </Fragment>

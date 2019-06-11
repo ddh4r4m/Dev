@@ -117,20 +117,22 @@ const EditUserdataById = ({
           <small>* = required field</small>
           <form className='form' onSubmit={e => onSubmit(e)}>
             <div className='form-group'>
+              Serial No.
               <input
                 type='text'
-                placeholder='Text'
+                placeholder='Serial no.'
                 name='text'
                 value={text}
                 onChange={e => onChange(e)}
               />
               <small className='form-text'>
-                Could be your own company or one you work for
+                Could be the defined format of serial no
               </small>
             </div>
             <div className='form-group'>
+              Year of Crime
               <input
-                type='text'
+                type='date'
                 placeholder='Year of Crime'
                 name='year'
                 value={year}
@@ -138,6 +140,7 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
+              Name of Police Station
               <input
                 type='text'
                 placeholder='Name of Police Station'
@@ -147,6 +150,7 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
+              Register No.
               <input
                 type='text'
                 placeholder='Register No.'
@@ -156,8 +160,9 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
+              Date When Crime Happened
               <input
-                type='text'
+                type='date'
                 placeholder='Date When Crime Happened'
                 name='dateofcrime'
                 value={dateofcrime}
@@ -165,8 +170,9 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
+              Date when FIR was Registered
               <input
-                type='text'
+                type='date'
                 placeholder='Date when FIR was Registered'
                 name='regdateofcrime'
                 value={regdateofcrime}
@@ -174,6 +180,7 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
+              Details of Victim
               <input
                 type='text'
                 placeholder='Details of Victim'
@@ -183,7 +190,10 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
-              <input
+              Nature of Crime e.g: Murder
+              <textarea
+                rows='4'
+                cols='150'
                 type='text'
                 placeholder='Nature of Crime e.g: Murder '
                 name='natureofcrime'
@@ -192,6 +202,7 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
+              Applicable Penal Codes
               <input
                 type='text'
                 placeholder='Penal Codes Applicable'
@@ -201,8 +212,9 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
+              Date When Chargesheet was filed in the court
               <input
-                type='text'
+                type='date'
                 placeholder='Date When Chargesheet was filed in the court'
                 name='chargesheetdate'
                 value={chargesheetdate}
@@ -210,8 +222,10 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
-              <input
+              Details from Police Investigation
+              <textarea
                 type='text'
+                rows='4'
                 placeholder='Details from Police Investigation'
                 name='policeinvestigation'
                 value={policeinvestigation}
@@ -219,7 +233,9 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
-              <input
+              Court Results
+              <textarea
+                rows='4'
                 type='text'
                 placeholder='Court Results'
                 name='courtresults'
@@ -228,7 +244,9 @@ const EditUserdataById = ({
               />
             </div>
             <div className='form-group'>
-              <input
+              Financial Support to be Provided
+              <textarea
+                rows='4'
                 type='text'
                 placeholder='Financial Support to be Provided'
                 name='financialsupport'

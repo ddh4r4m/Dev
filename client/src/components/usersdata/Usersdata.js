@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -11,10 +11,31 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     getUsersdata();
   }, [getUsersdata]);
 
+  const [formData, setFormData] = useState({
+    search: ''
+  });
+
+  const { search } = formData;
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const filtereddata = usersdata.filter(usersdata => {
+    return usersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+  });
+
   return loading ? (
     <Spinner />
   ) : (
     <Fragment>
+      <input
+        type='text'
+        placeholder='Search by serial..'
+        name='search'
+        value={search}
+        onChange={e => onChange(e)}
+      />
+      <br />
       <Link
         to='create-userdata'
         className='btn btn-primary'
@@ -33,8 +54,8 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             </tr>
           </thead>
           <tbody>
-            {usersdata.length > 0 ? (
-              usersdata.map(userdata => (
+            {filtereddata.length > 0 ? (
+              filtereddata.map(userdata => (
                 <UserdataItem key={userdata._id} userdata={userdata} />
               ))
             ) : (

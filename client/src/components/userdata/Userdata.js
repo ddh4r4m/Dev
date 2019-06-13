@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getUserdataById } from '../../actions/userdata';
-import UserdataTop from './UserdataTop';
+import UserdataTop from '../userdata/UserdataTop';
+import CommentForm from '../userdata/CommentForm';
+import CommentItem from '../userdata/CommentItem';
+
 const Userdata = ({
   getUserdataById,
   userdata: { userdata, loading },
@@ -22,6 +25,16 @@ const Userdata = ({
           Profile
           <div>
             <UserdataTop userdata={userdata} />
+            <CommentForm userdataId={userdata._id} />
+            <div className='comments'>
+              {userdata.comments.map(comment => (
+                <CommentItem
+                  key={comment._id}
+                  comment={comment}
+                  userdataId={userdata._id}
+                />
+              ))}
+            </div>
           </div>
         </Fragment>
       )}

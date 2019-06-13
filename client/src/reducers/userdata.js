@@ -4,7 +4,9 @@ import {
   CLEAR_USERDATA,
   CLEAR_USERSDATA,
   GET_USERSDATA,
-  DELETE_USERDATA
+  DELETE_USERDATA,
+  ADD_COMMENT,
+  REMOVE_COMMENT
 } from '../actions/types';
 
 const initialState = {
@@ -55,6 +57,23 @@ export default function(state = initialState, action) {
         ...state,
         usersdata: [],
         repos: [],
+        loading: false
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        userdata: { ...state.userdata, comments: payload },
+        loading: false
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        userdata: {
+          ...state.userdata,
+          comments: state.userdata.comments.filter(
+            comment => comment._id !== payload
+          )
+        },
         loading: false
       };
     default:

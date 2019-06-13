@@ -5,7 +5,9 @@ import {
   USERDATA_ERROR,
   GET_USERDATA,
   CLEAR_USERSDATA,
-  DELETE_USERDATA
+  DELETE_USERDATA,
+  ADD_COMMENT,
+  REMOVE_COMMENT
 } from './types';
 
 //Get Posts
@@ -152,6 +154,56 @@ export const deleteUserdata = id => async dispatch => {
     });
 
     dispatch(setAlert('Userdata Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: USERDATA_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+//Add Comment
+export const addComment = (userdataId, formData) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  try {
+    const res = await axios.post(
+      `/api/userdata/comment/${userdataId}`,
+      formData,
+      config
+    );
+
+    dispatch({
+      type: ADD_COMMENT,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Comment Added', 'success'));
+  } catch (err) {
+    dispatch({
+      type: USERDATA_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+//Delete Comment
+export const deleteComment = (userdataId, commentId) => async dispatch => {
+  try {
+    const res = await axios.delete(
+      `/api/userdata/comment/${userdataId}/${commentId}`
+    );
+
+    dispatch({
+      type: REMOVE_COMMENT,
+      payload: commentId
+    });
+
+    dispatch(setAlert('Comment Removed', 'success'));
   } catch (err) {
     dispatch({
       type: USERDATA_ERROR,

@@ -26,6 +26,7 @@ const EditUserdataById = ({
     policeinvestigation: '',
     courtresults: '',
     financialsupport: '',
+    dateofcourtorder: '',
     twitter: '',
     facebook: '',
     linkedin: '',
@@ -55,6 +56,8 @@ const EditUserdataById = ({
       sections: loading || !userdata.sections ? '' : userdata.sections,
       chargesheetdate:
         loading || !userdata.chargesheetdate ? '' : userdata.chargesheetdate,
+      dateofcourtorder:
+        loading || !userdata.dateofcourtorder ? '' : userdata.dateofcourtorder,
       policeinvestigation:
         loading || !userdata.policeinvestigation
           ? ''
@@ -86,6 +89,7 @@ const EditUserdataById = ({
     policeinvestigation,
     courtresults,
     financialsupport,
+    dateofcourtorder,
     twitter,
     facebook,
     linkedin,
@@ -208,6 +212,16 @@ const EditUserdataById = ({
                 placeholder='Penal Codes Applicable'
                 name='sections'
                 value={sections}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group'>
+              Date of Court Order
+              <input
+                type='date'
+                placeholder='Date of Court Order'
+                name='dateofcourtorder'
+                value={dateofcourtorder}
                 onChange={e => onChange(e)}
               />
             </div>

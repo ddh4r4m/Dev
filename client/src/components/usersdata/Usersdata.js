@@ -24,7 +24,8 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   const filtereddata = usersdata.filter(usersdata => {
     return (
       usersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
-      usersdata.text.toLowerCase().indexOf(search1.toLowerCase()) !== -1
+      usersdata.policestation.toLowerCase().indexOf(search1.toLowerCase()) !==
+        -1
     );
   });
 
@@ -70,12 +71,16 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
                 <UserdataItem key={userdata._id} userdata={userdata} />
               ))
             ) : (
-              <h4>No FIR Data Found</h4>
+              <tr>
+                <td>No FIR Data Found</td>
+                <td>No FIR Data Found</td>
+                <td>No FIR Data Found</td>
+                <td>No FIR Data Found</td>
+              </tr>
             )}
           </tbody>
         </table>
       </div>
-      {console.log('HI')}
     </Fragment>
   );
 };

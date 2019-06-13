@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { deleteUserdata } from '../../actions/userdata';
 
 const UserdataTop = ({
+  auth,
   userdata: {
     text,
     year,
@@ -13,6 +15,7 @@ const UserdataTop = ({
     victimdetails,
     natureofcrime,
     sections,
+    dateofcourtorder,
     chargesheetdate,
     policeinvestigation,
     courtresults,
@@ -31,11 +34,11 @@ const UserdataTop = ({
       <h4>VICTIM DETAILS : {victimdetails}</h4>
       <h4>NATURE OF CRIME : {natureofcrime}</h4>
       <h4>SECTIONS / PENAL CODES : {sections}</h4>
+      <h4>DATE OF COURT ORDER : {dateofcourtorder}</h4>
       <h4>CHARGE SHEET DATE : {chargesheetdate}</h4>
       <h4>POLICE INVESTIGATION : {policeinvestigation}</h4>
       <h4>COURT RESULTS : {courtresults}</h4>
       <h4>FINANCIAL SUPPORT : {financialsupport}</h4>
-
       <Link to={`/edit-userdata/${_id}`} className='btn btn-primary'>
         Edit Userdata
       </Link>
@@ -45,6 +48,14 @@ const UserdataTop = ({
       <Link to='/usersdata' className='btn btn-primary'>
         Go Back
       </Link>
+      {/* {!auth.loading && user === auth.user._id && ( */}
+      <button
+        onClick={e => window.confirm('Are You Sure?') && deleteUserdata(_id)}
+        type='button'
+        className='btn btn-danger'
+      >
+        <i className='fas fa-times' />
+      </button>
     </div>
   );
 };

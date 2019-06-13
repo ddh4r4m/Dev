@@ -35,7 +35,7 @@ const PostItem = ({
         </Link>
         {!auth.loading && user === auth.user._id && (
           <button
-            onClick={e => deletePost(_id)}
+            onClick={e => window.confirm('Are You Sure?') && deletePost(_id)}
             type='button'
             className='btn btn-danger'
           >

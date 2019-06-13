@@ -19,6 +19,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
     policeinvestigation: '',
     courtresults: '',
     financialsupport: '',
+    dateofcourtorder: '',
     twitter: '',
     facebook: '',
     linkedin: '',
@@ -40,6 +41,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
     sections,
     chargesheetdate,
     policeinvestigation,
+    dateofcourtorder,
     courtresults,
     financialsupport,
     twitter,
@@ -157,6 +159,16 @@ const CreateUserdata = ({ createUserdata, history }) => {
             placeholder='Penal Codes Applicable'
             name='sections'
             value={sections}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          Date of Court Order
+          <input
+            type='date'
+            placeholder='Date of Court Order'
+            name='dateofcourtorder'
+            value={dateofcourtorder}
             onChange={e => onChange(e)}
           />
         </div>

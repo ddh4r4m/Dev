@@ -4,7 +4,8 @@ import {
   GET_USERSDATA,
   USERDATA_ERROR,
   GET_USERDATA,
-  CLEAR_USERSDATA
+  CLEAR_USERSDATA,
+  DELETE_USERDATA
 } from './types';
 
 //Get Posts
@@ -132,6 +133,25 @@ export const getUserdataById = userdataId => async dispatch => {
       payload: res.data
     });
     // console.log(res.data);
+  } catch (err) {
+    dispatch({
+      type: USERDATA_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+//Delete Userdata
+export const deleteUserdata = id => async dispatch => {
+  try {
+    const res = await axios.delete(`/api/userdata/${id}`);
+
+    dispatch({
+      type: DELETE_USERDATA,
+      payload: id
+    });
+
+    dispatch(setAlert('Userdata Removed', 'success'));
   } catch (err) {
     dispatch({
       type: USERDATA_ERROR,

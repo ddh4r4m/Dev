@@ -24,7 +24,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
           <h4>No Profiles Found</h4>
         )}
       </div>
-      {console.log('HI')}
     </Fragment>
   );
 };

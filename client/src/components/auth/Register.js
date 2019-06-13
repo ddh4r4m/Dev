@@ -29,6 +29,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
   };
 
+  //If already logged in redirect to Dashboard
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }

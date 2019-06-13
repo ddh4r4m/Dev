@@ -40,7 +40,8 @@ router.post(
         chargesheetdate: req.body.chargesheetdate,
         policeinvestigation: req.body.policeinvestigation,
         courtresults: req.body.courtresults,
-        financialsupport: req.body.financialsupport
+        financialsupport: req.body.financialsupport,
+        dateofcourtorder: req.body.dateofcourtorder
         // name: user.name,
         // avatar: user.avatar,
         // user: req.user.id
@@ -113,6 +114,7 @@ router.put('/:id', auth, async (req, res) => {
       userdata.policeinvestigation = req.body.policeinvestigation;
       userdata.courtresults = req.body.courtresults;
       userdata.financialsupport = req.body.financialsupport;
+      userdata.dateofcourtorder = req.body.dateofcourtorder;
     }
 
     // const newUserdata = new Userdata({
@@ -146,7 +148,7 @@ router.delete('/:id', auth, async (req, res) => {
     }
 
     //Check User so than only he can delete the post
-    if (userdata.user.toString !== req.user.id) {
+    if (userdata.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not Authorised' });
     }
     await userdata.remove();

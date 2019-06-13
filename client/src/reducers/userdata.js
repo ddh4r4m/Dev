@@ -3,7 +3,8 @@ import {
   USERDATA_ERROR,
   CLEAR_USERDATA,
   CLEAR_USERSDATA,
-  GET_USERSDATA
+  GET_USERSDATA,
+  DELETE_USERDATA
 } from '../actions/types';
 
 const initialState = {
@@ -28,6 +29,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         usersdata: payload,
+        loading: false
+      };
+    case DELETE_USERDATA:
+      return {
+        ...state,
+        userdata: state.userdata.filter(userdata => userdata._id !== payload),
         loading: false
       };
     case USERDATA_ERROR:

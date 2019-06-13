@@ -81,6 +81,9 @@ const UserdataSchema = new mongoose.Schema({
   financialsupport: {
     type: String
   },
+  dateofcourtorder: {
+    type: String
+  },
   date: {
     type: Date,
     default: Date.now

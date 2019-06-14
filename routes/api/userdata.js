@@ -38,6 +38,8 @@ router.post(
         firstbenefitbycommis: req.body.firstbenefitbycommis,
         firstbenefitbycollector: req.body.firstbenefitbycollector,
         firstbenefitbypolicecomment: req.body.firstbenefitbypolicecomment,
+        firstbenefitbycommcomment: req.body.firstbenefitbycommcomment,
+        firstbenefitbycollectorcomment: req.body.firstbenefitbycollectorcomment,
         victimdetails: req.body.victimdetails,
         natureofcrime: req.body.natureofcrime,
         sections: req.body.sections,
@@ -116,6 +118,9 @@ router.put('/:id', auth, async (req, res) => {
       userdata.firstbenefitbycollector = req.body.firstbenefitbycollector;
       userdata.firstbenefitbypolicecomment =
         req.body.firstbenefitbypolicecomment;
+      userdata.firstbenefitbycommcomment = req.body.firstbenefitbycommcomment;
+      userdata.firstbenefitbycollectorcomment =
+        req.body.firstbenefitbycollectorcomment;
       userdata.victimdetails = req.body.victimdetails;
       userdata.natureofcrime = req.body.natureofcrime;
       userdata.sections = req.body.sections;

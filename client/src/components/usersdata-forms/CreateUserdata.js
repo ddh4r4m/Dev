@@ -18,6 +18,8 @@ const CreateUserdata = ({ createUserdata, history }) => {
     firstbenefitbycommis: '',
     firstbenefitbycollector: '',
     firstbenefitbypolicecomment: '',
+    firstbenefitbycommcomment: '',
+    firstbenefitbycollectorcomment: '',
     sections: '',
     chargesheetdate: '',
     policeinvestigation: '',
@@ -46,6 +48,8 @@ const CreateUserdata = ({ createUserdata, history }) => {
     firstbenefitbycommis,
     firstbenefitbycollector,
     firstbenefitbypolicecomment,
+    firstbenefitbycommcomment,
+    firstbenefitbycollectorcomment,
     sections,
     chargesheetdate,
     policeinvestigation,
@@ -180,6 +184,16 @@ const CreateUserdata = ({ createUserdata, history }) => {
           No
         </div>
         <div className='form-group'>
+          Comment on First benefit Recommendation by Police
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='firstbenefitbypolicecomment'
+            value={firstbenefitbypolicecomment}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
           First Benefit Recommendation by Assistant Commisioner
           <input
             type='radio'
@@ -197,6 +211,16 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />{' '}
           No
+        </div>
+        <div className='form-group'>
+          Comment on First benefit Recommendation by Asst. Commisioner
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='firstbenefitbycommcomment'
+            value={firstbenefitbycommcomment}
+            onChange={e => onChange(e)}
+          />
         </div>
         <div className='form-group'>
           Decision for distribution of first Benefit District Collector
@@ -217,13 +241,14 @@ const CreateUserdata = ({ createUserdata, history }) => {
           />{' '}
           No
         </div>
+
         <div className='form-group'>
-          Comment on First benefit Recommendation by Police
+          Comment on First benefit Decision by District Collector
           <input
             type='text'
             placeholder='Give the Reason for Recommendation'
-            name='firstbenefitbypolicecomment'
-            value={firstbenefitbypolicecomment}
+            name='firstbenefitbycollectorcomment'
+            value={firstbenefitbycollectorcomment}
             onChange={e => onChange(e)}
           />
         </div>

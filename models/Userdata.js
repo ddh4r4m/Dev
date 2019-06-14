@@ -78,6 +78,12 @@ const UserdataSchema = new mongoose.Schema({
   firstbenefitbypolicecomment: {
     type: String
   },
+  firstbenefitbycommcomment: {
+    type: String
+  },
+  firstbenefitbycollectorcomment: {
+    type: String
+  },
   sections: {
     type: String
   },

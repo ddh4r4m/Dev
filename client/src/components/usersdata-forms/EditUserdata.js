@@ -37,7 +37,8 @@ const EditUserdataById = ({
     facebook: '',
     linkedin: '',
     youtube: '',
-    instagram: ''
+    instagram: '',
+    disabledata: false
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -100,7 +101,8 @@ const EditUserdataById = ({
       facebook: loading || !userdata.facebook ? '' : userdata.facebook,
       linkedin: loading || !userdata.linkedin ? '' : userdata.linkedin,
       youtube: loading || !userdata.youtube ? '' : userdata.youtube,
-      instagram: loading || !userdata.instagram ? '' : userdata.instagram
+      instagram: loading || !userdata.instagram ? '' : userdata.instagram,
+      disabledata: loading || !userdata.disabledata ? '' : userdata.disabledata
       //   text: 'Helo'
     });
   }, [loading, getUserdataById, match]);
@@ -130,7 +132,8 @@ const EditUserdataById = ({
     facebook,
     linkedin,
     youtube,
-    instagram
+    instagram,
+    disabledata
   } = formData;
 
   const onChange = e =>
@@ -181,13 +184,33 @@ const EditUserdataById = ({
             </div>
             <div className='form-group'>
               Name of Police Station
-              <input
-                type='text'
-                placeholder='Name of Police Station'
+              <select
                 name='policestation'
                 value={policestation}
                 onChange={e => onChange(e)}
-              />
+              >
+                <option value='Dhule City'>Dhule City </option>
+                <option value='Aazadnagar' selected>
+                  Aazadnagar
+                </option>
+                <option value='Chalisgaon Road'>Chalisgaon Road</option>
+                <option value='Mohadi Upnagar'>Mohadi Upnagar</option>
+                <option value='Deopur Police Station'>
+                  Deopur Police Station
+                </option>
+                <option value='West Deopur'>West Deopur</option>
+                <option value='Dhule Taluka'>Dhule Taluka</option>
+                <option value='Songir'>Songir</option>
+                <option value='Sakri'>Sakri</option>
+                <option value='Pimplner'>Pimplner</option>
+                <option value='Nijampur'>Nijampur</option>
+                <option value='Shindkheda'>Shindkheda</option>
+                <option value='Nardana'>Nardana</option>
+                <option value='Dondaicha'>Dondaicha</option>
+                <option value='Shirpur Taluka'>Shirpur Taluka</option>
+                <option value='Shirpur City'>Shirpur City</option>
+                <option value='Thalner'>Thalner</option>
+              </select>
             </div>
             <div className='form-group'>
               Register No.
@@ -329,6 +352,16 @@ const EditUserdataById = ({
                 onChange={e => onChange(e)}
               />
             </div>
+            {/* <div className='form-group'>
+              <input
+                type='checkbox'
+                name='disableddata'
+                checked={disabledata === true}
+                value={true}
+                onChange={e => onChange(e)}
+              />{' '}
+              Yes
+            </div> */}
             <div className='form-group'>
               Applicable Penal Codes
               <input

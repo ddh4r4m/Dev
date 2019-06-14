@@ -48,6 +48,10 @@ const UserdataSchema = new mongoose.Schema({
   year: {
     type: String
   },
+  disabledata: {
+    type: Boolean,
+    default: false
+  },
   policestation: {
     type: String
   },

@@ -30,7 +30,8 @@ const CreateUserdata = ({ createUserdata, history }) => {
     facebook: '',
     linkedin: '',
     youtube: '',
-    instagram: ''
+    instagram: '',
+    disabledata: false
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -60,7 +61,8 @@ const CreateUserdata = ({ createUserdata, history }) => {
     facebook,
     linkedin,
     youtube,
-    instagram
+    instagram,
+    disabledata
   } = formData;
 
   const onChange = e =>
@@ -104,13 +106,31 @@ const CreateUserdata = ({ createUserdata, history }) => {
         </div>
         <div className='form-group'>
           Name of Police Station
-          <input
-            type='text'
-            placeholder='Name of Police Station'
+          <select
             name='policestation'
             value={policestation}
             onChange={e => onChange(e)}
-          />
+          >
+            <option value='Dhule City'>Dhule City </option>
+            <option value='Aazadnagar' selected>
+              Aazadnagar
+            </option>
+            <option value='Chalisgaon Road'>Chalisgaon Road</option>
+            <option value='Mohadi Upnagar'>Mohadi Upnagar</option>
+            <option value='Deopur Police Station'>Deopur Police Station</option>
+            <option value='West Deopur'>West Deopur</option>
+            <option value='Dhule Taluka'>Dhule Taluka</option>
+            <option value='Songir'>Songir</option>
+            <option value='Sakri'>Sakri</option>
+            <option value='Pimplner'>Pimplner</option>
+            <option value='Nijampur'>Nijampur</option>
+            <option value='Shindkheda'>Shindkheda</option>
+            <option value='Nardana'>Nardana</option>
+            <option value='Dondaicha'>Dondaicha</option>
+            <option value='Shirpur Taluka'>Shirpur Taluka</option>
+            <option value='Shirpur City'>Shirpur City</option>
+            <option value='Thalner'>Thalner</option>
+          </select>
         </div>
         <div className='form-group'>
           Register No.

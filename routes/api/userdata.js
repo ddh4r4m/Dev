@@ -30,6 +30,7 @@ router.post(
       const newUserdata = new Userdata({
         text: req.body.text,
         year: req.body.year,
+        disabledata: req.body.disabledata,
         policestation: req.body.policestation,
         crimeregisterno: req.body.crimeregisterno,
         dateofcrime: req.body.dateofcrime,
@@ -109,6 +110,7 @@ router.put('/:id', auth, async (req, res) => {
     } else {
       userdata.text = req.body.text;
       userdata.year = req.body.year;
+      userdata.disabledata = req.body.disabledata;
       userdata.policestation = req.body.policestation;
       userdata.crimeregisterno = req.body.crimeregisterno;
       userdata.dateofcrime = req.body.dateofcrime;

@@ -34,6 +34,10 @@ router.post(
         crimeregisterno: req.body.crimeregisterno,
         dateofcrime: req.body.dateofcrime,
         regdateofcrime: req.body.regdateofcrime,
+        firstbenefitbypolice: req.body.firstbenefitbypolice,
+        firstbenefitbycommis: req.body.firstbenefitbycommis,
+        firstbenefitbycollector: req.body.firstbenefitbycollector,
+        firstbenefitbypolicecomment: req.body.firstbenefitbypolicecomment,
         victimdetails: req.body.victimdetails,
         natureofcrime: req.body.natureofcrime,
         sections: req.body.sections,
@@ -107,6 +111,11 @@ router.put('/:id', auth, async (req, res) => {
       userdata.crimeregisterno = req.body.crimeregisterno;
       userdata.dateofcrime = req.body.dateofcrime;
       userdata.regdateofcrime = req.body.regdateofcrime;
+      userdata.firstbenefitbypolice = req.body.firstbenefitbypolice;
+      userdata.firstbenefitbycommis = req.body.firstbenefitbycommis;
+      userdata.firstbenefitbycollector = req.body.firstbenefitbycollector;
+      userdata.firstbenefitbypolicecomment =
+        req.body.firstbenefitbypolicecomment;
       userdata.victimdetails = req.body.victimdetails;
       userdata.natureofcrime = req.body.natureofcrime;
       userdata.sections = req.body.sections;

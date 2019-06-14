@@ -14,6 +14,10 @@ const CreateUserdata = ({ createUserdata, history }) => {
     regdateofcrime: '',
     victimdetails: '',
     natureofcrime: '',
+    firstbenefitbypolice: '',
+    firstbenefitbycommis: '',
+    firstbenefitbycollector: '',
+    firstbenefitbypolicecomment: '',
     sections: '',
     chargesheetdate: '',
     policeinvestigation: '',
@@ -38,6 +42,10 @@ const CreateUserdata = ({ createUserdata, history }) => {
     regdateofcrime,
     victimdetails,
     natureofcrime,
+    firstbenefitbypolice,
+    firstbenefitbycommis,
+    firstbenefitbycollector,
+    firstbenefitbypolicecomment,
     sections,
     chargesheetdate,
     policeinvestigation,
@@ -144,11 +152,78 @@ const CreateUserdata = ({ createUserdata, history }) => {
           Nature of Crime e.g: Murder
           <textarea
             rows='4'
-            cols='10'
+            cols='2'
             type='text'
             placeholder='Nature of Crime e.g: Murder '
             name='natureofcrime'
             value={natureofcrime}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          First Benefit Recommendation by Police
+          <input
+            type='radio'
+            name='firstbenefitbypolice'
+            checked={firstbenefitbypolice === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='firstbenefitbypolice'
+            checked={firstbenefitbypolice === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+        </div>
+        <div className='form-group'>
+          First Benefit Recommendation by Assistant Commisioner
+          <input
+            type='radio'
+            name='firstbenefitbycommis'
+            checked={firstbenefitbycommis === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='firstbenefitbycommis'
+            checked={firstbenefitbycommis === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+        </div>
+        <div className='form-group'>
+          Decision for distribution of first Benefit District Collector
+          <input
+            type='radio'
+            name='firstbenefitbycollector'
+            checked={firstbenefitbycollector === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='firstbenefitbycollector'
+            checked={firstbenefitbycollector === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+        </div>
+        <div className='form-group'>
+          Comment on First benefit Recommendation by Police
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='firstbenefitbypolicecomment'
+            value={firstbenefitbypolicecomment}
             onChange={e => onChange(e)}
           />
         </div>

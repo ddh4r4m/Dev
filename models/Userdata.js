@@ -66,6 +66,18 @@ const UserdataSchema = new mongoose.Schema({
   natureofcrime: {
     type: String
   },
+  firstbenefitbypolice: {
+    type: String
+  },
+  firstbenefitbycommis: {
+    type: String
+  },
+  firstbenefitbycollector: {
+    type: String
+  },
+  firstbenefitbypolicecomment: {
+    type: String
+  },
   sections: {
     type: String
   },

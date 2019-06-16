@@ -20,6 +20,12 @@ const CreateUserdata = ({ createUserdata, history }) => {
     firstbenefitbypolicecomment: '',
     firstbenefitbycommcomment: '',
     firstbenefitbycollectorcomment: '',
+    secondbenefitbypolice: '',
+    secondbenefitbycommis: '',
+    secondbenefitbycollector: '',
+    secondbenefitbypolicecomment: '',
+    secondbenefitbycommcomment: '',
+    secondbenefitbycollectorcomment: '',
     sections: '',
     chargesheetdate: '',
     policeinvestigation: '',
@@ -51,6 +57,12 @@ const CreateUserdata = ({ createUserdata, history }) => {
     firstbenefitbypolicecomment,
     firstbenefitbycommcomment,
     firstbenefitbycollectorcomment,
+    secondbenefitbypolice,
+    secondbenefitbycommis,
+    secondbenefitbycollector,
+    secondbenefitbypolicecomment,
+    secondbenefitbycommcomment,
+    secondbenefitbycollectorcomment,
     sections,
     chargesheetdate,
     policeinvestigation,
@@ -299,6 +311,94 @@ const CreateUserdata = ({ createUserdata, history }) => {
             placeholder='Date When Chargesheet was filed in the court'
             name='chargesheetdate'
             value={chargesheetdate}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          Second Benefit Recommendation by Police
+          <input
+            type='radio'
+            name='secondbenefitbypolice'
+            checked={secondbenefitbypolice === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='secondbenefitbypolice'
+            checked={secondbenefitbypolice === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+        </div>
+        <div className='form-group'>
+          Comment on Second benefit Recommendation by Police
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='secondbenefitbypolicecomment'
+            value={secondbenefitbypolicecomment}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          Second Benefit Recommendation by Assistant Commisioner
+          <input
+            type='radio'
+            name='secondbenefitbycommis'
+            checked={secondbenefitbycommis === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='secondbenefitbycommis'
+            checked={secondbenefitbycommis === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+        </div>
+        <div className='form-group'>
+          Comment on Second benefit Recommendation by Asst. Commisioner
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='secondbenefitbycommcomment'
+            value={secondbenefitbycommcomment}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          Decision for distribution of second Benefit District Collector
+          <input
+            type='radio'
+            name='secondbenefitbycollector'
+            checked={secondbenefitbycollector === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='secondbenefitbycollector'
+            checked={secondbenefitbycollector === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+        </div>
+
+        <div className='form-group'>
+          Comment on Second benefit Decision by District Collector
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='secondbenefitbycollectorcomment'
+            value={secondbenefitbycollectorcomment}
             onChange={e => onChange(e)}
           />
         </div>

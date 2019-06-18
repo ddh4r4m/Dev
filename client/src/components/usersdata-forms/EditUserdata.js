@@ -47,7 +47,6 @@ const EditUserdataById = ({
     instagram: '',
     disabledata: false,
     closecase: false,
-    typeofatrocity: null,
     docImage: '',
     doccImage: ''
   });
@@ -141,14 +140,16 @@ const EditUserdataById = ({
       disabledata:
         loading || !userdata.disabledata ? false : userdata.disabledata,
       closecase: loading || !userdata.closecase ? false : userdata.closecase,
-      typeofatrocity:
-        loading || !userdata.typeofatrocity
-          ? ''
-          : JSON.parse(userdata.typeofatrocity),
+
       docImage: loading || !userdata.docImage ? '' : userdata.docImage,
       doccImage: loading || !userdata.doccImage ? '' : userdata.doccImage
       //   text: 'Helo'
     });
+    setTypeofatrocity(
+      loading || !userdata.typeofatrocity
+        ? null
+        : JSON.parse(userdata.typeofatrocity)
+    );
   }, [loading, getUserdataById, match]);
 
   const options = [
@@ -175,7 +176,7 @@ const EditUserdataById = ({
   ];
 
   const handleChange = typeofatrocity => {
-    setFormData(typeofatrocity);
+    setTypeofatrocity(typeofatrocity);
   };
 
   const {
@@ -212,10 +213,11 @@ const EditUserdataById = ({
     instagram,
     disabledata,
     closecase,
-    typeofatrocity,
     docImage,
     doccImage
   } = formData;
+
+  const [typeofatrocity, setTypeofatrocity] = useState(null);
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

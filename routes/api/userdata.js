@@ -6,11 +6,43 @@ const auth = require('../../middleware/auth');
 const Userdata = require('../../models/Userdata');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(new Error('Only .jpeg or .png files are accepted'), false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 6
+  },
+  fileFilter: fileFilter
+});
+
+var cpUpload = upload.fields([
+  { name: 'docImage', maxCount: 1 },
+  { name: 'doccImage', maxCount: 1 }
+]);
 //@route    POST api/posts
 //@desc     Create a post
 //@access   Private
 router.post(
   '/',
+  cpUpload,
   [
     auth,
     [
@@ -26,11 +58,16 @@ router.post(
     }
 
     try {
+      console.log(req.body);
       const user = await User.findById(req.user.id).select('-password');
       const newUserdata = new Userdata({
         text: req.body.text,
         year: req.body.year,
+        docImage: req.files['docImage'][0].path,
+        doccImage: req.files['doccImage'][0].path,
         disabledata: req.body.disabledata,
+        closecase: req.body.closecase,
+        typeofatrocity: req.body.typeofatrocity,
         policestation: req.body.policestation,
         crimeregisterno: req.body.crimeregisterno,
         dateofcrime: req.body.dateofcrime,
@@ -46,7 +83,8 @@ router.post(
         secondbenefitbycollector: req.body.secondbenefitbycollector,
         secondbenefitbypolicecomment: req.body.secondbenefitbypolicecomment,
         secondbenefitbycommcomment: req.body.secondbenefitbycommcomment,
-        secondbenefitbycollectorcomment: req.body.secondbenefitbycollectorcomment,
+        secondbenefitbycollectorcomment:
+          req.body.secondbenefitbycollectorcomment,
         victimdetails: req.body.victimdetails,
         natureofcrime: req.body.natureofcrime,
         sections: req.body.sections,
@@ -107,7 +145,7 @@ router.get('/:id', auth, async (req, res) => {
 //@desc     Get posts by id
 //@access   Private
 
-router.put('/:id', auth, async (req, res) => {
+router.put('/:id', cpUpload, auth, async (req, res) => {
   try {
     const userdata = await Userdata.findById(req.params.id);
 
@@ -117,6 +155,12 @@ router.put('/:id', auth, async (req, res) => {
       userdata.text = req.body.text;
       userdata.year = req.body.year;
       userdata.disabledata = req.body.disabledata;
+      userdata.closecase = req.body.closecase;
+      if (!req.files) {
+        userdata.docImage = req.files['docImage'][0].path;
+        userdata.doccImage = req.files['doccImage'][0].path;
+      }
+      userdata.typeofatrocity = req.body.typeofatrocity;
       userdata.policestation = req.body.policestation;
       userdata.crimeregisterno = req.body.crimeregisterno;
       userdata.dateofcrime = req.body.dateofcrime;

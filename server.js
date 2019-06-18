@@ -8,6 +8,7 @@ connectDB();
 //Init MiddlewARE
 //app.use('bosy-parser.json()');  <--- Old Version
 app.use(express.json({ extended: false }));
+app.use('/uploads', express.static('uploads'));
 
 app.get('/', (req, res) => res.send('API Running'));
 

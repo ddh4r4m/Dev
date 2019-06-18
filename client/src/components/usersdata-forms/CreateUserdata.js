@@ -3,8 +3,10 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createUserdata } from '../../actions/userdata';
+import Select from 'react-select';
 
 const CreateUserdata = ({ createUserdata, history }) => {
+  var formDataa = new FormData();
   const [formData, setFormData] = useState({
     text: '',
     year: '',
@@ -37,7 +39,10 @@ const CreateUserdata = ({ createUserdata, history }) => {
     linkedin: '',
     youtube: '',
     instagram: '',
-    disabledata: false
+    disabledata: false,
+    closecase: false,
+    docImage: '',
+    doccImage: ''
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -74,15 +79,112 @@ const CreateUserdata = ({ createUserdata, history }) => {
     linkedin,
     youtube,
     instagram,
-    disabledata
+    disabledata,
+    closecase,
+    docImage,
+    doccImage
   } = formData;
 
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [typeofatrocity, setTypeofatrocity] = useState(null);
 
+  const options = [
+    { value: 'murder', label: 'Murder' },
+    { value: 'death', label: 'Death' },
+    { value: 'rape', label: 'Rape' },
+    { value: 'gangRape', label: 'Gang Rape' },
+    {
+      value: 'permanentIncapacitation100',
+      label: 'Permanent Incapacitation 100%'
+    },
+    {
+      value: 'permanentIncapacitation50to99',
+      label: 'Permanent Incapacitation 50-99%'
+    },
+    {
+      value: 'permanentIncapacitation0to49',
+      label: 'Permanent Incapacitation 0-49%'
+    },
+    {
+      value: 'completeDestructionorBurntHouses',
+      label: 'Complete Destruction or Burnt Houses'
+    }
+  ];
+
+  const myarray = [];
+  const handleChange = typeofatrocity => {
+    setTypeofatrocity(typeofatrocity);
+  };
+
+  const onChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    formDataa.append(e.target.name, e.target.value);
+    // console.log(typeofatrocity);
+    // for (const val in typeofatrocity) {
+    //   console.log(typeofatrocity[val]);
+    //   myarray.push(typeofatrocity);
+    //   console.log(myarray);
+    // }
+    // typeofatrocity.forEach(option => {
+    //   // myarray.push(option);
+    //   console.log(option);
+    //   myarray.push(option);
+    // });
+    // console.log(myarray);
+  };
   const onSubmit = e => {
     e.preventDefault();
-    createUserdata(formData, history);
+    formDataa.append('typeofatrocity', JSON.stringify(typeofatrocity));
+    formDataa.append('text', formData.text);
+    formDataa.append('year', year);
+    formDataa.append('policestation', policestation);
+    formDataa.append('crimeregisterno', crimeregisterno);
+    formDataa.append('dateofcrime', dateofcrime);
+    formDataa.append('regdateofcrime', regdateofcrime);
+    formDataa.append('victimdetails', victimdetails);
+    formDataa.append('natureofcrime', natureofcrime);
+    formDataa.append('firstbenefitbypolice', firstbenefitbypolice);
+    formDataa.append('firstbenefitbycommis', firstbenefitbycommis);
+    formDataa.append('firstbenefitbycollector', firstbenefitbycollector);
+    formDataa.append(
+      'firstbenefitbypolicecomment',
+      firstbenefitbypolicecomment
+    );
+    formDataa.append('firstbenefitbycommcomment', firstbenefitbycommcomment);
+    formDataa.append(
+      'firstbenefitbycollectorcomment',
+      firstbenefitbycollectorcomment
+    );
+    formDataa.append('secondbenefitbypolice', secondbenefitbypolice);
+    formDataa.append('secondbenefitbycommis', secondbenefitbycommis);
+    formDataa.append('secondbenefitbycollector', secondbenefitbycollector);
+    formDataa.append(
+      'secondbenefitbypolicecomment',
+      secondbenefitbypolicecomment
+    );
+    formDataa.append('secondbenefitbycommcomment', secondbenefitbycommcomment);
+    formDataa.append(
+      'secondbenefitbycollectorcomment',
+      secondbenefitbycollectorcomment
+    );
+    formDataa.append('sections', sections);
+    formDataa.append('chargesheetdate', chargesheetdate);
+    formDataa.append('policeinvestigation', policeinvestigation);
+    formDataa.append('dateofcourtorder', dateofcourtorder);
+    formDataa.append('courtresults', courtresults);
+    formDataa.append('financialsupport', financialsupport);
+    formDataa.append('twitter', twitter);
+    formDataa.append('facebook', facebook);
+    formDataa.append('linkedin', linkedin);
+    formDataa.append('youtube', youtube);
+    formDataa.append('instagram', instagram);
+    formDataa.append('disabledata', disabledata);
+    formDataa.append('closecase', closecase);
+    formDataa.append('docImage', docImage);
+    formDataa.append('doccImage', doccImage);
+    createUserdata(formDataa, history);
+    for (const value of formDataa.values()) {
+      console.log(value);
+    }
   };
 
   return (
@@ -92,7 +194,12 @@ const CreateUserdata = ({ createUserdata, history }) => {
         <i className='fas fa-user' /> Let's add some information to your profile
       </p>
       <small>* = required field</small>
-      <form className='form' onSubmit={e => onSubmit(e)}>
+      <form
+        className='form'
+        onSubmit={e => onSubmit(e)}
+        encType='multipart/form-data'
+        method='POST'
+      >
         <div className='form-group'>
           Serial No.
           <input
@@ -117,6 +224,17 @@ const CreateUserdata = ({ createUserdata, history }) => {
           />
         </div>
         <div className='form-group'>
+          Type of Crime
+          <Select
+            options={options}
+            name='typeofatrocity'
+            value={typeofatrocity}
+            isMulti
+            isSearchable
+            onChange={handleChange}
+          />
+        </div>
+        <div className='form-group'>
           Name of Police Station
           <select
             name='policestation'
@@ -124,9 +242,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           >
             <option value='Dhule City'>Dhule City </option>
-            <option value='Aazadnagar' selected>
-              Aazadnagar
-            </option>
+            <option value='Aazadnagar'>Aazadnagar</option>
             <option value='Chalisgaon Road'>Chalisgaon Road</option>
             <option value='Mohadi Upnagar'>Mohadi Upnagar</option>
             <option value='Deopur Police Station'>Deopur Police Station</option>
@@ -162,6 +278,30 @@ const CreateUserdata = ({ createUserdata, history }) => {
             name='dateofcrime'
             value={dateofcrime}
             onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          Upload FIR File
+          <input
+            type='file'
+            name='docImage'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, docImage: vall };
+              });
+            }}
+          />
+          Upload 2ndFIR File
+          <input
+            type='file'
+            name='doccImage'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, doccImage: vall };
+              });
+            }}
           />
         </div>
         <div className='form-group'>
@@ -435,6 +575,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />
         </div>
+        {!disabledata && <Fragment>Do You want to close the Case</Fragment>}
         <div className='my-2'>
           <button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
@@ -445,7 +586,6 @@ const CreateUserdata = ({ createUserdata, history }) => {
           </button>
           <span>Optional</span>
         </div>
-
         {displaySocialInputs && (
           <Fragment>
             <div className='form-group social-input'>

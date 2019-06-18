@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+var TypeofAtrocity = new mongoose.Schema([
+  {
+    value: String,
+    label: String
+  }
+]);
+
 const UserdataSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -52,6 +59,19 @@ const UserdataSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  docImage: {
+    type: String
+  },
+  doccImage: {
+    type: String
+  },
+  typeofatrocity: {
+    type: Object
+  },
+  closecase: {
+    type: Boolean,
+    default: false
+  },
   policestation: {
     type: String
   },
@@ -59,10 +79,10 @@ const UserdataSchema = new mongoose.Schema({
     type: String
   },
   dateofcrime: {
-    type: Date
+    type: String
   },
   regdateofcrime: {
-    type: Date
+    type: String
   },
   victimdetails: {
     type: String
@@ -110,7 +130,7 @@ const UserdataSchema = new mongoose.Schema({
     type: String
   },
   chargesheetdate: {
-    type: Date
+    type: String
   },
   policeinvestigation: {
     type: String

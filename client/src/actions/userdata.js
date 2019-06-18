@@ -35,7 +35,7 @@ export const createUserdata = (
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        // 'Content-Type': ''
       }
     };
 
@@ -76,7 +76,7 @@ export const editUserdata = (
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/json'
       }
     };
 

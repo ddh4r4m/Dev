@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { getUsersdata } from '../../actions/userdata';
 import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
+import './table.css';
 
 const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   useEffect(() => {
@@ -56,13 +57,15 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
         Create New FIR
       </Link>
       <div className='userdata'>
-        <table>
+        <table className='fl-table'>
           <thead>
             <tr>
               <th>YEAR</th>
               <th>Serial No.</th>
               <th>POLICE STATION</th>
-              <th>Serial No.</th>
+              <th>Register No.</th>
+              <th>Nature </th>
+              <th>Button </th>
             </tr>
           </thead>
           <tbody>

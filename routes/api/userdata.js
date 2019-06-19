@@ -18,10 +18,14 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+  if (
+    file.mimetype === 'image/jpeg' ||
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'application/pdf'
+  ) {
     cb(null, true);
   } else {
-    cb(new Error('Only .jpeg or .png files are accepted'), false);
+    cb(new Error('Only .jpeg or .png or pdf files are accepted'), false);
   }
 };
 
@@ -35,7 +39,12 @@ const upload = multer({
 
 var cpUpload = upload.fields([
   { name: 'docImage', maxCount: 1 },
-  { name: 'doccImage', maxCount: 1 }
+  { name: 'doccImage', maxCount: 1 },
+  { name: 'victimone', maxCount: 1 },
+  { name: 'victimtwo', maxCount: 1 },
+  { name: 'victimthree', maxCount: 1 },
+  { name: 'victimfour', maxCount: 1 },
+  { name: 'victimfive', maxCount: 1 }
 ]);
 //@route    POST api/posts
 //@desc     Create a post

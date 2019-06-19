@@ -458,6 +458,13 @@ const EditUserdataById = ({
                 width='400'
               />
             </div>
+            <div className='image'>
+              <img
+                src={'http://localhost:5000/' + doccImage}
+                alt='new'
+                height='400'
+              />
+            </div>
             <div className='form-group'>
               Date when FIR was Registered
               <input

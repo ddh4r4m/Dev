@@ -62,7 +62,34 @@ const UserdataSchema = new mongoose.Schema({
   docImage: {
     type: String
   },
-  doccImage: {
+  victimone: {
+    type: String
+  },
+  victimtwo: {
+    type: String
+  },
+  victimthree: {
+    type: String
+  },
+  victimfour: {
+    type: String
+  },
+  victimfive: {
+    type: String
+  },
+  accusedone: {
+    type: String
+  },
+  accusedtwo: {
+    type: String
+  },
+  accusedthree: {
+    type: String
+  },
+  accusedfour: {
+    type: String
+  },
+  accusedfive: {
     type: String
   },
   typeofatrocity: {

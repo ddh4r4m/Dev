@@ -203,9 +203,9 @@ const CreateUserdata = ({ createUserdata, history }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Create Your Profile</h1>
+      <h1 className='large text-primary'>Add New FIR</h1>
       <p className='lead'>
-        <i className='fas fa-user' /> Let's add some information to your profile
+        <i className='fas fa-user' /> Let's add some information to FIR
       </p>
       <small>* = required field</small>
       <form
@@ -323,7 +323,64 @@ const CreateUserdata = ({ createUserdata, history }) => {
           />
         </div>
         <div className='form-group'>
-          Upload FIR File
+          Upload first Victim's Caste Certificate File{' '}
+          <input
+            type='file'
+            name='victimone'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, victimone: vall };
+              });
+            }}
+          />
+          Upload Second Victim's Caste Certificate File{' '}
+          <input
+            type='file'
+            name='victimtwo'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, victimtwo: vall };
+              });
+            }}
+          />
+          Upload third Victim's Caste Certificate File{' '}
+          <input
+            type='file'
+            name='victimthree'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, victimthree: vall };
+              });
+            }}
+          />
+          Upload fourth Victim's Caste Certificate File{' '}
+          <input
+            type='file'
+            name='victimfour'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, victimfour: vall };
+              });
+            }}
+          />
+          Upload fifth Victim's Caste Certificate File{' '}
+          <input
+            type='file'
+            name='victimfive'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, victimfive: vall };
+              });
+            }}
+          />
+        </div>
+        <div className='form-group'>
+          Upload FIR File{' '}
           <input
             type='file'
             name='docImage'
@@ -334,7 +391,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
               });
             }}
           />
-          Upload 2ndFIR File
+          Upload 2nd FIR File{' '}
           <input
             type='file'
             name='doccImage'

@@ -5,6 +5,8 @@ import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import { editUserdata, getUserdataById } from '../../actions/userdata';
 import Select from 'react-select';
+import { ipcOptions, sectionsopts } from './ipcdata';
+import makeAnimated from 'react-select/animated';
 
 const EditUserdataById = ({
   match,
@@ -50,8 +52,13 @@ const EditUserdataById = ({
     docImage: '',
     doccImage: ''
   });
+  const [typeofatrocity, setTypeofatrocity] = useState(null);
+  const [ipcapplied, setIpc] = useState(null);
+  const [sectionsapplied, setSections] = useState(null);
+
   var formDataa = new FormData();
 
+  const animatedComponents = makeAnimated();
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
   useEffect(() => {
@@ -150,6 +157,14 @@ const EditUserdataById = ({
         ? null
         : JSON.parse(userdata.typeofatrocity)
     );
+    setIpc(
+      loading || !userdata.ipcapplied ? null : JSON.parse(userdata.ipcapplied)
+    );
+    setSections(
+      loading || !userdata.sectionsapplied
+        ? null
+        : JSON.parse(userdata.sectionsapplied)
+    );
   }, [loading, getUserdataById, match]);
 
   const options = [
@@ -177,6 +192,12 @@ const EditUserdataById = ({
 
   const handleChange = typeofatrocity => {
     setTypeofatrocity(typeofatrocity);
+  };
+  const handleIpc = ipcapplied => {
+    setIpc(ipcapplied);
+  };
+  const handleSections = sectionsapplied => {
+    setSections(sectionsapplied);
   };
 
   const {
@@ -217,14 +238,14 @@ const EditUserdataById = ({
     doccImage
   } = formData;
 
-  const [typeofatrocity, setTypeofatrocity] = useState(null);
-
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
     formDataa.append('typeofatrocity', JSON.stringify(typeofatrocity));
+    formDataa.append('ipcapplied', JSON.stringify(ipcapplied));
+    formDataa.append('sectionsapplied', JSON.stringify(sectionsapplied));
     formDataa.append('text', formData.text);
     formDataa.append('year', year);
     formDataa.append('policestation', policestation);
@@ -321,12 +342,40 @@ const EditUserdataById = ({
             <div className='form-group'>
               Type of Crime
               <Select
+                closeMenuOnSelect={false}
+                components={animatedComponents}
                 options={options}
                 name='typeofatrocity'
                 value={typeofatrocity}
                 isMulti
                 isSearchable
                 onChange={handleChange}
+              />
+            </div>
+            <div className='form-group'>
+              Select IPC
+              <Select
+                closeMenuOnSelect={false}
+                components={animatedComponents}
+                options={ipcOptions}
+                name='ipcapplied'
+                value={ipcapplied}
+                isMulti
+                isSearchable
+                onChange={handleIpc}
+              />
+            </div>
+            <div className='form-group'>
+              Select IPC
+              <Select
+                closeMenuOnSelect={false}
+                components={animatedComponents}
+                options={sectionsopts}
+                name='sectionsapplied'
+                value={sectionsapplied}
+                isMulti
+                isSearchable
+                onChange={handleSections}
               />
             </div>
             <div className='form-group'>

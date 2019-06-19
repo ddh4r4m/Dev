@@ -68,6 +68,12 @@ const UserdataSchema = new mongoose.Schema({
   typeofatrocity: {
     type: Object
   },
+  ipcapplied: {
+    type: Object
+  },
+  sectionsapplied: {
+    type: Object
+  },
   closecase: {
     type: Boolean,
     default: false

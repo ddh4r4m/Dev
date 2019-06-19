@@ -68,6 +68,8 @@ router.post(
         disabledata: req.body.disabledata,
         closecase: req.body.closecase,
         typeofatrocity: req.body.typeofatrocity,
+        ipcapplied: req.body.ipcapplied,
+        sectionsapplied: req.body.sectionsapplied,
         policestation: req.body.policestation,
         crimeregisterno: req.body.crimeregisterno,
         dateofcrime: req.body.dateofcrime,
@@ -161,6 +163,8 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
         userdata.doccImage = req.files['doccImage'][0].path;
       }
       userdata.typeofatrocity = req.body.typeofatrocity;
+      userdata.ipcapplied = req.body.ipcapplied;
+      userdata.sectionsapplied = req.body.sectionsapplied;
       userdata.policestation = req.body.policestation;
       userdata.crimeregisterno = req.body.crimeregisterno;
       userdata.dateofcrime = req.body.dateofcrime;

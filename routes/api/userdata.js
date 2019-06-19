@@ -25,7 +25,7 @@ const fileFilter = (req, file, cb) => {
   ) {
     cb(null, true);
   } else {
-    cb(new Error('Only .jpeg or .png or pdf files are accepted'), false);
+    cb(new Error('Only .jpeg or .png or .pdf files are accepted'), false);
   }
 };
 
@@ -44,7 +44,12 @@ var cpUpload = upload.fields([
   { name: 'victimtwo', maxCount: 1 },
   { name: 'victimthree', maxCount: 1 },
   { name: 'victimfour', maxCount: 1 },
-  { name: 'victimfive', maxCount: 1 }
+  { name: 'victimfive', maxCount: 1 },
+  { name: 'accusedone', maxCount: 1 },
+  { name: 'accusedtwo', maxCount: 1 },
+  { name: 'accusedthree', maxCount: 1 },
+  { name: 'accusedfour', maxCount: 1 },
+  { name: 'accusedfive', maxCount: 1 }
 ]);
 //@route    POST api/posts
 //@desc     Create a post
@@ -74,6 +79,16 @@ router.post(
         year: req.body.year,
         docImage: req.files['docImage'][0].path,
         doccImage: req.files['doccImage'][0].path,
+        victimone: req.files['victimone'][0].path,
+        victimtwo: req.files['victimtwo'][0].path,
+        victimthree: req.files['victimthree'][0].path,
+        victimfour: req.files['victimfour'][0].path,
+        victimfive: req.files['victimfive'][0].path,
+        accusedone: req.files['accusedone'][0].path,
+        accusedtwo: req.files['accusedtwo'][0].path,
+        accusedthree: req.files['accusedthree'][0].path,
+        accusedfour: req.files['accusedfour'][0].path,
+        accusedfive: req.files['accusedfive'][0].path,
         disabledata: req.body.disabledata,
         closecase: req.body.closecase,
         typeofatrocity: req.body.typeofatrocity,
@@ -170,6 +185,16 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       if (!req.files) {
         userdata.docImage = req.files['docImage'][0].path;
         userdata.doccImage = req.files['doccImage'][0].path;
+        userdata.victimone = req.files['victimone'][0].path;
+        userdata.victimtwo = req.files['victimtwo'][0].path;
+        userdata.victimthree = req.files['victimthree'][0].path;
+        userdata.victimfour = req.files['victimfour'][0].path;
+        userdata.victimfive = req.files['victimfive'][0].path;
+        userdata.accusedone = req.files['accusedone'][0].path;
+        userdata.accusedtwo = req.files['accusedtwo'][0].path;
+        userdata.accusedthree = req.files['accusedthree'][0].path;
+        userdata.accusedfour = req.files['accusedfour'][0].path;
+        userdata.accusedfive = req.files['accusedfive'][0].path;
       }
       userdata.typeofatrocity = req.body.typeofatrocity;
       userdata.ipcapplied = req.body.ipcapplied;

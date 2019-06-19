@@ -62,6 +62,9 @@ const UserdataSchema = new mongoose.Schema({
   docImage: {
     type: String
   },
+  doccImage: {
+    type: String
+  },
   victimone: {
     type: String
   },

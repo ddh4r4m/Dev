@@ -44,12 +44,24 @@ const CreateUserdata = ({ createUserdata, history }) => {
     disabledata: false,
     closecase: false,
     docImage: '',
-    doccImage: ''
+    doccImage: '',
+    victimone: '',
+    victimtwo: '',
+    victimthree: '',
+    victimfour: '',
+    victimfive: '',
+    accusedone: '',
+    accusedtwo: '',
+    accusedthree: '',
+    accusedfour: '',
+    accusedfive: ''
   });
 
   const animatedComponents = makeAnimated();
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+  const [displayVictim, toggledisplayVictim] = useState(false);
+  const [displayAccused, toggledisplayAccused] = useState(false);
 
   const {
     text,
@@ -86,7 +98,17 @@ const CreateUserdata = ({ createUserdata, history }) => {
     disabledata,
     closecase,
     docImage,
-    doccImage
+    doccImage,
+    victimone,
+    victimtwo,
+    victimthree,
+    victimfour,
+    victimfive,
+    accusedone,
+    accusedtwo,
+    accusedthree,
+    accusedfour,
+    accusedfive
   } = formData;
 
   const [typeofatrocity, setTypeofatrocity] = useState(null);
@@ -116,7 +138,6 @@ const CreateUserdata = ({ createUserdata, history }) => {
     }
   ];
 
-  const myarray = [];
   const handleChange = typeofatrocity => {
     setTypeofatrocity(typeofatrocity);
   };
@@ -130,18 +151,6 @@ const CreateUserdata = ({ createUserdata, history }) => {
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     formDataa.append(e.target.name, e.target.value);
-    // console.log(typeofatrocity);
-    // for (const val in typeofatrocity) {
-    //   console.log(typeofatrocity[val]);
-    //   myarray.push(typeofatrocity);
-    //   console.log(myarray);
-    // }
-    // typeofatrocity.forEach(option => {
-    //   // myarray.push(option);
-    //   console.log(option);
-    //   myarray.push(option);
-    // });
-    // console.log(myarray);
   };
   const onSubmit = e => {
     e.preventDefault();
@@ -195,6 +204,16 @@ const CreateUserdata = ({ createUserdata, history }) => {
     formDataa.append('closecase', closecase);
     formDataa.append('docImage', docImage);
     formDataa.append('doccImage', doccImage);
+    formDataa.append('victimone', victimone);
+    formDataa.append('victimtwo', victimtwo);
+    formDataa.append('victimthree', victimthree);
+    formDataa.append('victimfour', victimfour);
+    formDataa.append('victimfive', victimfive);
+    formDataa.append('accusedone', accusedone);
+    formDataa.append('accusedtwo', accusedtwo);
+    formDataa.append('accusedthree', accusedthree);
+    formDataa.append('accusedfour', accusedfour);
+    formDataa.append('accusedfive', accusedfive);
     createUserdata(formDataa, history);
     for (const value of formDataa.values()) {
       console.log(value);
@@ -322,63 +341,178 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />
         </div>
-        <div className='form-group'>
-          Upload first Victim's Caste Certificate File{' '}
-          <input
-            type='file'
-            name='victimone'
-            onChange={e => {
-              const vall = e.target.files[0];
-              setFormData(prevState => {
-                return { ...prevState, victimone: vall };
-              });
-            }}
-          />
-          Upload Second Victim's Caste Certificate File{' '}
-          <input
-            type='file'
-            name='victimtwo'
-            onChange={e => {
-              const vall = e.target.files[0];
-              setFormData(prevState => {
-                return { ...prevState, victimtwo: vall };
-              });
-            }}
-          />
-          Upload third Victim's Caste Certificate File{' '}
-          <input
-            type='file'
-            name='victimthree'
-            onChange={e => {
-              const vall = e.target.files[0];
-              setFormData(prevState => {
-                return { ...prevState, victimthree: vall };
-              });
-            }}
-          />
-          Upload fourth Victim's Caste Certificate File{' '}
-          <input
-            type='file'
-            name='victimfour'
-            onChange={e => {
-              const vall = e.target.files[0];
-              setFormData(prevState => {
-                return { ...prevState, victimfour: vall };
-              });
-            }}
-          />
-          Upload fifth Victim's Caste Certificate File{' '}
-          <input
-            type='file'
-            name='victimfive'
-            onChange={e => {
-              const vall = e.target.files[0];
-              setFormData(prevState => {
-                return { ...prevState, victimfive: vall };
-              });
-            }}
-          />
+
+        <div className='my-2'>
+          <button
+            onClick={() => toggledisplayVictim(!displayVictim)}
+            type='button'
+            className='btn btn-light'
+          >
+            Add Victim's Caste Certificate
+          </button>
+          <span>*Required</span>
         </div>
+        {displayVictim && (
+          <Fragment>
+            <h3>Add Victim's Details</h3>
+            <div className='form-group'>
+              Upload first Victim's Caste Certificate File <br />
+              <input
+                type='file'
+                name='victimone'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, victimone: vall };
+                  });
+                }}
+              />
+            </div>
+            <div className='form-group'>
+              Upload Second Victim's Caste Certificate File <br />
+              <input
+                type='file'
+                name='victimtwo'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, victimtwo: vall };
+                  });
+                }}
+              />
+            </div>
+            <div className='form-group'>
+              Upload third Victim's Caste Certificate File <br />
+              <input
+                type='file'
+                name='victimthree'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, victimthree: vall };
+                  });
+                }}
+              />
+            </div>
+            <div className='form-group'>
+              Upload fourth Victim's Caste Certificate File <br />
+              <input
+                type='file'
+                name='victimfour'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, victimfour: vall };
+                  });
+                }}
+              />
+            </div>
+            <div className='form-group'>
+              Upload fifth Victim's Caste Certificate File <br />
+              <input
+                type='file'
+                name='victimfive'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, victimfive: vall };
+                  });
+                }}
+              />
+            </div>
+          </Fragment>
+        )}
+
+        <div className='my-2'>
+          <button
+            onClick={() => toggledisplayAccused(!displayAccused)}
+            type='button'
+            className='btn btn-light'
+          >
+            Add Accused Person's Caste Certificate
+          </button>
+          <span>*Required</span>
+        </div>
+
+        {displayAccused && (
+          <Fragment>
+            <h3>Add Accused Person's Details</h3>
+
+            <div
+              className='form-group'
+              style={{
+                backgroundColor: 'green',
+                color: 'white',
+                padding: '10px'
+              }}
+            >
+              Upload first Accused Person's Caste Certificate File <br />
+              <input
+                type='file'
+                name='accusedone'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, accusedone: vall };
+                  });
+                }}
+              />
+            </div>
+            <div className='form-group'>
+              Upload Second Accused Person's Caste Certificate File <br />
+              <input
+                type='file'
+                name='accusedtwo'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, accusedtwo: vall };
+                  });
+                }}
+              />
+            </div>
+            <div className='form-group'>
+              Upload third Accused Person's Caste Certificate File <br />
+              <input
+                type='file'
+                name='accusedthree'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, accusedthree: vall };
+                  });
+                }}
+              />
+            </div>
+            <div className='form-group'>
+              Upload fourth Accused Person's Caste Certificate File <br />
+              <input
+                type='file'
+                name='accusedfour'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, accusedfour: vall };
+                  });
+                }}
+              />
+            </div>
+            <div className='form-group'>
+              Upload fifth Accused Person's Caste Certificate File <br />
+              <input
+                type='file'
+                name='accusedfive'
+                onChange={e => {
+                  const vall = e.target.files[0];
+                  setFormData(prevState => {
+                    return { ...prevState, accusedfive: vall };
+                  });
+                }}
+              />
+            </div>
+          </Fragment>
+        )}
+
         <div className='form-group'>
           Upload FIR File{' '}
           <input
@@ -391,6 +525,8 @@ const CreateUserdata = ({ createUserdata, history }) => {
               });
             }}
           />
+        </div>
+        <div className='form-group'>
           Upload 2nd FIR File{' '}
           <input
             type='file'

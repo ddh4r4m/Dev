@@ -60,6 +60,8 @@ const EditUserdataById = ({
 
   const animatedComponents = makeAnimated();
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+  const [displayVictim, toggledisplayVictim] = useState(false);
+  const [displayAccused, toggledisplayAccused] = useState(false);
 
   useEffect(() => {
     getUserdataById(match.params.id);
@@ -426,6 +428,191 @@ const EditUserdataById = ({
                 onChange={e => onChange(e)}
               />
             </div>
+            <div className='image'>
+              <img
+                src={'http://localhost:5000/' + docImage}
+                alt='new'
+                height='400'
+                width='400'
+              />
+            </div>
+            <div className='image'>
+              <img
+                src={'http://localhost:5000/' + doccImage}
+                alt='new'
+                height='400'
+              />
+            </div>
+            <div className='my-2'>
+              <button
+                onClick={() => toggledisplayVictim(!displayVictim)}
+                type='button'
+                className='btn btn-light'
+              >
+                Add Victim's Caste Certificate
+              </button>
+              <span>-> If you want to change the uploaded files</span>
+            </div>
+            {displayVictim && (
+              <Fragment>
+                <h3>Add Victim's Details</h3>
+                <div className='form-group'>
+                  Upload first Victim's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='victimone'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, victimone: vall };
+                      });
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  Upload Second Victim's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='victimtwo'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, victimtwo: vall };
+                      });
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  Upload third Victim's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='victimthree'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, victimthree: vall };
+                      });
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  Upload fourth Victim's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='victimfour'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, victimfour: vall };
+                      });
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  Upload fifth Victim's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='victimfive'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, victimfive: vall };
+                      });
+                    }}
+                  />
+                </div>
+              </Fragment>
+            )}
+
+            <div className='my-2'>
+              <button
+                onClick={() => toggledisplayAccused(!displayAccused)}
+                type='button'
+                className='btn btn-light'
+              >
+                Add Accused Person's Caste Certificate
+              </button>
+              <span>-> If you want to change the uploaded files</span>
+            </div>
+
+            {displayAccused && (
+              <Fragment>
+                <h3>Add Accused Person's Details</h3>
+
+                <div
+                  className='form-group'
+                  style={{
+                    backgroundColor: 'green',
+                    color: 'white',
+                    padding: '10px'
+                  }}
+                >
+                  Upload first Accused Person's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='accusedone'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, accusedone: vall };
+                      });
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  Upload Second Accused Person's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='accusedtwo'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, accusedtwo: vall };
+                      });
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  Upload third Accused Person's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='accusedthree'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, accusedthree: vall };
+                      });
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  Upload fourth Accused Person's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='accusedfour'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, accusedfour: vall };
+                      });
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  Upload fifth Accused Person's Caste Certificate File <br />
+                  <input
+                    type='file'
+                    name='accusedfive'
+                    onChange={e => {
+                      const vall = e.target.files[0];
+                      setFormData(prevState => {
+                        return { ...prevState, accusedfive: vall };
+                      });
+                    }}
+                  />
+                </div>
+              </Fragment>
+            )}
             <div className='form-group'>
               Upload FIR File
               <input
@@ -450,21 +637,7 @@ const EditUserdataById = ({
                 }}
               />
             </div>
-            <div className='image'>
-              <img
-                src={'http://localhost:5000/' + docImage}
-                alt='new'
-                height='400'
-                width='400'
-              />
-            </div>
-            <div className='image'>
-              <img
-                src={'http://localhost:5000/' + doccImage}
-                alt='new'
-                height='400'
-              />
-            </div>
+
             <div className='form-group'>
               Date when FIR was Registered
               <input

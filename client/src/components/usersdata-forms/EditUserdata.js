@@ -5,7 +5,7 @@ import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import { editUserdata, getUserdataById } from '../../actions/userdata';
 import Select from 'react-select';
-import { ipcOptions, sectionsopts } from './ipcdata';
+import { ipcOptions, sectionsopts, options } from './ipcdata';
 import makeAnimated from 'react-select/animated';
 
 const EditUserdataById = ({
@@ -50,7 +50,17 @@ const EditUserdataById = ({
     disabledata: false,
     closecase: false,
     docImage: '',
-    doccImage: ''
+    doccImage: '',
+    victimone: '',
+    victimtwo: '',
+    victimthree: '',
+    victimfour: '',
+    victimfive: '',
+    accusedone: '',
+    accusedtwo: '',
+    accusedthree: '',
+    accusedfour: '',
+    accusedfive: ''
   });
   const [typeofatrocity, setTypeofatrocity] = useState(null);
   const [ipcapplied, setIpc] = useState(null);
@@ -151,7 +161,18 @@ const EditUserdataById = ({
       closecase: loading || !userdata.closecase ? false : userdata.closecase,
 
       docImage: loading || !userdata.docImage ? '' : userdata.docImage,
-      doccImage: loading || !userdata.doccImage ? '' : userdata.doccImage
+      doccImage: loading || !userdata.doccImage ? '' : userdata.doccImage,
+      victimone: loading || !userdata.victimone ? '' : userdata.victimone,
+      victimtwo: loading || !userdata.victimtwo ? '' : userdata.victimtwo,
+      victimthree: loading || !userdata.victimthree ? '' : userdata.victimthree,
+      victimfour: loading || !userdata.victimfour ? '' : userdata.victimfour,
+      victimfive: loading || !userdata.victimfive ? '' : userdata.victimfive,
+      accusedone: loading || !userdata.accusedone ? '' : userdata.accusedone,
+      accusedtwo: loading || !userdata.accusedtwo ? '' : userdata.accusedtwo,
+      accusedthree:
+        loading || !userdata.accusedthree ? '' : userdata.accusedthree,
+      accusedfour: loading || !userdata.accusedfour ? '' : userdata.accusedfour,
+      accusedfive: loading || !userdata.accusedfive ? '' : userdata.accusedfive
       //   text: 'Helo'
     });
     setTypeofatrocity(
@@ -168,29 +189,6 @@ const EditUserdataById = ({
         : JSON.parse(userdata.sectionsapplied)
     );
   }, [loading, getUserdataById, match]);
-
-  const options = [
-    { value: 'murder', label: 'Murder' },
-    { value: 'death', label: 'Death' },
-    { value: 'rape', label: 'Rape' },
-    { value: 'gangRape', label: 'Gang Rape' },
-    {
-      value: 'permanentIncapacitation100',
-      label: 'Permanent Incapacitation 100%'
-    },
-    {
-      value: 'permanentIncapacitation50to99',
-      label: 'Permanent Incapacitation 50-99%'
-    },
-    {
-      value: 'permanentIncapacitation0to49',
-      label: 'Permanent Incapacitation 0-49%'
-    },
-    {
-      value: 'completeDestructionorBurntHouses',
-      label: 'Complete Destruction or Burnt Houses'
-    }
-  ];
 
   const handleChange = typeofatrocity => {
     setTypeofatrocity(typeofatrocity);
@@ -237,7 +235,17 @@ const EditUserdataById = ({
     disabledata,
     closecase,
     docImage,
-    doccImage
+    doccImage,
+    victimone,
+    victimtwo,
+    victimthree,
+    victimfour,
+    victimfive,
+    accusedone,
+    accusedtwo,
+    accusedthree,
+    accusedfour,
+    accusedfive
   } = formData;
 
   const onChange = e =>
@@ -295,6 +303,16 @@ const EditUserdataById = ({
     formDataa.append('closecase', closecase);
     formDataa.append('docImage', docImage);
     formDataa.append('doccImage', doccImage);
+    formDataa.append('victimone', victimone);
+    formDataa.append('victimtwo', victimtwo);
+    formDataa.append('victimthree', victimthree);
+    formDataa.append('victimfour', victimfour);
+    formDataa.append('victimfive', victimfive);
+    formDataa.append('accusedone', accusedone);
+    formDataa.append('accusedtwo', accusedtwo);
+    formDataa.append('accusedthree', accusedthree);
+    formDataa.append('accusedfour', accusedfour);
+    formDataa.append('accusedfive', accusedfive);
     editUserdata(match.params.id, formDataa, history);
   };
 

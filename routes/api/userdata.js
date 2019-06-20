@@ -25,7 +25,7 @@ const fileFilter = (req, file, cb) => {
   ) {
     cb(null, true);
   } else {
-    cb(new Error('Only .jpeg or .png or .pdf files are accepted'), false);
+    cb(new Error('Only .jpeg or .png or pdf files are accepted'), false);
   }
 };
 
@@ -182,20 +182,59 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.year = req.body.year;
       userdata.disabledata = req.body.disabledata;
       userdata.closecase = req.body.closecase;
-      if (!req.files) {
+
+      // console.log(req.files['docImage'] !== undefined);
+      if (req.files['docImage'] !== undefined) {
         userdata.docImage = req.files['docImage'][0].path;
+      }
+      if (req.files['doccImage'] !== undefined) {
         userdata.doccImage = req.files['doccImage'][0].path;
+      }
+      if (req.files['victimone'] !== undefined) {
         userdata.victimone = req.files['victimone'][0].path;
+      }
+      if (req.files['victimtwo'] !== undefined) {
         userdata.victimtwo = req.files['victimtwo'][0].path;
+      }
+      if (req.files['victimthree'] !== undefined) {
         userdata.victimthree = req.files['victimthree'][0].path;
+      }
+      if (req.files['victimfour'] !== undefined) {
         userdata.victimfour = req.files['victimfour'][0].path;
+      }
+      if (req.files['victimfive'] !== undefined) {
         userdata.victimfive = req.files['victimfive'][0].path;
+      }
+      if (req.files['accusedone'] !== undefined) {
         userdata.accusedone = req.files['accusedone'][0].path;
+      }
+      if (req.files['accusedtwo'] !== undefined) {
         userdata.accusedtwo = req.files['accusedtwo'][0].path;
+      }
+      if (req.files['accusedthree'] !== undefined) {
         userdata.accusedthree = req.files['accusedthree'][0].path;
+      }
+      if (req.files['accusedfour'] !== undefined) {
         userdata.accusedfour = req.files['accusedfour'][0].path;
+      }
+      if (req.files['accusedfive'] !== undefined) {
         userdata.accusedfive = req.files['accusedfive'][0].path;
       }
+
+      // if (!req.files) {
+      //   userdata.docImage = req.files['docImage'][0].path;
+      //   userdata.doccImage = req.files['doccImage'][0].path;
+      //   userdata.victimone = req.files['victimone'][0].path;
+      //   userdata.victimtwo = req.files['victimtwo'][0].path;
+      //   userdata.victimthree = req.files['victimthree'][0].path;
+      //   userdata.victimfour = req.files['victimfour'][0].path;
+      //   userdata.victimfive = req.files['victimfive'][0].path;
+      //   userdata.accusedone = req.files['accusedone'][0].path;
+      //   userdata.accusedtwo = req.files['accusedtwo'][0].path;
+      //   userdata.accusedthree = req.files['accusedthree'][0].path;
+      //   userdata.accusedfour = req.files['accusedfour'][0].path;
+      //   userdata.accusedfive = req.files['accusedfive'][0].path;
+      // }
       userdata.typeofatrocity = req.body.typeofatrocity;
       userdata.ipcapplied = req.body.ipcapplied;
       userdata.sectionsapplied = req.body.sectionsapplied;

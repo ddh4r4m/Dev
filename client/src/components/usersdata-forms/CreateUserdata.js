@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createUserdata } from '../../actions/userdata';
 import Select from 'react-select';
-import { ipcOptions, sectionsopts } from './ipcdata';
+import { ipcOptions, sectionsopts, options } from './ipcdata';
 import makeAnimated from 'react-select/animated';
 
 const CreateUserdata = ({ createUserdata, history }) => {
@@ -114,29 +114,6 @@ const CreateUserdata = ({ createUserdata, history }) => {
   const [typeofatrocity, setTypeofatrocity] = useState(null);
   const [ipcapplied, setIpc] = useState(null);
   const [sectionsapplied, setSections] = useState(null);
-
-  const options = [
-    { value: 'murder', label: 'Murder' },
-    { value: 'death', label: 'Death' },
-    { value: 'rape', label: 'Rape' },
-    { value: 'gangRape', label: 'Gang Rape' },
-    {
-      value: 'permanentIncapacitation100',
-      label: 'Permanent Incapacitation 100%'
-    },
-    {
-      value: 'permanentIncapacitation50to99',
-      label: 'Permanent Incapacitation 50-99%'
-    },
-    {
-      value: 'permanentIncapacitation0to49',
-      label: 'Permanent Incapacitation 0-49%'
-    },
-    {
-      value: 'completeDestructionorBurntHouses',
-      label: 'Complete Destruction or Burnt Houses'
-    }
-  ];
 
   const handleChange = typeofatrocity => {
     setTypeofatrocity(typeofatrocity);

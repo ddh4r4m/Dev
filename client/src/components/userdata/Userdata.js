@@ -6,6 +6,7 @@ import { getUserdataById } from '../../actions/userdata';
 import UserdataTop from '../userdata/UserdataTop';
 import CommentForm from '../userdata/CommentForm';
 import CommentItem from '../userdata/CommentItem';
+import RecommUser from '../userdata/RecommUser';
 
 const Userdata = ({
   getUserdataById,
@@ -25,6 +26,7 @@ const Userdata = ({
           Profile
           <div>
             <UserdataTop userdata={userdata} />
+            <RecommUser userdata={userdata} />
             <CommentForm userdataId={userdata._id} />
             <div className='comments'>
               {userdata.comments.map(comment => (

@@ -344,6 +344,7 @@ const EditUserdataById = ({
                 name='text'
                 value={text}
                 onChange={e => onChange(e)}
+                disabled={true}
               />
               <small className='form-text'>
                 Could be the defined format of serial no

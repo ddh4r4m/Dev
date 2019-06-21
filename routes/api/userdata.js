@@ -111,6 +111,12 @@ router.post(
         secondbenefitbycommcomment: req.body.secondbenefitbycommcomment,
         secondbenefitbycollectorcomment:
           req.body.secondbenefitbycollectorcomment,
+        thirdbenefitbypolice: req.body.thirdbenefitbypolice,
+        thirdbenefitbycommis: req.body.thirdbenefitbycommis,
+        thirdbenefitbycollector: req.body.thirdbenefitbycollector,
+        thirdbenefitbypolicecomment: req.body.thirdbenefitbypolicecomment,
+        thirdbenefitbycommcomment: req.body.thirdbenefitbycommcomment,
+        thirdbenefitbycollectorcomment: req.body.thirdbenefitbycollectorcomment,
         victimdetails: req.body.victimdetails,
         natureofcrime: req.body.natureofcrime,
         sections: req.body.sections,
@@ -258,6 +264,14 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.secondbenefitbycommcomment = req.body.secondbenefitbycommcomment;
       userdata.secondbenefitbycollectorcomment =
         req.body.secondbenefitbycollectorcomment;
+      userdata.thirdbenefitbypolice = req.body.thirdbenefitbypolice;
+      userdata.thirdbenefitbycommis = req.body.thirdbenefitbycommis;
+      userdata.thirdbenefitbycollector = req.body.thirdbenefitbycollector;
+      userdata.thirdbenefitbypolicecomment =
+        req.body.thirdbenefitbypolicecomment;
+      userdata.thirdbenefitbycommcomment = req.body.thirdbenefitbycommcomment;
+      userdata.thirdbenefitbycollectorcomment =
+        req.body.thirdbenefitbycollectorcomment;
       userdata.victimdetails = req.body.victimdetails;
       userdata.natureofcrime = req.body.natureofcrime;
       userdata.sections = req.body.sections;

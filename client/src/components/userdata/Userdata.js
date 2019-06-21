@@ -23,7 +23,6 @@ const Userdata = ({
         <Spinner />
       ) : (
         <Fragment>
-          Profile
           <div>
             <UserdataTop userdata={userdata} />
             <RecommUser userdata={userdata} />

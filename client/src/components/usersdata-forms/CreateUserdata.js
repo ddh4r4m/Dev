@@ -30,6 +30,12 @@ const CreateUserdata = ({ createUserdata, history }) => {
     secondbenefitbypolicecomment: '',
     secondbenefitbycommcomment: '',
     secondbenefitbycollectorcomment: '',
+    thirdbenefitbypolice: '',
+    thirdbenefitbycommis: '',
+    thirdbenefitbycollector: '',
+    thirdbenefitbypolicecomment: '',
+    thirdbenefitbycommcomment: '',
+    thirdbenefitbycollectorcomment: '',
     sections: '',
     chargesheetdate: '',
     policeinvestigation: '',
@@ -84,6 +90,12 @@ const CreateUserdata = ({ createUserdata, history }) => {
     secondbenefitbypolicecomment,
     secondbenefitbycommcomment,
     secondbenefitbycollectorcomment,
+    thirdbenefitbypolice,
+    thirdbenefitbycommis,
+    thirdbenefitbycollector,
+    thirdbenefitbypolicecomment,
+    thirdbenefitbycommcomment,
+    thirdbenefitbycollectorcomment,
     sections,
     chargesheetdate,
     policeinvestigation,
@@ -165,6 +177,18 @@ const CreateUserdata = ({ createUserdata, history }) => {
     formDataa.append(
       'secondbenefitbycollectorcomment',
       secondbenefitbycollectorcomment
+    );
+    formDataa.append('thirdbenefitbypolice', thirdbenefitbypolice);
+    formDataa.append('thirdbenefitbycommis', thirdbenefitbycommis);
+    formDataa.append('thirdbenefitbycollector', thirdbenefitbycollector);
+    formDataa.append(
+      'thirdbenefitbypolicecomment',
+      thirdbenefitbypolicecomment
+    );
+    formDataa.append('thirdbenefitbycommcomment', thirdbenefitbycommcomment);
+    formDataa.append(
+      'thirdbenefitbycollectorcomment',
+      thirdbenefitbycollectorcomment
     );
     formDataa.append('sections', sections);
     formDataa.append('chargesheetdate', chargesheetdate);
@@ -566,6 +590,14 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />{' '}
           No
+          <input
+            type='radio'
+            name='firstbenefitbypolice'
+            checked={firstbenefitbypolice === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
         </div>
         <div className='form-group'>
           Comment on First benefit Recommendation by Police
@@ -595,6 +627,14 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />{' '}
           No
+          <input
+            type='radio'
+            name='firstbenefitbycommis'
+            checked={firstbenefitbycommis === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
         </div>
         <div className='form-group'>
           Comment on First benefit Recommendation by Asst. Commisioner
@@ -624,6 +664,14 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />{' '}
           No
+          <input
+            type='radio'
+            name='firstbenefitbycollector'
+            checked={firstbenefitbycollector === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
         </div>
 
         <div className='form-group'>
@@ -684,6 +732,14 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />{' '}
           No
+          <input
+            type='radio'
+            name='secondbenefitbypolice'
+            checked={secondbenefitbypolice === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
         </div>
         <div className='form-group'>
           Comment on Second benefit Recommendation by Police
@@ -713,6 +769,14 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />{' '}
           No
+          <input
+            type='radio'
+            name='secondbenefitbycommis'
+            checked={secondbenefitbycommis === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
         </div>
         <div className='form-group'>
           Comment on Second benefit Recommendation by Asst. Commisioner
@@ -742,6 +806,14 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />{' '}
           No
+          <input
+            type='radio'
+            name='secondbenefitbycollector'
+            checked={secondbenefitbycollector === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
         </div>
 
         <div className='form-group'>
@@ -773,6 +845,118 @@ const CreateUserdata = ({ createUserdata, history }) => {
             placeholder='Court Results'
             name='courtresults'
             value={courtresults}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          Second Benefit Recommendation by Police
+          <input
+            type='radio'
+            name='thirdbenefitbypolice'
+            checked={thirdbenefitbypolice === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='thirdbenefitbypolice'
+            checked={thirdbenefitbypolice === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+          <input
+            type='radio'
+            name='thirdbenefitbypolice'
+            checked={thirdbenefitbypolice === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
+        </div>
+        <div className='form-group'>
+          Comment on Third benefit Recommendation by Police
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='thirdbenefitbypolicecomment'
+            value={thirdbenefitbypolicecomment}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          Second Benefit Recommendation by Assistant Commisioner
+          <input
+            type='radio'
+            name='thirdbenefitbycommis'
+            checked={thirdbenefitbycommis === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='thirdbenefitbycommis'
+            checked={thirdbenefitbycommis === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+          <input
+            type='radio'
+            name='thirdbenefitbycommis'
+            checked={thirdbenefitbycommis === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
+        </div>
+        <div className='form-group'>
+          Comment on Third benefit Recommendation by Asst. Commisioner
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='thirdbenefitbycommcomment'
+            value={thirdbenefitbycommcomment}
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          Decision for distribution of third Benefit District Collector
+          <input
+            type='radio'
+            name='thirdbenefitbycollector'
+            checked={thirdbenefitbycollector === 'yes'}
+            value='yes'
+            onChange={e => onChange(e)}
+          />{' '}
+          Yes
+          <input
+            type='radio'
+            name='thirdbenefitbycollector'
+            checked={thirdbenefitbycollector === 'no'}
+            value='no'
+            onChange={e => onChange(e)}
+          />{' '}
+          No
+          <input
+            type='radio'
+            name='thirdbenefitbycollector'
+            checked={thirdbenefitbycollector === 'pending'}
+            value='pending'
+            onChange={e => onChange(e)}
+          />{' '}
+          Pending
+        </div>
+
+        <div className='form-group'>
+          Comment on Third benefit Decision by District Collector
+          <input
+            type='text'
+            placeholder='Give the Reason for Recommendation'
+            name='thirdbenefitbycollectorcomment'
+            value={thirdbenefitbycollectorcomment}
             onChange={e => onChange(e)}
           />
         </div>

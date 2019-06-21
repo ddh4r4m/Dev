@@ -162,6 +162,24 @@ const UserdataSchema = new mongoose.Schema({
   secondbenefitbycollectorcomment: {
     type: String
   },
+  thirdbenefitbypolice: {
+    type: String
+  },
+  thirdbenefitbycommis: {
+    type: String
+  },
+  thirdbenefitbycollector: {
+    type: String
+  },
+  thirdbenefitbypolicecomment: {
+    type: String
+  },
+  thirdbenefitbycommcomment: {
+    type: String
+  },
+  thirdbenefitbycollectorcomment: {
+    type: String
+  },
   sections: {
     type: String
   },

@@ -79,6 +79,7 @@ router.post(
         year: req.body.year,
         docImage: req.files['docImage'][0].path,
         doccImage: req.files['doccImage'][0].path,
+        abcSummary: req.files['abcSummary'][0].path,
         victimone: req.files['victimone'][0].path,
         victimtwo: req.files['victimtwo'][0].path,
         victimthree: req.files['victimthree'][0].path,
@@ -195,6 +196,9 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       }
       if (req.files['doccImage'] !== undefined) {
         userdata.doccImage = req.files['doccImage'][0].path;
+      }
+      if (req.files['abcSummary'] !== undefined) {
+        userdata.doccImage = req.files['abcSummary'][0].path;
       }
       if (req.files['victimone'] !== undefined) {
         userdata.victimone = req.files['victimone'][0].path;

@@ -7,7 +7,7 @@ import Select from 'react-select';
 import { ipcOptions, sectionsopts, options } from './ipcdata';
 import makeAnimated from 'react-select/animated';
 
-const CreateUserdata = ({ createUserdata, history }) => {
+const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
   var formDataa = new FormData();
   const [formData, setFormData] = useState({
     text: '',
@@ -51,6 +51,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
     closecase: false,
     docImage: '',
     doccImage: '',
+    abcSummary: '',
     victimone: '',
     victimtwo: '',
     victimthree: '',
@@ -68,6 +69,8 @@ const CreateUserdata = ({ createUserdata, history }) => {
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
   const [displayVictim, toggledisplayVictim] = useState(false);
   const [displayAccused, toggledisplayAccused] = useState(false);
+
+  // console.log(user && user.name === 'Sara');
 
   const {
     text,
@@ -111,6 +114,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
     closecase,
     docImage,
     doccImage,
+    abcSummary,
     victimone,
     victimtwo,
     victimthree,
@@ -122,6 +126,10 @@ const CreateUserdata = ({ createUserdata, history }) => {
     accusedfour,
     accusedfive
   } = formData;
+
+  // var today = new Date();
+  // console.log(setDate(today.getDate() - 10));
+  // Date().s;
 
   const [typeofatrocity, setTypeofatrocity] = useState(null);
   const [ipcapplied, setIpc] = useState(null);
@@ -205,6 +213,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
     formDataa.append('closecase', closecase);
     formDataa.append('docImage', docImage);
     formDataa.append('doccImage', doccImage);
+    formDataa.append('abcSummary', abcSummary);
     formDataa.append('victimone', victimone);
     formDataa.append('victimtwo', victimtwo);
     formDataa.append('victimthree', victimthree);
@@ -528,7 +537,7 @@ const CreateUserdata = ({ createUserdata, history }) => {
           />
         </div>
         <div className='form-group'>
-          Upload 2nd FIR File{' '}
+          Upload ChargeSheet File{' '}
           <input
             type='file'
             name='doccImage'
@@ -536,6 +545,19 @@ const CreateUserdata = ({ createUserdata, history }) => {
               const vall = e.target.files[0];
               setFormData(prevState => {
                 return { ...prevState, doccImage: vall };
+              });
+            }}
+          />
+        </div>
+        <div className='form-group'>
+          Upload A/B/C Summary File{' '}
+          <input
+            type='file'
+            name='abcSummary'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, abcSummary: vall };
               });
             }}
           />
@@ -971,7 +993,29 @@ const CreateUserdata = ({ createUserdata, history }) => {
             onChange={e => onChange(e)}
           />
         </div>
-        {!disabledata && <Fragment>Do You want to close the Case</Fragment>}
+        {!disabledata && (
+          <Fragment>
+            <div className='form-group'>
+              Do You want to close the Case
+              <input
+                type='radio'
+                name='closecase'
+                checked={closecase === 'yes'}
+                value={true}
+                onChange={e => onChange(e)}
+              />{' '}
+              Yes
+              <input
+                type='radio'
+                name='closecase'
+                checked={closecase === 'no'}
+                value={false}
+                onChange={e => onChange(e)}
+              />{' '}
+              No
+            </div>
+          </Fragment>
+        )}
         <div className='my-2'>
           <button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
@@ -1041,7 +1085,12 @@ const CreateUserdata = ({ createUserdata, history }) => {
           </Fragment>
         )}
 
-        <input type='submit' className='btn btn-primary my-1' />
+        {!closecase && (
+          <Fragment>
+            {' '}
+            <input type='submit' className='btn btn-primary my-1' />{' '}
+          </Fragment>
+        )}
         <Link to='/dashboard' className='btn btn-light my-1'>
           Go Back
         </Link>
@@ -1051,10 +1100,15 @@ const CreateUserdata = ({ createUserdata, history }) => {
 };
 
 CreateUserdata.propTypes = {
-  createUserdata: PropTypes.func.isRequired
+  createUserdata: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { createUserdata }
 )(withRouter(CreateUserdata));

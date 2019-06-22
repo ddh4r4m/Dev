@@ -293,7 +293,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
           />
         </div>
         <div className='form-group'>
-          Select IPC
+          Select Sections
           <Select
             closeMenuOnSelect={false}
             components={animatedComponents}
@@ -996,7 +996,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
         {!disabledata && (
           <Fragment>
             <div className='form-group'>
-              Do You want to close the Case
+              Do You want to close the Case{'    '}
               <input
                 type='radio'
                 name='closecase'
@@ -1004,7 +1004,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                 value={true}
                 onChange={e => onChange(e)}
               />{' '}
-              Yes
+              Yes{' '}
               <input
                 type='radio'
                 name='closecase'
@@ -1013,6 +1013,10 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                 onChange={e => onChange(e)}
               />{' '}
               No
+              <small>
+                {' '}
+                <br /> Select if Every Action for this Case has been Taken
+              </small>
             </div>
           </Fragment>
         )}

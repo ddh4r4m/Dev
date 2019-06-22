@@ -14,6 +14,8 @@ import EditProfileById from './components/profile/EditProfileById';
 import Posts from './components/posts/Posts';
 import Profiles from './components/profiles/Profiles';
 import Usersdata from './components/usersdata/Usersdata';
+import UsersdataStone from './components/usersdata/UsersdataStone';
+import UsersdataStTwo from './components/usersdata/UsersdataStTwo';
 import Profile from './components/profile/Profile';
 import Userdata from './components/userdata/Userdata';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -47,6 +49,16 @@ const App = () => {
               <Route exact path='/register' component={Register} />
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/usersdata' component={Usersdata} />
+              <PrivateRoute
+                exact
+                path='/usersdatastone'
+                component={UsersdataStone}
+              />
+              <PrivateRoute
+                exact
+                path='/usersdatasttwo'
+                component={UsersdataStTwo}
+              />
               <Route exact path='/profile/:id' component={Profile} />
               <Route exact path='/userdata/:id' component={Userdata} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />

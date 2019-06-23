@@ -18,7 +18,6 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1>Dashboard</h1>Dashboard
       <h1 className='large text-primary'>Welcome {user && user.name}</h1>
       <Link to='/create-profile' className='btn btn-primary my-1'>
         Create Profile

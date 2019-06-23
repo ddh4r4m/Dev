@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Typist from 'react-typist';
 
 const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
@@ -10,22 +11,35 @@ const Landing = ({ isAuthenticated }) => {
 
   return (
     <section className='landing'>
-      <div className='dark-overlay'>
+      <div className='light-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Atrocity Act Help</h1>
+          <Typist cursor={{ show: false, blink: true }}>
+            <h1 className='x-large'>
+              Atrocity <br /> Act Help
+            </h1>
+          </Typist>
+          {/* <img src="" alt=""/> */}
+          <img
+            className='emblem'
+            alt='Emblem of India'
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/256px-Emblem_of_India.svg.png'
+          />
           <p className='lead'>
             File a FIR under Atrocity Act Protection and get help from other
             officials
           </p>
           <div className='buttons'>
-            <Link to='/register' className='btn btn-primary'>
-              Sign Up
-            </Link>
-            <Link to='/login' className='btn btn-light'>
+            <Link
+              to='/login'
+              className='btn btn-blue'
+              style={{ marginLeft: 15 }}
+            >
               Login
             </Link>
           </div>
         </div>
+
+        <footer>H</footer>
       </div>
     </section>
   );

@@ -1,0 +1,44 @@
+.dashboardbackground {
+  background: url('../dashboard/Vectorbackground.svg') no-repeat center
+    center/cover;
+  /* background-color: yellow; */
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.circlee {
+  position: absolute;
+  top: 22%;
+  right: 9%;
+  width: 10%;
+  animation: moveImage 5s linear infinite;
+  /* left: -350px; */
+}
+.square {
+  position: absolute;
+  top: 22%;
+  right: 29%;
+  width: 10%;
+  animation: moveImage 5s linear infinite;
+  /* left: -350px; */
+}
+.triangle {
+  position: absolute;
+  top: 55%;
+  right: 24%;
+  width: 10%;
+  animation: moveImage 5s linear infinite;
+  /* left: -350px; */
+}
+
+@keyframes moveImage {
+  50% {
+    transform: translateY(calc(10px));
+  }
+}

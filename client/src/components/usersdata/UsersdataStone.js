@@ -14,7 +14,7 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
 
   const [formData, setFormData] = useState({
     search: '',
-    search1: ''
+    search1: 'pending'
   });
 
   const date3 = new Date();
@@ -31,10 +31,14 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&
-    if (date4 <= date5) {
-      return usersdata;
+    if (date4 >= date5) {
+      return (
+        usersdata.firstbenefitbypolice
+          .toLowerCase()
+          .indexOf(search1.toLowerCase()) !== -1
+      );
     }
-    // return (
+    //  return (
     //   usersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
     //   usersdata.policestation.toLowerCase().indexOf(search1.toLowerCase()) !==
     //     -1

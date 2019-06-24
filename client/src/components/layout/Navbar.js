@@ -64,7 +64,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   return (
-    <nav className='navbar '>
+    <nav className='navbar'>
       <h1>
         <Link to='/'>
           <i className='fas fa-code' /> AtrocityAct

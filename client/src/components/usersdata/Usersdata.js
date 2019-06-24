@@ -5,7 +5,18 @@ import { Link } from 'react-router-dom';
 import { getUsersdata } from '../../actions/userdata';
 import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import './table.css';
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1)
+  },
+  input: {
+    display: 'none'
+  }
+}));
 
 const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   useEffect(() => {
@@ -30,6 +41,8 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     );
   });
 
+  const classes = useStyles();
+
   return loading ? (
     <Spinner />
   ) : (
@@ -49,12 +62,10 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
         onChange={e => onChange(e)}
       />
       <br />
-      <Link
-        to='create-userdata'
-        className='btn btn-primary'
-        style={{ marginBottom: '20px' }}
-      >
-        Create New FIR
+      <Link to='create-userdata' style={{ marginBottom: '20px' }}>
+        <Button variant='contained' color='primary' className={classes.button}>
+          Create New FIR
+        </Button>
       </Link>
       <div className='userdata'>
         <table className='fl-table'>

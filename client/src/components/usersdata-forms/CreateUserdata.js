@@ -6,9 +6,22 @@ import { createUserdata } from '../../actions/userdata';
 import Select from 'react-select';
 import { ipcOptions, sectionsopts, options } from './ipcdata';
 import makeAnimated from 'react-select/animated';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3, 2)
+  },
+  button: {
+    margin: theme.spacing(1)
+  }
+}));
 
 const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
   var formDataa = new FormData();
+  const classes = useStyles();
   const [formData, setFormData] = useState({
     text: '',
     year: '',
@@ -51,6 +64,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     closecase: false,
     docImage: '',
     doccImage: '',
+    postmortem: '',
     abcSummary: '',
     victimone: '',
     victimtwo: '',
@@ -114,6 +128,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     closecase,
     docImage,
     doccImage,
+    postmortem,
     abcSummary,
     victimone,
     victimtwo,
@@ -213,6 +228,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     formDataa.append('closecase', closecase);
     formDataa.append('docImage', docImage);
     formDataa.append('doccImage', doccImage);
+    formDataa.append('postmortem', postmortem);
     formDataa.append('abcSummary', abcSummary);
     formDataa.append('victimone', victimone);
     formDataa.append('victimtwo', victimtwo);
@@ -353,94 +369,106 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
         </div>
 
         <div className='my-2'>
-          <button
+          <Button
             onClick={() => toggledisplayVictim(!displayVictim)}
             type='button'
-            className='btn btn-light'
+            variant='contained'
+            className={classes.button}
           >
             Add Victim's Caste Certificate
-          </button>
+          </Button>
           <span>*Required</span>
         </div>
         {displayVictim && (
           <Fragment>
             <h3>Add Victim's Details</h3>
             <div className='form-group'>
-              Upload first Victim's Caste Certificate File <br />
-              <input
-                type='file'
-                name='victimone'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, victimone: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload first Victim's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='victimone'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, victimone: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
             <div className='form-group'>
-              Upload Second Victim's Caste Certificate File <br />
-              <input
-                type='file'
-                name='victimtwo'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, victimtwo: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload Second Victim's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='victimtwo'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, victimtwo: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
             <div className='form-group'>
-              Upload third Victim's Caste Certificate File <br />
-              <input
-                type='file'
-                name='victimthree'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, victimthree: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload third Victim's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='victimthree'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, victimthree: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
             <div className='form-group'>
-              Upload fourth Victim's Caste Certificate File <br />
-              <input
-                type='file'
-                name='victimfour'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, victimfour: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload fourth Victim's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='victimfour'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, victimfour: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
             <div className='form-group'>
-              Upload fifth Victim's Caste Certificate File <br />
-              <input
-                type='file'
-                name='victimfive'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, victimfive: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload fifth Victim's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='victimfive'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, victimfive: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
           </Fragment>
         )}
 
         <div className='my-2'>
-          <button
+          <Button
             onClick={() => toggledisplayAccused(!displayAccused)}
             type='button'
-            className='btn btn-light'
+            variant='contained'
+            className={classes.button}
           >
             Add Accused Person's Caste Certificate
-          </button>
+          </Button>
           <span>*Required</span>
         </div>
 
@@ -448,119 +476,143 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
           <Fragment>
             <h3>Add Accused Person's Details</h3>
 
-            <div
-              className='form-group'
-              style={{
-                backgroundColor: 'green',
-                color: 'white',
-                padding: '10px'
-              }}
-            >
-              Upload first Accused Person's Caste Certificate File <br />
-              <input
-                type='file'
-                name='accusedone'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, accusedone: vall };
-                  });
-                }}
-              />
+            <div className='form-group'>
+              <Paper className={classes.root}>
+                Upload first Accused Person's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='accusedone'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, accusedone: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
             <div className='form-group'>
-              Upload Second Accused Person's Caste Certificate File <br />
-              <input
-                type='file'
-                name='accusedtwo'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, accusedtwo: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload Second Accused Person's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='accusedtwo'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, accusedtwo: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
             <div className='form-group'>
-              Upload third Accused Person's Caste Certificate File <br />
-              <input
-                type='file'
-                name='accusedthree'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, accusedthree: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload third Accused Person's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='accusedthree'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, accusedthree: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
             <div className='form-group'>
-              Upload fourth Accused Person's Caste Certificate File <br />
-              <input
-                type='file'
-                name='accusedfour'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, accusedfour: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload fourth Accused Person's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='accusedfour'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, accusedfour: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
             <div className='form-group'>
-              Upload fifth Accused Person's Caste Certificate File <br />
-              <input
-                type='file'
-                name='accusedfive'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, accusedfive: vall };
-                  });
-                }}
-              />
+              <Paper className={classes.root}>
+                Upload fifth Accused Person's Caste Certificate File <br />
+                <input
+                  type='file'
+                  name='accusedfive'
+                  onChange={e => {
+                    const vall = e.target.files[0];
+                    setFormData(prevState => {
+                      return { ...prevState, accusedfive: vall };
+                    });
+                  }}
+                />
+              </Paper>
             </div>
           </Fragment>
         )}
 
         <div className='form-group'>
-          Upload FIR File{' '}
-          <input
-            type='file'
-            name='docImage'
-            onChange={e => {
-              const vall = e.target.files[0];
-              setFormData(prevState => {
-                return { ...prevState, docImage: vall };
-              });
-            }}
-          />
+          <Paper className={classes.root}>
+            Upload FIR File{' '}
+            <input
+              type='file'
+              name='docImage'
+              onChange={e => {
+                const vall = e.target.files[0];
+                setFormData(prevState => {
+                  return { ...prevState, docImage: vall };
+                });
+              }}
+            />
+          </Paper>
         </div>
         <div className='form-group'>
-          Upload ChargeSheet File{' '}
-          <input
-            type='file'
-            name='doccImage'
-            onChange={e => {
-              const vall = e.target.files[0];
-              setFormData(prevState => {
-                return { ...prevState, doccImage: vall };
-              });
-            }}
-          />
+          <Paper className={classes.root}>
+            Upload ChargeSheet File{' '}
+            <input
+              type='file'
+              name='doccImage'
+              onChange={e => {
+                const vall = e.target.files[0];
+                setFormData(prevState => {
+                  return { ...prevState, doccImage: vall };
+                });
+              }}
+            />
+          </Paper>
         </div>
         <div className='form-group'>
-          Upload A/B/C Summary File{' '}
-          <input
-            type='file'
-            name='abcSummary'
-            onChange={e => {
-              const vall = e.target.files[0];
-              setFormData(prevState => {
-                return { ...prevState, abcSummary: vall };
-              });
-            }}
-          />
+          <Paper className={classes.root}>
+            Upload PostMortem File{' '}
+            <input
+              type='file'
+              name='postmortem'
+              onChange={e => {
+                const vall = e.target.files[0];
+                setFormData(prevState => {
+                  return { ...prevState, postmortem: vall };
+                });
+              }}
+            />
+          </Paper>
+        </div>
+        <div className='form-group'>
+          <Paper className={classes.root}>
+            Upload A/B/C Summary File{' '}
+            <input
+              type='file'
+              name='abcSummary'
+              onChange={e => {
+                const vall = e.target.files[0];
+                setFormData(prevState => {
+                  return { ...prevState, abcSummary: vall };
+                });
+              }}
+            />
+          </Paper>
         </div>
         <div className='form-group'>
           Date when FIR was Registered
@@ -1020,7 +1072,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
             </div>
           </Fragment>
         )}
-        <div className='my-2'>
+        {/* <div className='my-2'>
           <button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
             type='button'
@@ -1087,7 +1139,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
               />
             </div>
           </Fragment>
-        )}
+        )} */}
 
         {!closecase && (
           <Fragment>

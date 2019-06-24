@@ -2,6 +2,24 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './table.css';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1)
+  },
+  leftIcon: {
+    marginRight: theme.spacing(1)
+  },
+  rightIcon: {
+    marginLeft: theme.spacing(1)
+  },
+  iconSmall: {
+    fontSize: 20
+  }
+}));
+
 const ProfileItem = ({
   userdata: { text, year, policestation, _id, natureofcrime, crimeregisterno }
 }) => (
@@ -13,8 +31,10 @@ const ProfileItem = ({
       <td>{crimeregisterno}</td>
       <td>{natureofcrime}</td>
       <td>
-        <Link to={`/userdata/${_id}`} className='btn btn-primary'>
-          View FIR
+        <Link to={`/userdata/${_id}`}>
+          <Button variant='contained' color='primary'>
+            View FIR
+          </Button>
         </Link>
       </td>
     </tr>

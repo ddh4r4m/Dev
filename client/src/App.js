@@ -26,6 +26,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import Footer from './components/layout/Footer';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -46,7 +47,7 @@ const App = () => {
             <Alert />
             <Switch>
               <Route exact path='/login' component={Login} />
-              <Route exact path='/register' component={Register} />
+              <PrivateRoute exact path='/register' component={Register} />
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/usersdata' component={Usersdata} />
               <PrivateRoute

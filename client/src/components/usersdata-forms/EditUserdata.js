@@ -51,6 +51,7 @@ const EditUserdataById = ({
     closecase: false,
     docImage: '',
     doccImage: '',
+    postmortem: '',
     victimone: '',
     victimtwo: '',
     victimthree: '',
@@ -162,6 +163,7 @@ const EditUserdataById = ({
 
       docImage: loading || !userdata.docImage ? '' : userdata.docImage,
       doccImage: loading || !userdata.doccImage ? '' : userdata.doccImage,
+      postmortem: loading || !userdata.postmortem ? '' : userdata.postmortem,
       victimone: loading || !userdata.victimone ? '' : userdata.victimone,
       victimtwo: loading || !userdata.victimtwo ? '' : userdata.victimtwo,
       victimthree: loading || !userdata.victimthree ? '' : userdata.victimthree,
@@ -236,6 +238,7 @@ const EditUserdataById = ({
     closecase,
     docImage,
     doccImage,
+    postmortem,
     victimone,
     victimtwo,
     victimthree,
@@ -303,6 +306,7 @@ const EditUserdataById = ({
     formDataa.append('closecase', closecase);
     formDataa.append('docImage', docImage);
     formDataa.append('doccImage', doccImage);
+    formDataa.append('postmortem', postmortem);
     formDataa.append('victimone', victimone);
     formDataa.append('victimtwo', victimtwo);
     formDataa.append('victimthree', victimthree);

@@ -5,6 +5,8 @@ const db = config.get('mongoURI');
 //change this to make server on your laptop
 // mongoose.connect('mongodb://localhost/users',{ useNewUrlParser: true });
 //"mongoURI" or change this
+//"mongoURI": "mongodb+srv://dharam:dharam33@cluster0-ieqd9.mongodb.net/test?retryWrites=true&w=majority",
+//
 const connectDB = async () => {
   try {
     await mongoose.connect(db, {

@@ -1,5 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://dharam:dharam33@cluster0-ieqd9.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret" : "mySecrets"
-
+  "mongoURI": "mongodb+srv://dharam:dharam33@cluster0-ieqd9.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mySecrets"
 }

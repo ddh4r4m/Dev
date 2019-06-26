@@ -3,6 +3,20 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { deleteUserdata } from '../../actions/userdata';
 import './mytable.css';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 500,
+    padding: '1% 2%'
+  },
+  button: {
+    margin: theme.spacing(1)
+  }
+}));
 
 const UserdataTop = ({
   auth,
@@ -42,40 +56,100 @@ const UserdataTop = ({
     _id
   }
 }) => {
+  const classes = useStyles();
+
   return (
     <div className='mytable'>
-      <h1>TEXT : {text}</h1>
-      <h4 className='display'>YEAR : {year} </h4>
-      <h4 className='display'>POLICE STATION : {policestation}</h4>
-      <h4 className='display'>CRIME REGISTER NO : {crimeregisterno}</h4>
-      <h4 className='display'>DATE OF CRIME : {dateofcrime}</h4>
-      <h4 className='display'>REGISTRATION DATE OF CRIME : {regdateofcrime}</h4>
-      <h4 className='display'>VICTIM DETAILS : {victimdetails}</h4>
-      <h4 className='display'>NATURE OF CRIME : {natureofcrime}</h4>
-      <h4 className='display'>SECTIONS / PENAL CODES : {sections}</h4>
-      <h4 className='display'>DATE OF COURT ORDER : {dateofcourtorder}</h4>
-      <h4 className='display'>CHARGE SHEET DATE : {chargesheetdate}</h4>
-      <h4 className='display'>POLICE INVESTIGATION : {policeinvestigation}</h4>
-      <h4 className='display'>COURT RESULTS : {courtresults}</h4>
-      <h4 className='display'>FINANCIAL SUPPORT : {financialsupport}</h4>
+      <div style={{ margin: '0 5%' }}>
+        <h4>
+          SERIAL NO : <span style={{ float: 'right' }}> {text}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          YEAR :<span style={{ float: 'right' }}> {year}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          POLICE STATION :
+          <span style={{ float: 'right' }}> {policestation}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          CRIME REGISTER NO :
+          <span style={{ float: 'right' }}> {crimeregisterno}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          DATE OF CRIME :<span style={{ float: 'right' }}> {dateofcrime}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          REGISTRATION DATE OF CRIME :
+          <span style={{ float: 'right' }}> {regdateofcrime}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          VICTIM DETAILS :
+          <span style={{ float: 'right' }}> {victimdetails}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          NATURE OF CRIME :
+          <span style={{ float: 'right' }}> {natureofcrime}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          SECTIONS / PENAL CODES :
+          <span style={{ float: 'right' }}> {sections}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          DATE OF COURT ORDER :
+          <span style={{ float: 'right' }}> {dateofcourtorder}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          CHARGE SHEET DATE :
+          <span style={{ float: 'right' }}> {chargesheetdate}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          POLICE INVESTIGATION :
+          <span style={{ float: 'right' }}> {policeinvestigation}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          COURT RESULTS :<span style={{ float: 'right' }}> {courtresults}</span>
+        </h4>
+        <hr />
+        <h4 className='display'>
+          FINANCIAL SUPPORT :
+          <span style={{ float: 'right' }}> {financialsupport}</span>
+        </h4>
+        <hr />
+      </div>
       <div className='mybuttons'>
-        <Link to={`/edit-userdata/${_id}`} className='btn btn-primary buttonn'>
-          Edit Userdata
+        <Link to={`/edit-userdata/${_id}`}>
+          <Button
+            variant='contained'
+            color='primary'
+            className={classes.button}
+          >
+            Edit Userdata
+          </Button>
         </Link>
-        <Link to='/usersdata' className='btn btn-danger buttonn'>
-          Delete
-        </Link>
-        <Link to='/usersdata' className='btn btn-primary buttonn'>
-          Go Back
-        </Link>
+
         {/* {!auth.loading && user === auth.user._id && ( */}
         <button
           onClick={e => window.confirm('Are You Sure?') && deleteUserdata(_id)}
           type='button'
           className='btn btn-danger buttonn'
         >
-          <i className='fas fa-times' />
+          Delete <i className='fas fa-times' />
         </button>
+        <Link to='/usersdata' className='btn btn-primary buttonn'>
+          Go Back
+        </Link>
       </div>
       <br />
     </div>

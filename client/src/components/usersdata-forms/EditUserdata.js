@@ -7,13 +7,30 @@ import { editUserdata, getUserdataById } from '../../actions/userdata';
 import Select from 'react-select';
 import { ipcOptions, sectionsopts, options } from './ipcdata';
 import makeAnimated from 'react-select/animated';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import Radio from '@material-ui/core/Radio';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3, 2)
+  },
+  rooot: {
+    padding: theme.spacing(5, 6)
+  },
+  button: {
+    margin: theme.spacing(1)
+  }
+}));
 
 const EditUserdataById = ({
   match,
   userdata: { userdata, loading },
   editUserdata,
   getUserdataById,
-  history
+  history,
+  auth: { user }
 }) => {
   const [formData, setFormData] = useState({
     text: '',
@@ -36,6 +53,12 @@ const EditUserdataById = ({
     secondbenefitbypolicecomment: '',
     secondbenefitbycommcomment: '',
     secondbenefitbycollectorcomment: '',
+    thirdbenefitbypolice: '',
+    thirdbenefitbycommis: '',
+    thirdbenefitbycollector: '',
+    thirdbenefitbypolicecomment: '',
+    thirdbenefitbycommcomment: '',
+    thirdbenefitbycollectorcomment: '',
     sections: '',
     chargesheetdate: '',
     policeinvestigation: '',
@@ -48,7 +71,7 @@ const EditUserdataById = ({
     youtube: '',
     instagram: '',
     disabledata: false,
-    closecase: false,
+    closecase: '',
     docImage: '',
     doccImage: '',
     postmortem: '',
@@ -66,8 +89,10 @@ const EditUserdataById = ({
   const [typeofatrocity, setTypeofatrocity] = useState(null);
   const [ipcapplied, setIpc] = useState(null);
   const [sectionsapplied, setSections] = useState(null);
+  var [closethecase, toggleclossecase] = useState(false);
 
   var formDataa = new FormData();
+  const classes = useStyles();
 
   const animatedComponents = makeAnimated();
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -137,6 +162,30 @@ const EditUserdataById = ({
         loading || !userdata.secondbenefitbycollectorcomment
           ? ''
           : userdata.secondbenefitbycollectorcomment,
+      thirdbenefitbypolice:
+        loading || !userdata.thirdbenefitbypolice
+          ? ''
+          : userdata.thirdbenefitbypolice,
+      thirdbenefitbycommis:
+        loading || !userdata.thirdbenefitbycommis
+          ? ''
+          : userdata.thirdbenefitbycommis,
+      thirdbenefitbycollector:
+        loading || !userdata.thirdbenefitbycollector
+          ? ''
+          : userdata.thirdbenefitbycollector,
+      thirdbenefitbypolicecomment:
+        loading || !userdata.thirdbenefitbypolicecomment
+          ? ''
+          : userdata.thirdbenefitbypolicecomment,
+      thirdbenefitbycommcomment:
+        loading || !userdata.thirdbenefitbycommcomment
+          ? ''
+          : userdata.thirdbenefitbycommcomment,
+      thirdbenefitbycollectorcomment:
+        loading || !userdata.thirdbenefitbycollectorcomment
+          ? ''
+          : userdata.thirdbenefitbycollectorcomment,
       natureofcrime:
         loading || !userdata.natureofcrime ? '' : userdata.natureofcrime,
       sections: loading || !userdata.sections ? '' : userdata.sections,
@@ -159,7 +208,7 @@ const EditUserdataById = ({
       instagram: loading || !userdata.instagram ? '' : userdata.instagram,
       disabledata:
         loading || !userdata.disabledata ? false : userdata.disabledata,
-      closecase: loading || !userdata.closecase ? false : userdata.closecase,
+      closecase: loading || !userdata.closecase ? '' : userdata.closecase,
 
       docImage: loading || !userdata.docImage ? '' : userdata.docImage,
       doccImage: loading || !userdata.doccImage ? '' : userdata.doccImage,
@@ -175,6 +224,8 @@ const EditUserdataById = ({
         loading || !userdata.accusedthree ? '' : userdata.accusedthree,
       accusedfour: loading || !userdata.accusedfour ? '' : userdata.accusedfour,
       accusedfive: loading || !userdata.accusedfive ? '' : userdata.accusedfive
+      // closethecase:
+      //   loading || !userdata.closethecase ? false : userdata.closethecase
       //   text: 'Helo'
     });
     setTypeofatrocity(
@@ -189,6 +240,9 @@ const EditUserdataById = ({
       loading || !userdata.sectionsapplied
         ? null
         : JSON.parse(userdata.sectionsapplied)
+    );
+    toggleclossecase(
+      loading || !userdata.closethecase ? false : userdata.closethecase
     );
   }, [loading, getUserdataById, match]);
 
@@ -225,6 +279,12 @@ const EditUserdataById = ({
     secondbenefitbypolicecomment,
     secondbenefitbycommcomment,
     secondbenefitbycollectorcomment,
+    thirdbenefitbypolice,
+    thirdbenefitbycommis,
+    thirdbenefitbycollector,
+    thirdbenefitbypolicecomment,
+    thirdbenefitbycommcomment,
+    thirdbenefitbycollectorcomment,
     policeinvestigation,
     courtresults,
     financialsupport,
@@ -303,7 +363,12 @@ const EditUserdataById = ({
     formDataa.append('youtube', youtube);
     formDataa.append('instagram', instagram);
     formDataa.append('disabledata', disabledata);
+    if (closecase === 'yes') {
+      toggleclossecase((closethecase = true));
+      // console.log('closethecase', closethecase);
+    }
     formDataa.append('closecase', closecase);
+    formDataa.append('closethecase', closethecase);
     formDataa.append('docImage', docImage);
     formDataa.append('doccImage', doccImage);
     formDataa.append('postmortem', postmortem);
@@ -328,685 +393,987 @@ const EditUserdataById = ({
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large text-primary'>Create Your Profile</h1>
-          <p className='lead'>
-            <i className='fas fa-user' /> Let's add some information to your
-            profile
-          </p>
-          <small>* = required field</small>
-          <form
-            className='form'
-            onSubmit={e => onSubmit(e)}
-            encType='multipart/form-data'
-            method='POST'
-          >
-            <div className='form-group'>
-              Serial No.
-              <input
-                type='text'
-                placeholder='Serial No.'
-                name='text'
-                value={text}
-                onChange={e => onChange(e)}
-                disabled={true}
-              />
-              <small className='form-text'>
-                Could be the defined format of serial no
-              </small>
-            </div>
-            <div className='form-group'>
-              Year of Crime
-              <input
-                type='date'
-                placeholder='Year of Crime'
-                name='year'
-                value={year}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Type of Crime
-              <Select
-                closeMenuOnSelect={false}
-                components={animatedComponents}
-                options={options}
-                name='typeofatrocity'
-                value={typeofatrocity}
-                isMulti
-                isSearchable
-                onChange={handleChange}
-              />
-            </div>
-            <div className='form-group'>
-              Select IPC
-              <Select
-                closeMenuOnSelect={false}
-                components={animatedComponents}
-                options={ipcOptions}
-                name='ipcapplied'
-                value={ipcapplied}
-                isMulti
-                isSearchable
-                onChange={handleIpc}
-              />
-            </div>
-            <div className='form-group'>
-              Select IPC
-              <Select
-                closeMenuOnSelect={false}
-                components={animatedComponents}
-                options={sectionsopts}
-                name='sectionsapplied'
-                value={sectionsapplied}
-                isMulti
-                isSearchable
-                onChange={handleSections}
-              />
-            </div>
-            <div className='form-group'>
-              Name of Police Station
-              <select
-                name='policestation'
-                value={policestation}
-                onChange={e => onChange(e)}
-              >
-                <option value='Dhule City'>Dhule City </option>
-                <option value='Aazadnagar'>Aazadnagar</option>
-                <option value='Chalisgaon Road'>Chalisgaon Road</option>
-                <option value='Mohadi Upnagar'>Mohadi Upnagar</option>
-                <option value='Deopur Police Station'>
-                  Deopur Police Station
-                </option>
-                <option value='West Deopur'>West Deopur</option>
-                <option value='Dhule Taluka'>Dhule Taluka</option>
-                <option value='Songir'>Songir</option>
-                <option value='Sakri'>Sakri</option>
-                <option value='Pimplner'>Pimplner</option>
-                <option value='Nijampur'>Nijampur</option>
-                <option value='Shindkheda'>Shindkheda</option>
-                <option value='Nardana'>Nardana</option>
-                <option value='Dondaicha'>Dondaicha</option>
-                <option value='Shirpur Taluka'>Shirpur Taluka</option>
-                <option value='Shirpur City'>Shirpur City</option>
-                <option value='Thalner'>Thalner</option>
-              </select>
-            </div>
-            <div className='form-group'>
-              Register No.
-              <input
-                type='text'
-                placeholder='Register No.'
-                name='crimeregisterno'
-                value={crimeregisterno}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Date When Crime Happened
-              <input
-                type='date'
-                placeholder='Date When Crime Happened'
-                name='dateofcrime'
-                value={dateofcrime}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='image'>
-              <img
-                src={'http://localhost:5000/' + docImage}
-                alt='new'
-                height='400'
-                width='400'
-              />
-            </div>
-            <div className='image'>
-              <img
-                src={'http://localhost:5000/' + doccImage}
-                alt='new'
-                height='400'
-              />
-            </div>
-            <div className='my-2'>
-              <button
-                onClick={() => toggledisplayVictim(!displayVictim)}
-                type='button'
-                className='btn btn-light'
-              >
-                Add Victim's Caste Certificate
-              </button>
-              <span>-> If you want to change the uploaded files</span>
-            </div>
-            {displayVictim && (
-              <Fragment>
-                <h3>Add Victim's Details</h3>
-                <div className='form-group'>
-                  Upload first Victim's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='victimone'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, victimone: vall };
-                      });
-                    }}
-                  />
-                </div>
-                <div className='form-group'>
-                  Upload Second Victim's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='victimtwo'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, victimtwo: vall };
-                      });
-                    }}
-                  />
-                </div>
-                <div className='form-group'>
-                  Upload third Victim's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='victimthree'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, victimthree: vall };
-                      });
-                    }}
-                  />
-                </div>
-                <div className='form-group'>
-                  Upload fourth Victim's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='victimfour'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, victimfour: vall };
-                      });
-                    }}
-                  />
-                </div>
-                <div className='form-group'>
-                  Upload fifth Victim's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='victimfive'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, victimfive: vall };
-                      });
-                    }}
-                  />
-                </div>
-              </Fragment>
-            )}
-
-            <div className='my-2'>
-              <button
-                onClick={() => toggledisplayAccused(!displayAccused)}
-                type='button'
-                className='btn btn-light'
-              >
-                Add Accused Person's Caste Certificate
-              </button>
-              <span>-> If you want to change the uploaded files</span>
-            </div>
-
-            {displayAccused && (
-              <Fragment>
-                <h3>Add Accused Person's Details</h3>
-
-                <div
-                  className='form-group'
-                  style={{
-                    backgroundColor: 'green',
-                    color: 'white',
-                    padding: '10px'
-                  }}
+          <div className='createuserbg'>
+            <div style={{ margin: '10% 10%' }}>
+              <Paper className={classes.rooot}>
+                <h1 className='large text-primary'>Add New FIR</h1>
+                <p className='lead'>
+                  <i className='fas fa-user' /> Let's add some information to
+                  FIR
+                </p>
+                <small>* = required field</small>
+                <form
+                  className='form'
+                  onSubmit={e => onSubmit(e)}
+                  encType='multipart/form-data'
+                  method='POST'
                 >
-                  Upload first Accused Person's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='accusedone'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, accusedone: vall };
-                      });
-                    }}
-                  />
-                </div>
-                <div className='form-group'>
-                  Upload Second Accused Person's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='accusedtwo'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, accusedtwo: vall };
-                      });
-                    }}
-                  />
-                </div>
-                <div className='form-group'>
-                  Upload third Accused Person's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='accusedthree'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, accusedthree: vall };
-                      });
-                    }}
-                  />
-                </div>
-                <div className='form-group'>
-                  Upload fourth Accused Person's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='accusedfour'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, accusedfour: vall };
-                      });
-                    }}
-                  />
-                </div>
-                <div className='form-group'>
-                  Upload fifth Accused Person's Caste Certificate File <br />
-                  <input
-                    type='file'
-                    name='accusedfive'
-                    onChange={e => {
-                      const vall = e.target.files[0];
-                      setFormData(prevState => {
-                        return { ...prevState, accusedfive: vall };
-                      });
-                    }}
-                  />
-                </div>
-              </Fragment>
-            )}
-            <div className='form-group'>
-              Upload FIR File
+                  <div className='form-group'>
+                    Serial No.
+                    <input
+                      type='text'
+                      placeholder='Serial No.'
+                      name='text'
+                      value={text}
+                      onChange={e => onChange(e)}
+                    />
+                    <small className='form-text'>
+                      Could be the defined format of serial no
+                    </small>
+                  </div>
+                  <div className='form-group'>
+                    Year of Crime
+                    <input
+                      type='date'
+                      placeholder='Year of Crime'
+                      name='year'
+                      value={year}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Name of Police Station
+                    <select
+                      name='policestation'
+                      value={policestation}
+                      onChange={e => onChange(e)}
+                    >
+                      <option value='Dhule City'>Dhule City </option>
+                      <option value='Aazadnagar'>Aazadnagar</option>
+                      <option value='Chalisgaon Road'>Chalisgaon Road</option>
+                      <option value='Mohadi Upnagar'>Mohadi Upnagar</option>
+                      <option value='Deopur Police Station'>
+                        Deopur Police Station
+                      </option>
+                      <option value='West Deopur'>West Deopur</option>
+                      <option value='Dhule Taluka'>Dhule Taluka</option>
+                      <option value='Songir'>Songir</option>
+                      <option value='Sakri'>Sakri</option>
+                      <option value='Pimplner'>Pimplner</option>
+                      <option value='Nijampur'>Nijampur</option>
+                      <option value='Shindkheda'>Shindkheda</option>
+                      <option value='Nardana'>Nardana</option>
+                      <option value='Dondaicha'>Dondaicha</option>
+                      <option value='Shirpur Taluka'>Shirpur Taluka</option>
+                      <option value='Shirpur City'>Shirpur City</option>
+                      <option value='Thalner'>Thalner</option>
+                    </select>
+                  </div>
+                  <div className='form-group'>
+                    Register No.
+                    <input
+                      type='text'
+                      placeholder='Register No.'
+                      name='crimeregisterno'
+                      value={crimeregisterno}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Date When Crime Happened
+                    <input
+                      type='date'
+                      placeholder='Date When Crime Happened'
+                      name='dateofcrime'
+                      value={dateofcrime}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Date when FIR was Registered
+                    <input
+                      type='date'
+                      placeholder='Date when FIR was Registered'
+                      name='regdateofcrime'
+                      value={regdateofcrime}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Details of Victim
+                    <input
+                      type='text'
+                      placeholder='Details of Victim'
+                      name='victimdetails'
+                      value={victimdetails}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Summary of Crime
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Summary of Crime'
+                      name='natureofcrime'
+                      value={natureofcrime}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Type of Crime
+                    <Select
+                      closeMenuOnSelect={false}
+                      components={animatedComponents}
+                      options={options}
+                      name='typeofatrocity'
+                      value={typeofatrocity}
+                      isMulti
+                      isSearchable
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Select IPC
+                    <Select
+                      closeMenuOnSelect={false}
+                      components={animatedComponents}
+                      options={ipcOptions}
+                      name='ipcapplied'
+                      value={ipcapplied}
+                      isMulti
+                      isSearchable
+                      onChange={handleIpc}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Select Sections
+                    <Select
+                      closeMenuOnSelect={false}
+                      components={animatedComponents}
+                      options={sectionsopts}
+                      name='sectionsapplied'
+                      value={sectionsapplied}
+                      isMulti
+                      isSearchable
+                      onChange={handleSections}
+                    />
+                  </div>
+
+                  <div className='my-2'>
+                    <Button
+                      onClick={() => toggledisplayVictim(!displayVictim)}
+                      type='button'
+                      variant='contained'
+                      className={classes.button}
+                    >
+                      Add Victim's Caste Certificate
+                    </Button>
+                    <span>If you want to change the uploaded files</span>
+                  </div>
+                  {displayVictim && (
+                    <Fragment>
+                      <h3>Add Victim's Details</h3>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload first Victim's Caste Certificate File <br />
+                          <input
+                            type='file'
+                            name='victimone'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimone: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload Second Victim's Caste Certificate File <br />
+                          <input
+                            type='file'
+                            name='victimtwo'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimtwo: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload third Victim's Caste Certificate File <br />
+                          <input
+                            type='file'
+                            name='victimthree'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimthree: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload fourth Victim's Caste Certificate File <br />
+                          <input
+                            type='file'
+                            name='victimfour'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimfour: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload fifth Victim's Caste Certificate File <br />
+                          <input
+                            type='file'
+                            name='victimfive'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimfive: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                    </Fragment>
+                  )}
+
+                  <div className='my-2'>
+                    <Button
+                      onClick={() => toggledisplayAccused(!displayAccused)}
+                      type='button'
+                      variant='contained'
+                      className={classes.button}
+                    >
+                      Add Accused Person's Caste Certificate
+                    </Button>
+                    <span>If you want to change the uploaded files</span>
+                  </div>
+
+                  {displayAccused && (
+                    <Fragment>
+                      <h3>Add Accused Person's Details</h3>
+
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload first Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <input
+                            type='file'
+                            name='accusedone'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedone: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload Second Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <input
+                            type='file'
+                            name='accusedtwo'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedtwo: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload third Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <input
+                            type='file'
+                            name='accusedthree'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedthree: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload fourth Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <input
+                            type='file'
+                            name='accusedfour'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedfour: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload fifth Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <input
+                            type='file'
+                            name='accusedfive'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedfive: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                    </Fragment>
+                  )}
+
+                  <div className='form-group'>
+                    <Paper className={classes.root}>
+                      Upload FIR File{' '}
+                      <input
+                        type='file'
+                        name='docImage'
+                        onChange={e => {
+                          const vall = e.target.files[0];
+                          setFormData(prevState => {
+                            return { ...prevState, docImage: vall };
+                          });
+                        }}
+                      />
+                    </Paper>
+                  </div>
+
+                  <div className='form-group'>
+                    <Paper className={classes.root}>
+                      Upload A/B/C Summary File{' '}
+                      <input
+                        type='file'
+                        name='abcSummary'
+                        onChange={e => {
+                          const vall = e.target.files[0];
+                          setFormData(prevState => {
+                            return { ...prevState, abcSummary: vall };
+                          });
+                        }}
+                      />
+                    </Paper>
+                  </div>
+                  <div className='form-group'>
+                    Details from Police Investigation
+                    <textarea
+                      type='text'
+                      rows='4'
+                      placeholder='Details from Police Investigation'
+                      name='policeinvestigation'
+                      value={policeinvestigation}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    First Benefit Recommendation by Police
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbypolice'
+                      checked={firstbenefitbypolice === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbypolice'
+                      checked={firstbenefitbypolice === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbypolice'
+                      checked={firstbenefitbypolice === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    Pending
+                  </div>
+                  <div className='form-group'>
+                    Comment on First benefit Recommendation by Police
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='firstbenefitbypolicecomment'
+                      value={firstbenefitbypolicecomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    First Benefit Recommendation by Assistant Commisioner
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbycommis'
+                      checked={firstbenefitbycommis === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbycommis'
+                      checked={firstbenefitbycommis === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbycommis'
+                      checked={firstbenefitbycommis === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    Pending
+                  </div>
+                  <div className='form-group'>
+                    Comment on First benefit Recommendation by Asst. Commisioner
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='firstbenefitbycommcomment'
+                      value={firstbenefitbycommcomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Decision for distribution of first Benefit District
+                    Collector
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbycollector'
+                      checked={firstbenefitbycollector === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbycollector'
+                      checked={firstbenefitbycollector === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbycollector'
+                      checked={firstbenefitbycollector === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    Pending
+                  </div>
+
+                  <div className='form-group'>
+                    Comment on First benefit Decision by District Collector
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='firstbenefitbycollectorcomment'
+                      value={firstbenefitbycollectorcomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Applicable Penal Codes
+                    <input
+                      type='text'
+                      placeholder='Penal Codes Applicable'
+                      name='sections'
+                      value={sections}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    <Paper className={classes.root}>
+                      Upload PostMortem File{' '}
+                      <input
+                        type='file'
+                        name='postmortem'
+                        onChange={e => {
+                          const vall = e.target.files[0];
+                          setFormData(prevState => {
+                            return { ...prevState, postmortem: vall };
+                          });
+                        }}
+                      />
+                    </Paper>
+                  </div>
+                  <div className='form-group'>
+                    <Paper className={classes.root}>
+                      Upload Medical Report File{' '}
+                      <input
+                        type='file'
+                        name='medicalreport'
+                        onChange={e => {
+                          const vall = e.target.files[0];
+                          setFormData(prevState => {
+                            return { ...prevState, medicalreport: vall };
+                          });
+                        }}
+                      />
+                    </Paper>
+                  </div>
+                  <div className='form-group'>
+                    Date When Chargesheet was filed in the court
+                    <input
+                      type='date'
+                      placeholder='Date When Chargesheet was filed in the court'
+                      name='chargesheetdate'
+                      value={chargesheetdate}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    <Paper className={classes.root}>
+                      Upload ChargeSheet File{' '}
+                      <input
+                        type='file'
+                        name='doccImage'
+                        onChange={e => {
+                          const vall = e.target.files[0];
+                          setFormData(prevState => {
+                            return { ...prevState, doccImage: vall };
+                          });
+                        }}
+                      />
+                    </Paper>
+                  </div>
+
+                  <div className='form-group'>
+                    Second Benefit Recommendation by Police
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbypolice'
+                      checked={secondbenefitbypolice === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbypolice'
+                      checked={secondbenefitbypolice === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbypolice'
+                      checked={secondbenefitbypolice === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    Pending
+                  </div>
+                  <div className='form-group'>
+                    Comment on Second benefit Recommendation by Police
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='secondbenefitbypolicecomment'
+                      value={secondbenefitbypolicecomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Second Benefit Recommendation by Assistant Commisioner
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbycommis'
+                      checked={secondbenefitbycommis === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbycommis'
+                      checked={secondbenefitbycommis === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbycommis'
+                      checked={secondbenefitbycommis === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    Pending
+                  </div>
+                  <div className='form-group'>
+                    Comment on Second benefit Recommendation by Asst.
+                    Commisioner
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='secondbenefitbycommcomment'
+                      value={secondbenefitbycommcomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Decision for distribution of second Benefit District
+                    Collector
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbycollector'
+                      checked={secondbenefitbycollector === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbycollector'
+                      checked={secondbenefitbycollector === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='secondbenefitbycollector'
+                      checked={secondbenefitbycollector === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    Pending
+                  </div>
+
+                  <div className='form-group'>
+                    Comment on Second benefit Decision by District Collector
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='secondbenefitbycollectorcomment'
+                      value={secondbenefitbycollectorcomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />
+                  </div>
+
+                  <div className='form-group'>
+                    Date of Court Order
+                    <input
+                      type='date'
+                      placeholder='Date of Court Order'
+                      name='dateofcourtorder'
+                      value={dateofcourtorder}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Court Results
+                    <textarea
+                      rows='4'
+                      type='text'
+                      placeholder='Court Results'
+                      name='courtresults'
+                      value={courtresults}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Third Benefit Recommendation by Police
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbypolice'
+                      checked={thirdbenefitbypolice === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbypolice'
+                      checked={thirdbenefitbypolice === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbypolice'
+                      checked={thirdbenefitbypolice === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />{' '}
+                    Pending
+                  </div>
+                  <div className='form-group'>
+                    Comment on Third benefit Recommendation by Police
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='thirdbenefitbypolicecomment'
+                      value={thirdbenefitbypolicecomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Third Benefit Recommendation by Assistant Commisioner
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycommis'
+                      checked={thirdbenefitbycommis === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycommis'
+                      checked={thirdbenefitbycommis === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycommis'
+                      checked={thirdbenefitbycommis === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />{' '}
+                    Pending
+                  </div>
+                  <div className='form-group'>
+                    Comment on Third benefit Recommendation by Asst. Commisioner
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='thirdbenefitbycommcomment'
+                      value={thirdbenefitbycommcomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'asst.'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Decision for distribution of third Benefit District
+                    Collector
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycollector'
+                      checked={thirdbenefitbycollector === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycollector'
+                      checked={thirdbenefitbycollector === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycollector'
+                      checked={thirdbenefitbycollector === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />{' '}
+                    Pending
+                  </div>
+
+                  <div className='form-group'>
+                    Comment on Third benefit Decision by District Collector
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='thirdbenefitbycollectorcomment'
+                      value={thirdbenefitbycollectorcomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Financial Support to be Provided
+                    <textarea
+                      rows='4'
+                      type='text'
+                      placeholder='Financial Support to be Provided'
+                      name='financialsupport'
+                      value={financialsupport}
+                      onChange={e => onChange(e)}
+                    />
+                  </div>
+                  {!disabledata && (
+                    <Fragment>
+                      <div className='form-group'>
+                        Do You want to close the Case{'    '}
+                        <Radio
+                          type='radio'
+                          name='closecase'
+                          checked={closecase === 'yes'}
+                          value='yes'
+                          onChange={e => onChange(e)}
+                        />{' '}
+                        Yes{' '}
+                        <Radio
+                          type='radio'
+                          name='closecase'
+                          checked={closecase === 'no'}
+                          value='no'
+                          onChange={e => onChange(e)}
+                        />{' '}
+                        No
+                        <small>
+                          {' '}
+                          <br /> Select if Every Action for this Case has been
+                          Taken <br />
+                          Note : You Won't be able to make any changes if you
+                          select "Yes"
+                        </small>
+                      </div>
+                    </Fragment>
+                  )}
+                  {/* <div className='my-2'>
+          <button
+            onClick={() => toggleSocialInputs(!displaySocialInputs)}
+            type='button'
+            className='btn btn-light'
+          >
+            Add Social Network Links
+          </button>
+          <span>Optional</span>
+        </div>
+        {displaySocialInputs && (
+          <Fragment>
+            <div className='form-group social-input'>
+              <i className='fab fa-twitter fa-2x' />
               <input
-                type='file'
-                name='docImage'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, docImage: vall };
-                  });
-                }}
-              />
-              Upload 2ndFIR File
-              <input
-                type='file'
-                name='doccImage'
-                onChange={e => {
-                  const vall = e.target.files[0];
-                  setFormData(prevState => {
-                    return { ...prevState, doccImage: vall };
-                  });
-                }}
+                type='text'
+                placeholder='Twitter URL'
+                name='twitter'
+                value={twitter}
+                onChange={e => onChange(e)}
               />
             </div>
 
-            <div className='form-group'>
-              Date when FIR was Registered
-              <input
-                type='date'
-                placeholder='Date when FIR was Registered'
-                name='regdateofcrime'
-                value={regdateofcrime}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Details of Victim
+            <div className='form-group social-input'>
+              <i className='fab fa-facebook fa-2x' />
               <input
                 type='text'
-                placeholder='Details of Victim'
-                name='victimdetails'
-                value={victimdetails}
+                placeholder='Facebook URL'
+                name='facebook'
+                value={facebook}
                 onChange={e => onChange(e)}
               />
-            </div>
-            <div className='form-group'>
-              Nature of Crime e.g: Murder
-              <textarea
-                rows='4'
-                cols='2'
-                type='text'
-                placeholder='Nature of Crime e.g: Murder '
-                name='natureofcrime'
-                value={natureofcrime}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              First Benefit Recommendation by Police
-              <input
-                type='radio'
-                name='firstbenefitbypolice'
-                checked={firstbenefitbypolice === 'yes'}
-                value='yes'
-                onChange={e => onChange(e)}
-              />{' '}
-              Yes
-              <input
-                type='radio'
-                name='firstbenefitbypolice'
-                checked={firstbenefitbypolice === 'no'}
-                value='no'
-                onChange={e => onChange(e)}
-              />{' '}
-              No
-            </div>
-            <div className='form-group'>
-              Comment on First benefit Recommendation by Police
-              <input
-                type='text'
-                placeholder='Give the Reason for Recommendation'
-                name='firstbenefitbypolicecomment'
-                value={firstbenefitbypolicecomment}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              First Benefit Recommendation by Assistant Commisioner
-              <input
-                type='radio'
-                name='firstbenefitbycommis'
-                checked={firstbenefitbycommis === 'yes'}
-                value='yes'
-                onChange={e => onChange(e)}
-              />{' '}
-              Yes
-              <input
-                type='radio'
-                name='firstbenefitbycommis'
-                checked={firstbenefitbycommis === 'no'}
-                value='no'
-                onChange={e => onChange(e)}
-              />{' '}
-              No
-            </div>
-            <div className='form-group'>
-              Comment on First benefit Recommendation by Asst. Commisioner
-              <input
-                type='text'
-                placeholder='Give the Reason for Recommendation'
-                name='firstbenefitbycommcomment'
-                value={firstbenefitbycommcomment}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Decision for distribution of first Benefit District Collector
-              <input
-                type='radio'
-                name='firstbenefitbycollector'
-                checked={firstbenefitbycollector === 'yes'}
-                value='yes'
-                onChange={e => onChange(e)}
-              />{' '}
-              Yes
-              <input
-                type='radio'
-                name='firstbenefitbycollector'
-                checked={firstbenefitbycollector === 'no'}
-                value='no'
-                onChange={e => onChange(e)}
-              />{' '}
-              No
             </div>
 
-            <div className='form-group'>
-              Comment on First benefit Decision by District Collector
+            <div className='form-group social-input'>
+              <i className='fab fa-youtube fa-2x' />
               <input
                 type='text'
-                placeholder='Give the Reason for Recommendation'
-                name='firstbenefitbycollectorcomment'
-                value={firstbenefitbycollectorcomment}
+                placeholder='YouTube URL'
+                name='youtube'
+                value={youtube}
                 onChange={e => onChange(e)}
               />
-            </div>
-            <div className='form-group'>
-              Applicable Penal Codes
-              <input
-                type='text'
-                placeholder='Penal Codes Applicable'
-                name='sections'
-                value={sections}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Date of Court Order
-              <input
-                type='date'
-                placeholder='Date of Court Order'
-                name='dateofcourtorder'
-                value={dateofcourtorder}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Date When Chargesheet was filed in the court
-              <input
-                type='date'
-                placeholder='Date When Chargesheet was filed in the court'
-                name='chargesheetdate'
-                value={chargesheetdate}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Second Benefit Recommendation by Police
-              <input
-                type='radio'
-                name='secondbenefitbypolice'
-                checked={secondbenefitbypolice === 'yes'}
-                value='yes'
-                onChange={e => onChange(e)}
-              />{' '}
-              Yes
-              <input
-                type='radio'
-                name='secondbenefitbypolice'
-                checked={secondbenefitbypolice === 'no'}
-                value='no'
-                onChange={e => onChange(e)}
-              />{' '}
-              No
-            </div>
-            <div className='form-group'>
-              Comment on Second benefit Recommendation by Police
-              <input
-                type='text'
-                placeholder='Give the Reason for Recommendation'
-                name='secondbenefitbypolicecomment'
-                value={secondbenefitbypolicecomment}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Second Benefit Recommendation by Assistant Commisioner
-              <input
-                type='radio'
-                name='secondbenefitbycommis'
-                checked={secondbenefitbycommis === 'yes'}
-                value='yes'
-                onChange={e => onChange(e)}
-              />{' '}
-              Yes
-              <input
-                type='radio'
-                name='secondbenefitbycommis'
-                checked={secondbenefitbycommis === 'no'}
-                value='no'
-                onChange={e => onChange(e)}
-              />{' '}
-              No
-            </div>
-            <div className='form-group'>
-              Comment on Second benefit Recommendation by Asst. Commisioner
-              <input
-                type='text'
-                placeholder='Give the Reason for Recommendation'
-                name='secondbenefitbycommcomment'
-                value={secondbenefitbycommcomment}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            <div className='form-group'>
-              Decision for distribution of second Benefit District Collector
-              <input
-                type='radio'
-                name='secondbenefitbycollector'
-                checked={secondbenefitbycollector === 'yes'}
-                value='yes'
-                onChange={e => onChange(e)}
-              />{' '}
-              Yes
-              <input
-                type='radio'
-                name='secondbenefitbycollector'
-                checked={secondbenefitbycollector === 'no'}
-                value='no'
-                onChange={e => onChange(e)}
-              />{' '}
-              No
             </div>
 
-            <div className='form-group'>
-              Comment on Second benefit Decision by District Collector
+            <div className='form-group social-input'>
+              <i className='fab fa-linkedin fa-2x' />
               <input
                 type='text'
-                placeholder='Give the Reason for Recommendation'
-                name='secondbenefitbycollectorcomment'
-                value={secondbenefitbycollectorcomment}
+                placeholder='Linkedin URL'
+                name='linkedin'
+                value={linkedin}
                 onChange={e => onChange(e)}
               />
             </div>
-            <div className='form-group'>
-              Details from Police Investigation
-              <textarea
+
+            <div className='form-group social-input'>
+              <i className='fab fa-instagram fa-2x' />
+              <input
                 type='text'
-                rows='4'
-                placeholder='Details from Police Investigation'
-                name='policeinvestigation'
-                value={policeinvestigation}
+                placeholder='Instagram URL'
+                name='instagram'
+                value={instagram}
                 onChange={e => onChange(e)}
               />
             </div>
-            <div className='form-group'>
-              Court Results
-              <textarea
-                rows='4'
-                type='text'
-                placeholder='Court Results'
-                name='courtresults'
-                value={courtresults}
-                onChange={e => onChange(e)}
-              />
+          </Fragment>
+        )} */}
+                  {/* {console.log('btnclosethecase', closethecase)} */}
+                  {!closethecase && (
+                    <Fragment>
+                      {' '}
+                      <input
+                        type='submit'
+                        className='btn btn-primary my-1'
+                      />{' '}
+                    </Fragment>
+                  )}
+                  <Link to='/dashboard' className='btn btn-light my-1'>
+                    Go Back
+                  </Link>
+                </form>
+              </Paper>
             </div>
-            <div className='form-group'>
-              Financial Support to be Provided
-              <textarea
-                rows='4'
-                type='text'
-                placeholder='Financial Support to be Provided'
-                name='financialsupport'
-                value={financialsupport}
-                onChange={e => onChange(e)}
-              />
-            </div>
-            {!disabledata && <Fragment>Do You want to close the Case</Fragment>}
-            <div className='my-2'>
-              <button
-                onClick={() => toggleSocialInputs(!displaySocialInputs)}
-                type='button'
-                className='btn btn-light'
-              >
-                Add Social Network Links
-              </button>
-              <span>Optional</span>
-            </div>
-            {displaySocialInputs && (
-              <Fragment>
-                <div className='form-group social-input'>
-                  <i className='fab fa-twitter fa-2x' />
-                  <input
-                    type='text'
-                    placeholder='Twitter URL'
-                    name='twitter'
-                    value={twitter}
-                    onChange={e => onChange(e)}
-                  />
-                </div>
-
-                <div className='form-group social-input'>
-                  <i className='fab fa-facebook fa-2x' />
-                  <input
-                    type='text'
-                    placeholder='Facebook URL'
-                    name='facebook'
-                    value={facebook}
-                    onChange={e => onChange(e)}
-                  />
-                </div>
-
-                <div className='form-group social-input'>
-                  <i className='fab fa-youtube fa-2x' />
-                  <input
-                    type='text'
-                    placeholder='YouTube URL'
-                    name='youtube'
-                    value={youtube}
-                    onChange={e => onChange(e)}
-                  />
-                </div>
-
-                <div className='form-group social-input'>
-                  <i className='fab fa-linkedin fa-2x' />
-                  <input
-                    type='text'
-                    placeholder='Linkedin URL'
-                    name='linkedin'
-                    value={linkedin}
-                    onChange={e => onChange(e)}
-                  />
-                </div>
-
-                <div className='form-group social-input'>
-                  <i className='fab fa-instagram fa-2x' />
-                  <input
-                    type='text'
-                    placeholder='Instagram URL'
-                    name='instagram'
-                    value={instagram}
-                    onChange={e => onChange(e)}
-                  />
-                </div>
-              </Fragment>
-            )}
-
-            <input type='submit' className='btn btn-primary my-1' />
-            <Link to='/dashboard' className='btn btn-light my-1'>
-              Go Back
-            </Link>
-          </form>
+          </div>
         </Fragment>
       )}
     </Fragment>
@@ -1016,11 +1383,13 @@ const EditUserdataById = ({
 EditUserdataById.propTypes = {
   editUserdata: PropTypes.func.isRequired,
   getUserdataById: PropTypes.func.isRequired,
-  userdata: PropTypes.object.isRequired
+  userdata: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  userdata: state.userdata
+  userdata: state.userdata,
+  auth: state.auth
 });
 
 export default connect(

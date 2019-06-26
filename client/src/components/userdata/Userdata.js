@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
@@ -7,6 +7,30 @@ import UserdataTop from '../userdata/UserdataTop';
 import CommentForm from '../userdata/CommentForm';
 import CommentItem from '../userdata/CommentItem';
 import RecommUser from '../userdata/RecommUser';
+import {
+  createMuiTheme,
+  withStyles,
+  makeStyles
+} from '@material-ui/core/styles';
+
+import Button from '@material-ui/core/Button';
+import { lightGreen, purple } from '@material-ui/core/colors';
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+    color: lightGreen
+  },
+  input: {
+    display: 'none'
+  }
+}));
+
+const theme = createMuiTheme({
+  palette: {
+    primary: lightGreen
+  }
+});
 
 const Userdata = ({
   getUserdataById,
@@ -17,6 +41,9 @@ const Userdata = ({
   useEffect(() => {
     getUserdataById(match.params.id);
   }, [getUserdataById, match]);
+
+  const [displayRecommendation, toggleRecommendation] = useState(false);
+  const classes = useStyles();
   return (
     <Fragment>
       {userdata === null || loading ? (
@@ -25,7 +52,14 @@ const Userdata = ({
         <Fragment>
           <div>
             <UserdataTop userdata={userdata} />
-            <RecommUser userdata={userdata} />
+            <Button
+              variant='contained'
+              className={classes.button}
+              onClick={() => toggleRecommendation(!displayRecommendation)}
+            >
+              Show Recommendation Details
+            </Button>
+            {displayRecommendation && <RecommUser userdata={userdata} />}
             <CommentForm userdataId={userdata._id} />
             <div className='comments'>
               {userdata.comments.map(comment => (

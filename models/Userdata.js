@@ -65,6 +65,9 @@ const UserdataSchema = new mongoose.Schema({
   doccImage: {
     type: String
   },
+  medicalresult: {
+    type: String
+  },
   postmortem: {
     type: String
   },
@@ -111,6 +114,9 @@ const UserdataSchema = new mongoose.Schema({
     type: Object
   },
   closecase: {
+    type: String
+  },
+  closethecase: {
     type: Boolean,
     default: false
   },

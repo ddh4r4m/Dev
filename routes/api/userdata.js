@@ -40,7 +40,9 @@ const upload = multer({
 var cpUpload = upload.fields([
   { name: 'docImage', maxCount: 1 },
   { name: 'doccImage', maxCount: 1 },
+  { name: 'medicalreport', maxCount: 1 },
   { name: 'postmortem', maxCount: 1 },
+  { name: 'abcSummary', maxCount: 1 },
   { name: 'victimone', maxCount: 1 },
   { name: 'victimtwo', maxCount: 1 },
   { name: 'victimthree', maxCount: 1 },
@@ -61,7 +63,7 @@ router.post(
   [
     auth,
     [
-      check('text', 'Text is required')
+      check('text', 'Serial No is required')
         .not()
         .isEmpty()
     ]
@@ -73,27 +75,74 @@ router.post(
     }
 
     try {
-      console.log(req.body);
+      // console.log(req.body);
       const user = await User.findById(req.user.id).select('-password');
       const newUserdata = new Userdata({
         text: req.body.text,
         year: req.body.year,
-        docImage: req.files['docImage'][0].path,
-        doccImage: req.files['doccImage'][0].path,
-        postmortem: req.files['postmortem'][0].path,
-        abcSummary: req.files['abcSummary'][0].path,
-        victimone: req.files['victimone'][0].path,
-        victimtwo: req.files['victimtwo'][0].path,
-        victimthree: req.files['victimthree'][0].path,
-        victimfour: req.files['victimfour'][0].path,
-        victimfive: req.files['victimfive'][0].path,
-        accusedone: req.files['accusedone'][0].path,
-        accusedtwo: req.files['accusedtwo'][0].path,
-        accusedthree: req.files['accusedthree'][0].path,
-        accusedfour: req.files['accusedfour'][0].path,
-        accusedfive: req.files['accusedfive'][0].path,
+        docImage:
+          req.files['docImage'] == undefined
+            ? ''
+            : req.files['docImage'][0].path,
+        doccImage:
+          req.files['doccImage'] == undefined
+            ? ''
+            : req.files['doccImage'][0].path,
+        postmortem:
+          req.files['postmortem'] == undefined
+            ? ''
+            : req.files['postmortem'][0].path,
+        medicalreport:
+          req.files['medicalreport'] == undefined
+            ? ''
+            : req.files['medicalreport'][0].path,
+        abcSummary:
+          req.files['abcSummary'] == undefined
+            ? ''
+            : req.files['abcSummary'][0].path,
+        victimone:
+          req.files['victimone'] == undefined
+            ? ''
+            : req.files['victimone'][0].path,
+        victimtwo:
+          req.files['victimtwo'] == undefined
+            ? ''
+            : req.files['victimtwo'][0].path,
+        victimthree:
+          req.files['victimthree'] == undefined
+            ? ''
+            : req.files['victimthree'][0].path,
+        victimfour:
+          req.files['victimfour'] == undefined
+            ? ''
+            : req.files['victimfour'][0].path,
+        victimfive:
+          req.files['victimfive'] == undefined
+            ? ''
+            : req.files['victimfive'][0].path,
+        accusedone:
+          req.files['accusedone'] == undefined
+            ? ''
+            : req.files['accusedone'][0].path,
+        accusedtwo:
+          req.files['accusedtwo'] == undefined
+            ? ''
+            : req.files['accusedtwo'][0].path,
+        accusedthree:
+          req.files['accusedthree'] == undefined
+            ? ''
+            : req.files['accusedthree'][0].path,
+        accusedfour:
+          req.files['accusedfour'] == undefined
+            ? ''
+            : req.files['accusedfour'][0].path,
+        accusedfive:
+          req.files['accusedfive'] == undefined
+            ? ''
+            : req.files['accusedfive'][0].path,
         disabledata: req.body.disabledata,
         closecase: req.body.closecase,
+        closethecase: req.body.closethecase,
         typeofatrocity: req.body.typeofatrocity,
         ipcapplied: req.body.ipcapplied,
         sectionsapplied: req.body.sectionsapplied,
@@ -191,6 +240,7 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.year = req.body.year;
       userdata.disabledata = req.body.disabledata;
       userdata.closecase = req.body.closecase;
+      userdata.closethecase = req.body.closethecase;
 
       // console.log(req.files['docImage'] !== undefined);
       if (req.files['docImage'] !== undefined) {
@@ -202,8 +252,11 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       if (req.files['postmortem'] !== undefined) {
         userdata.postmortem = req.files['postmortem'][0].path;
       }
+      if (req.files['medicalreport'] !== undefined) {
+        userdata.medicalreport = req.files['medicalreport'][0].path;
+      }
       if (req.files['abcSummary'] !== undefined) {
-        userdata.doccImage = req.files['abcSummary'][0].path;
+        userdata.abcSummary = req.files['abcSummary'][0].path;
       }
       if (req.files['victimone'] !== undefined) {
         userdata.victimone = req.files['victimone'][0].path;

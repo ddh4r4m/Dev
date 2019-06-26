@@ -772,41 +772,81 @@ export const sectionsopts = [
     extradetails: ''
   },
   {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
+    label: '3(2)(v)(a) 354',
+    value: '3(2)(v)(a)',
+    compensation: 200000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: ''
   },
   {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
+    label: '3(2)(v)(a) 354A',
+    value: '3(2)(v)(a)',
+    compensation: 200000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: ''
   },
   {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
+    label: '3(2)(v)(a) 354B',
+    value: '3(2)(v)(a)',
+    compensation: 200000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: ''
   },
   {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
+    label: '3(2)(v)(a) 354C',
+    value: '3(2)(v)(a)',
+    compensation: 200000,
+    firststage: 0.1,
+    secondstage: 0.5,
+    thirdstage: 0.4,
+    extradetails: ''
   },
   {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
+    label: '3(2)(v)(a) 354D',
+    value: '3(2)(v)(a)',
+    compensation: 200000,
+    firststage: 0.1,
+    secondstage: 0.5,
+    thirdstage: 0.4,
+    extradetails: ''
   },
   {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
+    label: '3(2)(v)(a) 376B',
+    value: '3(2)(v)(a)',
+    compensation: 200000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: ''
   },
   {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
+    label: '3(2)(v)(a) 376C',
+    value: '3(2)(v)(a)',
+    compensation: 400000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: ''
   },
   {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
+    label: '3(2)(v)(a) 509',
+    value: '3(2)(v)(a)',
+    compensation: 200000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: ''
   },
-  {
-    label: '3(2)(v)(a)',
-    value: '3(2)(v)(a)'
-  },
+  // {
+  //   label: '3(2)(v)(a)',
+  //   value: '3(2)(v)(a)'
+  // },
   {
     label: '3(1)(x)',
     value: '3(1)(x)',
@@ -977,6 +1017,34 @@ export const options = [
     extradetails:
       'In addition to relief amounts paid under above items, relief may be arranged within three months of date of atrocity as follows:- (i) Basic Pension to the widow or other dependents of deceased persons belonging to a Scheduled Caste or a Scheduled Tribe amounting to five thousand rupees per month, as applicable to a Government servant of the concerned State Government or Union territory Administration, with admissible dearness allowance and employment to one member of the family of the deceased, and provision of agricultural land, an house, if necessary by outright purchase; (ii) Full cost of the education up to graduation level and maintenance of the children of the victims. Children may be admitted to Ashram schools or residential schools, fully funded by the Government; (iii) Provision of utensils, rice, wheat, dals, pulses, etc., for a period of three months. '
   },
+  {
+    value: '3(2)(va) 326B',
+    label: 'Acid Burns only on body and less than 10%',
+    compensation: 80000,
+    firststage: 0.5,
+    secondstage: 0.5,
+    thirdstage: 0,
+    extradetails: ''
+  },
+  {
+    value: '3(2)(va) 326B',
+    label: 'Acid Burns only on body and between 10% to 30%',
+    compensation: 415000,
+    firststage: 0.5,
+    secondstage: 0.5,
+    thirdstage: 0,
+    extradetails: ''
+  },
+  {
+    value: '3(2)(va) 326B',
+    label: 'Acid Burns exceeding on body 30% and on face exceeding 2%',
+    compensation: 825000,
+    firststage: 0.5,
+    secondstage: 0.5,
+    thirdstage: 0,
+    extradetails: ''
+  },
+
   {
     value: 'permanentIncapacitation100',
     label: 'Permanent Incapacitation 100%',

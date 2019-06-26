@@ -47,7 +47,7 @@ const App = () => {
             <Alert />
             <Switch>
               <Route exact path='/login' component={Login} />
-              <PrivateRoute exact path='/register' component={Register} />
+              <Route exact path='/register' component={Register} />
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/usersdata' component={Usersdata} />
               <PrivateRoute

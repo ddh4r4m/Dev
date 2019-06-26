@@ -77,10 +77,15 @@ export const editUserdata = (
     const config = {
       headers: {
         // 'Content-Type': 'application/json'
+      },
+      onUploadProgress: progressEvent => {
+        var up = (progressEvent.loaded * 100) / progressEvent.total;
+        console.log((progressEvent.loaded * 100) / progressEvent.total);
       }
     };
 
     const res = await axios.put(`/api/userdata/${userId}`, formData, config);
+    // dispatch(up, 'success');
 
     dispatch({
       type: GET_USERDATA,

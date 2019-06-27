@@ -7,7 +7,7 @@ import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
 import './table.css';
 
-const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
+const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   useEffect(() => {
     getUsersdata();
   }, [getUsersdata]);
@@ -35,15 +35,12 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     //add more filter using &&
     if (date4 >= date5) {
       return (
-        usersdata.firstbenefitbypolice
+        usersdata.secondbenefitbypolice
           .toLowerCase()
           .indexOf(search1.toLowerCase()) === -1 &&
-        usersdata.firstbenefitbypolice
+        usersdata.firstbenefitbycomm
           .toLowerCase()
-          .indexOf(search2.toLowerCase()) === -1 &&
-        usersdata.firstbenefitbypolice
-          .toLowerCase()
-          .indexOf(search2.toLowerCase()) === -1
+          .indexOf(search2.toLowerCase()) !== -1
       );
     }
     //  return (
@@ -111,7 +108,7 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   );
 };
 
-UsersdataStone.propTypes = {
+UsersdataPPtwo.propTypes = {
   getUsersdata: PropTypes.func.isRequired,
   userdata: PropTypes.object.isRequired
 };
@@ -122,4 +119,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getUsersdata }
-)(UsersdataStone);
+)(UsersdataPPtwo);

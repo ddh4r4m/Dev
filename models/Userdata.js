@@ -141,10 +141,19 @@ const UserdataSchema = new mongoose.Schema({
   firstbenefitbypolice: {
     type: String
   },
+  firstbenefitbypolicedate: {
+    type: String
+  },
   firstbenefitbycommis: {
     type: String
   },
+  firstbenefitbycommisdate: {
+    type: String
+  },
   firstbenefitbycollector: {
+    type: String
+  },
+  firstbenefitbycollectordate: {
     type: String
   },
   firstbenefitbypolicecomment: {
@@ -159,10 +168,19 @@ const UserdataSchema = new mongoose.Schema({
   secondbenefitbypolice: {
     type: String
   },
+  secondbenefitbypolicedate: {
+    type: String
+  },
   secondbenefitbycommis: {
     type: String
   },
+  secondbenefitbycommisdate: {
+    type: String
+  },
   secondbenefitbycollector: {
+    type: String
+  },
+  secondbenefitbycollectordate: {
     type: String
   },
   secondbenefitbypolicecomment: {
@@ -177,10 +195,19 @@ const UserdataSchema = new mongoose.Schema({
   thirdbenefitbypolice: {
     type: String
   },
+  thirdbenefitbypolicedate: {
+    type: String
+  },
   thirdbenefitbycommis: {
     type: String
   },
+  thirdbenefitbycommisdate: {
+    type: String
+  },
   thirdbenefitbycollector: {
+    type: String
+  },
+  thirdbenefitbycollectordate: {
     type: String
   },
   thirdbenefitbypolicecomment: {

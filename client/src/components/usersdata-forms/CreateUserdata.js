@@ -43,18 +43,27 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     firstbenefitbypolice: '',
     firstbenefitbycommis: '',
     firstbenefitbycollector: '',
+    firstbenefitbypolicedate: '',
+    firstbenefitbycommisdate: '',
+    firstbenefitbycollectordate: '',
     firstbenefitbypolicecomment: '',
     firstbenefitbycommcomment: '',
     firstbenefitbycollectorcomment: '',
     secondbenefitbypolice: '',
     secondbenefitbycommis: '',
     secondbenefitbycollector: '',
+    secondbenefitbypolicedate: '',
+    secondbenefitbycommisdate: '',
+    secondbenefitbycollectordate: '',
     secondbenefitbypolicecomment: '',
     secondbenefitbycommcomment: '',
     secondbenefitbycollectorcomment: '',
     thirdbenefitbypolice: '',
     thirdbenefitbycommis: '',
     thirdbenefitbycollector: '',
+    thirdbenefitbypolicedate: '',
+    thirdbenefitbycommisdate: '',
+    thirdbenefitbycollectordate: '',
     thirdbenefitbypolicecomment: '',
     thirdbenefitbycommcomment: '',
     thirdbenefitbycollectorcomment: '',
@@ -109,18 +118,27 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     firstbenefitbypolice,
     firstbenefitbycommis,
     firstbenefitbycollector,
+    firstbenefitbypolicedate,
+    firstbenefitbycommisdate,
+    firstbenefitbycollectordate,
     firstbenefitbypolicecomment,
     firstbenefitbycommcomment,
     firstbenefitbycollectorcomment,
     secondbenefitbypolice,
     secondbenefitbycommis,
     secondbenefitbycollector,
+    secondbenefitbypolicedate,
+    secondbenefitbycommisdate,
+    secondbenefitbycollectordate,
     secondbenefitbypolicecomment,
     secondbenefitbycommcomment,
     secondbenefitbycollectorcomment,
     thirdbenefitbypolice,
     thirdbenefitbycommis,
     thirdbenefitbycollector,
+    thirdbenefitbypolicedate,
+    thirdbenefitbycommisdate,
+    thirdbenefitbycollectordate,
     thirdbenefitbypolicecomment,
     thirdbenefitbycommcomment,
     thirdbenefitbycollectorcomment,
@@ -190,6 +208,27 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     formDataa.append('victimdetails', victimdetails);
     formDataa.append('natureofcrime', natureofcrime);
     formDataa.append('firstbenefitbypolice', firstbenefitbypolice);
+    if (firstbenefitbypolice !== '' && firstbenefitbypolicedate === '') {
+      const date = new Date();
+      formDataa.append('firstbenefitbypolicedate', date);
+    } else {
+      formDataa.append('firstbenefitbypolicedate', firstbenefitbypolicedate);
+    }
+    if (firstbenefitbycommis !== '' && firstbenefitbycommisdate === '') {
+      const date = new Date();
+      formDataa.append('firstbenefitbycommisdate', date);
+    } else {
+      formDataa.append('firstbenefitbycommisdate', firstbenefitbycommisdate);
+    }
+    if (firstbenefitbycollector !== '' && firstbenefitbycollectordate === '') {
+      const date = new Date();
+      formDataa.append('firstbenefitbycollectordate', date);
+    } else {
+      formDataa.append(
+        'firstbenefitbycollectordate',
+        firstbenefitbycollectordate
+      );
+    }
     formDataa.append('firstbenefitbycommis', firstbenefitbycommis);
     formDataa.append('firstbenefitbycollector', firstbenefitbycollector);
     formDataa.append(
@@ -201,6 +240,30 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
       'firstbenefitbycollectorcomment',
       firstbenefitbycollectorcomment
     );
+    if (secondbenefitbypolice !== '' && secondbenefitbypolicedate === '') {
+      const date = new Date();
+      formDataa.append('secondbenefitbypolicedate', date);
+    } else {
+      formDataa.append('secondbenefitbypolicedate', secondbenefitbypolicedate);
+    }
+    if (secondbenefitbycommis !== '' && secondbenefitbycommisdate === '') {
+      const date = new Date();
+      formDataa.append('secondbenefitbycommisdate', date);
+    } else {
+      formDataa.append('secondbenefitbycommisdate', secondbenefitbycommisdate);
+    }
+    if (
+      secondbenefitbycollector !== '' &&
+      secondbenefitbycollectordate === ''
+    ) {
+      const date = new Date();
+      formDataa.append('secondbenefitbycollectordate', date);
+    } else {
+      formDataa.append(
+        'secondbenefitbycollectordate',
+        secondbenefitbycollectordate
+      );
+    }
     formDataa.append('secondbenefitbypolice', secondbenefitbypolice);
     formDataa.append('secondbenefitbycommis', secondbenefitbycommis);
     formDataa.append('secondbenefitbycollector', secondbenefitbycollector);
@@ -213,6 +276,27 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
       'secondbenefitbycollectorcomment',
       secondbenefitbycollectorcomment
     );
+    if (thirdbenefitbypolice !== '' && thirdbenefitbypolicedate === '') {
+      const date = new Date();
+      formDataa.append('thirdbenefitbypolicedate', date);
+    } else {
+      formDataa.append('thirdbenefitbypolicedate', thirdbenefitbypolicedate);
+    }
+    if (thirdbenefitbycommis !== '' && thirdbenefitbycommisdate === '') {
+      const date = new Date();
+      formDataa.append('thirdbenefitbycommisdate', date);
+    } else {
+      formDataa.append('thirdbenefitbycommisdate', thirdbenefitbycommisdate);
+    }
+    if (thirdbenefitbycollector !== '' && thirdbenefitbycollectordate === '') {
+      const date = new Date();
+      formDataa.append('thirdbenefitbycollectordate', date);
+    } else {
+      formDataa.append(
+        'thirdbenefitbycollectordate',
+        thirdbenefitbycollectordate
+      );
+    }
     formDataa.append('thirdbenefitbypolice', thirdbenefitbypolice);
     formDataa.append('thirdbenefitbycommis', thirdbenefitbycommis);
     formDataa.append('thirdbenefitbycollector', thirdbenefitbycollector);

@@ -7,7 +7,7 @@ import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
 import './table.css';
 
-const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
+const UsersdataPCtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   useEffect(() => {
     getUsersdata();
   }, [getUsersdata]);
@@ -20,8 +20,8 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   });
 
   const date3 = new Date();
-  //create a date before 60 days = 5184000000 in milliseconds
-  const date5 = new Date(date3 - 5184000000);
+  //create a date before 7 days = 604800000 in milliseconds
+  const date5 = new Date(date3 - 604800000);
 
   const { search, search1, search2, serach3 } = formData;
 
@@ -111,7 +111,7 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   );
 };
 
-UsersdataStone.propTypes = {
+UsersdataPCtwo.propTypes = {
   getUsersdata: PropTypes.func.isRequired,
   userdata: PropTypes.object.isRequired
 };
@@ -122,4 +122,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getUsersdata }
-)(UsersdataStone);
+)(UsersdataPCtwo);

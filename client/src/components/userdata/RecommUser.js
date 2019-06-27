@@ -16,6 +16,12 @@ const RecommUser = ({ userdata: { sectionsapplied, typeofatrocity } }) => {
       secttion = patro.label;
     }
   });
+  arrr.map((aatro, i) => {
+    if (aatro.compensation > maxCompensation) {
+      maxCompensation = aatro.compensation;
+      secttion = aatro.label;
+    }
+  });
 
   // console.log(secttion);
 

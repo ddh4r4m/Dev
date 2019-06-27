@@ -35,8 +35,15 @@ const DashboardActions = () => {
       </Link>
       <Link to='/usersdata'>
         <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> ADD SOCIAL
+          <i className='fas fa-graduation-cap text-primary' /> EDIT/VIEW SOCIAL
           WELFARE DATA
+        </Button>
+      </Link>
+      <br />
+      <Link to='/usersdatastone'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES :
+          60 Days POLICE
         </Button>
       </Link>
     </div>

@@ -151,21 +151,30 @@ router.post(
         dateofcrime: req.body.dateofcrime,
         regdateofcrime: req.body.regdateofcrime,
         firstbenefitbypolice: req.body.firstbenefitbypolice,
+        firstbenefitbypolicedate: req.body.firstbenefitbypolicedate,
         firstbenefitbycommis: req.body.firstbenefitbycommis,
+        firstbenefitbycommisdate: req.body.firstbenefitbycommisdate,
         firstbenefitbycollector: req.body.firstbenefitbycollector,
+        firstbenefitbycollectordate: req.body.firstbenefitbycollectordate,
         firstbenefitbypolicecomment: req.body.firstbenefitbypolicecomment,
         firstbenefitbycommcomment: req.body.firstbenefitbycommcomment,
         firstbenefitbycollectorcomment: req.body.firstbenefitbycollectorcomment,
         secondbenefitbypolice: req.body.secondbenefitbypolice,
+        secondbenefitbypolicedate: req.body.secondbenefitbypolicedate,
         secondbenefitbycommis: req.body.secondbenefitbycommis,
+        secondbenefitbycommisdate: req.body.secondbenefitbycommisdate,
         secondbenefitbycollector: req.body.secondbenefitbycollector,
+        secondbenefitbycollectordate: req.body.secondbenefitbycollectordate,
         secondbenefitbypolicecomment: req.body.secondbenefitbypolicecomment,
         secondbenefitbycommcomment: req.body.secondbenefitbycommcomment,
         secondbenefitbycollectorcomment:
           req.body.secondbenefitbycollectorcomment,
         thirdbenefitbypolice: req.body.thirdbenefitbypolice,
+        thirdbenefitbypolicedate: req.body.thirdbenefitbypolicedate,
         thirdbenefitbycommis: req.body.thirdbenefitbycommis,
+        thirdbenefitbycommisdate: req.body.thirdbenefitbycommisdate,
         thirdbenefitbycollector: req.body.thirdbenefitbycollector,
+        thirdbenefitbycollectordate: req.body.thirdbenefitbycollectordate,
         thirdbenefitbypolicecomment: req.body.thirdbenefitbypolicecomment,
         thirdbenefitbycommcomment: req.body.thirdbenefitbycommcomment,
         thirdbenefitbycollectorcomment: req.body.thirdbenefitbycollectorcomment,
@@ -311,24 +320,36 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.dateofcrime = req.body.dateofcrime;
       userdata.regdateofcrime = req.body.regdateofcrime;
       userdata.firstbenefitbypolice = req.body.firstbenefitbypolice;
+      userdata.firstbenefitbypolicedate = req.body.firstbenefitbypolicedate;
       userdata.firstbenefitbycommis = req.body.firstbenefitbycommis;
+      userdata.firstbenefitbycommisdate = req.body.firstbenefitbycommisdate;
       userdata.firstbenefitbycollector = req.body.firstbenefitbycollector;
+      userdata.firstbenefitbycollectordate =
+        req.body.firstbenefitbycollectordate;
       userdata.firstbenefitbypolicecomment =
         req.body.firstbenefitbypolicecomment;
       userdata.firstbenefitbycommcomment = req.body.firstbenefitbycommcomment;
       userdata.firstbenefitbycollectorcomment =
         req.body.firstbenefitbycollectorcomment;
       userdata.secondbenefitbypolice = req.body.secondbenefitbypolice;
+      userdata.secondbenefitbypolicedate = req.body.secondbenefitbypolicedate;
       userdata.secondbenefitbycommis = req.body.secondbenefitbycommis;
+      userdata.secondbenefitbycommisdate = req.body.secondbenefitbycommisdate;
       userdata.secondbenefitbycollector = req.body.secondbenefitbycollector;
+      userdata.secondbenefitbycollectordate =
+        req.body.secondbenefitbycollectordate;
       userdata.secondbenefitbypolicecomment =
         req.body.secondbenefitbypolicecomment;
       userdata.secondbenefitbycommcomment = req.body.secondbenefitbycommcomment;
       userdata.secondbenefitbycollectorcomment =
         req.body.secondbenefitbycollectorcomment;
       userdata.thirdbenefitbypolice = req.body.thirdbenefitbypolice;
+      userdata.thirdbenefitbypolicedate = req.body.thirdbenefitbypolicedate;
       userdata.thirdbenefitbycommis = req.body.thirdbenefitbycommis;
+      userdata.thirdbenefitbycommisdate = req.body.thirdbenefitbycommisdate;
       userdata.thirdbenefitbycollector = req.body.thirdbenefitbycollector;
+      userdata.thirdbenefitbycollectordate =
+        req.body.thirdbenefitbycollectordate;
       userdata.thirdbenefitbypolicecomment =
         req.body.thirdbenefitbypolicecomment;
       userdata.thirdbenefitbycommcomment = req.body.thirdbenefitbycommcomment;

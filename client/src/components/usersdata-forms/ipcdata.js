@@ -566,7 +566,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(b)',
@@ -575,7 +575,7 @@ export const sectionsopts = [
     firststage: 0.1,
     secondstage: 0.5,
     thirdstage: 0.4,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(c)',
@@ -584,7 +584,7 @@ export const sectionsopts = [
     firststage: 0.1,
     secondstage: 0.5,
     thirdstage: 0.4,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(d)',
@@ -593,7 +593,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(e)',
@@ -602,7 +602,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(f)',
@@ -631,7 +631,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(i)',
@@ -640,7 +640,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(j)',
@@ -649,7 +649,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(k)',
@@ -658,7 +658,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(l)',
@@ -667,7 +667,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(m)',
@@ -676,7 +676,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(n)',
@@ -685,7 +685,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(o)',
@@ -694,7 +694,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(p)',
@@ -723,7 +723,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(s)',
@@ -732,7 +732,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
 
   {
@@ -742,7 +742,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(u)',
@@ -751,7 +751,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(v)',
@@ -760,7 +760,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(1)(w)',
@@ -769,7 +769,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(v)(a) 354',
@@ -778,7 +778,7 @@ export const sectionsopts = [
     firststage: 0.5,
     secondstage: 0.25,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(v)(a) 354A',
@@ -787,7 +787,7 @@ export const sectionsopts = [
     firststage: 0.5,
     secondstage: 0.25,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(v)(a) 354B',
@@ -796,7 +796,7 @@ export const sectionsopts = [
     firststage: 0.5,
     secondstage: 0.25,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(v)(a) 354C',
@@ -805,7 +805,7 @@ export const sectionsopts = [
     firststage: 0.1,
     secondstage: 0.5,
     thirdstage: 0.4,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(v)(a) 354D',
@@ -814,7 +814,7 @@ export const sectionsopts = [
     firststage: 0.1,
     secondstage: 0.5,
     thirdstage: 0.4,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(v)(a) 376B',
@@ -823,7 +823,7 @@ export const sectionsopts = [
     firststage: 0.5,
     secondstage: 0.25,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(v)(a) 376C',
@@ -832,7 +832,7 @@ export const sectionsopts = [
     firststage: 0.5,
     secondstage: 0.25,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(v)(a) 509',
@@ -841,7 +841,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   // {
   //   label: '3(2)(v)(a)',
@@ -954,7 +954,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)',
@@ -973,7 +973,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     label: '3(2)(vii)',
@@ -982,7 +982,7 @@ export const sectionsopts = [
     firststage: 0.25,
     secondstage: 0.5,
     thirdstage: 0.25,
-    extradetails: ''
+    extradetails: '-'
   }
 ];
 
@@ -1024,7 +1024,7 @@ export const options = [
     firststage: 0.5,
     secondstage: 0.5,
     thirdstage: 0,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     value: '3(2)(va) 326B',
@@ -1033,7 +1033,7 @@ export const options = [
     firststage: 0.5,
     secondstage: 0.5,
     thirdstage: 0,
-    extradetails: ''
+    extradetails: '-'
   },
   {
     value: '3(2)(va) 326B',
@@ -1042,7 +1042,7 @@ export const options = [
     firststage: 0.5,
     secondstage: 0.5,
     thirdstage: 0,
-    extradetails: ''
+    extradetails: '-'
   },
 
   {

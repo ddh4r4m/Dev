@@ -40,6 +40,7 @@ const upload = multer({
 var cpUpload = upload.fields([
   { name: 'docImage', maxCount: 1 },
   { name: 'doccImage', maxCount: 1 },
+  { name: 'courtorder', maxCount: 1 },
   { name: 'medicalreport', maxCount: 1 },
   { name: 'postmortem', maxCount: 1 },
   { name: 'abcSummary', maxCount: 1 },
@@ -48,11 +49,17 @@ var cpUpload = upload.fields([
   { name: 'victimthree', maxCount: 1 },
   { name: 'victimfour', maxCount: 1 },
   { name: 'victimfive', maxCount: 1 },
+  { name: 'victimsix', maxCount: 1 },
+  { name: 'victimseven', maxCount: 1 },
+  { name: 'victimeight', maxCount: 1 },
   { name: 'accusedone', maxCount: 1 },
   { name: 'accusedtwo', maxCount: 1 },
   { name: 'accusedthree', maxCount: 1 },
   { name: 'accusedfour', maxCount: 1 },
-  { name: 'accusedfive', maxCount: 1 }
+  { name: 'accusedfive', maxCount: 1 },
+  { name: 'accusedsix', maxCount: 1 },
+  { name: 'accusedseven', maxCount: 1 },
+  { name: 'accusedeight', maxCount: 1 }
 ]);
 //@route    POST api/posts
 //@desc     Create a post
@@ -88,6 +95,10 @@ router.post(
           req.files['doccImage'] == undefined
             ? ''
             : req.files['doccImage'][0].path,
+        courtorder:
+          req.files['courtorder'] == undefined
+            ? ''
+            : req.files['courtorder'][0].path,
         postmortem:
           req.files['postmortem'] == undefined
             ? ''
@@ -120,6 +131,18 @@ router.post(
           req.files['victimfive'] == undefined
             ? ''
             : req.files['victimfive'][0].path,
+        victimsix:
+          req.files['victimsix'] == undefined
+            ? ''
+            : req.files['victimsix'][0].path,
+        victimseven:
+          req.files['victimseven'] == undefined
+            ? ''
+            : req.files['victimseven'][0].path,
+        victimeight:
+          req.files['victimeight'] == undefined
+            ? ''
+            : req.files['victimeight'][0].path,
         accusedone:
           req.files['accusedone'] == undefined
             ? ''
@@ -140,16 +163,51 @@ router.post(
           req.files['accusedfive'] == undefined
             ? ''
             : req.files['accusedfive'][0].path,
+        accusedsix:
+          req.files['accusedsix'] == undefined
+            ? ''
+            : req.files['accusedsix'][0].path,
+        accusedseven:
+          req.files['accusedseven'] == undefined
+            ? ''
+            : req.files['accusedseven'][0].path,
+        accusedeight:
+          req.files['accusedeight'] == undefined
+            ? ''
+            : req.files['accusedeight'][0].path,
         disabledata: req.body.disabledata,
+        sectionschanged: req.body.sectionschanged,
         closecase: req.body.closecase,
         closethecase: req.body.closethecase,
+        stagetwochange: req.body.stagetwochange,
         typeofatrocity: req.body.typeofatrocity,
         ipcapplied: req.body.ipcapplied,
         sectionsapplied: req.body.sectionsapplied,
+        typeofatrocityv2: req.body.typeofatrocityv2,
+        ipcappliedv2: req.body.ipcappliedv2,
+        sectionsappliedv2: req.body.sectionsappliedv2,
         policestation: req.body.policestation,
         crimeregisterno: req.body.crimeregisterno,
         dateofcrime: req.body.dateofcrime,
         regdateofcrime: req.body.regdateofcrime,
+        benefitsgivenbyACI: req.body.benefitsgivenbyACI,
+        benefitsgivenbyACII: req.body.benefitsgivenbyACII,
+        benefitsgivenbyACIII: req.body.benefitsgivenbyACIII,
+        isbenefitsgivenbyACI: req.body.isbenefitsgivenbyACI,
+        isbenefitsgivenbyACII: req.body.isbenefitsgivenbyACII,
+        isbenefitsgivenbyACIII: req.body.isbenefitsgivenbyACIII,
+        monetarycompbyDCI: req.body.monetarycompbyDCI,
+        monetarycompbyDCII: req.body.monetarycompbyDCII,
+        monetarycompbyDCIII: req.body.monetarycompbyDCIII,
+        otherbenefitycompbyDCI: req.body.otherbenefitycompbyDCI,
+        otherbenefitycompbyDCII: req.body.otherbenefitycompbyDCII,
+        otherbenefitycompbyDCIII: req.body.otherbenefitycompbyDCIII,
+        monetarycompbyACI: req.body.monetarycompbyACI,
+        monetarycompbyACII: req.body.monetarycompbyACII,
+        monetarycompbyACIII: req.body.monetarycompbyACIII,
+        otherbenefitycompbyACI: req.body.otherbenefitycompbyACI,
+        otherbenefitycompbyACII: req.body.otherbenefitycompbyACII,
+        otherbenefitycompbyACIII: req.body.otherbenefitycompbyACIII,
         firstbenefitbypolice: req.body.firstbenefitbypolice,
         firstbenefitbypolicedate: req.body.firstbenefitbypolicedate,
         firstbenefitbycommis: req.body.firstbenefitbycommis,
@@ -250,6 +308,8 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.disabledata = req.body.disabledata;
       userdata.closecase = req.body.closecase;
       userdata.closethecase = req.body.closethecase;
+      userdata.sectionschanged = req.body.sectionschanged;
+      userdata.stagetwochange = req.body.stagetwochange;
 
       // console.log(req.files['docImage'] !== undefined);
       if (req.files['docImage'] !== undefined) {
@@ -257,6 +317,9 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       }
       if (req.files['doccImage'] !== undefined) {
         userdata.doccImage = req.files['doccImage'][0].path;
+      }
+      if (req.files['courtorder'] !== undefined) {
+        userdata.courtorder = req.files['courtorder'][0].path;
       }
       if (req.files['postmortem'] !== undefined) {
         userdata.postmortem = req.files['postmortem'][0].path;
@@ -282,6 +345,15 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       if (req.files['victimfive'] !== undefined) {
         userdata.victimfive = req.files['victimfive'][0].path;
       }
+      if (req.files['victimsix'] !== undefined) {
+        userdata.victimsix = req.files['victimsix'][0].path;
+      }
+      if (req.files['victimseven'] !== undefined) {
+        userdata.victimseven = req.files['victimseven'][0].path;
+      }
+      if (req.files['victimeight'] !== undefined) {
+        userdata.victimeight = req.files['victimeight'][0].path;
+      }
       if (req.files['accusedone'] !== undefined) {
         userdata.accusedone = req.files['accusedone'][0].path;
       }
@@ -296,6 +368,15 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       }
       if (req.files['accusedfive'] !== undefined) {
         userdata.accusedfive = req.files['accusedfive'][0].path;
+      }
+      if (req.files['accusedsix'] !== undefined) {
+        userdata.accusedsix = req.files['accusedsix'][0].path;
+      }
+      if (req.files['accusedseven'] !== undefined) {
+        userdata.accusedseven = req.files['accusedseven'][0].path;
+      }
+      if (req.files['accusedeight'] !== undefined) {
+        userdata.accusedeight = req.files['accusedeight'][0].path;
       }
 
       // if (!req.files) {
@@ -315,10 +396,31 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.typeofatrocity = req.body.typeofatrocity;
       userdata.ipcapplied = req.body.ipcapplied;
       userdata.sectionsapplied = req.body.sectionsapplied;
+      userdata.typeofatrocityv2 = req.body.typeofatrocityv2;
+      userdata.ipcappliedv2 = req.body.ipcappliedv2;
+      userdata.sectionsappliedv2 = req.body.sectionsappliedv2;
       userdata.policestation = req.body.policestation;
       userdata.crimeregisterno = req.body.crimeregisterno;
       userdata.dateofcrime = req.body.dateofcrime;
       userdata.regdateofcrime = req.body.regdateofcrime;
+      userdata.benefitsgivenbyACI = req.body.benefitsgivenbyACI;
+      userdata.benefitsgivenbyACII = req.body.benefitsgivenbyACII;
+      userdata.benefitsgivenbyACIII = req.body.benefitsgivenbyACIII;
+      userdata.isbenefitsgivenbyACI = req.body.isbenefitsgivenbyACI;
+      userdata.isbenefitsgivenbyACII = req.body.isbenefitsgivenbyACII;
+      userdata.isbenefitsgivenbyACIII = req.body.isbenefitsgivenbyACIII;
+      userdata.monetarycompbyDCI = req.body.monetarycompbyDCI;
+      userdata.monetarycompbyDCII = req.body.monetarycompbyDCII;
+      userdata.monetarycompbyDCIII = req.body.monetarycompbyDCIII;
+      userdata.otherbenefitycompbyDCI = req.body.otherbenefitycompbyDCI;
+      userdata.otherbenefitycompbyDCII = req.body.otherbenefitycompbyDCII;
+      userdata.otherbenefitycompbyDCIII = req.body.otherbenefitycompbyDCIII;
+      userdata.monetarycompbyACI = req.body.monetarycompbyACI;
+      userdata.monetarycompbyACII = req.body.monetarycompbyACII;
+      userdata.monetarycompbyACIII = req.body.monetarycompbyACIII;
+      userdata.otherbenefitycompbyACI = req.body.otherbenefitycompbyACI;
+      userdata.otherbenefitycompbyACII = req.body.otherbenefitycompbyACII;
+      userdata.otherbenefitycompbyACIII = req.body.otherbenefitycompbyACIII;
       userdata.firstbenefitbypolice = req.body.firstbenefitbypolice;
       userdata.firstbenefitbypolicedate = req.body.firstbenefitbypolicedate;
       userdata.firstbenefitbycommis = req.body.firstbenefitbycommis;

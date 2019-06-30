@@ -77,6 +77,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
               <th>Register No.</th>
               <th>Nature </th>
               <th>Button </th>
+              <th>Button </th>
             </tr>
           </thead>
           <tbody>

@@ -47,16 +47,22 @@ const Dashboard = ({
           <img className='square' alt='circle' src={square} />
           <img className='triangle' alt='circle' src={triangle} />
           <h1 className='large text-primary'>Welcome {user && user.name}</h1>
-          <Link to='/create-profile'>
-            <Button
-              variant='contained'
-              color='secondary'
-              className={classes.button}
-            >
-              CREATE PROFILE
-            </Button>
-          </Link>
-          <DashboardActions />
+
+          {profile === null ? (
+            <Fragment>
+              <Link to='/create-profile'>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  className={classes.button}
+                >
+                  CREATE PROFILE
+                </Button>
+              </Link>
+            </Fragment>
+          ) : (
+            <DashboardActions />
+          )}
         </div>
       </div>
     </Fragment>

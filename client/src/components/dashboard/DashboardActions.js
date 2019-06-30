@@ -42,8 +42,47 @@ const DashboardActions = () => {
       <br />
       <Link to='/usersdatastone'>
         <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> NO ACTION : 60
+          Days POLICE
+        </Button>
+      </Link>
+      {/* <Link to='/usersdatasttwo'>
+        <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES :
           60 Days POLICE
+        </Button>
+      </Link> */}
+      <br />
+      <Link to='/usersdatapcone'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES I:
+          Asst. Comm.
+        </Button>
+      </Link>
+      <Link to='/usersdatapctwo'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES II:
+          Asst. Comm.
+        </Button>
+      </Link>
+      <br />
+      <Link to='/usersdatappone'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES I:
+          60 Days POLICE
+        </Button>
+      </Link>
+      <Link to='/usersdatapptwo'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES II:
+          60 Days POLICE
+        </Button>
+      </Link>
+      <br />
+      <Link to='/usersdatappthree'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES
+          III: 60 Days POLICE
         </Button>
       </Link>
     </div>

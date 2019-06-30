@@ -37,7 +37,7 @@ const UsersdataPPone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
       return (
         usersdata.firstbenefitbypolice
           .toLowerCase()
-          .indexOf(search1.toLowerCase()) !== -1
+          .indexOf(search1.toLowerCase()) === -1
       );
     }
     //  return (

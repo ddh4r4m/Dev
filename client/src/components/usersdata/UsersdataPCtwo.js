@@ -23,27 +23,22 @@ const UsersdataPCtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   //create a date before 7 days = 604800000 in milliseconds
   const date5 = new Date(date3 - 604800000);
 
-  const { search, search1, search2, serach3 } = formData;
+  const { search, search1, search2, search3 } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const filtereddata = usersdata.filter(usersdata => {
+    //change date to firstdecisionbycommdate
     const date4 = new Date(usersdata.date);
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&
     if (date4 >= date5) {
       return (
-        usersdata.firstbenefitbypolice
+        usersdata.secondbenefitbycomm
           .toLowerCase()
-          .indexOf(search1.toLowerCase()) === -1 &&
-        usersdata.firstbenefitbypolice
-          .toLowerCase()
-          .indexOf(search2.toLowerCase()) === -1 &&
-        usersdata.firstbenefitbypolice
-          .toLowerCase()
-          .indexOf(search2.toLowerCase()) === -1
+          .indexOf(search1.toLowerCase()) !== -1
       );
     }
     //  return (

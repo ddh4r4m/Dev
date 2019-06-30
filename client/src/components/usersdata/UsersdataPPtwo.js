@@ -23,7 +23,7 @@ const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   //create a date before 60 days = 5184000000 in milliseconds
   const date5 = new Date(date3 - 5184000000);
 
-  const { search, search1, search2, serach3 } = formData;
+  const { search, search1, search2, search3 } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,10 +37,10 @@ const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
       return (
         usersdata.secondbenefitbypolice
           .toLowerCase()
-          .indexOf(search1.toLowerCase()) === -1 &&
-        usersdata.firstbenefitbycomm
+          .indexOf(search1.toLowerCase()) !== -1 &&
+        usersdata.firstbenefitbycollector
           .toLowerCase()
-          .indexOf(search2.toLowerCase()) !== -1
+          .indexOf(search2.toLowerCase()) === -1
       );
     }
     //  return (

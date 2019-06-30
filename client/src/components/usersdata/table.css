@@ -32,7 +32,7 @@ h2 {
   border-collapse: collapse;
   width: 100%;
   max-width: 100%;
-  white-space: nowrap;
+  white-space: normal;
   background-color: rgb(240, 239, 239);
 }
 
@@ -43,6 +43,7 @@ h2 {
 }
 
 .fl-table td {
+  max-width: 200px;
   border-right: 1px solid #f8f8f8;
   font-size: 12px;
 }

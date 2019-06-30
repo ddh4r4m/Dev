@@ -41,27 +41,27 @@ const EditUserdataById = ({
     regdateofcrime: '',
     victimdetails: '',
     natureofcrime: '',
-    firstbenefitbypolice: '',
-    firstbenefitbycommis: '',
-    firstbenefitbycollector: '',
+    firstbenefitbypolice: 'pending',
+    firstbenefitbycommis: 'pending',
+    firstbenefitbycollector: 'pending',
     firstbenefitbypolicedate: '',
     firstbenefitbycommisdate: '',
     firstbenefitbycollectordate: '',
     firstbenefitbypolicecomment: '',
     firstbenefitbycommcomment: '',
     firstbenefitbycollectorcomment: '',
-    secondbenefitbypolice: '',
-    secondbenefitbycommis: '',
-    secondbenefitbycollector: '',
+    secondbenefitbypolice: 'pending',
+    secondbenefitbycommis: 'pending',
+    secondbenefitbycollector: 'pending',
     secondbenefitbypolicedate: '',
     secondbenefitbycommisdate: '',
     secondbenefitbycollectordate: '',
     secondbenefitbypolicecomment: '',
     secondbenefitbycommcomment: '',
     secondbenefitbycollectorcomment: '',
-    thirdbenefitbypolice: '',
-    thirdbenefitbycommis: '',
-    thirdbenefitbycollector: '',
+    thirdbenefitbypolice: 'pending',
+    thirdbenefitbycommis: 'pending',
+    thirdbenefitbycollector: 'pending',
     thirdbenefitbypolicedate: '',
     thirdbenefitbycommisdate: '',
     thirdbenefitbycollectordate: '',
@@ -125,15 +125,15 @@ const EditUserdataById = ({
         loading || !userdata.victimdetails ? '' : userdata.victimdetails,
       firstbenefitbypolice:
         loading || !userdata.firstbenefitbypolice
-          ? ''
+          ? 'pending'
           : userdata.firstbenefitbypolice,
       firstbenefitbycommis:
         loading || !userdata.firstbenefitbycommis
-          ? ''
+          ? 'pending'
           : userdata.firstbenefitbycommis,
       firstbenefitbycollector:
         loading || !userdata.firstbenefitbycollector
-          ? ''
+          ? 'pending'
           : userdata.firstbenefitbycollector,
       firstbenefitbypolicedate:
         loading || !userdata.firstbenefitbypolicedate
@@ -161,15 +161,15 @@ const EditUserdataById = ({
           : userdata.firstbenefitbycollectorcomment,
       secondbenefitbypolice:
         loading || !userdata.secondbenefitbypolice
-          ? ''
+          ? 'pending'
           : userdata.secondbenefitbypolice,
       secondbenefitbycommis:
         loading || !userdata.secondbenefitbycommis
-          ? ''
+          ? 'pending'
           : userdata.secondbenefitbycommis,
       secondbenefitbycollector:
         loading || !userdata.secondbenefitbycollector
-          ? ''
+          ? 'pending'
           : userdata.secondbenefitbycollector,
       secondbenefitbypolicedate:
         loading || !userdata.secondbenefitbypolicedate
@@ -197,15 +197,15 @@ const EditUserdataById = ({
           : userdata.secondbenefitbycollectorcomment,
       thirdbenefitbypolice:
         loading || !userdata.thirdbenefitbypolice
-          ? ''
+          ? 'pending'
           : userdata.thirdbenefitbypolice,
       thirdbenefitbycommis:
         loading || !userdata.thirdbenefitbycommis
-          ? ''
+          ? 'pending'
           : userdata.thirdbenefitbycommis,
       thirdbenefitbycollector:
         loading || !userdata.thirdbenefitbycollector
-          ? ''
+          ? 'pending'
           : userdata.thirdbenefitbycollector,
       thirdbenefitbypolicedate:
         loading || !userdata.thirdbenefitbypolicedate
@@ -382,19 +382,22 @@ const EditUserdataById = ({
     formDataa.append('victimdetails', victimdetails);
     formDataa.append('natureofcrime', natureofcrime);
     formDataa.append('firstbenefitbypolice', firstbenefitbypolice);
-    if (firstbenefitbypolice !== '' && firstbenefitbypolicedate === '') {
+    if (firstbenefitbypolice !== 'pending' && firstbenefitbypolicedate === '') {
       const date = new Date();
       formDataa.append('firstbenefitbypolicedate', date);
     } else {
       formDataa.append('firstbenefitbypolicedate', firstbenefitbypolicedate);
     }
-    if (firstbenefitbycommis !== '' && firstbenefitbycommisdate === '') {
+    if (firstbenefitbycommis !== 'pending' && firstbenefitbycommisdate === '') {
       const date = new Date();
       formDataa.append('firstbenefitbycommisdate', date);
     } else {
       formDataa.append('firstbenefitbycommisdate', firstbenefitbycommisdate);
     }
-    if (firstbenefitbycollector !== '' && firstbenefitbycollectordate === '') {
+    if (
+      firstbenefitbycollector !== 'pending' &&
+      firstbenefitbycollectordate === ''
+    ) {
       const date = new Date();
       formDataa.append('firstbenefitbycollectordate', date);
     } else {
@@ -415,20 +418,26 @@ const EditUserdataById = ({
       firstbenefitbycollectorcomment
     );
     formDataa.append('secondbenefitbypolice', secondbenefitbypolice);
-    if (secondbenefitbypolice !== '' && secondbenefitbypolicedate === '') {
+    if (
+      secondbenefitbypolice !== 'pending' &&
+      secondbenefitbypolicedate === ''
+    ) {
       const date = new Date();
       formDataa.append('secondbenefitbypolicedate', date);
     } else {
       formDataa.append('secondbenefitbypolicedate', secondbenefitbypolicedate);
     }
-    if (secondbenefitbycommis !== '' && secondbenefitbycommisdate === '') {
+    if (
+      secondbenefitbycommis !== 'pending' &&
+      secondbenefitbycommisdate === ''
+    ) {
       const date = new Date();
       formDataa.append('secondbenefitbycommisdate', date);
     } else {
       formDataa.append('secondbenefitbycommisdate', secondbenefitbycommisdate);
     }
     if (
-      secondbenefitbycollector !== '' &&
+      secondbenefitbycollector !== 'pending' &&
       secondbenefitbycollectordate === ''
     ) {
       const date = new Date();
@@ -462,19 +471,22 @@ const EditUserdataById = ({
       'thirdbenefitbycollectorcomment',
       thirdbenefitbycollectorcomment
     );
-    if (thirdbenefitbypolice !== '' && thirdbenefitbypolicedate === '') {
+    if (thirdbenefitbypolice !== 'pending' && thirdbenefitbypolicedate === '') {
       const date = new Date();
       formDataa.append('thirdbenefitbypolicedate', date);
     } else {
       formDataa.append('thirdbenefitbypolicedate', thirdbenefitbypolicedate);
     }
-    if (thirdbenefitbycommis !== '' && thirdbenefitbycommisdate === '') {
+    if (thirdbenefitbycommis !== 'pending' && thirdbenefitbycommisdate === '') {
       const date = new Date();
       formDataa.append('thirdbenefitbycommisdate', date);
     } else {
       formDataa.append('thirdbenefitbycommisdate', thirdbenefitbycommisdate);
     }
-    if (thirdbenefitbycollector !== '' && thirdbenefitbycollectordate === '') {
+    if (
+      thirdbenefitbycollector !== 'pending' &&
+      thirdbenefitbycollectordate === ''
+    ) {
       const date = new Date();
       formDataa.append('thirdbenefitbycollectordate', date);
     } else {
@@ -551,6 +563,7 @@ const EditUserdataById = ({
                       name='text'
                       value={text}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                     <small className='form-text'>
                       Could be the defined format of serial no
@@ -564,6 +577,7 @@ const EditUserdataById = ({
                       name='year'
                       value={year}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -572,6 +586,7 @@ const EditUserdataById = ({
                       name='policestation'
                       value={policestation}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     >
                       <option value='Dhule City'>Dhule City </option>
                       <option value='Aazadnagar'>Aazadnagar</option>
@@ -602,6 +617,7 @@ const EditUserdataById = ({
                       name='crimeregisterno'
                       value={crimeregisterno}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -612,6 +628,7 @@ const EditUserdataById = ({
                       name='dateofcrime'
                       value={dateofcrime}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -622,6 +639,7 @@ const EditUserdataById = ({
                       name='regdateofcrime'
                       value={regdateofcrime}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -632,6 +650,7 @@ const EditUserdataById = ({
                       name='victimdetails'
                       value={victimdetails}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -644,6 +663,7 @@ const EditUserdataById = ({
                       name='natureofcrime'
                       value={natureofcrime}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -657,6 +677,7 @@ const EditUserdataById = ({
                       isMulti
                       isSearchable
                       onChange={handleChange}
+                      isDisabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -670,6 +691,7 @@ const EditUserdataById = ({
                       isMulti
                       isSearchable
                       onChange={handleIpc}
+                      isDisabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -683,6 +705,7 @@ const EditUserdataById = ({
                       isMulti
                       isSearchable
                       onChange={handleSections}
+                      isDisabled={user && user.name !== 'Police'}
                     />
                   </div>
 
@@ -917,6 +940,18 @@ const EditUserdataById = ({
                       name='policeinvestigation'
                       value={policeinvestigation}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Comment on First benefit Recommendation by Police
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='firstbenefitbypolicecomment'
+                      value={firstbenefitbypolicecomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -950,14 +985,14 @@ const EditUserdataById = ({
                     Pending
                   </div>
                   <div className='form-group'>
-                    Comment on First benefit Recommendation by Police
+                    Comment on First benefit Recommendation by Asst. Commisioner
                     <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
-                      name='firstbenefitbypolicecomment'
-                      value={firstbenefitbypolicecomment}
+                      name='firstbenefitbycommcomment'
+                      value={firstbenefitbycommcomment}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
@@ -968,7 +1003,7 @@ const EditUserdataById = ({
                       checked={firstbenefitbycommis === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     Yes
                     <Radio
@@ -977,7 +1012,7 @@ const EditUserdataById = ({
                       checked={firstbenefitbycommis === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     No
                     <Radio
@@ -986,19 +1021,19 @@ const EditUserdataById = ({
                       checked={firstbenefitbycommis === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     Pending
                   </div>
                   <div className='form-group'>
-                    Comment on First benefit Recommendation by Asst. Commisioner
+                    Comment on First benefit Decision by District Collector
                     <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
-                      name='firstbenefitbycommcomment'
-                      value={firstbenefitbycommcomment}
+                      name='firstbenefitbycollectorcomment'
+                      value={firstbenefitbycollectorcomment}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1034,17 +1069,6 @@ const EditUserdataById = ({
                   </div>
 
                   <div className='form-group'>
-                    Comment on First benefit Decision by District Collector
-                    <input
-                      type='text'
-                      placeholder='Give the Reason for Recommendation'
-                      name='firstbenefitbycollectorcomment'
-                      value={firstbenefitbycollectorcomment}
-                      onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'District Collector'}
-                    />
-                  </div>
-                  <div className='form-group'>
                     Applicable Penal Codes
                     <input
                       type='text'
@@ -1052,6 +1076,7 @@ const EditUserdataById = ({
                       name='sections'
                       value={sections}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1092,6 +1117,7 @@ const EditUserdataById = ({
                       name='chargesheetdate'
                       value={chargesheetdate}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1109,7 +1135,17 @@ const EditUserdataById = ({
                       />
                     </Paper>
                   </div>
-
+                  <div className='form-group'>
+                    Comment on Second benefit Recommendation by Police
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='secondbenefitbypolicecomment'
+                      value={secondbenefitbypolicecomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />
+                  </div>
                   <div className='form-group'>
                     Second Benefit Recommendation by Police
                     <Radio
@@ -1141,14 +1177,15 @@ const EditUserdataById = ({
                     Pending
                   </div>
                   <div className='form-group'>
-                    Comment on Second benefit Recommendation by Police
+                    Comment on Second benefit Recommendation by Asst.
+                    Commisioner
                     <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
-                      name='secondbenefitbypolicecomment'
-                      value={secondbenefitbypolicecomment}
+                      name='secondbenefitbycommcomment'
+                      value={secondbenefitbycommcomment}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1159,7 +1196,7 @@ const EditUserdataById = ({
                       checked={secondbenefitbycommis === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     Yes
                     <Radio
@@ -1168,7 +1205,7 @@ const EditUserdataById = ({
                       checked={secondbenefitbycommis === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     No
                     <Radio
@@ -1177,20 +1214,19 @@ const EditUserdataById = ({
                       checked={secondbenefitbycommis === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     Pending
                   </div>
                   <div className='form-group'>
-                    Comment on Second benefit Recommendation by Asst.
-                    Commisioner
+                    Comment on Second benefit Decision by District Collector
                     <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
-                      name='secondbenefitbycommcomment'
-                      value={secondbenefitbycommcomment}
+                      name='secondbenefitbycollectorcomment'
+                      value={secondbenefitbycollectorcomment}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1226,18 +1262,6 @@ const EditUserdataById = ({
                   </div>
 
                   <div className='form-group'>
-                    Comment on Second benefit Decision by District Collector
-                    <input
-                      type='text'
-                      placeholder='Give the Reason for Recommendation'
-                      name='secondbenefitbycollectorcomment'
-                      value={secondbenefitbycollectorcomment}
-                      onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'District Collector'}
-                    />
-                  </div>
-
-                  <div className='form-group'>
                     Date of Court Order
                     <input
                       type='date'
@@ -1245,10 +1269,11 @@ const EditUserdataById = ({
                       name='dateofcourtorder'
                       value={dateofcourtorder}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
-                    Court Results
+                    Summary of Court Order
                     <textarea
                       rows='4'
                       type='text'
@@ -1256,6 +1281,18 @@ const EditUserdataById = ({
                       name='courtresults'
                       value={courtresults}
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Comment on Third benefit Recommendation by Police
+                    <input
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='thirdbenefitbypolicecomment'
+                      value={thirdbenefitbypolicecomment}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1289,14 +1326,14 @@ const EditUserdataById = ({
                     Pending
                   </div>
                   <div className='form-group'>
-                    Comment on Third benefit Recommendation by Police
+                    Comment on Third benefit Recommendation by Asst. Commisioner
                     <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
-                      name='thirdbenefitbypolicecomment'
-                      value={thirdbenefitbypolicecomment}
+                      name='thirdbenefitbycommcomment'
+                      value={thirdbenefitbycommcomment}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1307,7 +1344,7 @@ const EditUserdataById = ({
                       checked={thirdbenefitbycommis === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     Yes
                     <Radio
@@ -1316,7 +1353,7 @@ const EditUserdataById = ({
                       checked={thirdbenefitbycommis === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     No
                     <Radio
@@ -1325,19 +1362,19 @@ const EditUserdataById = ({
                       checked={thirdbenefitbycommis === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />{' '}
                     Pending
                   </div>
                   <div className='form-group'>
-                    Comment on Third benefit Recommendation by Asst. Commisioner
+                    Comment on Third benefit Decision by District Collector
                     <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
-                      name='thirdbenefitbycommcomment'
-                      value={thirdbenefitbycommcomment}
+                      name='thirdbenefitbycollectorcomment'
+                      value={thirdbenefitbycollectorcomment}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'asst.'}
+                      disabled={user && user.name !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1372,17 +1409,6 @@ const EditUserdataById = ({
                     Pending
                   </div>
 
-                  <div className='form-group'>
-                    Comment on Third benefit Decision by District Collector
-                    <input
-                      type='text'
-                      placeholder='Give the Reason for Recommendation'
-                      name='thirdbenefitbycollectorcomment'
-                      value={thirdbenefitbycollectorcomment}
-                      onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'District Collector'}
-                    />
-                  </div>
                   <div className='form-group'>
                     Financial Support to be Provided
                     <textarea
@@ -1419,7 +1445,7 @@ const EditUserdataById = ({
                           <br /> Select if Every Action for this Case has been
                           Taken <br />
                           Note : You Won't be able to make any changes if you
-                          select "Yes"
+                          select "Yes" and press the Save Button
                         </small>
                       </div>
                     </Fragment>

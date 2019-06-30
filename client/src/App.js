@@ -16,6 +16,11 @@ import Profiles from './components/profiles/Profiles';
 import Usersdata from './components/usersdata/Usersdata';
 import UsersdataStone from './components/usersdata/UsersdataStone';
 import UsersdataStTwo from './components/usersdata/UsersdataStTwo';
+import UsersdataPCone from './components/usersdata/UsersdataPCone';
+import UsersdataPCtwo from './components/usersdata/UsersdataPCtwo';
+import UsersdataPPone from './components/usersdata/UsersdataPPone';
+import UsersdataPPtwo from './components/usersdata/UsersdataPPtwo';
+import UsersdataPPthree from './components/usersdata/UsersdataPPthree';
 import Profile from './components/profile/Profile';
 import Userdata from './components/userdata/Userdata';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -59,6 +64,31 @@ const App = () => {
                 exact
                 path='/usersdatasttwo'
                 component={UsersdataStTwo}
+              />
+              <PrivateRoute
+                exact
+                path='/usersdatapcone'
+                component={UsersdataPCone}
+              />
+              <PrivateRoute
+                exact
+                path='/usersdatapctwo'
+                component={UsersdataPCtwo}
+              />
+              <PrivateRoute
+                exact
+                path='/usersdatappone'
+                component={UsersdataPPone}
+              />
+              <PrivateRoute
+                exact
+                path='/usersdatapptwo'
+                component={UsersdataPPtwo}
+              />
+              <PrivateRoute
+                exact
+                path='/usersdatappthree'
+                component={UsersdataPPthree}
               />
               <Route exact path='/profile/:id' component={Profile} />
               <Route exact path='/userdata/:id' component={Userdata} />

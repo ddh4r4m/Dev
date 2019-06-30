@@ -30,9 +30,14 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
 
   const filtereddata = usersdata.filter(usersdata => {
     const date4 = new Date(usersdata.date);
+    const date7 = new Date(usersdata.firstbenefitbypolicedate);
+    console.log('caee1', date7 > date4);
+    console.log('caee2', date7 < date4);
+    console.log(date7);
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&
+    //date4<=date5 for it to work
     if (date4 >= date5) {
       return (
         usersdata.firstbenefitbypolice

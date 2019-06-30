@@ -65,6 +65,9 @@ const UserdataSchema = new mongoose.Schema({
   doccImage: {
     type: String
   },
+  courtorder: {
+    type: String
+  },
   medicalresult: {
     type: String
   },
@@ -89,6 +92,15 @@ const UserdataSchema = new mongoose.Schema({
   victimfive: {
     type: String
   },
+  victimsix: {
+    type: String
+  },
+  victimseven: {
+    type: String
+  },
+  victimeight: {
+    type: String
+  },
   accusedone: {
     type: String
   },
@@ -104,6 +116,15 @@ const UserdataSchema = new mongoose.Schema({
   accusedfive: {
     type: String
   },
+  accusedsix: {
+    type: String
+  },
+  accusedseven: {
+    type: String
+  },
+  accusedeight: {
+    type: String
+  },
   typeofatrocity: {
     type: Object
   },
@@ -113,10 +134,26 @@ const UserdataSchema = new mongoose.Schema({
   sectionsapplied: {
     type: Object
   },
+  typeofatrocityv2: {
+    type: Object
+  },
+  ipcappliedv2: {
+    type: Object
+  },
+  sectionsappliedv2: {
+    type: Object
+  },
   closecase: {
     type: String
   },
   closethecase: {
+    type: Boolean,
+    default: false
+  },
+  sectionschanged: {
+    type: String
+  },
+  stagetwochange: {
     type: Boolean,
     default: false
   },
@@ -136,6 +173,60 @@ const UserdataSchema = new mongoose.Schema({
     type: String
   },
   natureofcrime: {
+    type: String
+  },
+  benefitsgivenbyACI: {
+    type: String
+  },
+  benefitsgivenbyACII: {
+    type: String
+  },
+  benefitsgivenbyACIII: {
+    type: String
+  },
+  isbenefitsgivenbyACI: {
+    type: String
+  },
+  isbenefitsgivenbyACII: {
+    type: String
+  },
+  isbenefitsgivenbyACIII: {
+    type: String
+  },
+  monetarycompbyDCI: {
+    type: String
+  },
+  monetarycompbyDCII: {
+    type: String
+  },
+  monetarycompbyDCIII: {
+    type: String
+  },
+  otherbenefitycompbyDCI: {
+    type: String
+  },
+  otherbenefitycompbyDCII: {
+    type: String
+  },
+  otherbenefitycompbyDCIII: {
+    type: String
+  },
+  monetarycompbyACI: {
+    type: String
+  },
+  monetarycompbyACII: {
+    type: String
+  },
+  monetarycompbyACIII: {
+    type: String
+  },
+  otherbenefitycompbyACI: {
+    type: String
+  },
+  otherbenefitycompbyACII: {
+    type: String
+  },
+  otherbenefitycompbyACIII: {
     type: String
   },
   firstbenefitbypolice: {

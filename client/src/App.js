@@ -11,6 +11,7 @@ import CreateUserdata from './components/usersdata-forms/CreateUserdata';
 import EditUserdata from './components/usersdata-forms/EditUserdata';
 import EditProfile from './components/profile-forms/EditProfile';
 import EditProfileById from './components/profile/EditProfileById';
+import CreatePdf from './components/createpdf/CreatePdf';
 import Posts from './components/posts/Posts';
 import Profiles from './components/profiles/Profiles';
 import Usersdata from './components/usersdata/Usersdata';
@@ -55,6 +56,7 @@ const App = () => {
               <Route exact path='/register' component={Register} />
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/usersdata' component={Usersdata} />
+              <Route exact path='/createpdf' component={CreatePdf} />
               <PrivateRoute
                 exact
                 path='/usersdatastone'

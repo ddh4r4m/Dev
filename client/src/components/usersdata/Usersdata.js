@@ -64,7 +64,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
       <br />
       <Link to='create-userdata' style={{ marginBottom: '20px' }}>
         <Button variant='contained' color='primary' className={classes.button}>
-          Create New FIR
+          Create New Case
         </Button>
       </Link>
       <div className='userdata'>
@@ -76,7 +76,6 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
               <th>POLICE STATION</th>
               <th>Register No.</th>
               <th>Nature </th>
-              <th>Button </th>
               <th>Button </th>
             </tr>
           </thead>

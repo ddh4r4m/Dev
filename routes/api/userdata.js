@@ -177,6 +177,8 @@ router.post(
             : req.files['accusedeight'][0].path,
         disabledata: req.body.disabledata,
         sectionschanged: req.body.sectionschanged,
+        othersections: req.body.othersections,
+        othersectionsv2: req.body.othersectionsv2,
         closecase: req.body.closecase,
         closethecase: req.body.closethecase,
         stagetwochange: req.body.stagetwochange,
@@ -306,6 +308,8 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.text = req.body.text;
       userdata.year = req.body.year;
       userdata.disabledata = req.body.disabledata;
+      userdata.othersections = req.body.othersections;
+      userdata.othersectionsv2 = req.body.othersectionsv2;
       userdata.closecase = req.body.closecase;
       userdata.closethecase = req.body.closethecase;
       userdata.sectionschanged = req.body.sectionschanged;

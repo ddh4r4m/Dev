@@ -83,7 +83,7 @@ router.post(
 router.delete('/', async (req, res) => {
   try {
     //Remove Profile
-    await User.findOneAndRemove({ user: req.user.id });
+    // await User.findOneAndRemove({ user: req.user.id });
     //Remove User
     await User.findOneAndRemove({ _id: req.user.id });
   } catch (err) {

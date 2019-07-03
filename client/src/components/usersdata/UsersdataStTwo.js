@@ -14,10 +14,11 @@ const UsersdataStTwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
 
   const [formData, setFormData] = useState({
     search: '',
-    search1: ''
+    search1: 'pending',
+    stages: 'firstbenefitbypolice'
   });
 
-  const { search, search1 } = formData;
+  const { search, search1, stages } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,8 +26,7 @@ const UsersdataStTwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   const filtereddata = usersdata.filter(usersdata => {
     return (
       usersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
-      usersdata.policestation.toLowerCase().indexOf(search1.toLowerCase()) !==
-        -1
+      usersdata[stages].toLowerCase().indexOf(search1.toLowerCase()) !== -1
     );
   });
 
@@ -48,6 +48,14 @@ const UsersdataStTwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
         value={search1}
         onChange={e => onChange(e)}
       />
+      <div className='form-group'>
+        Select Stages
+        <select name='stages' value={stages} onChange={e => onChange(e)}>
+          <option value='firstbenefitbypolice'>Stage I</option>
+          <option value='secondbenefitbypolice'>Stage II</option>
+          <option value='thirdbenefitbypolice'>Stage II</option>
+        </select>
+      </div>
       <br />
       <Link
         to='create-userdata'

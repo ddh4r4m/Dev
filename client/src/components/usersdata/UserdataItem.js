@@ -33,14 +33,7 @@ const ProfileItem = ({
       <td>
         <Link to={`/userdata/${_id}`}>
           <Button variant='contained' color='primary'>
-            View FIR
-          </Button>
-        </Link>
-      </td>
-      <td>
-        <Link to={`/edit-userdata/${_id}`}>
-          <Button variant='contained' color='primary'>
-            Edit FIR
+            View CASE
           </Button>
         </Link>
       </td>

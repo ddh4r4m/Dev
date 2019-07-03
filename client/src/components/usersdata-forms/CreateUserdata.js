@@ -34,7 +34,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
   const [formData, setFormData] = useState({
     text: '',
     year: '',
-    policestation: '',
+    policestation: 'Dhule City',
     crimeregisterno: '',
     dateofcrime: '',
     regdateofcrime: '',
@@ -58,27 +58,27 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     otherbenefitycompbyACI: '',
     otherbenefitycompbyACII: '',
     otherbenefitycompbyACIII: '',
-    firstbenefitbypolice: 'pending',
-    firstbenefitbycommis: 'pending',
-    firstbenefitbycollector: 'pending',
+    firstbenefitbypolice: '',
+    firstbenefitbycommis: '',
+    firstbenefitbycollector: '',
     firstbenefitbypolicedate: '',
     firstbenefitbycommisdate: '',
     firstbenefitbycollectordate: '',
     firstbenefitbypolicecomment: '',
     firstbenefitbycommcomment: '',
     firstbenefitbycollectorcomment: '',
-    secondbenefitbypolice: 'pending',
-    secondbenefitbycommis: 'pending',
-    secondbenefitbycollector: 'pending',
+    secondbenefitbypolice: '',
+    secondbenefitbycommis: '',
+    secondbenefitbycollector: '',
     secondbenefitbypolicedate: '',
     secondbenefitbycommisdate: '',
     secondbenefitbycollectordate: '',
     secondbenefitbypolicecomment: '',
     secondbenefitbycommcomment: '',
     secondbenefitbycollectorcomment: '',
-    thirdbenefitbypolice: 'pending',
-    thirdbenefitbycommis: 'pending',
-    thirdbenefitbycollector: 'pending',
+    thirdbenefitbypolice: '',
+    thirdbenefitbycommis: '',
+    thirdbenefitbycollector: '',
     thirdbenefitbypolicedate: '',
     thirdbenefitbycommisdate: '',
     thirdbenefitbycollectordate: '',
@@ -99,6 +99,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     disabledata: false,
     stagetwochange: false,
     closecase: '',
+    othersections: '',
+    othersectionsv2: '',
     sectionschanged: 'no',
     docImage: '',
     doccImage: '',
@@ -200,6 +202,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     instagram,
     disabledata,
     closecase,
+    othersections,
+    othersectionsv2,
     sectionschanged,
     stagetwochange,
     docImage,
@@ -424,6 +428,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
       toggleclossecase((closethecase = true));
     }
     formDataa.append('closecase', closecase);
+    formDataa.append('othersections', othersections);
+    formDataa.append('othersectionsv2', othersectionsv2);
     formDataa.append('sectionschanged', sectionschanged);
     formDataa.append('stagetwochange', stagetwochange);
     formDataa.append('closethecase', closethecase);
@@ -458,6 +464,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
 
   var dpmedical = false;
   var dpmurder = false;
+  var dpmurderIII = false;
+  var dpacidIII = false;
+  var dpdisabilityIII = false;
 
   if (typeofatrocity !== null) {
     typeofatrocity.map((patro, i) => {
@@ -466,6 +475,18 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
       }
       if (patro.value === 'murder') {
         dpmurder = true;
+      }
+      if (patro.value === 'murder' && sectionschanged === 'no') {
+        dpmurderIII = true;
+      }
+      if (patro.value === '3(2)(va) 326B' && sectionschanged === 'no') {
+        dpacidIII = true;
+      }
+      if (
+        patro.value === 'permanentIncapacitation' &&
+        sectionschanged === 'no'
+      ) {
+        dpdisabilityIII = true;
       }
     });
   }
@@ -477,6 +498,15 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
       }
       if (patro.value === 'murder') {
         dpmurder = true;
+      }
+      if (patro.value === 'murder') {
+        dpmurderIII = true;
+      }
+      if (patro.value === '3(2)(va) 326B') {
+        dpacidIII = true;
+      }
+      if (patro.value === 'permanentIncapacitation') {
+        dpdisabilityIII = true;
       }
     });
   }
@@ -497,188 +527,1166 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
               encType='multipart/form-data'
               method='POST'
             >
-              <hr className='style-one' /> <br />
-              <div className='maindiv'>
+              <div style={{ backgroundColor: 'white' }}>
+                <hr className='style-one' /> <br />
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Serial No.
+                    <input
+                      type='text'
+                      placeholder='Serial No.'
+                      name='text'
+                      value={text}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                    <small className='form-text'>
+                      Could be the defined format of serial no
+                    </small>
+                  </div>
+                  <div className='form-group'>
+                    Year of Crime
+                    <input
+                      type='date'
+                      placeholder='Year of Crime'
+                      name='year'
+                      value={year}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Name of Police Station
+                    <select
+                      name='policestation'
+                      value={policestation}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    >
+                      <option value='Dhule City'>Dhule City </option>
+                      <option value='Aazadnagar' defaultValue>
+                        Aazadnagar
+                      </option>
+                      <option value='Chalisgaon Road'>Chalisgaon Road</option>
+                      <option value='Mohadi Upnagar'>Mohadi Upnagar</option>
+                      <option value='Deopur Police Station'>
+                        Deopur Police Station
+                      </option>
+                      <option value='West Deopur'>West Deopur</option>
+                      <option value='Dhule Taluka'>Dhule Taluka</option>
+                      <option value='Songir'>Songir</option>
+                      <option value='Sakri'>Sakri</option>
+                      <option value='Pimplner'>Pimplner</option>
+                      <option value='Nijampur'>Nijampur</option>
+                      <option value='Shindkheda'>Shindkheda</option>
+                      <option value='Nardana'>Nardana</option>
+                      <option value='Dondaicha'>Dondaicha</option>
+                      <option value='Shirpur Taluka'>Shirpur Taluka</option>
+                      <option value='Shirpur City'>Shirpur City</option>
+                      <option value='Thalner'>Thalner</option>
+                    </select>
+                  </div>
+                </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Register No.
+                    <input
+                      type='text'
+                      placeholder='Register No.'
+                      name='crimeregisterno'
+                      value={crimeregisterno}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Date When Crime Happened
+                    <input
+                      type='date'
+                      placeholder='Date When Crime Happened'
+                      name='dateofcrime'
+                      value={dateofcrime}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Date when FIR was Registered
+                    <input
+                      type='date'
+                      placeholder='Date when FIR was Registered'
+                      name='regdateofcrime'
+                      value={regdateofcrime}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Details of Victim
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Details of Victim'
+                      name='victimdetails'
+                      value={victimdetails}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Summary of Crime
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Summary of Crime'
+                      name='natureofcrime'
+                      value={natureofcrime}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: 'flex'
+                  }}
+                >
+                  <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
+                    Type of Crime
+                    <Select
+                      minWidth='100px'
+                      className='basic-multi-select'
+                      menuShouldScrollIntoView={true}
+                      classNamePrefix='select'
+                      closeMenuOnSelect={false}
+                      components={animatedComponents}
+                      options={options}
+                      name='typeofatrocity'
+                      value={typeofatrocity}
+                      isMulti
+                      isSearchable
+                      onChange={handleChange}
+                      isDisabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
+                    Select IPC Sections
+                    <Select
+                      styles={{ width: '300px' }}
+                      className='basic-multi-select'
+                      classNamePrefix='select'
+                      closeMenuOnSelect={false}
+                      components={animatedComponents}
+                      options={ipcOptions}
+                      name='ipcapplied'
+                      value={ipcapplied}
+                      isMulti
+                      isSearchable
+                      onChange={handleIpc}
+                      isDisabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
+                    Select Atrocity Act Sections
+                    <Select
+                      closeMenuOnSelect={false}
+                      components={animatedComponents}
+                      options={sectionsopts}
+                      name='sectionsapplied'
+                      value={sectionsapplied}
+                      isMulti
+                      isSearchable
+                      onChange={handleSections}
+                      isDisabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>{' '}
+                </div>
                 <div className='form-group'>
-                  Serial No.
-                  <input
+                  Other Sections
+                  <textarea
+                    rows='4'
+                    cols='2'
                     type='text'
-                    placeholder='Serial No.'
-                    name='text'
-                    value={text}
+                    placeholder='Details of Other Sections applied'
+                    name='othersections'
+                    value={othersections}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                  <small className='form-text'>
-                    Could be the defined format of serial no
-                  </small>
-                </div>
-                <div className='form-group'>
-                  Year of Crime
-                  <input
-                    type='date'
-                    placeholder='Year of Crime'
-                    name='year'
-                    value={year}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
+                    disabled={
+                      user &&
+                      user.name !== 'Police' &&
+                      (user && user.name !== 'Data Entry Operator')
+                    }
                   />
                 </div>
-                <div className='form-group'>
-                  Name of Police Station
-                  <select
-                    name='policestation'
-                    value={policestation}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
+                {/*  */}
+                {(sectionsapplied !== null || typeofatrocity !== null) &&
+                  (user &&
+                    user.name === 'District Collector' &&
+                    (user && user.name === 'Asst. Commissioner')) && (
+                    <div>
+                      <table className='fl-table'>
+                        <thead>
+                          <tr>
+                            <th>Section</th>
+                            <th>Compensation</th>
+                            <th>First Stage</th>
+                            <th>Second Stage</th>
+                            <th>Third Stage</th>
+                            <th>Extra Details/Benefits</th>
+                          </tr>
+                        </thead>
+                        <tbody style={{ overflow: 'scroll' }}>
+                          {sectionsapplied !== null ? (
+                            sectionsapplied.map((sectionn, i) => (
+                              <Fragment>
+                                <tr>
+                                  <td>{sectionn.label}</td>
+                                  <td>
+                                    {sectionn.compensation <= 0
+                                      ? '-'
+                                      : sectionn.compensation}
+                                  </td>
+                                  <td>
+                                    {sectionn.firststage <= 0
+                                      ? '-'
+                                      : sectionn.compensation *
+                                        sectionn.firststage}
+                                  </td>
+                                  <td>
+                                    {sectionn.secondstage <= 0
+                                      ? '-'
+                                      : sectionn.compensation *
+                                        sectionn.secondstage}
+                                  </td>
+                                  <td>
+                                    {sectionn.thirdstage <= 0
+                                      ? '-'
+                                      : sectionn.compensation *
+                                        sectionn.thirdstage}
+                                  </td>
+                                  <td>{sectionn.extradetails}</td>
+                                </tr>
+                              </Fragment>
+                            ))
+                          ) : (
+                            <tr>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                            </tr>
+                          )}
+                          {typeofatrocity !== null ? (
+                            typeofatrocity.map((sectionn, i) => (
+                              <Fragment>
+                                <tr>
+                                  <td>{sectionn.label}</td>
+                                  <td>
+                                    {sectionn.compensation <= 0
+                                      ? '-'
+                                      : sectionn.compensation}
+                                  </td>
+                                  <td>
+                                    {sectionn.firststage <= 0
+                                      ? '-'
+                                      : sectionn.compensation *
+                                        sectionn.firststage}
+                                  </td>
+                                  <td>
+                                    {sectionn.secondstage <= 0
+                                      ? '-'
+                                      : sectionn.compensation *
+                                        sectionn.secondstage}
+                                  </td>
+                                  <td>
+                                    {sectionn.thirdstage <= 0
+                                      ? '-'
+                                      : sectionn.compensation *
+                                        sectionn.thirdstage}
+                                  </td>
+                                  <td>{sectionn.extradetails}</td>
+                                </tr>
+                              </Fragment>
+                            ))
+                          ) : (
+                            <tr>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                              <td>No Data</td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                {/*  */}
+                <div className='my-2'>
+                  <Button
+                    onClick={() => toggledisplayVictim(!displayVictim)}
+                    type='button'
+                    variant='contained'
+                    className={classes.button}
                   >
-                    <option value='Dhule City'>Dhule City </option>
-                    <option value='Aazadnagar' defaultValue>
-                      Aazadnagar
-                    </option>
-                    <option value='Chalisgaon Road'>Chalisgaon Road</option>
-                    <option value='Mohadi Upnagar'>Mohadi Upnagar</option>
-                    <option value='Deopur Police Station'>
-                      Deopur Police Station
-                    </option>
-                    <option value='West Deopur'>West Deopur</option>
-                    <option value='Dhule Taluka'>Dhule Taluka</option>
-                    <option value='Songir'>Songir</option>
-                    <option value='Sakri'>Sakri</option>
-                    <option value='Pimplner'>Pimplner</option>
-                    <option value='Nijampur'>Nijampur</option>
-                    <option value='Shindkheda'>Shindkheda</option>
-                    <option value='Nardana'>Nardana</option>
-                    <option value='Dondaicha'>Dondaicha</option>
-                    <option value='Shirpur Taluka'>Shirpur Taluka</option>
-                    <option value='Shirpur City'>Shirpur City</option>
-                    <option value='Thalner'>Thalner</option>
-                  </select>
+                    Add Victim's Caste Certificate
+                  </Button>
+                  <span>*Required</span>
+                </div>
+                {displayVictim && (
+                  <Fragment>
+                    <h3>Add Victim's Details</h3>
+                    <div className='maindiv'>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload first Victim's Caste Certificate File <br />
+                          <small>
+                            Note : File Size Should not exceed 6 Mb{'  '} <br />
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                          </small>
+                          <input
+                            type='file'
+                            name='victimone'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimone: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload Second Victim's Caste Certificate File <br />
+                          <small>
+                            Note : File Size Should not exceed 6 Mb{'  '} <br />
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                          </small>
+                          <input
+                            type='file'
+                            name='victimtwo'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimtwo: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload third Victim's Caste Certificate File <br />
+                          <small>
+                            Note : File Size Should not exceed 6 Mb{'  '} <br />
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                          </small>
+                          <input
+                            type='file'
+                            name='victimthree'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimthree: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload fourth Victim's Caste Certificate File <br />
+                          <small>
+                            Note : File Size Should not exceed 6 Mb{'  '} <br />
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                          </small>
+                          <input
+                            type='file'
+                            name='victimfour'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimfour: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                    </div>
+                    <div className='maindiv'>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload fifth Victim's Caste Certificate File <br />
+                          <small>
+                            Note : File Size Should not exceed 6 Mb{'  '} <br />
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                          </small>
+                          <input
+                            type='file'
+                            name='victimfive'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimfive: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload Sixth Victim's Caste Certificate File <br />
+                          <small>
+                            Note : File Size Should not exceed 6 Mb{'  '} <br />
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                          </small>
+                          <input
+                            type='file'
+                            name='victimsix'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimsix: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload seventh Victim's Caste Certificate File <br />
+                          <small>
+                            Note : File Size Should not exceed 6 Mb{'  '} <br />
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                          </small>
+                          <input
+                            type='file'
+                            name='victimseven'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimseven: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload other Victim's Caste Certificate File <br />
+                          <small>
+                            Note : File Size Should not exceed 6 Mb{'  '} <br />
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                          </small>
+                          <input
+                            type='file'
+                            name='victimeight'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, victimeight: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                    </div>
+                  </Fragment>
+                )}
+                <div className='my-2'>
+                  <Button
+                    onClick={() => toggledisplayAccused(!displayAccused)}
+                    type='button'
+                    variant='contained'
+                    className={classes.button}
+                  >
+                    Add Accused Person's Caste Certificate
+                  </Button>
+                  <span>*Required</span>
+                </div>
+                {displayAccused && (
+                  <Fragment>
+                    <h3>Add Accused Person's Details</h3>
+                    <div className='maindiv'>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload first Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <small>
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                            <br /> Note : File Size Should not exceed 6 Mb{'  '}
+                          </small>
+                          <input
+                            type='file'
+                            name='accusedone'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedone: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload Second Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <small>
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                            <br /> Note : File Size Should not exceed 6 Mb{'  '}
+                          </small>
+                          <input
+                            type='file'
+                            name='accusedtwo'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedtwo: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload third Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <small>
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                            <br /> Note : File Size Should not exceed 6 Mb{'  '}
+                          </small>
+                          <input
+                            type='file'
+                            name='accusedthree'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedthree: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload fourth Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <small>
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                            <br /> Note : File Size Should not exceed 6 Mb{'  '}
+                          </small>
+                          <input
+                            type='file'
+                            name='accusedfour'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedfour: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                    </div>
+                    <div className='maindiv'>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload fifth Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <small>
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                            <br /> Note : File Size Should not exceed 6 Mb{'  '}
+                          </small>
+                          <input
+                            type='file'
+                            name='accusedfive'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedfive: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload Sixth Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <small>
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                            <br /> Note : File Size Should not exceed 6 Mb{'  '}
+                          </small>
+                          <input
+                            type='file'
+                            name='accusedsix'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedsix: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload seventh Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <small>
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                            <br /> Note : File Size Should not exceed 6 Mb{'  '}
+                          </small>
+                          <input
+                            type='file'
+                            name='accusedseven'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedseven: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                      <div className='form-group'>
+                        <Paper className={classes.root}>
+                          Upload other Accused Person's Caste Certificate File{' '}
+                          <br />
+                          <small>
+                            <small>Upload jpeg/pdf file here : {'   '}</small>
+                            <br /> Note : File Size Should not exceed 6 Mb{'  '}
+                          </small>
+                          <input
+                            type='file'
+                            name='accusedeight'
+                            onChange={e => {
+                              const vall = e.target.files[0];
+                              setFormData(prevState => {
+                                return { ...prevState, accusedeight: vall };
+                              });
+                            }}
+                          />
+                        </Paper>
+                      </div>
+                    </div>
+                  </Fragment>
+                )}
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    <Paper className={classes.root}>
+                      Upload FIR File <br />
+                      <small>
+                        Note : File Size Should not exceed 6 Mb{'  '}
+                      </small>
+                      <br /> <small>Upload jpeg/pdf file here : {'   '}</small>
+                      <input
+                        type='file'
+                        name='docImage'
+                        onChange={e => {
+                          const vall = e.target.files[0];
+                          setFormData(prevState => {
+                            return { ...prevState, docImage: vall };
+                          });
+                        }}
+                      />
+                    </Paper>
+                  </div>
+                  <div className='form-group'>
+                    <Paper className={classes.root}>
+                      Upload A/B/C Summary File <br />
+                      <small>
+                        Note : File Size Should not exceed 6 Mb{'  '}
+                      </small>
+                      <br /> <small>Upload jpeg/pdf file here : {'   '}</small>
+                      <input
+                        type='file'
+                        name='abcSummary'
+                        onChange={e => {
+                          const vall = e.target.files[0];
+                          setFormData(prevState => {
+                            return { ...prevState, abcSummary: vall };
+                          });
+                        }}
+                      />
+                    </Paper>
+                  </div>
+                </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Comment on First benefit Recommendation by Police
+                    <textarea
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='firstbenefitbypolicecomment'
+                      value={firstbenefitbypolicecomment}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    <br />
+                    First Benefit Recommendation by Police
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbypolice'
+                      checked={firstbenefitbypolice === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />{' '}
+                    Should be given
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbypolice'
+                      checked={firstbenefitbypolice === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />{' '}
+                    Should not be given
+                    <Radio
+                      type='radio'
+                      name='firstbenefitbypolice'
+                      checked={firstbenefitbypolice === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />{' '}
+                    Keep Pending
+                  </div>
+                </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Monetary Compensation for Stage I by Asst. Commisioner
+                    <textarea
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='monetarycompbyACI'
+                      value={monetarycompbyACI}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Asst. Commissioner' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Any other benefit for Stage I by Asst. Commisioner
+                    <textarea
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='otherbenefitycompbyACI'
+                      value={otherbenefitycompbyACI}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Asst. Commissioner' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Other Comments by Asst. Commisioner
+                    <textarea
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='firstbenefitbycommcomment'
+                      value={firstbenefitbycommcomment}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Asst. Commissioner' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />
+                  </div>
+                </div>
+                <div className='form-group'>
+                  First Benefit Recommendation by Assistant Commisioner
+                  <Radio
+                    type='radio'
+                    name='firstbenefitbycommis'
+                    checked={firstbenefitbycommis === 'yes'}
+                    value='yes'
+                    onChange={e => onChange(e)}
+                    disabled={
+                      user &&
+                      user.name !== 'Asst. Commissioner' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
+                  />{' '}
+                  Should be given
+                  <Radio
+                    type='radio'
+                    name='firstbenefitbycommis'
+                    checked={firstbenefitbycommis === 'no'}
+                    value='no'
+                    onChange={e => onChange(e)}
+                    disabled={
+                      user &&
+                      user.name !== 'Asst. Commissioner' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
+                  />{' '}
+                  Should not be given
+                  <Radio
+                    type='radio'
+                    name='firstbenefitbycommis'
+                    checked={firstbenefitbycommis === 'pending'}
+                    value='pending'
+                    onChange={e => onChange(e)}
+                    disabled={
+                      user &&
+                      user.name !== 'Asst. Commissioner' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
+                  />{' '}
+                  Keep Pending
+                </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Monetary Compensation for Stage I by District Collector
+                    <textarea
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='monetarycompbyDCI'
+                      value={monetarycompbyDCI}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'District Collector' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Any other benefit for Stage I by District Collector
+                    <textarea
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='otherbenefitycompbyDCI'
+                      value={otherbenefitycompbyDCI}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'District Collector' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Other Comments by District Collector
+                    <textarea
+                      type='text'
+                      placeholder='Give the Reason for Recommendation'
+                      name='firstbenefitbycollectorcomment'
+                      value={firstbenefitbycollectorcomment}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'District Collector' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />
+                  </div>
+                </div>
+                <div className='form-group'>
+                  Decision for distribution of first Benefit District Collector
+                  <Radio
+                    type='radio'
+                    name='firstbenefitbycollector'
+                    checked={firstbenefitbycollector === 'yes'}
+                    value='yes'
+                    onChange={e => onChange(e)}
+                    disabled={
+                      user &&
+                      user.name !== 'District Collector' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
+                  />{' '}
+                  Should be given
+                  <Radio
+                    type='radio'
+                    name='firstbenefitbycollector'
+                    checked={firstbenefitbycollector === 'no'}
+                    value='no'
+                    onChange={e => onChange(e)}
+                    disabled={
+                      user &&
+                      user.name !== 'District Collector' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
+                  />{' '}
+                  Should not be given
+                  <Radio
+                    type='radio'
+                    name='firstbenefitbycollector'
+                    checked={firstbenefitbycollector === 'pending'}
+                    value='pending'
+                    onChange={e => onChange(e)}
+                    disabled={
+                      user &&
+                      user.name !== 'District Collector' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
+                  />{' '}
+                  Keep Pending
+                </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Monetary Compensation for Stage I given by Asst. Commisioner
+                    <textarea
+                      type='text'
+                      placeholder='Amount Given'
+                      name='benefitsgivenbyACI'
+                      value={benefitsgivenbyACI}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Asst. Commissioner' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    <br />
+                    Whether all benefits were given by Asst. Commisioner
+                    <Radio
+                      type='radio'
+                      name='isbenefitsgivenbyACI'
+                      checked={isbenefitsgivenbyACI === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'District Collector' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='isbenefitsgivenbyACI'
+                      checked={isbenefitsgivenbyACI === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'District Collector' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />{' '}
+                    No
+                  </div>
                 </div>
               </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Register No.
-                  <input
-                    type='text'
-                    placeholder='Register No.'
-                    name='crimeregisterno'
-                    value={crimeregisterno}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Date When Crime Happened
-                  <input
-                    type='date'
-                    placeholder='Date When Crime Happened'
-                    name='dateofcrime'
-                    value={dateofcrime}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Date when FIR was Registered
-                  <input
-                    type='date'
-                    placeholder='Date when FIR was Registered'
-                    name='regdateofcrime'
-                    value={regdateofcrime}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
+              <hr className='style-two' />
+              <div className='form-group'>
+                Were there any changes in the sections applied?
+                <Radio
+                  type='radio'
+                  name='sectionschanged'
+                  checked={sectionschanged === 'yes'}
+                  value='yes'
+                  onChange={e => onChange(e)}
+                  disabled={
+                    user &&
+                    user.name !== 'Police' &&
+                    (user && user.name !== 'Data Entry Operator')
+                  }
+                />{' '}
+                Yes
+                <Radio
+                  type='radio'
+                  name='sectionschanged'
+                  checked={sectionschanged === 'no'}
+                  value='no'
+                  onChange={e => onChange(e)}
+                  disabled={
+                    user &&
+                    user.name !== 'Police' &&
+                    (user && user.name !== 'Data Entry Operator')
+                  }
+                />{' '}
+                No
               </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Details of Victim
-                  <textarea
-                    rows='4'
-                    cols='2'
-                    type='text'
-                    placeholder='Details of Victim'
-                    name='victimdetails'
-                    value={victimdetails}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Summary of Crime
-                  <textarea
-                    rows='4'
-                    cols='2'
-                    type='text'
-                    placeholder='Summary of Crime'
-                    name='natureofcrime'
-                    value={natureofcrime}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
-              </div>
-              <div
-                style={{
-                  display: 'flex'
-                }}
-              >
-                <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
-                  Type of Crime
-                  <Select
-                    minWidth='100px'
-                    className='basic-multi-select'
-                    menuShouldScrollIntoView={true}
-                    classNamePrefix='select'
-                    closeMenuOnSelect={false}
-                    components={animatedComponents}
-                    options={options}
-                    name='typeofatrocity'
-                    value={typeofatrocity}
-                    isMulti
-                    isSearchable
-                    onChange={handleChange}
-                    isDisabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
-                  Select IPC
-                  <Select
-                    styles={{ width: '300px' }}
-                    className='basic-multi-select'
-                    classNamePrefix='select'
-                    closeMenuOnSelect={false}
-                    components={animatedComponents}
-                    options={ipcOptions}
-                    name='ipcapplied'
-                    value={ipcapplied}
-                    isMulti
-                    isSearchable
-                    onChange={handleIpc}
-                    isDisabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
-                  Select Sections
-                  <Select
-                    closeMenuOnSelect={false}
-                    components={animatedComponents}
-                    options={sectionsopts}
-                    name='sectionsapplied'
-                    value={sectionsapplied}
-                    isMulti
-                    isSearchable
-                    onChange={handleSections}
-                    isDisabled={user && user.name !== 'Police'}
-                  />
-                </div>{' '}
-              </div>
-              {/*  */}
-              {(sectionsapplied !== null || typeofatrocity !== null) &&
-                ((user && user.name === 'District Collector') ||
+              {sectionschanged === 'yes' && (
+                <Fragment>
+                  <div
+                    style={{
+                      display: 'flex'
+                    }}
+                  >
+                    <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
+                      Type of Crime
+                      <Select
+                        closeMenuOnSelect={false}
+                        components={animatedComponents}
+                        options={options}
+                        name='typeofatrocityv2'
+                        value={typeofatrocityv2}
+                        isMulti
+                        isSearchable
+                        onChange={handleChangev2}
+                        isDisabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />
+                    </div>
+                    <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
+                      Select IPC Sections
+                      <Select
+                        closeMenuOnSelect={false}
+                        components={animatedComponents}
+                        options={ipcOptions}
+                        name='ipcappliedv2'
+                        value={ipcappliedv2}
+                        isMulti
+                        isSearchable
+                        onChange={handleIpcv2}
+                        isDisabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />
+                    </div>
+                    <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
+                      Select Atrocity Act Sections
+                      <Select
+                        closeMenuOnSelect={false}
+                        components={animatedComponents}
+                        options={sectionsopts}
+                        name='sectionsappliedv2'
+                        value={sectionsappliedv2}
+                        isMulti
+                        isSearchable
+                        onChange={handleSectionsv2}
+                        isDisabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className='form-group'>
+                    Other Sections
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Details of Other Sections Applied'
+                      name='othersectionsv2'
+                      value={othersectionsv2}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                </Fragment>
+              )}
+              {(sectionsappliedv2 !== null || typeofatrocityv2 !== null) &&
+                (user &&
+                  user.name === 'District Collector' &&
                   (user && user.name === 'Asst. Commissioner')) && (
                   <div>
+                    <h3>
+                      Since Sections have Changed, Please Verify Whether less or
+                      more compensaton were given in Ist stage
+                    </h3>
+
                     <table className='fl-table'>
                       <thead>
                         <tr>
@@ -691,8 +1699,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         </tr>
                       </thead>
                       <tbody style={{ overflow: 'scroll' }}>
-                        {sectionsapplied !== null ? (
-                          sectionsapplied.map((sectionn, i) => (
+                        {sectionsappliedv2 !== null ? (
+                          sectionsappliedv2.map((sectionn, i) => (
                             <Fragment>
                               <tr>
                                 <td>{sectionn.label}</td>
@@ -733,8 +1741,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                             <td>No Data</td>
                           </tr>
                         )}
-                        {typeofatrocity !== null ? (
-                          typeofatrocity.map((sectionn, i) => (
+                        {typeofatrocityv2 !== null ? (
+                          typeofatrocityv2.map((sectionn, i) => (
                             <Fragment>
                               <tr>
                                 <td>{sectionn.label}</td>
@@ -779,676 +1787,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     </table>
                   </div>
                 )}
-              {/*  */}
-              <div className='my-2'>
-                <Button
-                  onClick={() => toggledisplayVictim(!displayVictim)}
-                  type='button'
-                  variant='contained'
-                  className={classes.button}
-                >
-                  Add Victim's Caste Certificate
-                </Button>
-                <span>*Required</span>
-              </div>
-              {displayVictim && (
-                <Fragment>
-                  <h3>Add Victim's Details</h3>
-                  <div className='maindiv'>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload first Victim's Caste Certificate File <br />
-                        <small>
-                          Note : File Size Should not exceed 6 Mb{'  '} <br />
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                        </small>
-                        <input
-                          type='file'
-                          name='victimone'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, victimone: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload Second Victim's Caste Certificate File <br />
-                        <small>
-                          Note : File Size Should not exceed 6 Mb{'  '} <br />
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                        </small>
-                        <input
-                          type='file'
-                          name='victimtwo'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, victimtwo: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload third Victim's Caste Certificate File <br />
-                        <small>
-                          Note : File Size Should not exceed 6 Mb{'  '} <br />
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                        </small>
-                        <input
-                          type='file'
-                          name='victimthree'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, victimthree: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload fourth Victim's Caste Certificate File <br />
-                        <small>
-                          Note : File Size Should not exceed 6 Mb{'  '} <br />
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                        </small>
-                        <input
-                          type='file'
-                          name='victimfour'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, victimfour: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                  </div>
-                  <div className='maindiv'>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload fifth Victim's Caste Certificate File <br />
-                        <small>
-                          Note : File Size Should not exceed 6 Mb{'  '} <br />
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                        </small>
-                        <input
-                          type='file'
-                          name='victimfive'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, victimfive: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload Sixth Victim's Caste Certificate File <br />
-                        <small>
-                          Note : File Size Should not exceed 6 Mb{'  '} <br />
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                        </small>
-                        <input
-                          type='file'
-                          name='victimsix'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, victimsix: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload seventh Victim's Caste Certificate File <br />
-                        <small>
-                          Note : File Size Should not exceed 6 Mb{'  '} <br />
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                        </small>
-                        <input
-                          type='file'
-                          name='victimseven'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, victimseven: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload other Victim's Caste Certificate File <br />
-                        <small>
-                          Note : File Size Should not exceed 6 Mb{'  '} <br />
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                        </small>
-                        <input
-                          type='file'
-                          name='victimeight'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, victimeight: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                  </div>
-                </Fragment>
-              )}
-              <div className='my-2'>
-                <Button
-                  onClick={() => toggledisplayAccused(!displayAccused)}
-                  type='button'
-                  variant='contained'
-                  className={classes.button}
-                >
-                  Add Accused Person's Caste Certificate
-                </Button>
-                <span>*Required</span>
-              </div>
-              {displayAccused && (
-                <Fragment>
-                  <h3>Add Accused Person's Details</h3>
-                  <div className='maindiv'>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload first Accused Person's Caste Certificate File{' '}
-                        <br />
-                        <small>
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                          <br /> Note : File Size Should not exceed 6 Mb{'  '}
-                        </small>
-                        <input
-                          type='file'
-                          name='accusedone'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, accusedone: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload Second Accused Person's Caste Certificate File{' '}
-                        <br />
-                        <small>
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                          <br /> Note : File Size Should not exceed 6 Mb{'  '}
-                        </small>
-                        <input
-                          type='file'
-                          name='accusedtwo'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, accusedtwo: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload third Accused Person's Caste Certificate File{' '}
-                        <br />
-                        <small>
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                          <br /> Note : File Size Should not exceed 6 Mb{'  '}
-                        </small>
-                        <input
-                          type='file'
-                          name='accusedthree'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, accusedthree: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload fourth Accused Person's Caste Certificate File{' '}
-                        <br />
-                        <small>
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                          <br /> Note : File Size Should not exceed 6 Mb{'  '}
-                        </small>
-                        <input
-                          type='file'
-                          name='accusedfour'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, accusedfour: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                  </div>
-                  <div className='maindiv'>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload fifth Accused Person's Caste Certificate File{' '}
-                        <br />
-                        <small>
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                          <br /> Note : File Size Should not exceed 6 Mb{'  '}
-                        </small>
-                        <input
-                          type='file'
-                          name='accusedfive'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, accusedfive: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload Sixth Accused Person's Caste Certificate File{' '}
-                        <br />
-                        <small>
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                          <br /> Note : File Size Should not exceed 6 Mb{'  '}
-                        </small>
-                        <input
-                          type='file'
-                          name='accusedsix'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, accusedsix: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload seventh Accused Person's Caste Certificate File{' '}
-                        <br />
-                        <small>
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                          <br /> Note : File Size Should not exceed 6 Mb{'  '}
-                        </small>
-                        <input
-                          type='file'
-                          name='accusedseven'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, accusedseven: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                    <div className='form-group'>
-                      <Paper className={classes.root}>
-                        Upload other Accused Person's Caste Certificate File{' '}
-                        <br />
-                        <small>
-                          <small>Upload jpeg/pdf file here : {'   '}</small>
-                          <br /> Note : File Size Should not exceed 6 Mb{'  '}
-                        </small>
-                        <input
-                          type='file'
-                          name='accusedeight'
-                          onChange={e => {
-                            const vall = e.target.files[0];
-                            setFormData(prevState => {
-                              return { ...prevState, accusedeight: vall };
-                            });
-                          }}
-                        />
-                      </Paper>
-                    </div>
-                  </div>
-                </Fragment>
-              )}
-              <div className='maindiv'>
-                <div className='form-group'>
-                  <Paper className={classes.root}>
-                    Upload FIR File <br />
-                    <small>Note : File Size Should not exceed 6 Mb{'  '}</small>
-                    <br /> <small>Upload jpeg/pdf file here : {'   '}</small>
-                    <input
-                      type='file'
-                      name='docImage'
-                      onChange={e => {
-                        const vall = e.target.files[0];
-                        setFormData(prevState => {
-                          return { ...prevState, docImage: vall };
-                        });
-                      }}
-                    />
-                  </Paper>
-                </div>
-                <div className='form-group'>
-                  <Paper className={classes.root}>
-                    Upload A/B/C Summary File <br />
-                    <small>Note : File Size Should not exceed 6 Mb{'  '}</small>
-                    <br /> <small>Upload jpeg/pdf file here : {'   '}</small>
-                    <input
-                      type='file'
-                      name='abcSummary'
-                      onChange={e => {
-                        const vall = e.target.files[0];
-                        setFormData(prevState => {
-                          return { ...prevState, abcSummary: vall };
-                        });
-                      }}
-                    />
-                  </Paper>
-                </div>
-              </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Comment on First benefit Recommendation by Police
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='firstbenefitbypolicecomment'
-                    value={firstbenefitbypolicecomment}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div className='form-group'>
-                  <br />
-                  First Benefit Recommendation by Police
-                  <Radio
-                    type='radio'
-                    name='firstbenefitbypolice'
-                    checked={firstbenefitbypolice === 'yes'}
-                    value='yes'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />{' '}
-                  Yes
-                  <Radio
-                    type='radio'
-                    name='firstbenefitbypolice'
-                    checked={firstbenefitbypolice === 'no'}
-                    value='no'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />{' '}
-                  No
-                  <Radio
-                    type='radio'
-                    name='firstbenefitbypolice'
-                    checked={firstbenefitbypolice === 'pending'}
-                    value='pending'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />{' '}
-                  Pending
-                </div>
-              </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Monetary Compensation for Stage I by Asst. Commisioner
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='monetarycompbyACI'
-                    value={monetarycompbyACI}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Any other benefit for Stage I by Asst. Commisioner
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='otherbenefitycompbyACI'
-                    value={otherbenefitycompbyACI}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Other Comments by Asst. Commisioner
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='firstbenefitbycommcomment'
-                    value={firstbenefitbycommcomment}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
-                  />
-                </div>
-              </div>
-              <div className='form-group'>
-                First Benefit Recommendation by Assistant Commisioner
-                <Radio
-                  type='radio'
-                  name='firstbenefitbycommis'
-                  checked={firstbenefitbycommis === 'yes'}
-                  value='yes'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
-                />{' '}
-                Yes
-                <Radio
-                  type='radio'
-                  name='firstbenefitbycommis'
-                  checked={firstbenefitbycommis === 'no'}
-                  value='no'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
-                />{' '}
-                No
-                <Radio
-                  type='radio'
-                  name='firstbenefitbycommis'
-                  checked={firstbenefitbycommis === 'pending'}
-                  value='pending'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
-                />{' '}
-                Pending
-              </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Monetary Compensation for Stage I by District Collector
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='monetarycompbyDCI'
-                    value={monetarycompbyDCI}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Any other benefit for Stage I by District Collector
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='otherbenefitycompbyDCI'
-                    value={otherbenefitycompbyDCI}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Other Comments by District Collector
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='firstbenefitbycollectorcomment'
-                    value={firstbenefitbycollectorcomment}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />
-                </div>
-              </div>
-              <div className='form-group'>
-                Decision for distribution of first Benefit District Collector
-                <Radio
-                  type='radio'
-                  name='firstbenefitbycollector'
-                  checked={firstbenefitbycollector === 'yes'}
-                  value='yes'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
-                />{' '}
-                Yes
-                <Radio
-                  type='radio'
-                  name='firstbenefitbycollector'
-                  checked={firstbenefitbycollector === 'no'}
-                  value='no'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
-                />{' '}
-                No
-                <Radio
-                  type='radio'
-                  name='firstbenefitbycollector'
-                  checked={firstbenefitbycollector === 'pending'}
-                  value='pending'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
-                />{' '}
-                Pending
-              </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Monetary Compensation for Stage I given by Asst. Commisioner
-                  <input
-                    type='text'
-                    placeholder='Amount Given'
-                    name='benefitsgivenbyACI'
-                    value={benefitsgivenbyACI}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
-                  />
-                </div>
-                <div className='form-group'>
-                  <br />
-                  Whether all benefits were given by Asst. Commisioner
-                  <Radio
-                    type='radio'
-                    name='isbenefitsgivenbyACI'
-                    checked={isbenefitsgivenbyACI === 'yes'}
-                    value='yes'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />{' '}
-                  Yes
-                  <Radio
-                    type='radio'
-                    name='isbenefitsgivenbyACI'
-                    checked={isbenefitsgivenbyACI === 'no'}
-                    value='no'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />{' '}
-                  No
-                </div>
-              </div>
-              <hr className='style-two' />
-              <div className='form-group'>
-                Were there any changes in the sections applied?
-                <Radio
-                  type='radio'
-                  name='sectionschanged'
-                  checked={sectionschanged === 'yes'}
-                  value='yes'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Police'}
-                />{' '}
-                Yes
-                <Radio
-                  type='radio'
-                  name='sectionschanged'
-                  checked={sectionschanged === 'no'}
-                  value='no'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Police'}
-                />{' '}
-                No
-              </div>
-              {sectionschanged === 'yes' && (
-                <div
-                  style={{
-                    display: 'flex'
-                  }}
-                >
-                  <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
-                    Type of Crime
-                    <Select
-                      closeMenuOnSelect={false}
-                      components={animatedComponents}
-                      options={options}
-                      name='typeofatrocityv2'
-                      value={typeofatrocityv2}
-                      isMulti
-                      isSearchable
-                      onChange={handleChangev2}
-                      isDisabled={user && user.name !== 'Police'}
-                    />
-                  </div>
-                  <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
-                    Select IPC
-                    <Select
-                      closeMenuOnSelect={false}
-                      components={animatedComponents}
-                      options={ipcOptions}
-                      name='ipcappliedv2'
-                      value={ipcappliedv2}
-                      isMulti
-                      isSearchable
-                      onChange={handleIpcv2}
-                      isDisabled={user && user.name !== 'Police'}
-                    />
-                  </div>
-                  <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
-                    Select Sections
-                    <Select
-                      closeMenuOnSelect={false}
-                      components={animatedComponents}
-                      options={sectionsopts}
-                      name='sectionsappliedv2'
-                      value={sectionsappliedv2}
-                      isMulti
-                      isSearchable
-                      onChange={handleSectionsv2}
-                      isDisabled={user && user.name !== 'Police'}
-                    />
-                  </div>
-                </div>
-              )}
               <br />
               <br />
               <div className='maindiv'>
@@ -1504,7 +1842,11 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='chargesheetdate'
                     value={chargesheetdate}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
+                    disabled={
+                      user &&
+                      user.name !== 'Police' &&
+                      (user && user.name !== 'Data Entry Operator')
+                    }
                   />
                 </div>
                 <div className='form-group'>
@@ -1528,13 +1870,17 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
               <div className='maindiv'>
                 <div className='form-group'>
                   Comment on Second benefit Recommendation by Police
-                  <input
+                  <textarea
                     type='text'
                     placeholder='Give the Reason for Recommendation'
                     name='secondbenefitbypolicecomment'
                     value={secondbenefitbypolicecomment}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
+                    disabled={
+                      user &&
+                      user.name !== 'Police' &&
+                      (user && user.name !== 'Data Entry Operator')
+                    }
                   />
                 </div>
                 <div className='form-group'>
@@ -1546,61 +1892,88 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={secondbenefitbypolice === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
+                    disabled={
+                      user &&
+                      user.name !== 'Police' &&
+                      (user && user.name !== 'Data Entry Operator')
+                    }
                   />{' '}
-                  Yes
+                  Should be given
                   <Radio
                     type='radio'
                     name='secondbenefitbypolice'
                     checked={secondbenefitbypolice === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
+                    disabled={
+                      user &&
+                      user.name !== 'Police' &&
+                      (user && user.name !== 'Data Entry Operator')
+                    }
                   />{' '}
-                  No
+                  Should not be given
                   <Radio
                     type='radio'
                     name='secondbenefitbypolice'
                     checked={secondbenefitbypolice === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
+                    disabled={
+                      user &&
+                      user.name !== 'Police' &&
+                      (user && user.name !== 'Data Entry Operator')
+                    }
                   />{' '}
-                  Pending
+                  Keep Pending
                 </div>
               </div>
               <div className='maindiv'>
                 <div className='form-group'>
                   Monetary Compensation for Stage II by Asst. Commisioner
-                  <input
+                  <textarea
                     type='text'
                     placeholder='Give the Reason for Recommendation'
                     name='monetarycompbyACII'
                     value={monetarycompbyACII}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
+                    disabled={
+                      user &&
+                      user.name !== 'Asst. Commissioner' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />
                 </div>
                 <div className='form-group'>
                   Any other benefit for Stage II by Asst. Commisioner
-                  <input
+                  <textarea
                     type='text'
                     placeholder='Give the Reason for Recommendation'
                     name='otherbenefitycompbyACII'
                     value={otherbenefitycompbyACII}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
+                    disabled={
+                      user &&
+                      user.name !== 'Asst. Commissioner' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />
                 </div>
                 <div className='form-group'>
                   Other Comments by Asst. Commisioner
-                  <input
+                  <textarea
                     type='text'
                     placeholder='Give the Reason for Recommendation'
                     name='secondbenefitbycommcomment'
                     value={secondbenefitbycommcomment}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
+                    disabled={
+                      user &&
+                      user.name !== 'Asst. Commissioner' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />
                 </div>
               </div>
@@ -1612,60 +1985,90 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycommis === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
+                  disabled={
+                    user &&
+                    user.name !== 'Asst. Commissioner' &&
+                    user &&
+                    user.name !== 'Data Entry Operator'
+                  }
                 />{' '}
-                Yes
+                Should be given
                 <Radio
                   type='radio'
                   name='secondbenefitbycommis'
                   checked={secondbenefitbycommis === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
+                  disabled={
+                    user &&
+                    user.name !== 'Asst. Commissioner' &&
+                    user &&
+                    user.name !== 'Data Entry Operator'
+                  }
                 />{' '}
-                No
+                Should not be given
                 <Radio
                   type='radio'
                   name='secondbenefitbycommis'
                   checked={secondbenefitbycommis === 'pending'}
                   value='pending'
                   onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
+                  disabled={
+                    user &&
+                    user.name !== 'Asst. Commissioner' &&
+                    user &&
+                    user.name !== 'Data Entry Operator'
+                  }
                 />{' '}
-                Pending
+                Keep Pending
               </div>
               <div className='maindiv'>
                 <div className='form-group'>
                   Monetary Compensation for Stage II by District Collector
-                  <input
+                  <textarea
                     type='text'
                     placeholder='Give the Reason for Recommendation'
                     name='monetarycompbyDCII'
                     value={monetarycompbyDCII}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
+                    disabled={
+                      user &&
+                      user.name !== 'District Collector' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />
                 </div>
                 <div className='form-group'>
                   Any other benefit for Stage II by District Collector
-                  <input
+                  <textarea
                     type='text'
                     placeholder='Give the Reason for Recommendation'
                     name='otherbenefitycompbyDCII'
                     value={otherbenefitycompbyDCII}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
+                    disabled={
+                      user &&
+                      user.name !== 'District Collector' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />
                 </div>
                 <div className='form-group'>
                   Other Comments by District Collector
-                  <input
+                  <textarea
                     type='text'
                     placeholder='Give the Reason for Recommendation'
                     name='secondbenefitbycollectorcomment'
                     value={secondbenefitbycollectorcomment}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
+                    disabled={
+                      user &&
+                      user.name !== 'District Collector' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />
                 </div>
               </div>
@@ -1677,38 +2080,58 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycollector === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
+                  disabled={
+                    user &&
+                    user.name !== 'District Collector' &&
+                    user &&
+                    user.name !== 'Data Entry Operator'
+                  }
                 />{' '}
-                Yes
+                Should be given
                 <Radio
                   type='radio'
                   name='secondbenefitbycollector'
                   checked={secondbenefitbycollector === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
+                  disabled={
+                    user &&
+                    user.name !== 'District Collector' &&
+                    user &&
+                    user.name !== 'Data Entry Operator'
+                  }
                 />{' '}
-                No
+                Should not be given
                 <Radio
                   type='radio'
                   name='secondbenefitbycollector'
                   checked={secondbenefitbycollector === 'pending'}
                   value='pending'
                   onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
+                  disabled={
+                    user &&
+                    user.name !== 'District Collector' &&
+                    user &&
+                    user.name !== 'Data Entry Operator'
+                  }
                 />{' '}
-                Pending
+                Keep Pending
               </div>
               <div className='maindiv'>
                 <div className='form-group'>
                   Monetary Compensation for Stage II given by Asst. Commisioner
-                  <input
+                  <textarea
                     type='text'
                     placeholder='Amount Given'
                     name='benefitsgivenbyACII'
                     value={benefitsgivenbyACII}
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
+                    disabled={
+                      user &&
+                      user.name !== 'Asst. Commissioner' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />
                 </div>
                 <div className='form-group'>
@@ -1720,7 +2143,12 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={isbenefitsgivenbyACII === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
+                    disabled={
+                      user &&
+                      user.name !== 'District Collector' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />{' '}
                   Yes
                   <Radio
@@ -1729,276 +2157,378 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={isbenefitsgivenbyACII === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
+                    disabled={
+                      user &&
+                      user.name !== 'District Collector' &&
+                      user &&
+                      user.name !== 'Data Entry Operator'
+                    }
                   />{' '}
                   No
                 </div>
               </div>
               <br />
-              <hr className='style-three' />
-              <br />
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Date of Court Order
-                  <input
-                    type='date'
-                    placeholder='Date of Court Order'
-                    name='dateofcourtorder'
-                    value={dateofcourtorder}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div className='form-group' style={{ flexGrow: 6 }}>
-                  Summary of Court Order
-                  <textarea
-                    rows='6'
-                    type='text'
-                    placeholder='Court Results'
-                    name='courtresults'
-                    value={courtresults}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div className='form-group'>
-                  <Paper className={classes.root}>
-                    Upload Court Order File <br />
-                    <small>Note : File Size Should not exceed 6 Mb{'  '}</small>
-                    <br /> <small>Upload jpeg/pdf file here : {'   '}</small>
-                    <input
-                      type='file'
-                      name='courtorder'
-                      onChange={e => {
-                        const vall = e.target.files[0];
-                        setFormData(prevState => {
-                          return { ...prevState, courtorder: vall };
-                        });
-                      }}
-                    />
-                  </Paper>
-                </div>
-              </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Comment on Third benefit Recommendation by Police
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='thirdbenefitbypolicecomment'
-                    value={thirdbenefitbypolicecomment}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Third Benefit Recommendation by Police
-                  <Radio
-                    type='radio'
-                    name='thirdbenefitbypolice'
-                    checked={thirdbenefitbypolice === 'yes'}
-                    value='yes'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />{' '}
-                  Yes
-                  <Radio
-                    type='radio'
-                    name='thirdbenefitbypolice'
-                    checked={thirdbenefitbypolice === 'no'}
-                    value='no'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />{' '}
-                  No
-                  <Radio
-                    type='radio'
-                    name='thirdbenefitbypolice'
-                    checked={thirdbenefitbypolice === 'pending'}
-                    value='pending'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Police'}
-                  />{' '}
-                  Pending
-                </div>
-              </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Monetary Compensation for Stage III by Asst. Commisioner
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='monetarycompbyACIII'
-                    value={monetarycompbyACIII}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Any other benefit for Stage III by Asst. Commisioner
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='otherbenefitycompbyACIII'
-                    value={otherbenefitycompbyACIII}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Other Comments by Asst. Commisioner
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='thirdbenefitbycommcomment'
-                    value={thirdbenefitbycommcomment}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
-                  />
-                </div>
-              </div>
-              <div className='form-group'>
-                Third Benefit Recommendation by Assistant Commisioner
-                <Radio
-                  type='radio'
-                  name='thirdbenefitbycommis'
-                  checked={thirdbenefitbycommis === 'yes'}
-                  value='yes'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
-                />{' '}
-                Yes
-                <Radio
-                  type='radio'
-                  name='thirdbenefitbycommis'
-                  checked={thirdbenefitbycommis === 'no'}
-                  value='no'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
-                />{' '}
-                No
-                <Radio
-                  type='radio'
-                  name='thirdbenefitbycommis'
-                  checked={thirdbenefitbycommis === 'pending'}
-                  value='pending'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'Asst. Commissioner'}
-                />{' '}
-                Pending
-              </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Monetary Compensation III by District Collector
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='monetarycompbyDCIII'
-                    value={monetarycompbyDCIII}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Any other benefit for Stage III by District Collector
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='otherbenefitycompbyDCIII'
-                    value={otherbenefitycompbyDCIII}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />
-                </div>
-                <div className='form-group'>
-                  Other Comments by District Collector
-                  <input
-                    type='text'
-                    placeholder='Give the Reason for Recommendation'
-                    name='thirdbenefitbycollectorcomment'
-                    value={thirdbenefitbycollectorcomment}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />
-                </div>
-              </div>
-              <div className='form-group'>
-                Decision for distribution of third Benefit District Collector
-                <Radio
-                  type='radio'
-                  name='thirdbenefitbycollector'
-                  checked={thirdbenefitbycollector === 'yes'}
-                  value='yes'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
-                />{' '}
-                Yes
-                <Radio
-                  type='radio'
-                  name='thirdbenefitbycollector'
-                  checked={thirdbenefitbycollector === 'no'}
-                  value='no'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
-                />{' '}
-                No
-                <Radio
-                  type='radio'
-                  name='thirdbenefitbycollector'
-                  checked={thirdbenefitbycollector === 'pending'}
-                  value='pending'
-                  onChange={e => onChange(e)}
-                  disabled={user && user.name !== 'District Collector'}
-                />{' '}
-                Pending
-              </div>
-              <div className='maindiv'>
-                <div className='form-group'>
-                  Monetary Compensation for Stage III given by Asst. Commisioner
-                  <input
-                    type='text'
-                    placeholder='Amount Given'
-                    name='benefitsgivenbyACIII'
-                    value={benefitsgivenbyACIII}
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
-                  />
-                </div>
-                <div className='form-group'>
+              {!dpmurderIII && !dpacidIII && !dpdisabilityIII && (
+                <Fragment>
+                  <hr className='style-three' />
                   <br />
-                  Whether all benefits were given for Stage III by Asst.
-                  Commisioner
-                  <Radio
-                    type='radio'
-                    name='isbenefitsgivenbyACIII'
-                    checked={isbenefitsgivenbyACIII === 'yes'}
-                    value='yes'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />{' '}
-                  Yes
-                  <Radio
-                    type='radio'
-                    name='isbenefitsgivenbyACIII'
-                    checked={isbenefitsgivenbyACIII === 'no'}
-                    value='no'
-                    onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'District Collector'}
-                  />{' '}
-                  No
-                </div>
-              </div>
-              <div className='form-group'>
-                Financial Support to be Provided
-                <textarea
-                  rows='4'
-                  type='text'
-                  placeholder='Financial Support to be Provided'
-                  name='financialsupport'
-                  value={financialsupport}
-                  onChange={e => onChange(e)}
-                />
-              </div>
+                  <div className='maindiv'>
+                    <div className='form-group'>
+                      Date of Court Order
+                      <input
+                        type='date'
+                        placeholder='Date of Court Order'
+                        name='dateofcourtorder'
+                        value={dateofcourtorder}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />
+                    </div>
+                    <div className='form-group' style={{ flexGrow: 6 }}>
+                      Summary of Court Order
+                      <textarea
+                        rows='6'
+                        type='text'
+                        placeholder='Court Results'
+                        name='courtresults'
+                        value={courtresults}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />
+                    </div>
+                    <div className='form-group'>
+                      <Paper className={classes.root}>
+                        Upload Court Order File <br />
+                        <small>
+                          Note : File Size Should not exceed 6 Mb{'  '}
+                        </small>
+                        <br />{' '}
+                        <small>Upload jpeg/pdf file here : {'   '}</small>
+                        <input
+                          type='file'
+                          name='courtorder'
+                          onChange={e => {
+                            const vall = e.target.files[0];
+                            setFormData(prevState => {
+                              return { ...prevState, courtorder: vall };
+                            });
+                          }}
+                        />
+                      </Paper>
+                    </div>
+                  </div>
+                  <div className='maindiv'>
+                    <div className='form-group'>
+                      Comment on Third benefit Recommendation by Police
+                      <textarea
+                        type='text'
+                        placeholder='Give the Reason for Recommendation'
+                        name='thirdbenefitbypolicecomment'
+                        value={thirdbenefitbypolicecomment}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />
+                    </div>
+                    <div className='form-group'>
+                      Third Benefit Recommendation by Police
+                      <Radio
+                        type='radio'
+                        name='thirdbenefitbypolice'
+                        checked={thirdbenefitbypolice === 'yes'}
+                        value='yes'
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />{' '}
+                      Should be given
+                      <Radio
+                        type='radio'
+                        name='thirdbenefitbypolice'
+                        checked={thirdbenefitbypolice === 'no'}
+                        value='no'
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />{' '}
+                      Should not be given
+                      <Radio
+                        type='radio'
+                        name='thirdbenefitbypolice'
+                        checked={thirdbenefitbypolice === 'pending'}
+                        value='pending'
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Police' &&
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />{' '}
+                      Keep Pending
+                    </div>
+                  </div>
+                  <div className='maindiv'>
+                    <div className='form-group'>
+                      Monetary Compensation for Stage III by Asst. Commisioner
+                      <textarea
+                        type='text'
+                        placeholder='Give the Reason for Recommendation'
+                        name='monetarycompbyACIII'
+                        value={monetarycompbyACIII}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Asst. Commissioner' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />
+                    </div>
+                    <div className='form-group'>
+                      Any other benefit for Stage III by Asst. Commisioner
+                      <textarea
+                        type='text'
+                        placeholder='Give the Reason for Recommendation'
+                        name='otherbenefitycompbyACIII'
+                        value={otherbenefitycompbyACIII}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Asst. Commissioner' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />
+                    </div>
+                    <div className='form-group'>
+                      Other Comments by Asst. Commisioner
+                      <textarea
+                        type='text'
+                        placeholder='Give the Reason for Recommendation'
+                        name='thirdbenefitbycommcomment'
+                        value={thirdbenefitbycommcomment}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Asst. Commissioner' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className='form-group'>
+                    Third Benefit Recommendation by Assistant Commisioner
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycommis'
+                      checked={thirdbenefitbycommis === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Asst. Commissioner' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />{' '}
+                    Should be given
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycommis'
+                      checked={thirdbenefitbycommis === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Asst. Commissioner' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />{' '}
+                    Should not be given
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycommis'
+                      checked={thirdbenefitbycommis === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Asst. Commissioner' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />{' '}
+                    Keep Pending
+                  </div>
+                  <div className='maindiv'>
+                    <div className='form-group'>
+                      Monetary Compensation III by District Collector
+                      <textarea
+                        type='text'
+                        placeholder='Give the Reason for Recommendation'
+                        name='monetarycompbyDCIII'
+                        value={monetarycompbyDCIII}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'District Collector' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />
+                    </div>
+                    <div className='form-group'>
+                      Any other benefit for Stage III by District Collector
+                      <textarea
+                        type='text'
+                        placeholder='Give the Reason for Recommendation'
+                        name='otherbenefitycompbyDCIII'
+                        value={otherbenefitycompbyDCIII}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'District Collector' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />
+                    </div>
+                    <div className='form-group'>
+                      Other Comments by District Collector
+                      <textarea
+                        type='text'
+                        placeholder='Give the Reason for Recommendation'
+                        name='thirdbenefitbycollectorcomment'
+                        value={thirdbenefitbycollectorcomment}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'District Collector' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className='form-group'>
+                    Decision for distribution of third Benefit District
+                    Collector
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycollector'
+                      checked={thirdbenefitbycollector === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'District Collector' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />{' '}
+                    Should be given
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycollector'
+                      checked={thirdbenefitbycollector === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'District Collector' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />{' '}
+                    Should not be given
+                    <Radio
+                      type='radio'
+                      name='thirdbenefitbycollector'
+                      checked={thirdbenefitbycollector === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'District Collector' &&
+                        user &&
+                        user.name !== 'Data Entry Operator'
+                      }
+                    />{' '}
+                    Keep Pending
+                  </div>
+                  <div className='maindiv'>
+                    <div className='form-group'>
+                      Monetary Compensation for Stage III given by Asst.
+                      Commisioner
+                      <textarea
+                        type='text'
+                        placeholder='Amount Given'
+                        name='benefitsgivenbyACIII'
+                        value={benefitsgivenbyACIII}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'Asst. Commissioner' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />
+                    </div>
+                    <div className='form-group'>
+                      <br />
+                      Whether all benefits were given for Stage III by Asst.
+                      Commisioner
+                      <Radio
+                        type='radio'
+                        name='isbenefitsgivenbyACIII'
+                        checked={isbenefitsgivenbyACIII === 'yes'}
+                        value='yes'
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'District Collector' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />{' '}
+                      Yes
+                      <Radio
+                        type='radio'
+                        name='isbenefitsgivenbyACIII'
+                        checked={isbenefitsgivenbyACIII === 'no'}
+                        value='no'
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.name !== 'District Collector' &&
+                          user &&
+                          user.name !== 'Data Entry Operator'
+                        }
+                      />{' '}
+                      No
+                    </div>
+                  </div>
+                </Fragment>
+              )}
               {!disabledata && (
                 <Fragment>
                   <div className='form-group'>
@@ -2023,8 +2553,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       {' '}
                       <br />
                       Select if Every Action for this Case has been Taken <br />{' '}
-                      Note : You Won't be able to make any changes if you select
-                      "Yes" and Click the Submit Button
+                      Note : No Changes can be made in the details above if yes
+                      is selected and Submit Button is pressed
                     </small>
                   </div>
                 </Fragment>
@@ -2097,6 +2627,15 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
             </div>
           </Fragment>
         )} */}
+              {/* Sticky Button */}
+              <div className='icon-bar'>
+                {!closethecase && (
+                  <Fragment>
+                    {' '}
+                    <input type='submit' className='btn btn-primary' />{' '}
+                  </Fragment>
+                )}
+              </div>
               {!closethecase && (
                 <Fragment>
                   {' '}

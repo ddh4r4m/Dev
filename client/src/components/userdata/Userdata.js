@@ -7,6 +7,7 @@ import UserdataTop from '../userdata/UserdataTop';
 import CommentForm from '../userdata/CommentForm';
 import CommentItem from '../userdata/CommentItem';
 import RecommUser from '../userdata/RecommUser';
+import { Redirect } from 'react-router-dom';
 import {
   createMuiTheme,
   withStyles,
@@ -50,6 +51,7 @@ const Userdata = ({
         <Spinner />
       ) : (
         <Fragment>
+          {/* <Redirect to={`/edit-userdata/${match.params.id}`} /> */}
           <div>
             <UserdataTop userdata={userdata} />
             <Button

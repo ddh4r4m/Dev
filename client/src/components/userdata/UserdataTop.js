@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { deleteUserdata } from '../../actions/userdata';
@@ -59,75 +59,7 @@ const UserdataTop = ({
   const classes = useStyles();
 
   return (
-    <div className='mytable'>
-      <div style={{ margin: '0 5%' }}>
-        <h4>
-          SERIAL NO : <span style={{ float: 'right' }}> {text}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          YEAR :<span style={{ float: 'right' }}> {year}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          POLICE STATION :
-          <span style={{ float: 'right' }}> {policestation}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          CRIME REGISTER NO :
-          <span style={{ float: 'right' }}> {crimeregisterno}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          DATE OF CRIME :<span style={{ float: 'right' }}> {dateofcrime}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          REGISTRATION DATE OF CRIME :
-          <span style={{ float: 'right' }}> {regdateofcrime}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          VICTIM DETAILS :
-          <span style={{ float: 'right' }}> {victimdetails}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          NATURE OF CRIME :
-          <span style={{ float: 'right' }}> {natureofcrime}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          SECTIONS / PENAL CODES :
-          <span style={{ float: 'right' }}> {sections}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          DATE OF COURT ORDER :
-          <span style={{ float: 'right' }}> {dateofcourtorder}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          CHARGE SHEET DATE :
-          <span style={{ float: 'right' }}> {chargesheetdate}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          POLICE INVESTIGATION :
-          <span style={{ float: 'right' }}> {policeinvestigation}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          COURT RESULTS :<span style={{ float: 'right' }}> {courtresults}</span>
-        </h4>
-        <hr />
-        <h4 className='display'>
-          FINANCIAL SUPPORT :
-          <span style={{ float: 'right' }}> {financialsupport}</span>
-        </h4>
-        <hr />
-      </div>
+    <Fragment>
       <div className='mybuttons'>
         <Link to={`/edit-userdata/${_id}`}>
           <Button
@@ -135,7 +67,7 @@ const UserdataTop = ({
             color='primary'
             className={classes.button}
           >
-            Edit Userdata
+            Edit Case
           </Button>
         </Link>
 
@@ -151,8 +83,81 @@ const UserdataTop = ({
           Go Back
         </Link>
       </div>
-      <br />
-    </div>
+      <div className='mytable'>
+        <div style={{ margin: '0 5%' }}>
+          <h4>
+            SERIAL NO : <span style={{ float: 'right' }}> {text}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            YEAR :<span style={{ float: 'right' }}> {year}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            POLICE STATION :
+            <span style={{ float: 'right' }}> {policestation}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            CRIME REGISTER NO :
+            <span style={{ float: 'right' }}> {crimeregisterno}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            DATE OF CRIME :
+            <span style={{ float: 'right' }}> {dateofcrime}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            REGISTRATION DATE OF CRIME :
+            <span style={{ float: 'right' }}> {regdateofcrime}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            VICTIM DETAILS :
+            <span style={{ float: 'right' }}> {victimdetails}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            NATURE OF CRIME :
+            <span style={{ float: 'right' }}> {natureofcrime}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            SECTIONS / PENAL CODES :
+            <span style={{ float: 'right' }}> {sections}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            DATE OF COURT ORDER :
+            <span style={{ float: 'right' }}> {dateofcourtorder}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            CHARGE SHEET DATE :
+            <span style={{ float: 'right' }}> {chargesheetdate}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            POLICE INVESTIGATION :
+            <span style={{ float: 'right' }}> {policeinvestigation}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            COURT RESULTS :
+            <span style={{ float: 'right' }}> {courtresults}</span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            FINANCIAL SUPPORT :
+            <span style={{ float: 'right' }}> {financialsupport}</span>
+          </h4>
+          <hr />
+        </div>
+
+        <br />
+      </div>
+    </Fragment>
   );
 };
 

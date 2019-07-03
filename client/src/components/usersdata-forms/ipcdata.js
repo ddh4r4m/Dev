@@ -773,7 +773,7 @@ export const sectionsopts = [
   },
   {
     label: '3(2)(v)(a) 354',
-    value: '3(2)(v)(a)',
+    value: '3(2)(v)(a) 354',
     compensation: 200000,
     firststage: 0.5,
     secondstage: 0.25,
@@ -782,7 +782,7 @@ export const sectionsopts = [
   },
   {
     label: '3(2)(v)(a) 354A',
-    value: '3(2)(v)(a)',
+    value: '3(2)(v)(a) 354A',
     compensation: 200000,
     firststage: 0.5,
     secondstage: 0.25,
@@ -791,7 +791,7 @@ export const sectionsopts = [
   },
   {
     label: '3(2)(v)(a) 354B',
-    value: '3(2)(v)(a)',
+    value: '3(2)(v)(a) 354B',
     compensation: 200000,
     firststage: 0.5,
     secondstage: 0.25,
@@ -800,7 +800,7 @@ export const sectionsopts = [
   },
   {
     label: '3(2)(v)(a) 354C',
-    value: '3(2)(v)(a)',
+    value: '3(2)(v)(a) 354C',
     compensation: 200000,
     firststage: 0.1,
     secondstage: 0.5,
@@ -809,7 +809,7 @@ export const sectionsopts = [
   },
   {
     label: '3(2)(v)(a) 354D',
-    value: '3(2)(v)(a)',
+    value: '3(2)(v)(a) 354D',
     compensation: 200000,
     firststage: 0.1,
     secondstage: 0.5,
@@ -818,7 +818,7 @@ export const sectionsopts = [
   },
   {
     label: '3(2)(v)(a) 376B',
-    value: '3(2)(v)(a)',
+    value: '3(2)(v)(a) 376B',
     compensation: 200000,
     firststage: 0.5,
     secondstage: 0.25,
@@ -827,7 +827,7 @@ export const sectionsopts = [
   },
   {
     label: '3(2)(v)(a) 376C',
-    value: '3(2)(v)(a)',
+    value: '3(2)(v)(a) 376C',
     compensation: 400000,
     firststage: 0.5,
     secondstage: 0.25,
@@ -836,7 +836,7 @@ export const sectionsopts = [
   },
   {
     label: '3(2)(v)(a) 509',
-    value: '3(2)(v)(a)',
+    value: '3(2)(v)(a) 509',
     compensation: 200000,
     firststage: 0.25,
     secondstage: 0.5,
@@ -1008,7 +1008,7 @@ export const options = [
       'In addition to relief amounts paid under above items, relief may be arranged within three months of date of atrocity as follows:- (i) Basic Pension to the widow or other dependents of deceased persons belonging to a Scheduled Caste or a Scheduled Tribe amounting to five thousand rupees per month, as applicable to a Government servant of the concerned State Government or Union territory Administration, with admissible dearness allowance and employment to one member of the family of the deceased, and provision of agricultural land, an house, if necessary by outright purchase; (ii) Full cost of the education up to graduation level and maintenance of the children of the victims. Children may be admitted to Ashram schools or residential schools, fully funded by the Government; (iii) Provision of utensils, rice, wheat, dals, pulses, etc., for a period of three months. '
   },
   {
-    value: 'gangRape',
+    value: 'rape',
     label: 'Gang Rape',
     compensation: 825000,
     firststage: 0.5,
@@ -1046,7 +1046,7 @@ export const options = [
   },
 
   {
-    value: 'permanentIncapacitation100',
+    value: 'permanentIncapacitation',
     label: 'Permanent Incapacitation 100%',
     compensation: 825000,
     firststage: 0.5,
@@ -1056,7 +1056,7 @@ export const options = [
       'In addition to relief amounts paid under above items, relief may be arranged within three months of date of atrocity as follows:- (i) Basic Pension to the widow or other dependents of deceased persons belonging to a Scheduled Caste or a Scheduled Tribe amounting to five thousand rupees per month, as applicable to a Government servant of the concerned State Government or Union territory Administration, with admissible dearness allowance and employment to one member of the family of the deceased, and provision of agricultural land, an house, if necessary by outright purchase; (ii) Full cost of the education up to graduation level and maintenance of the children of the victims. Children may be admitted to Ashram schools or residential schools, fully funded by the Government; (iii) Provision of utensils, rice, wheat, dals, pulses, etc., for a period of three months. '
   },
   {
-    value: 'permanentIncapacitation50to99',
+    value: 'permanentIncapacitation',
     label: 'Permanent Incapacitation 50-99%',
     compensation: 450000,
     firststage: 0.5,
@@ -1066,7 +1066,7 @@ export const options = [
       'In addition to relief amounts paid under above items, relief may be arranged within three months of date of atrocity as follows:- (i) Basic Pension to the widow or other dependents of deceased persons belonging to a Scheduled Caste or a Scheduled Tribe amounting to five thousand rupees per month, as applicable to a Government servant of the concerned State Government or Union territory Administration, with admissible dearness allowance and employment to one member of the family of the deceased, and provision of agricultural land, an house, if necessary by outright purchase; (ii) Full cost of the education up to graduation level and maintenance of the children of the victims. Children may be admitted to Ashram schools or residential schools, fully funded by the Government; (iii) Provision of utensils, rice, wheat, dals, pulses, etc., for a period of three months. '
   },
   {
-    value: 'permanentIncapacitation0to49',
+    value: 'permanentIncapacitation',
     label: 'Permanent Incapacitation 0-49%',
     compensation: 250000,
     firststage: 0.5,
@@ -1084,5 +1084,432 @@ export const options = [
     thirdstage: 0,
     extradetails:
       'Brick or stone masonary house to be constructed or provided at Government cost where it has been burnt or destroyed.” '
+  }
+];
+
+export const sectionsoptsv3 = [
+  {
+    label: '3(1)(a)',
+    value: '3(1)(a)',
+    compensation: 60000,
+    firststage: 0.25,
+    secondstage: 0.65,
+    thirdstage: 0,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(b)',
+    value: '3(1)(b)',
+    compensation: 60000,
+    firststage: 0.25,
+    secondstage: 0.65,
+    thirdstage: 0,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(c)',
+    value: '3(1)(c)',
+    compensation: 60000,
+    firststage: 0.25,
+    secondstage: 0.65,
+    thirdstage: 0,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(d)',
+    value: '3(1)(d)',
+    compensation: 60000,
+    firststage: 1,
+    secondstage: 0,
+    thirdstage: 0,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(e)',
+    value: '3(1)(e)',
+    compensation: 60000,
+    firststage: 1,
+    secondstage: 0,
+    thirdstage: 0,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(f)',
+    value: '3(1)(f)',
+    compensation: 60000,
+    firststage: 0.25,
+    secondstage: 0.65,
+    thirdstage: 0,
+    extradetails: ''
+  },
+  {
+    label: '3(1)(g)',
+    value: '3(1)(g)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      'The land or premises or water supply or irrigation facility shall be restored where necessary at Government cost by the concerned State Government or Union territory Administration.'
+  },
+  {
+    label: '3(1)(h)',
+    value: '3(1)(h)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(i)',
+    value: '3(1)(i)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(j)',
+    value: '3(1)(j)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(k)',
+    value: '3(1)(k)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(l)',
+    value: '3(1)(l)',
+    compensation: 85000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(m)',
+    value: '3(1)(m)',
+    compensation: 85000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(n)',
+    value: '3(1)(n)',
+    compensation: 85000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(o)',
+    value: '3(1)(o)',
+    compensation: 85000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(p)',
+    value: '3(1)(p)',
+    compensation: 85000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      ' or reimbursement of actual legal expenses and damages, whichever is less. '
+  },
+  {
+    label: '3(1)(q)',
+    value: '3(1)(q)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      ' or reimbursement of actual legal expenses and damages, whichever is less. '
+  },
+  {
+    label: '3(1)(r)',
+    value: '3(1)(r)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(s)',
+    value: '3(1)(s)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+
+  {
+    label: '3(1)(t)',
+    value: '3(1)(t)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(u)',
+    value: '3(1)(u)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(v)',
+    value: '3(1)(v)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(1)(w)',
+    value: '3(1)(w)',
+    compensation: 200000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(v)(a) 354',
+    value: '3(2)(v)(a) 354',
+    compensation: 200000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(v)(a) 354A',
+    value: '3(2)(v)(a) 354A',
+    compensation: 200000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(v)(a) 354B',
+    value: '3(2)(v)(a) 354B',
+    compensation: 200000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(v)(a) 354C',
+    value: '3(2)(v)(a) 354C',
+    compensation: 200000,
+    firststage: 0.1,
+    secondstage: 0.5,
+    thirdstage: 0.4,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(v)(a) 354D',
+    value: '3(2)(v)(a) 354D',
+    compensation: 200000,
+    firststage: 0.1,
+    secondstage: 0.5,
+    thirdstage: 0.4,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(v)(a) 376B',
+    value: '3(2)(v)(a) 376B',
+    compensation: 200000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(v)(a) 376C',
+    value: '3(2)(v)(a) 376C',
+    compensation: 400000,
+    firststage: 0.5,
+    secondstage: 0.25,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(v)(a) 509',
+    value: '3(2)(v)(a) 509',
+    compensation: 200000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  // {
+  //   label: '3(2)(v)(a)',
+  //   value: '3(2)(v)(a)'
+  // },
+  {
+    label: '3(1)(x)',
+    value: '3(1)(x)',
+    compensation: 0,
+    firststage: 0,
+    secondstage: 0,
+    thirdstage: 0,
+    extradetails:
+      'Full cost of restoration of normal facility, including cleaning when the water is fouled, to be borne by the concerned State Government or Union territory Administration. In addition, an amount of eight lakh twenty-five thousand rupees shall be deposited with the District Magistrate for creating community assets of the nature to be decided by the District Authority in consultation with the Local Body. '
+  },
+  {
+    label: '3(1)(y)',
+    value: '3(1)(y)',
+    compensation: 425000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      ' and cost of restoration of right of passage by the concerned State Government or Union territory Administration. '
+  },
+  {
+    label: '3(1)(z)',
+    value: '3(1)(z)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      'Restoration of the site or right to stay in house, village or other place of residence by the concerned State Government or Union territory Administration and relief of one lakh rupees to the victim and reconstruction of the house at Government cost, if destroyed. '
+  },
+  {
+    label: '3(1)(za)(A)',
+    value: '3(1)(za)(A)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      'Restoration of the right using common property resources of an area, or burial or cremation ground equally with others or using any river, stream, spring, well, tank, cistern, water-tap or other watering place, or any bathing ghat, any public conveyance, any road, or passage equally with others, by the concerned State Government or Union Territory Administration and relief of one lakh rupees to the victim'
+  },
+  {
+    label: '3(1)(za)(B)',
+    value: '3(1)(za)(B)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      'Restoration of the right of mounting or riding bicycles or motor cycles or wearing footwear or new clothes in public places or taking out wedding procession, or mounting a horse or any other vehicle during wedding processions, equally with others by the concerned State Government or Union territory Administration and relief of one lakh rupees to the victim. '
+  },
+  {
+    label: '3(1)(za)(C)',
+    value: '3(1)(za)(C)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      ' Restoration of the right of entering any place of worship which is open to the public or other persons professing the same religion or taking part in, or taking out any religious procession or jatras, as is open to the public or other persons professing the same religion, social or cultural processions including jatras, equally with other persons, by the concerned State Government or Union territory Administration and relief of one lakh rupees to the victim. '
+  },
+  {
+    label: '3(1)(za)(D)',
+    value: '3(1)(za)(D)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      'Restoration of the right of entering any educational institution, hospital, dispensary, primary health centre, shop or place of public entertainment or any other public place; or using any utensils or articles meant for public use in any place open to the public, equally with other persons by the concerned State Government or Union territory Administration and relief of one lakh rupees to the victim. '
+  },
+  {
+    label: '3(1)(za)(E)',
+    value: '3(1)(za)(E)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      'Restoration of the right of practicing any profession or the carrying on of any occupation, trade or business or employment in any job which other members of the public, or any section thereof, have a right to use or have access to, by the concerned State Government/Union territory Administration and relief of one lakh rupees to the victim.'
+  },
+  {
+    label: '3(1)(zb)',
+    value: '3(1)(zb)',
+    compensation: 100000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      'and also commensurate with the indignity, insult, injury and defamation suffered by the victim. '
+  },
+  {
+    label: '3(1)(zc)',
+    value: '3(1)(zc)',
+    compensation: 100000,
+    firststage: 0.0,
+    secondstage: 1,
+    thirdstage: 0,
+    extradetails:
+      ' and Restoration of provision of all economic and social services equally with other persons, by the concerned State Government or Union territory Administration'
+  },
+  {
+    label: '3(2)(i) and (ii) ',
+    value: '3(2)(i) and (ii) ',
+    compensation: 415000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)',
+    value: '3(2)',
+    compensation: 400000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails:
+      'The amount would vary, if specifically otherwise provided in this Schedule. '
+  },
+  {
+    label: '3(2)(va)',
+    value: '3(2)(va)',
+    compensation: 200000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
+  },
+  {
+    label: '3(2)(vii)',
+    value: '3(2)(vii)',
+    compensation: 200000,
+    firststage: 0.25,
+    secondstage: 0.5,
+    thirdstage: 0.25,
+    extradetails: '-'
   }
 ];

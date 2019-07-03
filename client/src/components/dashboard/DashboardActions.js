@@ -30,13 +30,12 @@ const DashboardActions = () => {
       </Link>
       <Link to='/create-userdata'>
         <Button variant='contained' className={classes.button}>
-          <i className='fab fa-black-tie text-primary' /> ADD FIR DATA
+          <i className='fab fa-black-tie text-primary' /> ADD CASE
         </Button>
       </Link>
       <Link to='/usersdata'>
         <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> EDIT/VIEW SOCIAL
-          WELFARE DATA
+          <i className='fas fa-graduation-cap text-primary' /> EDIT/VIEW CASE
         </Button>
       </Link>
       <br />

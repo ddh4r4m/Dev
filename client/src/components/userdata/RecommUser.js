@@ -31,7 +31,7 @@ const RecommUser = ({ userdata: { sectionsapplied, typeofatrocity } }) => {
         <h1>MAX COMPENSATION AMOUNT : {maxCompensation}</h1>
         <h1>REASON : {secttion}</h1>
       </div>
-      <div>
+      {/* <div>
         {arrr.map((sectionn, i) => (
           <div key={i} className='mytablee'>
             <h5>Compensation Due to section : {sectionn.label} </h5>
@@ -59,8 +59,8 @@ const RecommUser = ({ userdata: { sectionsapplied, typeofatrocity } }) => {
             </p>
           </div>
         ))}
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         {tarr.map((tatro, i) => (
           <div key={i} className='mytable'>
             <h5>Compensation Due to : {tatro.label} </h5>
@@ -86,6 +86,104 @@ const RecommUser = ({ userdata: { sectionsapplied, typeofatrocity } }) => {
             </p>
           </div>
         ))}
+      </div> */}
+      <div>
+        {(arrr !== null || typeofatrocity !== null) && (
+          <div>
+            <table className='fl-table'>
+              <thead>
+                <tr>
+                  <th>Section</th>
+                  <th>Compensation Amount</th>
+                  <th>First Stage</th>
+                  <th>Second Stage</th>
+                  <th>Third Stage</th>
+                  <th>Extra Details/Benefits</th>
+                </tr>
+              </thead>
+              <tbody style={{ overflow: 'scroll' }}>
+                {arrr !== null ? (
+                  arrr.map((sectionn, i) => (
+                    <Fragment>
+                      <tr>
+                        <td>{sectionn.label}</td>
+                        <td>
+                          {sectionn.compensation <= 0
+                            ? '-'
+                            : sectionn.compensation}
+                        </td>
+                        <td>
+                          {sectionn.firststage <= 0
+                            ? '-'
+                            : sectionn.compensation * sectionn.firststage}
+                        </td>
+                        <td>
+                          {sectionn.secondstage <= 0
+                            ? '-'
+                            : sectionn.compensation * sectionn.secondstage}
+                        </td>
+                        <td>
+                          {sectionn.thirdstage <= 0
+                            ? '-'
+                            : sectionn.compensation * sectionn.thirdstage}
+                        </td>
+                        <td>{sectionn.extradetails}</td>
+                      </tr>
+                    </Fragment>
+                  ))
+                ) : (
+                  <tr>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                  </tr>
+                )}
+                {tarr !== null ? (
+                  tarr.map((sectionn, i) => (
+                    <Fragment>
+                      <tr>
+                        <td>{sectionn.label}</td>
+                        <td>
+                          {sectionn.compensation <= 0
+                            ? '-'
+                            : sectionn.compensation}
+                        </td>
+                        <td>
+                          {sectionn.firststage <= 0
+                            ? '-'
+                            : sectionn.compensation * sectionn.firststage}
+                        </td>
+                        <td>
+                          {sectionn.secondstage <= 0
+                            ? '-'
+                            : sectionn.compensation * sectionn.secondstage}
+                        </td>
+                        <td>
+                          {sectionn.thirdstage <= 0
+                            ? '-'
+                            : sectionn.compensation * sectionn.thirdstage}
+                        </td>
+                        <td>{sectionn.extradetails}</td>
+                      </tr>
+                    </Fragment>
+                  ))
+                ) : (
+                  <tr>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                    <td>No Data</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );

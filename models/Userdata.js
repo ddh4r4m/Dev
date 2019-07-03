@@ -143,6 +143,12 @@ const UserdataSchema = new mongoose.Schema({
   sectionsappliedv2: {
     type: Object
   },
+  othersections: {
+    type: String
+  },
+  othersectionsv2: {
+    type: String
+  },
   closecase: {
     type: String
   },

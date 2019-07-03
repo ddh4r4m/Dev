@@ -192,6 +192,9 @@ router.post(
         crimeregisterno: req.body.crimeregisterno,
         dateofcrime: req.body.dateofcrime,
         regdateofcrime: req.body.regdateofcrime,
+        utrnumI: req.body.utrnumI,
+        utrnumII: req.body.utrnumII,
+        utrnumIII: req.body.utrnumIII,
         benefitsgivenbyACI: req.body.benefitsgivenbyACI,
         benefitsgivenbyACII: req.body.benefitsgivenbyACII,
         benefitsgivenbyACIII: req.body.benefitsgivenbyACIII,
@@ -407,6 +410,9 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.crimeregisterno = req.body.crimeregisterno;
       userdata.dateofcrime = req.body.dateofcrime;
       userdata.regdateofcrime = req.body.regdateofcrime;
+      userdata.utrnumI = req.body.utrnumI;
+      userdata.utrnumII = req.body.utrnumII;
+      userdata.utrnumIII = req.body.utrnumIII;
       userdata.benefitsgivenbyACI = req.body.benefitsgivenbyACI;
       userdata.benefitsgivenbyACII = req.body.benefitsgivenbyACII;
       userdata.benefitsgivenbyACIII = req.body.benefitsgivenbyACIII;

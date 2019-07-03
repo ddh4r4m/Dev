@@ -25,10 +25,14 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
 
   const [formData, setFormData] = useState({
     search: '',
-    search1: ''
+    search1: '',
+    search2: '',
+    search3: '',
+    search4: '',
+    search5: ''
   });
 
-  const { search, search1 } = formData;
+  const { search, search1, search2, search3, search4, search5 } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

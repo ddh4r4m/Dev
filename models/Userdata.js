@@ -181,6 +181,15 @@ const UserdataSchema = new mongoose.Schema({
   natureofcrime: {
     type: String
   },
+  utrnumI: {
+    type: String
+  },
+  utrnumII: {
+    type: String
+  },
+  utrnumIII: {
+    type: String
+  },
   benefitsgivenbyACI: {
     type: String
   },

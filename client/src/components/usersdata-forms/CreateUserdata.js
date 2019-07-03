@@ -40,6 +40,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     regdateofcrime: '',
     victimdetails: '',
     natureofcrime: '',
+    utrnumI: '',
+    utrnumII: '',
+    utrnumIII: '',
     benefitsgivenbyACI: '',
     benefitsgivenbyACII: '',
     benefitsgivenbyACIII: '',
@@ -144,6 +147,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     regdateofcrime,
     victimdetails,
     natureofcrime,
+    utrnumI,
+    utrnumII,
+    utrnumIII,
     benefitsgivenbyACI,
     benefitsgivenbyACII,
     benefitsgivenbyACIII,
@@ -280,6 +286,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     formDataa.append('regdateofcrime', regdateofcrime);
     formDataa.append('victimdetails', victimdetails);
     formDataa.append('natureofcrime', natureofcrime);
+    formDataa.append('utrnumI', utrnumI);
+    formDataa.append('utrnumII', utrnumII);
+    formDataa.append('utrnumIII', utrnumIII);
     formDataa.append('benefitsgivenbyACI', benefitsgivenbyACI);
     formDataa.append('benefitsgivenbyACII', benefitsgivenbyACII);
     formDataa.append('benefitsgivenbyACIII', benefitsgivenbyACIII);
@@ -1517,7 +1526,22 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                 </div>
                 <div className='maindiv'>
                   <div className='form-group'>
-                    Monetary Compensation for Stage I given by Asst. Commisioner
+                    UTR Number for Money Transfer
+                    <input
+                      type='text'
+                      placeholder='Enter 22 digit UTR Number'
+                      name='utrnumI'
+                      value={utrnumI}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        (user && user.name === 'Asst. Commissioner') ||
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Details of non Monetary Benefits for Stage I given by Asst.
+                    Commisioner
                     <textarea
                       type='text'
                       placeholder='Amount Given'
@@ -2119,7 +2143,22 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
               </div>
               <div className='maindiv'>
                 <div className='form-group'>
-                  Monetary Compensation for Stage II given by Asst. Commisioner
+                  UTR Number for Money Transfer for Stage II
+                  <input
+                    type='text'
+                    placeholder='Enter 22 digit UTR Number'
+                    name='utrnumII'
+                    value={utrnumII}
+                    onChange={e => onChange(e)}
+                    disabled={
+                      (user && user.name === 'Asst. Commissioner') ||
+                      (user && user.name !== 'Data Entry Operator')
+                    }
+                  />
+                </div>
+                <div className='form-group'>
+                  Details of Non Monetary Benefits given for Stage II by Asst.
+                  Commisioner
                   <textarea
                     type='text'
                     placeholder='Amount Given'
@@ -2477,8 +2516,22 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   </div>
                   <div className='maindiv'>
                     <div className='form-group'>
-                      Monetary Compensation for Stage III given by Asst.
-                      Commisioner
+                      UTR Number for Money Transfer for Stage III
+                      <input
+                        type='text'
+                        placeholder='Enter 22 digit UTR Number'
+                        name='utrnumIII'
+                        value={utrnumIII}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          (user && user.name === 'Asst. Commissioner') ||
+                          (user && user.name !== 'Data Entry Operator')
+                        }
+                      />
+                    </div>
+                    <div className='form-group'>
+                      Details of Non Monetary Benefits given for Stage III by
+                      Asst. Commisioner
                       <textarea
                         type='text'
                         placeholder='Amount Given'
@@ -2539,6 +2592,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={closecase === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
                     />{' '}
                     Yes{' '}
                     <Radio
@@ -2547,6 +2601,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={closecase === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
+                      disabled={user && user.name !== 'District Collector'}
                     />{' '}
                     No
                     <small>

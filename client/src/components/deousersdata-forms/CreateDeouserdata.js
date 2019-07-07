@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createUserdata } from '../../actions/userdata';
+import { createDeouserdata } from '../../actions/deouserdata';
 import Select from 'react-select';
 import { ipcOptions, sectionsopts, options } from './ipcdata';
 import makeAnimated from 'react-select/animated';
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
+const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
   var formDataa = new FormData();
   const classes = useStyles();
   const [formData, setFormData] = useState({
@@ -465,7 +465,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     formDataa.append('accusedseven', accusedseven);
     formDataa.append('accusedeight', accusedeight);
 
-    createUserdata(formDataa, history);
+    createDeouserdata(formDataa, history);
     // for (const value of formDataa.values()) {
     //   console.log(value);
     // }
@@ -557,11 +557,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='text'
                       value={text}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                     <small className='form-text'>
                       Could be the defined format of serial no
@@ -575,11 +570,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='year'
                       value={year}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                   <div className='form-group'>
@@ -588,11 +578,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='policestation'
                       value={policestation}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     >
                       <option value='Dhule City'>Dhule City </option>
                       <option value='Aazadnagar' defaultValue>
@@ -627,11 +612,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='crimeregisterno'
                       value={crimeregisterno}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                   <div className='form-group'>
@@ -642,11 +622,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='dateofcrime'
                       value={dateofcrime}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                   <div className='form-group'>
@@ -657,11 +632,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='regdateofcrime'
                       value={regdateofcrime}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                 </div>
@@ -676,11 +646,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='victimdetails'
                       value={victimdetails}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                   <div className='form-group'>
@@ -693,11 +658,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='natureofcrime'
                       value={natureofcrime}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                 </div>
@@ -721,11 +681,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       isMulti
                       isSearchable
                       onChange={handleChange}
-                      isDisabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                   <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
@@ -742,11 +697,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       isMulti
                       isSearchable
                       onChange={handleIpc}
-                      isDisabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                   <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
@@ -760,11 +710,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       isMulti
                       isSearchable
                       onChange={handleSections}
-                      isDisabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>{' '}
                 </div>
@@ -778,11 +723,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='othersections'
                     value={othersections}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
+                    
                   />
                 </div>
                 {/*  */}
@@ -1293,11 +1234,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='firstbenefitbypolicecomment'
                       value={firstbenefitbypolicecomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                   <div className='form-group'>
@@ -1309,11 +1245,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={firstbenefitbypolice === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />{' '}
                     Should be given
                     <Radio
@@ -1322,11 +1253,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={firstbenefitbypolice === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />{' '}
                     Should not be given
                     <Radio
@@ -1335,11 +1261,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={firstbenefitbypolice === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />{' '}
                     Keep Pending
                   </div>
@@ -1353,12 +1274,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='monetarycompbyACI'
                       value={monetarycompbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1369,12 +1285,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='otherbenefitycompbyACI'
                       value={otherbenefitycompbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1385,12 +1296,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='firstbenefitbycommcomment'
                       value={firstbenefitbycommcomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />
                   </div>
                 </div>
@@ -1402,12 +1308,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycommis === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Asst. Commissioner' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
                   />{' '}
                   Should be given
                   <Radio
@@ -1416,12 +1316,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycommis === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Asst. Commissioner' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
                   />{' '}
                   Should not be given
                   <Radio
@@ -1430,12 +1324,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycommis === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Asst. Commissioner' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
                   />{' '}
                   Keep Pending
                 </div>
@@ -1448,12 +1336,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='monetarycompbyDCI'
                       value={monetarycompbyDCI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1464,12 +1347,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='otherbenefitycompbyDCI'
                       value={otherbenefitycompbyDCI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1480,12 +1358,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='firstbenefitbycollectorcomment'
                       value={firstbenefitbycollectorcomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />
                   </div>
                 </div>
@@ -1497,12 +1370,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycollector === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    
                   />{' '}
                   Should be given
                   <Radio
@@ -1511,12 +1379,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycollector === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    
                   />{' '}
                   Should not be given
                   <Radio
@@ -1525,12 +1388,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycollector === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    
                   />{' '}
                   Keep Pending
                 </div>
@@ -1543,10 +1401,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='utrnumI'
                       value={utrnumI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        (user && user.name === 'Asst. Commissioner') ||
-                        (user && user.name !== 'Data Entry Operator')
-                      }
+                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1558,12 +1413,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='benefitsgivenbyACI'
                       value={benefitsgivenbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1575,12 +1425,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={isbenefitsgivenbyACI === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />{' '}
                     Yes
                     <Radio
@@ -1589,12 +1434,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={isbenefitsgivenbyACI === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />{' '}
                     No
                   </div>
@@ -1609,11 +1449,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={sectionschanged === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.name !== 'Police' &&
-                    (user && user.name !== 'Data Entry Operator')
-                  }
+                  
                 />{' '}
                 Yes
                 <Radio
@@ -1622,11 +1458,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={sectionschanged === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.name !== 'Police' &&
-                    (user && user.name !== 'Data Entry Operator')
-                  }
+                  
                 />{' '}
                 No
               </div>
@@ -1648,11 +1480,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         isMulti
                         isSearchable
                         onChange={handleChangev2}
-                        isDisabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />
                     </div>
                     <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
@@ -1666,11 +1494,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         isMulti
                         isSearchable
                         onChange={handleIpcv2}
-                        isDisabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />
                     </div>
                     <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
@@ -1684,11 +1508,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         isMulti
                         isSearchable
                         onChange={handleSectionsv2}
-                        isDisabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />
                     </div>
                   </div>
@@ -1702,11 +1522,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='othersectionsv2'
                       value={othersectionsv2}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
                     />
                   </div>
                 </Fragment>
@@ -1876,11 +1691,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='chargesheetdate'
                     value={chargesheetdate}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
+                    
                   />
                 </div>
                 <div className='form-group'>
@@ -1910,11 +1721,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='secondbenefitbypolicecomment'
                     value={secondbenefitbypolicecomment}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
+                    
                   />
                 </div>
                 <div className='form-group'>
@@ -1926,11 +1733,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={secondbenefitbypolice === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
+                    
                   />{' '}
                   Should be given
                   <Radio
@@ -1939,11 +1742,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={secondbenefitbypolice === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
+                    
                   />{' '}
                   Should not be given
                   <Radio
@@ -1952,11 +1751,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={secondbenefitbypolice === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
+                    
                   />{' '}
                   Keep Pending
                 </div>
@@ -1970,12 +1765,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='monetarycompbyACII'
                     value={monetarycompbyACII}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Asst. Commissioner' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
                   />
                 </div>
                 <div className='form-group'>
@@ -1986,12 +1775,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='otherbenefitycompbyACII'
                     value={otherbenefitycompbyACII}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Asst. Commissioner' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
                   />
                 </div>
                 <div className='form-group'>
@@ -2002,12 +1785,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='secondbenefitbycommcomment'
                     value={secondbenefitbycommcomment}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Asst. Commissioner' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
                   />
                 </div>
               </div>
@@ -2019,12 +1796,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycommis === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.name !== 'Asst. Commissioner' &&
-                    user &&
-                    user.name !== 'Data Entry Operator'
-                  }
+                  
                 />{' '}
                 Should be given
                 <Radio
@@ -2033,12 +1805,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycommis === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.name !== 'Asst. Commissioner' &&
-                    user &&
-                    user.name !== 'Data Entry Operator'
-                  }
+                  
                 />{' '}
                 Should not be given
                 <Radio
@@ -2047,12 +1814,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycommis === 'pending'}
                   value='pending'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.name !== 'Asst. Commissioner' &&
-                    user &&
-                    user.name !== 'Data Entry Operator'
-                  }
+                  
                 />{' '}
                 Keep Pending
               </div>
@@ -2065,12 +1827,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='monetarycompbyDCII'
                     value={monetarycompbyDCII}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    
                   />
                 </div>
                 <div className='form-group'>
@@ -2081,12 +1838,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='otherbenefitycompbyDCII'
                     value={otherbenefitycompbyDCII}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    
                   />
                 </div>
                 <div className='form-group'>
@@ -2097,12 +1849,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='secondbenefitbycollectorcomment'
                     value={secondbenefitbycollectorcomment}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    
                   />
                 </div>
               </div>
@@ -2114,12 +1861,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycollector === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.name !== 'District Collector' &&
-                    user &&
-                    user.name !== 'Data Entry Operator'
-                  }
+                  
                 />{' '}
                 Should be given
                 <Radio
@@ -2128,12 +1870,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycollector === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.name !== 'District Collector' &&
-                    user &&
-                    user.name !== 'Data Entry Operator'
-                  }
+                  
                 />{' '}
                 Should not be given
                 <Radio
@@ -2142,12 +1879,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycollector === 'pending'}
                   value='pending'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.name !== 'District Collector' &&
-                    user &&
-                    user.name !== 'Data Entry Operator'
-                  }
+                  
                 />{' '}
                 Keep Pending
               </div>
@@ -2160,10 +1892,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='utrnumII'
                     value={utrnumII}
                     onChange={e => onChange(e)}
-                    disabled={
-                      (user && user.name === 'Asst. Commissioner') ||
-                      (user && user.name !== 'Data Entry Operator')
-                    }
+                    
                   />
                 </div>
                 <div className='form-group'>
@@ -2175,12 +1904,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='benefitsgivenbyACII'
                     value={benefitsgivenbyACII}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Asst. Commissioner' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
                   />
                 </div>
                 <div className='form-group'>
@@ -2192,12 +1915,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={isbenefitsgivenbyACII === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    
                   />{' '}
                   Yes
                   <Radio
@@ -2206,12 +1924,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     checked={isbenefitsgivenbyACII === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    
                   />{' '}
                   No
                 </div>
@@ -2230,11 +1943,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='dateofcourtorder'
                         value={dateofcourtorder}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />
                     </div>
                     <div className='form-group' style={{ flexGrow: 6 }}>
@@ -2246,11 +1955,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='courtresults'
                         value={courtresults}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2283,11 +1988,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='thirdbenefitbypolicecomment'
                         value={thirdbenefitbypolicecomment}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2298,11 +1999,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         checked={thirdbenefitbypolice === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />{' '}
                       Should be given
                       <Radio
@@ -2311,11 +2008,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         checked={thirdbenefitbypolice === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />{' '}
                       Should not be given
                       <Radio
@@ -2324,11 +2017,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         checked={thirdbenefitbypolice === 'pending'}
                         value='pending'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />{' '}
                       Keep Pending
                     </div>
@@ -2342,12 +2031,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='monetarycompbyACIII'
                         value={monetarycompbyACIII}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Asst. Commissioner' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2358,12 +2042,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='otherbenefitycompbyACIII'
                         value={otherbenefitycompbyACIII}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Asst. Commissioner' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2374,12 +2053,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='thirdbenefitbycommcomment'
                         value={thirdbenefitbycommcomment}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Asst. Commissioner' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />
                     </div>
                   </div>
@@ -2391,12 +2065,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />{' '}
                     Should be given
                     <Radio
@@ -2405,12 +2074,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />{' '}
                     Should not be given
                     <Radio
@@ -2419,12 +2083,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />{' '}
                     Keep Pending
                   </div>
@@ -2437,12 +2096,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='monetarycompbyDCIII'
                         value={monetarycompbyDCIII}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2453,12 +2107,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='otherbenefitycompbyDCIII'
                         value={otherbenefitycompbyDCIII}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2469,12 +2118,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='thirdbenefitbycollectorcomment'
                         value={thirdbenefitbycollectorcomment}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />
                     </div>
                   </div>
@@ -2487,12 +2131,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />{' '}
                     Should be given
                     <Radio
@@ -2501,12 +2140,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />{' '}
                     Should not be given
                     <Radio
@@ -2515,12 +2149,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      
                     />{' '}
                     Keep Pending
                   </div>
@@ -2533,10 +2162,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='utrnumIII'
                         value={utrnumIII}
                         onChange={e => onChange(e)}
-                        disabled={
-                          (user && user.name === 'Asst. Commissioner') ||
-                          (user && user.name !== 'Data Entry Operator')
-                        }
+                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2548,12 +2174,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         name='benefitsgivenbyACIII'
                         value={benefitsgivenbyACIII}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Asst. Commissioner' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2566,12 +2187,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         checked={isbenefitsgivenbyACIII === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />{' '}
                       Yes
                       <Radio
@@ -2580,12 +2196,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         checked={isbenefitsgivenbyACIII === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        
                       />{' '}
                       No
                     </div>
@@ -2721,8 +2332,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
   );
 };
 
-CreateUserdata.propTypes = {
-  createUserdata: PropTypes.func.isRequired,
+CreateDeouserdata.propTypes = {
+  createDeouserdata: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
@@ -2732,5 +2343,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createUserdata }
-)(withRouter(CreateUserdata));
+  { createDeouserdata }
+)(withRouter(CreateDeouserdata));

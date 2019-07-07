@@ -52,7 +52,7 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <Fragment>
       <div
-        className='loginbackground'
+        className='loginbackmground'
         style={{
           display: 'flex',
           flexDirection: 'row',
@@ -60,7 +60,11 @@ const Login = ({ login, isAuthenticated }) => {
           justifyContent: 'center'
         }}
       >
-        <Paper className={classes.root} elevation={4} style={{ width: '50%' }}>
+        <Paper
+          className={classes.root}
+          elevation={4}
+          style={{ width: '50%', marginTop: '10px' }}
+        >
           <h1 className='large text-primary'>Sign In</h1>
           <p className='lead'>
             <i className='fas fa-user' /> Sign In to Your Account

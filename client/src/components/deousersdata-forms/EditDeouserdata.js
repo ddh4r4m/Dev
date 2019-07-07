@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
-import { editUserdata, getUserdataById } from '../../actions/userdata';
+import { editDeouserdata, getDeouserdataById } from '../../actions/deouserdata';
 import Select from 'react-select';
 import { ipcOptions, sectionsopts, options } from './ipcdata';
 import makeAnimated from 'react-select/animated';
@@ -24,11 +24,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EditUserdataById = ({
+const EditDeouserdataById = ({
   match,
-  userdata: { userdata, loading },
-  editUserdata,
-  getUserdataById,
+  deouserdata: { deouserdata, loading },
+  editDeouserdata,
+  getDeouserdataById,
   history,
   auth: { user }
 }) => {
@@ -41,9 +41,6 @@ const EditUserdataById = ({
     regdateofcrime: '',
     victimdetails: '',
     natureofcrime: '',
-    utrnumI: '',
-    utrnumII: '',
-    utrnumIII: '',
     benefitsgivenbyACI: '',
     benefitsgivenbyACII: '',
     benefitsgivenbyACIII: '',
@@ -62,27 +59,27 @@ const EditUserdataById = ({
     otherbenefitycompbyACI: '',
     otherbenefitycompbyACII: '',
     otherbenefitycompbyACIII: '',
-    firstbenefitbypolice: '',
-    firstbenefitbycommis: '',
-    firstbenefitbycollector: '',
+    firstbenefitbypolice: 'pending',
+    firstbenefitbycommis: 'pending',
+    firstbenefitbycollector: 'pending',
     firstbenefitbypolicedate: '',
     firstbenefitbycommisdate: '',
     firstbenefitbycollectordate: '',
     firstbenefitbypolicecomment: '',
     firstbenefitbycommcomment: '',
     firstbenefitbycollectorcomment: '',
-    secondbenefitbypolice: '',
-    secondbenefitbycommis: '',
-    secondbenefitbycollector: '',
+    secondbenefitbypolice: 'pending',
+    secondbenefitbycommis: 'pending',
+    secondbenefitbycollector: 'pending',
     secondbenefitbypolicedate: '',
     secondbenefitbycommisdate: '',
     secondbenefitbycollectordate: '',
     secondbenefitbypolicecomment: '',
     secondbenefitbycommcomment: '',
     secondbenefitbycollectorcomment: '',
-    thirdbenefitbypolice: '',
-    thirdbenefitbycommis: '',
-    thirdbenefitbycollector: '',
+    thirdbenefitbypolice: 'pending',
+    thirdbenefitbycommis: 'pending',
+    thirdbenefitbycollector: 'pending',
     thirdbenefitbypolicedate: '',
     thirdbenefitbycommisdate: '',
     thirdbenefitbycollectordate: '',
@@ -103,8 +100,6 @@ const EditUserdataById = ({
     disabledata: false,
     stagetwochange: false,
     closecase: '',
-    othersections: '',
-    othersectionsv2: '',
     sectionschanged: 'no',
     docImage: '',
     doccImage: '',
@@ -146,289 +141,319 @@ const EditUserdataById = ({
   const [displayAccused, toggledisplayAccused] = useState(false);
 
   useEffect(() => {
-    getUserdataById(match.params.id);
+    getDeouserdataById(match.params.id);
 
     setFormData({
-      text: loading || !userdata.text ? '' : userdata.text,
-      year: loading || !userdata.year ? '' : userdata.year,
+      text: loading || !deouserdata.text ? '' : deouserdata.text,
+      year: loading || !deouserdata.year ? '' : deouserdata.year,
       policestation:
-        loading || !userdata.policestation ? '' : userdata.policestation,
+        loading || !deouserdata.policestation ? '' : deouserdata.policestation,
       crimeregisterno:
-        loading || !userdata.crimeregisterno ? '' : userdata.crimeregisterno,
-      dateofcrime: loading || !userdata.dateofcrime ? '' : userdata.dateofcrime,
+        loading || !deouserdata.crimeregisterno
+          ? ''
+          : deouserdata.crimeregisterno,
+      dateofcrime:
+        loading || !deouserdata.dateofcrime ? '' : deouserdata.dateofcrime,
       regdateofcrime:
-        loading || !userdata.regdateofcrime ? '' : userdata.regdateofcrime,
+        loading || !deouserdata.regdateofcrime
+          ? ''
+          : deouserdata.regdateofcrime,
       victimdetails:
-        loading || !userdata.victimdetails ? '' : userdata.victimdetails,
+        loading || !deouserdata.victimdetails ? '' : deouserdata.victimdetails,
       firstbenefitbypolice:
-        loading || !userdata.firstbenefitbypolice
-          ? ''
-          : userdata.firstbenefitbypolice,
+        loading || !deouserdata.firstbenefitbypolice
+          ? 'pending'
+          : deouserdata.firstbenefitbypolice,
       firstbenefitbycommis:
-        loading || !userdata.firstbenefitbycommis
-          ? ''
-          : userdata.firstbenefitbycommis,
+        loading || !deouserdata.firstbenefitbycommis
+          ? 'pending'
+          : deouserdata.firstbenefitbycommis,
       firstbenefitbycollector:
-        loading || !userdata.firstbenefitbycollector
-          ? ''
-          : userdata.firstbenefitbycollector,
+        loading || !deouserdata.firstbenefitbycollector
+          ? 'pending'
+          : deouserdata.firstbenefitbycollector,
       firstbenefitbypolicedate:
-        loading || !userdata.firstbenefitbypolicedate
+        loading || !deouserdata.firstbenefitbypolicedate
           ? ''
-          : userdata.firstbenefitbypolicedate,
+          : deouserdata.firstbenefitbypolicedate,
       firstbenefitbycommisdate:
-        loading || !userdata.firstbenefitbycommisdate
+        loading || !deouserdata.firstbenefitbycommisdate
           ? ''
-          : userdata.firstbenefitbycommisdate,
+          : deouserdata.firstbenefitbycommisdate,
       firstbenefitbycollectordate:
-        loading || !userdata.firstbenefitbycollectordate
+        loading || !deouserdata.firstbenefitbycollectordate
           ? ''
-          : userdata.firstbenefitbycollectordate,
+          : deouserdata.firstbenefitbycollectordate,
       firstbenefitbypolicecomment:
-        loading || !userdata.firstbenefitbypolicecomment
+        loading || !deouserdata.firstbenefitbypolicecomment
           ? ''
-          : userdata.firstbenefitbypolicecomment,
+          : deouserdata.firstbenefitbypolicecomment,
       firstbenefitbycommcomment:
-        loading || !userdata.firstbenefitbycommcomment
+        loading || !deouserdata.firstbenefitbycommcomment
           ? ''
-          : userdata.firstbenefitbycommcomment,
+          : deouserdata.firstbenefitbycommcomment,
       firstbenefitbycollectorcomment:
-        loading || !userdata.firstbenefitbycollectorcomment
+        loading || !deouserdata.firstbenefitbycollectorcomment
           ? ''
-          : userdata.firstbenefitbycollectorcomment,
+          : deouserdata.firstbenefitbycollectorcomment,
       secondbenefitbypolice:
-        loading || !userdata.secondbenefitbypolice
-          ? ''
-          : userdata.secondbenefitbypolice,
+        loading || !deouserdata.secondbenefitbypolice
+          ? 'pending'
+          : deouserdata.secondbenefitbypolice,
       secondbenefitbycommis:
-        loading || !userdata.secondbenefitbycommis
-          ? ''
-          : userdata.secondbenefitbycommis,
+        loading || !deouserdata.secondbenefitbycommis
+          ? 'pending'
+          : deouserdata.secondbenefitbycommis,
       secondbenefitbycollector:
-        loading || !userdata.secondbenefitbycollector
-          ? ''
-          : userdata.secondbenefitbycollector,
+        loading || !deouserdata.secondbenefitbycollector
+          ? 'pending'
+          : deouserdata.secondbenefitbycollector,
       secondbenefitbypolicedate:
-        loading || !userdata.secondbenefitbypolicedate
+        loading || !deouserdata.secondbenefitbypolicedate
           ? ''
-          : userdata.secondbenefitbypolicedate,
+          : deouserdata.secondbenefitbypolicedate,
       secondbenefitbycommisdate:
-        loading || !userdata.secondbenefitbycommisdate
+        loading || !deouserdata.secondbenefitbycommisdate
           ? ''
-          : userdata.secondbenefitbycommisdate,
+          : deouserdata.secondbenefitbycommisdate,
       secondbenefitbycollectordate:
-        loading || !userdata.secondbenefitbycollectordate
+        loading || !deouserdata.secondbenefitbycollectordate
           ? ''
-          : userdata.secondbenefitbycollectordate,
+          : deouserdata.secondbenefitbycollectordate,
       secondbenefitbypolicecomment:
-        loading || !userdata.secondbenefitbypolicecomment
+        loading || !deouserdata.secondbenefitbypolicecomment
           ? ''
-          : userdata.secondbenefitbypolicecomment,
+          : deouserdata.secondbenefitbypolicecomment,
       secondbenefitbycommcomment:
-        loading || !userdata.secondbenefitbycommcomment
+        loading || !deouserdata.secondbenefitbycommcomment
           ? ''
-          : userdata.secondbenefitbycommcomment,
+          : deouserdata.secondbenefitbycommcomment,
       secondbenefitbycollectorcomment:
-        loading || !userdata.secondbenefitbycollectorcomment
+        loading || !deouserdata.secondbenefitbycollectorcomment
           ? ''
-          : userdata.secondbenefitbycollectorcomment,
+          : deouserdata.secondbenefitbycollectorcomment,
       thirdbenefitbypolice:
-        loading || !userdata.thirdbenefitbypolice
+        loading || !deouserdata.thirdbenefitbypolice
           ? 'pending'
-          : userdata.thirdbenefitbypolice,
+          : deouserdata.thirdbenefitbypolice,
       thirdbenefitbycommis:
-        loading || !userdata.thirdbenefitbycommis
+        loading || !deouserdata.thirdbenefitbycommis
           ? 'pending'
-          : userdata.thirdbenefitbycommis,
+          : deouserdata.thirdbenefitbycommis,
       thirdbenefitbycollector:
-        loading || !userdata.thirdbenefitbycollector
+        loading || !deouserdata.thirdbenefitbycollector
           ? 'pending'
-          : userdata.thirdbenefitbycollector,
+          : deouserdata.thirdbenefitbycollector,
       thirdbenefitbypolicedate:
-        loading || !userdata.thirdbenefitbypolicedate
+        loading || !deouserdata.thirdbenefitbypolicedate
           ? ''
-          : userdata.thirdbenefitbypolicedate,
+          : deouserdata.thirdbenefitbypolicedate,
       thirdbenefitbycommisdate:
-        loading || !userdata.thirdbenefitbycommisdate
+        loading || !deouserdata.thirdbenefitbycommisdate
           ? ''
-          : userdata.thirdbenefitbycommisdate,
+          : deouserdata.thirdbenefitbycommisdate,
       thirdbenefitbycollectordate:
-        loading || !userdata.thirdbenefitbycollectordate
+        loading || !deouserdata.thirdbenefitbycollectordate
           ? ''
-          : userdata.thirdbenefitbycollectordate,
+          : deouserdata.thirdbenefitbycollectordate,
       thirdbenefitbypolicecomment:
-        loading || !userdata.thirdbenefitbypolicecomment
+        loading || !deouserdata.thirdbenefitbypolicecomment
           ? ''
-          : userdata.thirdbenefitbypolicecomment,
+          : deouserdata.thirdbenefitbypolicecomment,
       thirdbenefitbycommcomment:
-        loading || !userdata.thirdbenefitbycommcomment
+        loading || !deouserdata.thirdbenefitbycommcomment
           ? ''
-          : userdata.thirdbenefitbycommcomment,
+          : deouserdata.thirdbenefitbycommcomment,
       thirdbenefitbycollectorcomment:
-        loading || !userdata.thirdbenefitbycollectorcomment
+        loading || !deouserdata.thirdbenefitbycollectorcomment
           ? ''
-          : userdata.thirdbenefitbycollectorcomment,
+          : deouserdata.thirdbenefitbycollectorcomment,
       natureofcrime:
-        loading || !userdata.natureofcrime ? '' : userdata.natureofcrime,
+        loading || !deouserdata.natureofcrime ? '' : deouserdata.natureofcrime,
       benefitsgivenbyACI:
-        loading || !userdata.benefitsgivenbyACI
+        loading || !deouserdata.benefitsgivenbyACI
           ? ''
-          : userdata.benefitsgivenbyACI,
+          : deouserdata.benefitsgivenbyACI,
       benefitsgivenbyACII:
-        loading || !userdata.benefitsgivenbyACII
+        loading || !deouserdata.benefitsgivenbyACII
           ? ''
-          : userdata.benefitsgivenbyACII,
+          : deouserdata.benefitsgivenbyACII,
       benefitsgivenbyACIII:
-        loading || !userdata.benefitsgivenbyACIII
+        loading || !deouserdata.benefitsgivenbyACIII
           ? ''
-          : userdata.benefitsgivenbyACIII,
+          : deouserdata.benefitsgivenbyACIII,
       isbenefitsgivenbyACI:
-        loading || !userdata.isbenefitsgivenbyACI
+        loading || !deouserdata.isbenefitsgivenbyACI
           ? ''
-          : userdata.isbenefitsgivenbyACI,
+          : deouserdata.isbenefitsgivenbyACI,
       isbenefitsgivenbyACII:
-        loading || !userdata.isbenefitsgivenbyACII
+        loading || !deouserdata.isbenefitsgivenbyACII
           ? ''
-          : userdata.isbenefitsgivenbyACII,
+          : deouserdata.isbenefitsgivenbyACII,
       isbenefitsgivenbyACIII:
-        loading || !userdata.isbenefitsgivenbyACIII
+        loading || !deouserdata.isbenefitsgivenbyACIII
           ? ''
-          : userdata.isbenefitsgivenbyACIII,
+          : deouserdata.isbenefitsgivenbyACIII,
       monetarycompbyDCI:
-        loading || !userdata.monetarycompbyDCI
+        loading || !deouserdata.monetarycompbyDCI
           ? ''
-          : userdata.monetarycompbyDCI,
+          : deouserdata.monetarycompbyDCI,
       monetarycompbyDCII:
-        loading || !userdata.monetarycompbyDCII
+        loading || !deouserdata.monetarycompbyDCII
           ? ''
-          : userdata.monetarycompbyDCII,
+          : deouserdata.monetarycompbyDCII,
       monetarycompbyDCIII:
-        loading || !userdata.monetarycompbyDCIII
+        loading || !deouserdata.monetarycompbyDCIII
           ? ''
-          : userdata.monetarycompbyDCIII,
+          : deouserdata.monetarycompbyDCIII,
       otherbenefitycompbyDCI:
-        loading || !userdata.otherbenefitycompbyDCI
+        loading || !deouserdata.otherbenefitycompbyDCI
           ? ''
-          : userdata.otherbenefitycompbyDCI,
+          : deouserdata.otherbenefitycompbyDCI,
       otherbenefitycompbyDCII:
-        loading || !userdata.otherbenefitycompbyDCII
+        loading || !deouserdata.otherbenefitycompbyDCII
           ? ''
-          : userdata.otherbenefitycompbyDCII,
+          : deouserdata.otherbenefitycompbyDCII,
       otherbenefitycompbyDCIII:
-        loading || !userdata.otherbenefitycompbyDCIII
+        loading || !deouserdata.otherbenefitycompbyDCIII
           ? ''
-          : userdata.otherbenefitycompbyDCIII,
+          : deouserdata.otherbenefitycompbyDCIII,
       monetarycompbyACI:
-        loading || !userdata.monetarycompbyACI
+        loading || !deouserdata.monetarycompbyACI
           ? ''
-          : userdata.monetarycompbyACI,
+          : deouserdata.monetarycompbyACI,
       monetarycompbyACII:
-        loading || !userdata.monetarycompbyACII
+        loading || !deouserdata.monetarycompbyACII
           ? ''
-          : userdata.monetarycompbyACII,
+          : deouserdata.monetarycompbyACII,
       monetarycompbyACIII:
-        loading || !userdata.monetarycompbyACIII
+        loading || !deouserdata.monetarycompbyACIII
           ? ''
-          : userdata.monetarycompbyACIII,
+          : deouserdata.monetarycompbyACIII,
       otherbenefitycompbyACI:
-        loading || !userdata.otherbenefitycompbyACI
+        loading || !deouserdata.otherbenefitycompbyACI
           ? ''
-          : userdata.otherbenefitycompbyACI,
+          : deouserdata.otherbenefitycompbyACI,
       otherbenefitycompbyACII:
-        loading || !userdata.otherbenefitycompbyACII
+        loading || !deouserdata.otherbenefitycompbyACII
           ? ''
-          : userdata.otherbenefitycompbyACII,
+          : deouserdata.otherbenefitycompbyACII,
       otherbenefitycompbyACIII:
-        loading || !userdata.otherbenefitycompbyACIII
+        loading || !deouserdata.otherbenefitycompbyACIII
           ? ''
-          : userdata.otherbenefitycompbyACIII,
-      sections: loading || !userdata.sections ? '' : userdata.sections,
+          : deouserdata.otherbenefitycompbyACIII,
+      sections: loading || !deouserdata.sections ? '' : deouserdata.sections,
       chargesheetdate:
-        loading || !userdata.chargesheetdate ? '' : userdata.chargesheetdate,
-      dateofcourtorder:
-        loading || !userdata.dateofcourtorder ? '' : userdata.dateofcourtorder,
-      policeinvestigation:
-        loading || !userdata.policeinvestigation
+        loading || !deouserdata.chargesheetdate
           ? ''
-          : userdata.policeinvestigation,
+          : deouserdata.chargesheetdate,
+      dateofcourtorder:
+        loading || !deouserdata.dateofcourtorder
+          ? ''
+          : deouserdata.dateofcourtorder,
+      policeinvestigation:
+        loading || !deouserdata.policeinvestigation
+          ? ''
+          : deouserdata.policeinvestigation,
       courtresults:
-        loading || !userdata.courtresults ? '' : userdata.courtresults,
+        loading || !deouserdata.courtresults ? '' : deouserdata.courtresults,
       financialsupport:
-        loading || !userdata.financialsupport ? '' : userdata.financialsupport,
-      twitter: loading || !userdata.twitter ? '' : userdata.twitter,
-      facebook: loading || !userdata.facebook ? '' : userdata.facebook,
-      linkedin: loading || !userdata.linkedin ? '' : userdata.linkedin,
-      youtube: loading || !userdata.youtube ? '' : userdata.youtube,
-      instagram: loading || !userdata.instagram ? '' : userdata.instagram,
+        loading || !deouserdata.financialsupport
+          ? ''
+          : deouserdata.financialsupport,
+      twitter: loading || !deouserdata.twitter ? '' : deouserdata.twitter,
+      facebook: loading || !deouserdata.facebook ? '' : deouserdata.facebook,
+      linkedin: loading || !deouserdata.linkedin ? '' : deouserdata.linkedin,
+      youtube: loading || !deouserdata.youtube ? '' : deouserdata.youtube,
+      instagram: loading || !deouserdata.instagram ? '' : deouserdata.instagram,
       disabledata:
-        loading || !userdata.disabledata ? false : userdata.disabledata,
-      closecase: loading || !userdata.closecase ? '' : userdata.closecase,
+        loading || !deouserdata.disabledata ? false : deouserdata.disabledata,
+      closecase: loading || !deouserdata.closecase ? '' : deouserdata.closecase,
       stagetwochange:
-        loading || !userdata.stagetwochange ? false : userdata.stagetwochange,
+        loading || !deouserdata.stagetwochange
+          ? false
+          : deouserdata.stagetwochange,
       sectionschanged:
-        loading || !userdata.sectionschanged ? '' : userdata.sectionschanged,
-      courtorder: loading || !userdata.courtorder ? '' : userdata.courtorder,
+        loading || !deouserdata.sectionschanged
+          ? ''
+          : deouserdata.sectionschanged,
+      courtorder:
+        loading || !deouserdata.courtorder ? '' : deouserdata.courtorder,
       medicalreport:
-        loading || !userdata.medicalreport ? '' : userdata.medicalreport,
-      abcSummary: loading || !userdata.abcSummary ? '' : userdata.abcSummary,
-      docImage: loading || !userdata.docImage ? '' : userdata.docImage,
-      doccImage: loading || !userdata.doccImage ? '' : userdata.doccImage,
-      postmortem: loading || !userdata.postmortem ? '' : userdata.postmortem,
-      victimone: loading || !userdata.victimone ? '' : userdata.victimone,
-      victimtwo: loading || !userdata.victimtwo ? '' : userdata.victimtwo,
-      victimthree: loading || !userdata.victimthree ? '' : userdata.victimthree,
-      victimfour: loading || !userdata.victimfour ? '' : userdata.victimfour,
-      victimfive: loading || !userdata.victimfive ? '' : userdata.victimfive,
-      victimsix: loading || !userdata.victimsix ? '' : userdata.victimsix,
-      victimseven: loading || !userdata.victimseven ? '' : userdata.victimseven,
-      victimeight: loading || !userdata.victimeight ? '' : userdata.victimeight,
-      accusedone: loading || !userdata.accusedone ? '' : userdata.accusedone,
-      accusedtwo: loading || !userdata.accusedtwo ? '' : userdata.accusedtwo,
+        loading || !deouserdata.medicalreport ? '' : deouserdata.medicalreport,
+      abcSummary:
+        loading || !deouserdata.abcSummary ? '' : deouserdata.abcSummary,
+      docImage: loading || !deouserdata.docImage ? '' : deouserdata.docImage,
+      doccImage: loading || !deouserdata.doccImage ? '' : deouserdata.doccImage,
+      postmortem:
+        loading || !deouserdata.postmortem ? '' : deouserdata.postmortem,
+      victimone: loading || !deouserdata.victimone ? '' : deouserdata.victimone,
+      victimtwo: loading || !deouserdata.victimtwo ? '' : deouserdata.victimtwo,
+      victimthree:
+        loading || !deouserdata.victimthree ? '' : deouserdata.victimthree,
+      victimfour:
+        loading || !deouserdata.victimfour ? '' : deouserdata.victimfour,
+      victimfive:
+        loading || !deouserdata.victimfive ? '' : deouserdata.victimfive,
+      victimsix: loading || !deouserdata.victimsix ? '' : deouserdata.victimsix,
+      victimseven:
+        loading || !deouserdata.victimseven ? '' : deouserdata.victimseven,
+      victimeight:
+        loading || !deouserdata.victimeight ? '' : deouserdata.victimeight,
+      accusedone:
+        loading || !deouserdata.accusedone ? '' : deouserdata.accusedone,
+      accusedtwo:
+        loading || !deouserdata.accusedtwo ? '' : deouserdata.accusedtwo,
       accusedthree:
-        loading || !userdata.accusedthree ? '' : userdata.accusedthree,
-      accusedfour: loading || !userdata.accusedfour ? '' : userdata.accusedfour,
-      accusedfive: loading || !userdata.accusedfive ? '' : userdata.accusedfive,
-      accusedsix: loading || !userdata.accusedsix ? '' : userdata.accusedsix,
+        loading || !deouserdata.accusedthree ? '' : deouserdata.accusedthree,
+      accusedfour:
+        loading || !deouserdata.accusedfour ? '' : deouserdata.accusedfour,
+      accusedfive:
+        loading || !deouserdata.accusedfive ? '' : deouserdata.accusedfive,
+      accusedsix:
+        loading || !deouserdata.accusedsix ? '' : deouserdata.accusedsix,
       accusedseven:
-        loading || !userdata.accusedseven ? '' : userdata.accusedseven,
+        loading || !deouserdata.accusedseven ? '' : deouserdata.accusedseven,
       accusedeight:
-        loading || !userdata.accusedeight ? '' : userdata.accusedeight
+        loading || !deouserdata.accusedeight ? '' : deouserdata.accusedeight
       // closethecase:
-      //   loading || !userdata.closethecase ? false : userdata.closethecase
+      //   loading || !deouserdata.closethecase ? false : deouserdata.closethecase
       //   text: 'Helo'
     });
     setTypeofatrocity(
-      loading || !userdata.typeofatrocity
+      loading || !deouserdata.typeofatrocity
         ? null
-        : JSON.parse(userdata.typeofatrocity)
+        : JSON.parse(deouserdata.typeofatrocity)
     );
     setIpc(
-      loading || !userdata.ipcapplied ? null : JSON.parse(userdata.ipcapplied)
+      loading || !deouserdata.ipcapplied
+        ? null
+        : JSON.parse(deouserdata.ipcapplied)
     );
     setSections(
-      loading || !userdata.sectionsapplied
+      loading || !deouserdata.sectionsapplied
         ? null
-        : JSON.parse(userdata.sectionsapplied)
+        : JSON.parse(deouserdata.sectionsapplied)
     );
     setTypeofatrocityv2(
-      loading || !userdata.typeofatrocityv2
+      loading || !deouserdata.typeofatrocityv2
         ? null
-        : JSON.parse(userdata.typeofatrocityv2)
+        : JSON.parse(deouserdata.typeofatrocityv2)
     );
     setIpcv2(
-      loading || !userdata.ipcappliedv2
+      loading || !deouserdata.ipcappliedv2
         ? null
-        : JSON.parse(userdata.ipcappliedv2)
+        : JSON.parse(deouserdata.ipcappliedv2)
     );
     setSectionsv2(
-      loading || !userdata.sectionsappliedv2
+      loading || !deouserdata.sectionsappliedv2
         ? null
-        : JSON.parse(userdata.sectionsappliedv2)
+        : JSON.parse(deouserdata.sectionsappliedv2)
     );
     toggleclossecase(
-      loading || !userdata.closethecase ? false : userdata.closethecase
+      loading || !deouserdata.closethecase ? false : deouserdata.closethecase
     );
-  }, [loading, getUserdataById, match]);
+  }, [loading, getDeouserdataById, match]);
 
   const handleChange = typeofatrocity => {
     setTypeofatrocity(typeofatrocity);
@@ -458,9 +483,6 @@ const EditUserdataById = ({
     regdateofcrime,
     victimdetails,
     natureofcrime,
-    utrnumI,
-    utrnumII,
-    utrnumIII,
     benefitsgivenbyACI,
     benefitsgivenbyACII,
     benefitsgivenbyACIII,
@@ -519,8 +541,6 @@ const EditUserdataById = ({
     instagram,
     disabledata,
     closecase,
-    othersections,
-    othersectionsv2,
     sectionschanged,
     stagetwochange,
     docImage,
@@ -566,9 +586,6 @@ const EditUserdataById = ({
     formDataa.append('regdateofcrime', regdateofcrime);
     formDataa.append('victimdetails', victimdetails);
     formDataa.append('natureofcrime', natureofcrime);
-    formDataa.append('utrnumI', utrnumI);
-    formDataa.append('utrnumII', utrnumII);
-    formDataa.append('utrnumIII', utrnumIII);
     formDataa.append('benefitsgivenbyACI', benefitsgivenbyACI);
     formDataa.append('benefitsgivenbyACII', benefitsgivenbyACII);
     formDataa.append('benefitsgivenbyACIII', benefitsgivenbyACIII);
@@ -717,8 +734,6 @@ const EditUserdataById = ({
       toggleclossecase((closethecase = true));
     }
     formDataa.append('closecase', closecase);
-    formDataa.append('othersections', othersections);
-    formDataa.append('othersectionsv2', othersectionsv2);
     formDataa.append('sectionschanged', sectionschanged);
     formDataa.append('stagetwochange', stagetwochange);
     formDataa.append('closethecase', closethecase);
@@ -744,7 +759,7 @@ const EditUserdataById = ({
     formDataa.append('accusedsix', accusedsix);
     formDataa.append('accusedseven', accusedseven);
     formDataa.append('accusedeight', accusedeight);
-    editUserdata(match.params.id, formDataa, history);
+    editDeouserdata(match.params.id, formDataa, history);
     for (const value of formDataa.values()) {
       console.log(value);
     }
@@ -892,9 +907,9 @@ const EditUserdataById = ({
   }
   return (
     <Fragment>
-      {userdata === null || loading ? (
+      {deouserdata === null || loading ? (
         <Spinner />
-      ) : userdata === null ? (
+      ) : deouserdata === null ? (
         <Spinner />
       ) : (
         <div className='createuserbg'>
@@ -1016,11 +1031,7 @@ const EditUserdataById = ({
                       name='victimdetails'
                       value={victimdetails}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1033,11 +1044,7 @@ const EditUserdataById = ({
                       name='natureofcrime'
                       value={natureofcrime}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                 </div>
@@ -1096,30 +1103,13 @@ const EditUserdataById = ({
                     />
                   </div>{' '}
                 </div>
-                <div className='form-group'>
-                  Other Sections
-                  <textarea
-                    rows='4'
-                    cols='2'
-                    type='text'
-                    placeholder='Details of Other Sections applied'
-                    name='othersections'
-                    value={othersections}
-                    onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
-                  />
-                </div>
                 {/*  */}
+                <br />
+                <h3>Benefits to be given if Approved at this Stage</h3>
                 {(sectionsapplied !== null || typeofatrocity !== null) &&
                   ((user && user.name === 'District Collector') ||
                     (user && user.name === 'Asst. Commissioner')) && (
                     <div>
-                      <br />
-                      <h3>Benefits to be given if Approved at this Stage</h3>
                       <table className='fl-table'>
                         <thead>
                           <tr>
@@ -1649,17 +1639,13 @@ const EditUserdataById = ({
                 <div className='maindiv'>
                   <div className='form-group'>
                     Comment on First benefit Recommendation by Police
-                    <textarea
+                    <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
                       name='firstbenefitbypolicecomment'
                       value={firstbenefitbypolicecomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.name !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1671,88 +1657,61 @@ const EditUserdataById = ({
                       checked={firstbenefitbypolice === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.name !== 'Police'}
                     />{' '}
-                    Should be given
+                    Yes
                     <Radio
                       type='radio'
                       name='firstbenefitbypolice'
                       checked={firstbenefitbypolice === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.name !== 'Police'}
                     />{' '}
-                    Should not be given
+                    No
                     <Radio
                       type='radio'
                       name='firstbenefitbypolice'
                       checked={firstbenefitbypolice === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.name !== 'Police'}
                     />{' '}
-                    Keep Pending
+                    Pending
                   </div>
                 </div>
                 <div className='maindiv'>
                   <div className='form-group'>
                     Monetary Compensation for Stage I by Asst. Commisioner
-                    <textarea
+                    <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
                       name='monetarycompbyACI'
                       value={monetarycompbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
                     Any other benefit for Stage I by Asst. Commisioner
-                    <textarea
+                    <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
                       name='otherbenefitycompbyACI'
                       value={otherbenefitycompbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
                     Other Comments by Asst. Commisioner
-                    <textarea
+                    <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
                       name='firstbenefitbycommcomment'
                       value={firstbenefitbycommcomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'Asst. Commissioner' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.name !== 'Asst. Commissioner'}
                     />
                   </div>
                 </div>
@@ -1789,50 +1748,35 @@ const EditUserdataById = ({
                 <div className='maindiv'>
                   <div className='form-group'>
                     Monetary Compensation for Stage I by District Collector
-                    <textarea
+                    <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
                       name='monetarycompbyDCI'
                       value={monetarycompbyDCI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.name !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
                     Any other benefit for Stage I by District Collector
-                    <textarea
+                    <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
                       name='otherbenefitycompbyDCI'
                       value={otherbenefitycompbyDCI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.name !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
                     Other Comments by District Collector
-                    <textarea
+                    <input
                       type='text'
                       placeholder='Give the Reason for Recommendation'
                       name='firstbenefitbycollectorcomment'
                       value={firstbenefitbycollectorcomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.name !== 'District Collector' &&
-                        user &&
-                        user.name !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.name !== 'District Collector'}
                     />
                   </div>
                 </div>
@@ -1844,74 +1788,41 @@ const EditUserdataById = ({
                     checked={firstbenefitbycollector === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    disabled={user && user.name !== 'District Collector'}
                   />{' '}
-                  Should be given
+                  Yes
                   <Radio
                     type='radio'
                     name='firstbenefitbycollector'
                     checked={firstbenefitbycollector === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    disabled={user && user.name !== 'District Collector'}
                   />{' '}
-                  Should not be given
+                  No
                   <Radio
                     type='radio'
                     name='firstbenefitbycollector'
                     checked={firstbenefitbycollector === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'District Collector' &&
-                      user &&
-                      user.name !== 'Data Entry Operator'
-                    }
+                    disabled={user && user.name !== 'District Collector'}
                   />{' '}
-                  Keep Pending
+                  Pending
                 </div>
-                {firstbenefitbycollector !== 'no' && (
+                {(firstbenefitbycollector === 'yes' ||
+                  firstbenefitbycollector === 'pending') && (
                   <div className='maindiv'>
                     <div className='form-group'>
-                      UTR Number for Money Transfer
+                      Monetary Compensation for Stage I given by Asst.
+                      Commisioner
                       <input
-                        type='text'
-                        placeholder='Enter 22 digit UTR Number'
-                        name='utrnumI'
-                        value={utrnumI}
-                        onChange={e => onChange(e)}
-                        disabled={
-                          (user && user.name === 'Asst. Commissioner') ||
-                          (user && user.name !== 'Data Entry Operator')
-                        }
-                      />
-                    </div>
-                    <div className='form-group'>
-                      Details of non Monetary Benefits for Stage I given by
-                      Asst. Commisioner
-                      <textarea
                         type='text'
                         placeholder='Amount Given'
                         name='benefitsgivenbyACI'
                         value={benefitsgivenbyACI}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Asst. Commissioner' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'Asst. Commissioner'}
                       />
                     </div>
                     <div className='form-group'>
@@ -1923,12 +1834,7 @@ const EditUserdataById = ({
                         checked={isbenefitsgivenbyACI === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'District Collector'}
                       />{' '}
                       Yes
                       <Radio
@@ -1937,18 +1843,14 @@ const EditUserdataById = ({
                         checked={isbenefitsgivenbyACI === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'District Collector'}
                       />{' '}
                       No
                     </div>
                   </div>
                 )}
-                {firstbenefitbycollector !== 'no' && (
+                {(firstbenefitbycollector === 'yes' ||
+                  firstbenefitbycollector === 'pending') && (
                   <Fragment>
                     {' '}
                     <hr className='style-two' />
@@ -2259,17 +2161,13 @@ const EditUserdataById = ({
                     <div className='maindiv'>
                       <div className='form-group'>
                         Comment on Second benefit Recommendation by Police
-                        <textarea
+                        <input
                           type='text'
                           placeholder='Give the Reason for Recommendation'
                           name='secondbenefitbypolicecomment'
                           value={secondbenefitbypolicecomment}
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
-                          }
+                          disabled={user && user.name !== 'Police'}
                         />
                       </div>
                       <div className='form-group'>
@@ -2281,88 +2179,61 @@ const EditUserdataById = ({
                           checked={secondbenefitbypolice === 'yes'}
                           value='yes'
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
-                          }
+                          disabled={user && user.name !== 'Police'}
                         />{' '}
-                        Should be given
+                        Yes
                         <Radio
                           type='radio'
                           name='secondbenefitbypolice'
                           checked={secondbenefitbypolice === 'no'}
                           value='no'
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
-                          }
+                          disabled={user && user.name !== 'Police'}
                         />{' '}
-                        Should not be given
+                        No
                         <Radio
                           type='radio'
                           name='secondbenefitbypolice'
                           checked={secondbenefitbypolice === 'pending'}
                           value='pending'
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
-                          }
+                          disabled={user && user.name !== 'Police'}
                         />{' '}
-                        Keep Pending
+                        Pending
                       </div>
                     </div>
                     <div className='maindiv'>
                       <div className='form-group'>
                         Monetary Compensation for Stage II by Asst. Commisioner
-                        <textarea
+                        <input
                           type='text'
                           placeholder='Give the Reason for Recommendation'
                           name='monetarycompbyACII'
                           value={monetarycompbyACII}
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'Asst. Commissioner' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
+                          disabled={user && user.name !== 'Asst. Commissioner'}
                         />
                       </div>
                       <div className='form-group'>
                         Any other benefit for Stage II by Asst. Commisioner
-                        <textarea
+                        <input
                           type='text'
                           placeholder='Give the Reason for Recommendation'
                           name='otherbenefitycompbyACII'
                           value={otherbenefitycompbyACII}
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'Asst. Commissioner' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
+                          disabled={user && user.name !== 'Asst. Commissioner'}
                         />
                       </div>
                       <div className='form-group'>
                         Other Comments by Asst. Commisioner
-                        <textarea
+                        <input
                           type='text'
                           placeholder='Give the Reason for Recommendation'
                           name='secondbenefitbycommcomment'
                           value={secondbenefitbycommcomment}
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'Asst. Commissioner' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
+                          disabled={user && user.name !== 'Asst. Commissioner'}
                         />
                       </div>
                     </div>
@@ -2374,90 +2245,60 @@ const EditUserdataById = ({
                         checked={secondbenefitbycommis === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Asst. Commissioner' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'Asst. Commissioner'}
                       />{' '}
-                      Should be given
+                      Yes
                       <Radio
                         type='radio'
                         name='secondbenefitbycommis'
                         checked={secondbenefitbycommis === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Asst. Commissioner' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'Asst. Commissioner'}
                       />{' '}
-                      Should not be given
+                      No
                       <Radio
                         type='radio'
                         name='secondbenefitbycommis'
                         checked={secondbenefitbycommis === 'pending'}
                         value='pending'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'Asst. Commissioner' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'Asst. Commissioner'}
                       />{' '}
-                      Keep Pending
+                      Pending
                     </div>
                     <div className='maindiv'>
                       <div className='form-group'>
                         Monetary Compensation for Stage II by District Collector
-                        <textarea
+                        <input
                           type='text'
                           placeholder='Give the Reason for Recommendation'
                           name='monetarycompbyDCII'
                           value={monetarycompbyDCII}
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'District Collector' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
+                          disabled={user && user.name !== 'District Collector'}
                         />
                       </div>
                       <div className='form-group'>
                         Any other benefit for Stage II by District Collector
-                        <textarea
+                        <input
                           type='text'
                           placeholder='Give the Reason for Recommendation'
                           name='otherbenefitycompbyDCII'
                           value={otherbenefitycompbyDCII}
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'District Collector' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
+                          disabled={user && user.name !== 'District Collector'}
                         />
                       </div>
                       <div className='form-group'>
                         Other Comments by District Collector
-                        <textarea
+                        <input
                           type='text'
                           placeholder='Give the Reason for Recommendation'
                           name='secondbenefitbycollectorcomment'
                           value={secondbenefitbycollectorcomment}
                           onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'District Collector' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
+                          disabled={user && user.name !== 'District Collector'}
                         />
                       </div>
                     </div>
@@ -2470,110 +2311,30 @@ const EditUserdataById = ({
                         checked={secondbenefitbycollector === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'District Collector'}
                       />{' '}
-                      Should be given
+                      Yes
                       <Radio
                         type='radio'
                         name='secondbenefitbycollector'
                         checked={secondbenefitbycollector === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'District Collector'}
                       />{' '}
-                      Should not be given
+                      No
                       <Radio
                         type='radio'
                         name='secondbenefitbycollector'
                         checked={secondbenefitbycollector === 'pending'}
                         value='pending'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.name !== 'District Collector' &&
-                          user &&
-                          user.name !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.name !== 'District Collector'}
                       />{' '}
-                      Keep Pending
+                      Pending
                     </div>
-                    <div className='maindiv'>
-                      <div className='form-group'>
-                        UTR Number for Money Transfer for Stage II
-                        <input
-                          type='text'
-                          placeholder='Enter 22 digit UTR Number'
-                          name='utrnumII'
-                          value={utrnumII}
-                          onChange={e => onChange(e)}
-                          disabled={
-                            (user && user.name === 'Asst. Commissioner') ||
-                            (user && user.name !== 'Data Entry Operator')
-                          }
-                        />
-                      </div>
-                      <div className='form-group'>
-                        Details of Non Monetary Benefits given for Stage II by
-                        Asst. Commisioner
-                        <textarea
-                          type='text'
-                          placeholder='Amount Given'
-                          name='benefitsgivenbyACII'
-                          value={benefitsgivenbyACII}
-                          onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'Asst. Commissioner' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
-                        />
-                      </div>
-                      <div className='form-group'>
-                        Whether all benefits were given for Stage II by Asst.
-                        Commisioner
-                        <Radio
-                          type='radio'
-                          name='isbenefitsgivenbyACII'
-                          checked={isbenefitsgivenbyACII === 'yes'}
-                          value='yes'
-                          onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'District Collector' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
-                        />{' '}
-                        Yes
-                        <Radio
-                          type='radio'
-                          name='isbenefitsgivenbyACII'
-                          checked={isbenefitsgivenbyACII === 'no'}
-                          value='no'
-                          onChange={e => onChange(e)}
-                          disabled={
-                            user &&
-                            user.name !== 'District Collector' &&
-                            user &&
-                            user.name !== 'Data Entry Operator'
-                          }
-                        />{' '}
-                        No
-                      </div>
-                    </div>
-                    <br />
-                    {firstbenefitbycollector !== 'no' && (
+                    {(firstbenefitbycollector === 'yes' ||
+                      firstbenefitbycollector === 'pending') && (
                       <div className='maindiv'>
                         <div className='form-group'>
                           Monetary Compensation for Stage II given by Asst.
@@ -2623,8 +2384,10 @@ const EditUserdataById = ({
                 {!dpmurderIII &&
                   !dpacidIII &&
                   !dpdisabilityIII &&
-                  firstbenefitbycollector !== 'no' &&
-                  secondbenefitbycollector !== 'no' && (
+                  (firstbenefitbycollector === 'yes' ||
+                    firstbenefitbycollector === 'pending') &&
+                  (secondbenefitbycollector === 'yes' ||
+                    secondbenefitbycollector === 'pending') && (
                     <Fragment>
                       <hr className='style-three' />
                       <br />
@@ -2676,7 +2439,7 @@ const EditUserdataById = ({
                       <div className='maindiv'>
                         <div className='form-group'>
                           Comment on Third benefit Recommendation by Police
-                          <textarea
+                          <input
                             type='text'
                             placeholder='Give the Reason for Recommendation'
                             name='thirdbenefitbypolicecomment'
@@ -2693,46 +2456,34 @@ const EditUserdataById = ({
                             checked={thirdbenefitbypolice === 'yes'}
                             value='yes'
                             onChange={e => onChange(e)}
-                            disabled={
-                              user &&
-                              user.name !== 'Police' &&
-                              (user && user.name !== 'Data Entry Operator')
-                            }
+                            disabled={user && user.name !== 'Police'}
                           />{' '}
-                          Should be given
+                          Yes
                           <Radio
                             type='radio'
                             name='thirdbenefitbypolice'
                             checked={thirdbenefitbypolice === 'no'}
                             value='no'
                             onChange={e => onChange(e)}
-                            disabled={
-                              user &&
-                              user.name !== 'Police' &&
-                              (user && user.name !== 'Data Entry Operator')
-                            }
+                            disabled={user && user.name !== 'Police'}
                           />{' '}
-                          Should not be given
+                          No
                           <Radio
                             type='radio'
                             name='thirdbenefitbypolice'
                             checked={thirdbenefitbypolice === 'pending'}
                             value='pending'
                             onChange={e => onChange(e)}
-                            disabled={
-                              user &&
-                              user.name !== 'Police' &&
-                              (user && user.name !== 'Data Entry Operator')
-                            }
+                            disabled={user && user.name !== 'Police'}
                           />{' '}
-                          Keep Pending
+                          Pending
                         </div>
                       </div>
                       <div className='maindiv'>
                         <div className='form-group'>
                           Monetary Compensation for Stage III by Asst.
                           Commisioner
-                          <textarea
+                          <input
                             type='text'
                             placeholder='Give the Reason for Recommendation'
                             name='monetarycompbyACIII'
@@ -2745,7 +2496,7 @@ const EditUserdataById = ({
                         </div>
                         <div className='form-group'>
                           Any other benefit for Stage III by Asst. Commisioner
-                          <textarea
+                          <input
                             type='text'
                             placeholder='Give the Reason for Recommendation'
                             name='otherbenefitycompbyACIII'
@@ -2780,7 +2531,7 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={user && user.name !== 'Asst. Commissioner'}
                         />{' '}
-                        Should be given
+                        Yes
                         <Radio
                           type='radio'
                           name='thirdbenefitbycommis'
@@ -2789,7 +2540,7 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={user && user.name !== 'Asst. Commissioner'}
                         />{' '}
-                        Should not be given
+                        No
                         <Radio
                           type='radio'
                           name='thirdbenefitbycommis'
@@ -2798,12 +2549,12 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={user && user.name !== 'Asst. Commissioner'}
                         />{' '}
-                        Keep Pending
+                        Pending
                       </div>
                       <div className='maindiv'>
                         <div className='form-group'>
                           Monetary Compensation III by District Collector
-                          <textarea
+                          <input
                             type='text'
                             placeholder='Give the Reason for Recommendation'
                             name='monetarycompbyDCIII'
@@ -2816,7 +2567,7 @@ const EditUserdataById = ({
                         </div>
                         <div className='form-group'>
                           Any other benefit for Stage III by District Collector
-                          <textarea
+                          <input
                             type='text'
                             placeholder='Give the Reason for Recommendation'
                             name='otherbenefitycompbyDCIII'
@@ -2852,7 +2603,7 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={user && user.name !== 'District Collector'}
                         />{' '}
-                        Should be given
+                        Yes
                         <Radio
                           type='radio'
                           name='thirdbenefitbycollector'
@@ -2861,7 +2612,7 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={user && user.name !== 'District Collector'}
                         />{' '}
-                        Should not be given
+                        No
                         <Radio
                           type='radio'
                           name='thirdbenefitbycollector'
@@ -2870,26 +2621,13 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={user && user.name !== 'District Collector'}
                         />{' '}
-                        Keep Pending
+                        Pending
                       </div>
                       <div className='maindiv'>
                         <div className='form-group'>
-                          UTR Number for Money Transfer for Stage III
+                          Monetary Compensation for Stage III given by Asst.
+                          Commisioner
                           <input
-                            type='text'
-                            placeholder='Enter 22 digit UTR Number'
-                            name='utrnumIII'
-                            value={utrnumIII}
-                            onChange={e => onChange(e)}
-                            disabled={
-                              user && user.name === 'Asst. Commissioner'
-                            }
-                          />
-                        </div>
-                        <div className='form-group'>
-                          Details of Non Monetary Benefits given for Stage III
-                          by Asst. Commisioner
-                          <textarea
                             type='text'
                             placeholder='Amount Given'
                             name='benefitsgivenbyACIII'
@@ -2928,7 +2666,17 @@ const EditUserdataById = ({
                           No
                         </div>
                       </div>
-                      
+                      <div className='form-group'>
+                        Financial Support to be Provided
+                        <textarea
+                          rows='4'
+                          type='text'
+                          placeholder='Financial Support to be Provided'
+                          name='financialsupport'
+                          value={financialsupport}
+                          onChange={e => onChange(e)}
+                        />
+                      </div>
                     </Fragment>
                   )}
                 {!disabledata && user && user.name === 'District Collector' && (
@@ -3061,49 +2809,49 @@ const EditUserdataById = ({
   );
 };
 
-EditUserdataById.propTypes = {
-  editUserdata: PropTypes.func.isRequired,
-  getUserdataById: PropTypes.func.isRequired,
-  userdata: PropTypes.object.isRequired,
+EditDeouserdataById.propTypes = {
+  editDeouserdata: PropTypes.func.isRequired,
+  getDeouserdataById: PropTypes.func.isRequired,
+  deouserdata: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  userdata: state.userdata,
+  deouserdata: state.deouserdata,
   auth: state.auth
 });
 
 export default connect(
   mapStateToProps,
-  { editUserdata, getUserdataById }
-)(withRouter(EditUserdataById));
+  { editDeouserdata, getDeouserdataById }
+)(withRouter(EditDeouserdataById));
 
 // import React, { Fragment, useState, useEffect } from 'react';
 // import { Link, withRouter } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
-// import { editUserdata, getUserdataById } from '../../actions/userdata';
+// import { editDeouserdata, getDeouserdataById } from '../../actions/userdata';
 
-// const EditUserdataById = ({
+// const EditDeouserdataById = ({
 //   match,
-//   getUserdataById,
+//   getDeouserdataById,
 //   history,
 //   userdata: { userdata, loading },
-//   editUserdata
+//   editDeouserdata
 // }) => {
 //   const [formData, setFormData] = useState({
 //     text: ''
 //   });
 
 //   useEffect(() => {
-//     getUserdataById(match.params.id);
+//     getDeouserdataById(match.params.id);
 
 //     //Fill the form with Current VAlues
 //     console.log(userdata);
 //     setFormData({
 //       text: loading || userdata.text ? '' : userdata.text
 //     });
-//   }, [match, getUserdataById, userdata, loading]);
+//   }, [match, getDeouserdataById, userdata, loading]);
 
 //   const { text } = formData;
 
@@ -3112,7 +2860,7 @@ export default connect(
 
 //   const onSubmit = e => {
 //     e.preventDefault();
-//     editUserdata(formData, history, true);
+//     editDeouserdata(formData, history, true);
 //   };
 //   return (
 //     <Fragment>
@@ -3138,9 +2886,9 @@ export default connect(
 //   );
 // };
 
-// EditUserdataById.propTypes = {
-//   editUserdata: PropTypes.func.isRequired,
-//   getUserdataById: PropTypes.func.isRequired,
+// EditDeouserdataById.propTypes = {
+//   editDeouserdata: PropTypes.func.isRequired,
+//   getDeouserdataById: PropTypes.func.isRequired,
 //   userdata: PropTypes.object.isRequired
 // };
 
@@ -3150,5 +2898,5 @@ export default connect(
 
 // export default connect(
 //   mapStateToProps,
-//   { editUserdata, getUserdataById }
-// )(withRouter(EditUserdataById));
+//   { editDeouserdata, getDeouserdataById }
+// )(withRouter(EditDeouserdataById));

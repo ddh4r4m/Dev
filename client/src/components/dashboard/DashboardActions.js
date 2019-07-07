@@ -84,6 +84,13 @@ const DashboardActions = () => {
           III: 60 Days POLICE
         </Button>
       </Link>
+      <br />
+      <Link to='/createpdf'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PRINT MINUTES OF
+          MEETING
+        </Button>
+      </Link>
     </div>
   );
 };

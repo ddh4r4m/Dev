@@ -2,9 +2,9 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUsersdata } from '../../actions/userdata';
+import { getDeousersdata } from '../../actions/deouserdata';
 import Spinner from '../layout/Spinner';
-import UserdataItem from '../../components/usersdata/UserdataItem';
+import DeouserdataItem from '../../components/deousersdata/Deouserdataitem';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import './table.css';
@@ -18,10 +18,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
+const Deousersdata = ({
+  getDeousersdata,
+  deouserdata: { deousersdata, loading }
+}) => {
   useEffect(() => {
-    getUsersdata();
-  }, [getUsersdata]);
+    getDeousersdata();
+  }, [getDeousersdata]);
 
   const [formData, setFormData] = useState({
     search: '',
@@ -50,30 +53,31 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const filtereddata = usersdata.filter(usersdata => {
+  const filtereddata = deousersdata.filter(deousersdata => {
     return (
-      usersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
-      usersdata.courtresults
+      deousersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
+      deousersdata.courtresults
         .toLowerCase()
         .indexOf(courtresults.toLowerCase()) !== -1 &&
-      usersdata.crimeregisterno
+      deousersdata.crimeregisterno
         .toLowerCase()
         .indexOf(crimeregisterno.toLowerCase()) !== -1 &&
-      usersdata.victimdetails
+      deousersdata.victimdetails
         .toLowerCase()
         .indexOf(victimdetails.toLowerCase()) !== -1 &&
-      usersdata.dateofcourtorder
+      deousersdata.dateofcourtorder
         .toLowerCase()
         .indexOf(dateofcourtorder.toLowerCase()) !== -1 &&
-      usersdata.sectionsapplied
+      deousersdata.sectionsapplied
         .toLowerCase()
         .indexOf(sectionsapplied.toLowerCase()) !== -1 &&
-      usersdata.ipcapplied.toLowerCase().indexOf(ipcapplied.toLowerCase()) !==
-        -1 &&
-      usersdata.typeofatrocity
+      deousersdata.ipcapplied
+        .toLowerCase()
+        .indexOf(ipcapplied.toLowerCase()) !== -1 &&
+      deousersdata.typeofatrocity
         .toLowerCase()
         .indexOf(typeofatrocity.toLowerCase()) !== -1 &&
-      usersdata.policestation
+      deousersdata.policestation
         .toLowerCase()
         .indexOf(policestation.toLowerCase()) !== -1
     );
@@ -149,7 +153,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
         onChange={e => onChange(e)}
       />
       <br />
-      <Link to='create-userdata' style={{ marginBottom: '20px' }}>
+      <Link to='create-deouserdata' style={{ marginBottom: '20px' }}>
         <Button variant='contained' color='primary' className={classes.button}>
           Create New Case
         </Button>
@@ -168,8 +172,11 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           </thead>
           <tbody>
             {filtereddata.length > 0 ? (
-              filtereddata.map(userdata => (
-                <UserdataItem key={userdata._id} userdata={userdata} />
+              filtereddata.map(deouserdata => (
+                <DeouserdataItem
+                  key={deouserdata._id}
+                  deouserdata={deouserdata}
+                />
               ))
             ) : (
               <tr>
@@ -186,15 +193,15 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   );
 };
 
-Usersdata.propTypes = {
-  getUsersdata: PropTypes.func.isRequired,
-  userdata: PropTypes.object.isRequired
+Deousersdata.propTypes = {
+  getDeousersdata: PropTypes.func.isRequired,
+  deouserdata: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-  userdata: state.userdata
+  deouserdata: state.deouserdata
 });
 
 export default connect(
   mapStateToProps,
-  { getUsersdata }
-)(Usersdata);
+  { getDeousersdata }
+)(Deousersdata);

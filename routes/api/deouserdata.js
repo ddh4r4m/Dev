@@ -3,7 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
 const auth = require('../../middleware/auth');
 
-const Userdata = require('../../models/Userdata');
+const Deouserdata = require('../../models/Deouserdata');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
@@ -84,7 +84,7 @@ router.post(
     try {
       // console.log(req.body);
       const user = await User.findById(req.user.id).select('-password');
-      const newUserdata = new Userdata({
+      const newDeouserdata = new Deouserdata({
         text: req.body.text,
         year: req.body.year,
         docImage:
@@ -254,7 +254,7 @@ router.post(
         user: req.user.id
       });
 
-      const post = await newUserdata.save();
+      const post = await newDeouserdata.save();
       res.json(post);
     } catch (err) {
       console.error(err.message);
@@ -268,13 +268,13 @@ router.post(
 
 router.get('/', async (req, res) => {
   try {
-    const userdata = await Userdata.find().sort({ date: -1 });
+    const deouserdata = await Deouserdata.find().sort({ date: -1 });
 
-    if (!userdata) {
+    if (!deouserdata) {
       return res.status(400).json({ msg: 'No Cases Found' });
     }
 
-    res.json(userdata);
+    res.json(deouserdata);
   } catch (err) {
     console.error(err.message);
     return res.status(500).send('Server Error');
@@ -286,17 +286,17 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', auth, async (req, res) => {
   try {
-    const userdata = await Userdata.findById(req.params.id);
+    const deouserdata = await Deouserdata.findById(req.params.id);
 
-    if (!userdata) {
-      return res.status(404).json({ msg: 'userdata not found' });
+    if (!deouserdata) {
+      return res.status(404).json({ msg: 'deouserdata not found' });
     }
 
-    res.json(userdata);
+    res.json(deouserdata);
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
-      return res.status(404).json({ msg: 'Userdata not found' });
+      return res.status(404).json({ msg: 'Deouserdata not found' });
     }
     return res.status(500).send('Server Error');
   }
@@ -308,189 +308,194 @@ router.get('/:id', auth, async (req, res) => {
 
 router.put('/:id', cpUpload, auth, async (req, res) => {
   try {
-    const userdata = await Userdata.findById(req.params.id);
+    const deouserdata = await Deouserdata.findById(req.params.id);
 
-    if (!userdata) {
+    if (!deouserdata) {
       return res.status(404).json({ msg: 'userdata not found' });
     } else {
-      userdata.text = req.body.text;
-      userdata.year = req.body.year;
-      userdata.disabledata = req.body.disabledata;
-      userdata.othersections = req.body.othersections;
-      userdata.othersectionsv2 = req.body.othersectionsv2;
-      userdata.closecase = req.body.closecase;
-      userdata.closethecase = req.body.closethecase;
-      userdata.sectionschanged = req.body.sectionschanged;
-      userdata.stagetwochange = req.body.stagetwochange;
+      deouserdata.text = req.body.text;
+      deouserdata.year = req.body.year;
+      deouserdata.disabledata = req.body.disabledata;
+      deouserdata.othersections = req.body.othersections;
+      deouserdata.othersectionsv2 = req.body.othersectionsv2;
+      deouserdata.closecase = req.body.closecase;
+      deouserdata.closethecase = req.body.closethecase;
+      deouserdata.sectionschanged = req.body.sectionschanged;
+      deouserdata.stagetwochange = req.body.stagetwochange;
 
       // console.log(req.files['docImage'] !== undefined);
       if (req.files['docImage'] !== undefined) {
-        userdata.docImage = req.files['docImage'][0].path;
+        deouserdata.docImage = req.files['docImage'][0].path;
       }
       if (req.files['doccImage'] !== undefined) {
-        userdata.doccImage = req.files['doccImage'][0].path;
+        deouserdata.doccImage = req.files['doccImage'][0].path;
       }
       if (req.files['courtorder'] !== undefined) {
-        userdata.courtorder = req.files['courtorder'][0].path;
+        deouserdata.courtorder = req.files['courtorder'][0].path;
       }
       if (req.files['postmortem'] !== undefined) {
-        userdata.postmortem = req.files['postmortem'][0].path;
+        deouserdata.postmortem = req.files['postmortem'][0].path;
       }
       if (req.files['medicalreport'] !== undefined) {
-        userdata.medicalreport = req.files['medicalreport'][0].path;
+        deouserdata.medicalreport = req.files['medicalreport'][0].path;
       }
       if (req.files['abcSummary'] !== undefined) {
-        userdata.abcSummary = req.files['abcSummary'][0].path;
+        deouserdata.abcSummary = req.files['abcSummary'][0].path;
       }
       if (req.files['victimone'] !== undefined) {
-        userdata.victimone = req.files['victimone'][0].path;
+        deouserdata.victimone = req.files['victimone'][0].path;
       }
       if (req.files['victimtwo'] !== undefined) {
-        userdata.victimtwo = req.files['victimtwo'][0].path;
+        deouserdata.victimtwo = req.files['victimtwo'][0].path;
       }
       if (req.files['victimthree'] !== undefined) {
-        userdata.victimthree = req.files['victimthree'][0].path;
+        deouserdata.victimthree = req.files['victimthree'][0].path;
       }
       if (req.files['victimfour'] !== undefined) {
-        userdata.victimfour = req.files['victimfour'][0].path;
+        deouserdata.victimfour = req.files['victimfour'][0].path;
       }
       if (req.files['victimfive'] !== undefined) {
-        userdata.victimfive = req.files['victimfive'][0].path;
+        deouserdata.victimfive = req.files['victimfive'][0].path;
       }
       if (req.files['victimsix'] !== undefined) {
-        userdata.victimsix = req.files['victimsix'][0].path;
+        deouserdata.victimsix = req.files['victimsix'][0].path;
       }
       if (req.files['victimseven'] !== undefined) {
-        userdata.victimseven = req.files['victimseven'][0].path;
+        deouserdata.victimseven = req.files['victimseven'][0].path;
       }
       if (req.files['victimeight'] !== undefined) {
-        userdata.victimeight = req.files['victimeight'][0].path;
+        deouserdata.victimeight = req.files['victimeight'][0].path;
       }
       if (req.files['accusedone'] !== undefined) {
-        userdata.accusedone = req.files['accusedone'][0].path;
+        deouserdata.accusedone = req.files['accusedone'][0].path;
       }
       if (req.files['accusedtwo'] !== undefined) {
-        userdata.accusedtwo = req.files['accusedtwo'][0].path;
+        deouserdata.accusedtwo = req.files['accusedtwo'][0].path;
       }
       if (req.files['accusedthree'] !== undefined) {
-        userdata.accusedthree = req.files['accusedthree'][0].path;
+        deouserdata.accusedthree = req.files['accusedthree'][0].path;
       }
       if (req.files['accusedfour'] !== undefined) {
-        userdata.accusedfour = req.files['accusedfour'][0].path;
+        deouserdata.accusedfour = req.files['accusedfour'][0].path;
       }
       if (req.files['accusedfive'] !== undefined) {
-        userdata.accusedfive = req.files['accusedfive'][0].path;
+        deouserdata.accusedfive = req.files['accusedfive'][0].path;
       }
       if (req.files['accusedsix'] !== undefined) {
-        userdata.accusedsix = req.files['accusedsix'][0].path;
+        deouserdata.accusedsix = req.files['accusedsix'][0].path;
       }
       if (req.files['accusedseven'] !== undefined) {
-        userdata.accusedseven = req.files['accusedseven'][0].path;
+        deouserdata.accusedseven = req.files['accusedseven'][0].path;
       }
       if (req.files['accusedeight'] !== undefined) {
-        userdata.accusedeight = req.files['accusedeight'][0].path;
+        deouserdata.accusedeight = req.files['accusedeight'][0].path;
       }
 
       // if (!req.files) {
-      //   userdata.docImage = req.files['docImage'][0].path;
-      //   userdata.doccImage = req.files['doccImage'][0].path;
-      //   userdata.victimone = req.files['victimone'][0].path;
-      //   userdata.victimtwo = req.files['victimtwo'][0].path;
-      //   userdata.victimthree = req.files['victimthree'][0].path;
-      //   userdata.victimfour = req.files['victimfour'][0].path;
-      //   userdata.victimfive = req.files['victimfive'][0].path;
-      //   userdata.accusedone = req.files['accusedone'][0].path;
-      //   userdata.accusedtwo = req.files['accusedtwo'][0].path;
-      //   userdata.accusedthree = req.files['accusedthree'][0].path;
-      //   userdata.accusedfour = req.files['accusedfour'][0].path;
-      //   userdata.accusedfive = req.files['accusedfive'][0].path;
+      //   deouserdata.docImage = req.files['docImage'][0].path;
+      //   deouserdata.doccImage = req.files['doccImage'][0].path;
+      //   deouserdata.victimone = req.files['victimone'][0].path;
+      //   deouserdata.victimtwo = req.files['victimtwo'][0].path;
+      //   deouserdata.victimthree = req.files['victimthree'][0].path;
+      //   deouserdata.victimfour = req.files['victimfour'][0].path;
+      //   deouserdata.victimfive = req.files['victimfive'][0].path;
+      //   deouserdata.accusedone = req.files['accusedone'][0].path;
+      //   deouserdata.accusedtwo = req.files['accusedtwo'][0].path;
+      //   deouserdata.accusedthree = req.files['accusedthree'][0].path;
+      //   deouserdata.accusedfour = req.files['accusedfour'][0].path;
+      //   deouserdata.accusedfive = req.files['accusedfive'][0].path;
       // }
-      userdata.typeofatrocity = req.body.typeofatrocity;
-      userdata.ipcapplied = req.body.ipcapplied;
-      userdata.sectionsapplied = req.body.sectionsapplied;
-      userdata.typeofatrocityv2 = req.body.typeofatrocityv2;
-      userdata.ipcappliedv2 = req.body.ipcappliedv2;
-      userdata.sectionsappliedv2 = req.body.sectionsappliedv2;
-      userdata.policestation = req.body.policestation;
-      userdata.crimeregisterno = req.body.crimeregisterno;
-      userdata.dateofcrime = req.body.dateofcrime;
-      userdata.regdateofcrime = req.body.regdateofcrime;
-      userdata.utrnumI = req.body.utrnumI;
-      userdata.utrnumII = req.body.utrnumII;
-      userdata.utrnumIII = req.body.utrnumIII;
-      userdata.benefitsgivenbyACI = req.body.benefitsgivenbyACI;
-      userdata.benefitsgivenbyACII = req.body.benefitsgivenbyACII;
-      userdata.benefitsgivenbyACIII = req.body.benefitsgivenbyACIII;
-      userdata.isbenefitsgivenbyACI = req.body.isbenefitsgivenbyACI;
-      userdata.isbenefitsgivenbyACII = req.body.isbenefitsgivenbyACII;
-      userdata.isbenefitsgivenbyACIII = req.body.isbenefitsgivenbyACIII;
-      userdata.monetarycompbyDCI = req.body.monetarycompbyDCI;
-      userdata.monetarycompbyDCII = req.body.monetarycompbyDCII;
-      userdata.monetarycompbyDCIII = req.body.monetarycompbyDCIII;
-      userdata.otherbenefitycompbyDCI = req.body.otherbenefitycompbyDCI;
-      userdata.otherbenefitycompbyDCII = req.body.otherbenefitycompbyDCII;
-      userdata.otherbenefitycompbyDCIII = req.body.otherbenefitycompbyDCIII;
-      userdata.monetarycompbyACI = req.body.monetarycompbyACI;
-      userdata.monetarycompbyACII = req.body.monetarycompbyACII;
-      userdata.monetarycompbyACIII = req.body.monetarycompbyACIII;
-      userdata.otherbenefitycompbyACI = req.body.otherbenefitycompbyACI;
-      userdata.otherbenefitycompbyACII = req.body.otherbenefitycompbyACII;
-      userdata.otherbenefitycompbyACIII = req.body.otherbenefitycompbyACIII;
-      userdata.firstbenefitbypolice = req.body.firstbenefitbypolice;
-      userdata.firstbenefitbypolicedate = req.body.firstbenefitbypolicedate;
-      userdata.firstbenefitbycommis = req.body.firstbenefitbycommis;
-      userdata.firstbenefitbycommisdate = req.body.firstbenefitbycommisdate;
-      userdata.firstbenefitbycollector = req.body.firstbenefitbycollector;
-      userdata.firstbenefitbycollectordate =
+      deouserdata.typeofatrocity = req.body.typeofatrocity;
+      deouserdata.ipcapplied = req.body.ipcapplied;
+      deouserdata.sectionsapplied = req.body.sectionsapplied;
+      deouserdata.typeofatrocityv2 = req.body.typeofatrocityv2;
+      deouserdata.ipcappliedv2 = req.body.ipcappliedv2;
+      deouserdata.sectionsappliedv2 = req.body.sectionsappliedv2;
+      deouserdata.policestation = req.body.policestation;
+      deouserdata.crimeregisterno = req.body.crimeregisterno;
+      deouserdata.dateofcrime = req.body.dateofcrime;
+      deouserdata.regdateofcrime = req.body.regdateofcrime;
+      deouserdata.utrnumI = req.body.utrnumI;
+      deouserdata.utrnumII = req.body.utrnumII;
+      deouserdata.utrnumIII = req.body.utrnumIII;
+      deouserdata.benefitsgivenbyACI = req.body.benefitsgivenbyACI;
+      deouserdata.benefitsgivenbyACII = req.body.benefitsgivenbyACII;
+      deouserdata.benefitsgivenbyACIII = req.body.benefitsgivenbyACIII;
+      deouserdata.isbenefitsgivenbyACI = req.body.isbenefitsgivenbyACI;
+      deouserdata.isbenefitsgivenbyACII = req.body.isbenefitsgivenbyACII;
+      deouserdata.isbenefitsgivenbyACIII = req.body.isbenefitsgivenbyACIII;
+      deouserdata.monetarycompbyDCI = req.body.monetarycompbyDCI;
+      deouserdata.monetarycompbyDCII = req.body.monetarycompbyDCII;
+      deouserdata.monetarycompbyDCIII = req.body.monetarycompbyDCIII;
+      deouserdata.otherbenefitycompbyDCI = req.body.otherbenefitycompbyDCI;
+      deouserdata.otherbenefitycompbyDCII = req.body.otherbenefitycompbyDCII;
+      deouserdata.otherbenefitycompbyDCIII = req.body.otherbenefitycompbyDCIII;
+      deouserdata.monetarycompbyACI = req.body.monetarycompbyACI;
+      deouserdata.monetarycompbyACII = req.body.monetarycompbyACII;
+      deouserdata.monetarycompbyACIII = req.body.monetarycompbyACIII;
+      deouserdata.otherbenefitycompbyACI = req.body.otherbenefitycompbyACI;
+      deouserdata.otherbenefitycompbyACII = req.body.otherbenefitycompbyACII;
+      deouserdata.otherbenefitycompbyACIII = req.body.otherbenefitycompbyACIII;
+      deouserdata.firstbenefitbypolice = req.body.firstbenefitbypolice;
+      deouserdata.firstbenefitbypolicedate = req.body.firstbenefitbypolicedate;
+      deouserdata.firstbenefitbycommis = req.body.firstbenefitbycommis;
+      deouserdata.firstbenefitbycommisdate = req.body.firstbenefitbycommisdate;
+      deouserdata.firstbenefitbycollector = req.body.firstbenefitbycollector;
+      deouserdata.firstbenefitbycollectordate =
         req.body.firstbenefitbycollectordate;
-      userdata.firstbenefitbypolicecomment =
+      deouserdata.firstbenefitbypolicecomment =
         req.body.firstbenefitbypolicecomment;
-      userdata.firstbenefitbycommcomment = req.body.firstbenefitbycommcomment;
-      userdata.firstbenefitbycollectorcomment =
+      deouserdata.firstbenefitbycommcomment =
+        req.body.firstbenefitbycommcomment;
+      deouserdata.firstbenefitbycollectorcomment =
         req.body.firstbenefitbycollectorcomment;
-      userdata.secondbenefitbypolice = req.body.secondbenefitbypolice;
-      userdata.secondbenefitbypolicedate = req.body.secondbenefitbypolicedate;
-      userdata.secondbenefitbycommis = req.body.secondbenefitbycommis;
-      userdata.secondbenefitbycommisdate = req.body.secondbenefitbycommisdate;
-      userdata.secondbenefitbycollector = req.body.secondbenefitbycollector;
-      userdata.secondbenefitbycollectordate =
+      deouserdata.secondbenefitbypolice = req.body.secondbenefitbypolice;
+      deouserdata.secondbenefitbypolicedate =
+        req.body.secondbenefitbypolicedate;
+      deouserdata.secondbenefitbycommis = req.body.secondbenefitbycommis;
+      deouserdata.secondbenefitbycommisdate =
+        req.body.secondbenefitbycommisdate;
+      deouserdata.secondbenefitbycollector = req.body.secondbenefitbycollector;
+      deouserdata.secondbenefitbycollectordate =
         req.body.secondbenefitbycollectordate;
-      userdata.secondbenefitbypolicecomment =
+      deouserdata.secondbenefitbypolicecomment =
         req.body.secondbenefitbypolicecomment;
-      userdata.secondbenefitbycommcomment = req.body.secondbenefitbycommcomment;
-      userdata.secondbenefitbycollectorcomment =
+      deouserdata.secondbenefitbycommcomment =
+        req.body.secondbenefitbycommcomment;
+      deouserdata.secondbenefitbycollectorcomment =
         req.body.secondbenefitbycollectorcomment;
-      userdata.thirdbenefitbypolice = req.body.thirdbenefitbypolice;
-      userdata.thirdbenefitbypolicedate = req.body.thirdbenefitbypolicedate;
-      userdata.thirdbenefitbycommis = req.body.thirdbenefitbycommis;
-      userdata.thirdbenefitbycommisdate = req.body.thirdbenefitbycommisdate;
-      userdata.thirdbenefitbycollector = req.body.thirdbenefitbycollector;
-      userdata.thirdbenefitbycollectordate =
+      deouserdata.thirdbenefitbypolice = req.body.thirdbenefitbypolice;
+      deouserdata.thirdbenefitbypolicedate = req.body.thirdbenefitbypolicedate;
+      deouserdata.thirdbenefitbycommis = req.body.thirdbenefitbycommis;
+      deouserdata.thirdbenefitbycommisdate = req.body.thirdbenefitbycommisdate;
+      deouserdata.thirdbenefitbycollector = req.body.thirdbenefitbycollector;
+      deouserdata.thirdbenefitbycollectordate =
         req.body.thirdbenefitbycollectordate;
-      userdata.thirdbenefitbypolicecomment =
+      deouserdata.thirdbenefitbypolicecomment =
         req.body.thirdbenefitbypolicecomment;
-      userdata.thirdbenefitbycommcomment = req.body.thirdbenefitbycommcomment;
-      userdata.thirdbenefitbycollectorcomment =
+      deouserdata.thirdbenefitbycommcomment =
+        req.body.thirdbenefitbycommcomment;
+      deouserdata.thirdbenefitbycollectorcomment =
         req.body.thirdbenefitbycollectorcomment;
-      userdata.victimdetails = req.body.victimdetails;
-      userdata.natureofcrime = req.body.natureofcrime;
-      userdata.sections = req.body.sections;
-      userdata.chargesheetdate = req.body.chargesheetdate;
-      userdata.policeinvestigation = req.body.policeinvestigation;
-      userdata.courtresults = req.body.courtresults;
-      userdata.financialsupport = req.body.financialsupport;
-      userdata.dateofcourtorder = req.body.dateofcourtorder;
+      deouserdata.victimdetails = req.body.victimdetails;
+      deouserdata.natureofcrime = req.body.natureofcrime;
+      deouserdata.sections = req.body.sections;
+      deouserdata.chargesheetdate = req.body.chargesheetdate;
+      deouserdata.policeinvestigation = req.body.policeinvestigation;
+      deouserdata.courtresults = req.body.courtresults;
+      deouserdata.financialsupport = req.body.financialsupport;
+      deouserdata.dateofcourtorder = req.body.dateofcourtorder;
     }
 
-    // const newUserdata = new Userdata({
+    // const newDeouserdata = new Deouserdata({
     //   text: req.body.text
     //   // name: user.name,
     //   // avatar: user.avatar,
     //   // user: req.user.id
     // });
 
-    await userdata.save();
-    res.json(userdata);
+    await deouserdata.save();
+    res.json(deouserdata);
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
@@ -506,23 +511,23 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
 
 router.delete('/:id', auth, async (req, res) => {
   try {
-    const userdata = await Userdata.findById(req.params.id);
+    const deouserdata = await Deouserdata.findById(req.params.id);
 
-    if (!userdata) {
-      return res.status(404).json({ msg: 'Userdata not found' });
+    if (!deouserdata) {
+      return res.status(404).json({ msg: 'Deouserdata not found' });
     }
 
     //Check User so than only he can delete the post
-    if (userdata.user.toString() !== req.user.id) {
+    if (deouserdata.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not Authorised' });
     }
-    await userdata.remove();
+    await deouserdata.remove();
 
-    res.json({ msg: 'Userdata Removed' });
+    res.json({ msg: 'Deouserdata Removed' });
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
-      return res.status(404).json({ msg: 'Userdata not found' });
+      return res.status(404).json({ msg: 'Deouserdata not found' });
     }
     return res.status(500).send('Server Error');
   }
@@ -549,7 +554,7 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select('-password');
-      const userdata = await Userdata.findById(req.params.id);
+      const deouserdata = await Deouserdata.findById(req.params.id);
       const newComment = {
         text: req.body.text,
         name: user.name,
@@ -557,9 +562,9 @@ router.post(
         user: req.user.id
       };
 
-      userdata.comments.unshift(newComment);
-      await userdata.save();
-      res.json(userdata.comments);
+      deouserdata.comments.unshift(newComment);
+      await deouserdata.save();
+      res.json(deouserdata.comments);
     } catch (err) {
       console.error(err.message);
       return res.status(500).send('Server Error');
@@ -571,10 +576,10 @@ router.post(
 //@access   Private
 router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
   try {
-    const userdata = await Userdata.findById(req.params.id);
+    const deouserdata = await Deouserdata.findById(req.params.id);
 
     //Pull Out Comment
-    const comment = userdata.comments.find(
+    const comment = deouserdata.comments.find(
       comment => comment.id === req.params.comment_id
     );
 
@@ -588,15 +593,15 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
       return res.status(401).json({ msg: 'User Not Authorized' });
     }
     //Get remove index
-    const removeIndex = userdata.comments
+    const removeIndex = deouserdata.comments
       .map(comment => comment.user.toString())
       .indexOf(req.user.id);
 
-    userdata.comments.splice(removeIndex, 1);
+    deouserdata.comments.splice(removeIndex, 1);
 
-    await userdata.save();
+    await deouserdata.save();
 
-    res.json(userdata.comments);
+    res.json(deouserdata.comments);
   } catch (err) {
     console.error(err.message);
     return res.status(500).send('Server Error');

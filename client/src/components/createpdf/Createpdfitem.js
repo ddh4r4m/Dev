@@ -16,8 +16,8 @@ import {
 
 const styles = StyleSheet.create({
   body: {
-    paddingTop: 35,
-    paddingBottom: 65,
+    paddingTop: 15,
+    paddingBottom: 35,
     paddingHorizontal: 35
   },
   title: {
@@ -47,21 +47,21 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 12,
-    marginBottom: 20,
+    marginBottom: 10,
     textAlign: 'center',
     color: 'grey'
   },
   pageNumber: {
     position: 'absolute',
-    fontSize: 12,
-    bottom: 30,
+    fontSize: 10,
+    bottom: 1,
     left: 0,
     right: 0,
     textAlign: 'center',
     color: 'grey'
   },
   content: {
-    padding: 2,
+    margin: 1,
     '@media max-width: 100': {
       flexDirection: 'column'
     },
@@ -72,40 +72,57 @@ const styles = StyleSheet.create({
   block: {
     height: 'auto',
     width: 110,
-    backgroundColor: 'red'
-  }
+    backgroundColor: 'red',
+    border: 1
+  },
+  smallblock: {
+    height: 'auto',
+    width: 50,
+    backgroundColor: 'red',
+    border: 1
+  },
+  vsmallblock: {
+    height: 'auto',
+    width: 30,
+    backgroundColor: 'red',
+    border: 1
+  },
+  unbreakable: { width: '100%', height: 400 }
 });
 
 const Createpdfitem = ({
   userdata: { text, year, policestation, _id, natureofcrime, crimeregisterno }
 }) => (
-  <View style={styles.content}>
-    <View style={[styles.block, { backgroundColor: 'red' }]}>
+  <View style={styles.content} wrap={false}>
+    <View style={[styles.block, { backgroundColor: '' }]}>
       <Text style={styles.text}>
         Praesent condimentum, nisl ut ultricies sodales, orci est molestie
         justo, eget ullamcorper turpis arcu ac sem. In hac habitasse platea
       </Text>
     </View>
-    <View style={[styles.block, { backgroundColor: 'green' }]}>
+    <View style={[styles.block, { backgroundColor: '' }]}>
       <Text style={styles.text}>
         Praesent condimentum, nisl ut ultricies sodales, orci est molestie
         justo, eget ullamcorper turpis arcu ac sem. In hac habitasse platea
         Nullam et bibendum metus, id ultricies quam.
       </Text>
     </View>
-    <View style={[styles.block, { backgroundColor: 'red' }]}>
+    <View style={[styles.block, { backgroundColor: '' }]}>
       <Text style={styles.text}>{year} </Text>
     </View>
-    <View style={[styles.block, { backgroundColor: 'green' }]}>
+    <View style={[styles.vsmallblock, { backgroundColor: '' }]}>
       <Text style={styles.text}>{text} </Text>
     </View>
-    <View style={[styles.block, { backgroundColor: 'red' }]}>
+    <View style={[styles.block, { backgroundColor: '' }]}>
       <Text style={styles.text}>{policestation} </Text>
     </View>
-    <View style={[styles.block, { backgroundColor: 'green' }]}>
+    <View style={[styles.block, { backgroundColor: '' }]}>
       <Text style={styles.text}>{crimeregisterno} </Text>
     </View>
-    <View style={[styles.block, { backgroundColor: 'red' }]}>
+    <View style={[styles.block, { backgroundColor: '' }]}>
+      <Text style={styles.text}>{natureofcrime} </Text>
+    </View>
+    <View style={[styles.block, { backgroundColor: '' }]}>
       <Text style={styles.text}>{natureofcrime} </Text>
     </View>
   </View>

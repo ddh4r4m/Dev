@@ -9,12 +9,15 @@ import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import CreateUserdata from './components/usersdata-forms/CreateUserdata';
 import EditUserdata from './components/usersdata-forms/EditUserdata';
+import CreateDeouserdata from './components/deousersdata-forms/CreateDeouserdata';
+import EditDeouserdata from './components/deousersdata-forms/EditDeouserdata';
 import EditProfile from './components/profile-forms/EditProfile';
 import EditProfileById from './components/profile/EditProfileById';
 import CreatePdf from './components/createpdf/CreatePdf';
 import Posts from './components/posts/Posts';
 import Profiles from './components/profiles/Profiles';
 import Usersdata from './components/usersdata/Usersdata';
+import Deousersdata from './components/deousersdata/Deousersdata';
 import UsersdataStone from './components/usersdata/UsersdataStone';
 import UsersdataStTwo from './components/usersdata/UsersdataStTwo';
 import UsersdataPCone from './components/usersdata/UsersdataPCone';
@@ -56,6 +59,7 @@ const App = () => {
               <Route exact path='/register' component={Register} />
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/usersdata' component={Usersdata} />
+              <Route exact path='/deousersdata' component={Deousersdata} />
               <Route exact path='/createpdf' component={CreatePdf} />
               <PrivateRoute
                 exact
@@ -108,6 +112,11 @@ const App = () => {
               />
               <PrivateRoute
                 exact
+                path='/create-deouserdata'
+                component={CreateDeouserdata}
+              />
+              <PrivateRoute
+                exact
                 path='/edit-profile'
                 component={EditProfile}
               />
@@ -115,6 +124,11 @@ const App = () => {
                 exact
                 path='/edit-userdata/:id'
                 component={EditUserdata}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-deouserdata/:id'
+                component={EditDeouserdata}
               />
               <PrivateRoute
                 exact

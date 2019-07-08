@@ -7,21 +7,21 @@ import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
 import './table.css';
 
-const UsersdataPCone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
+const ReturntoPolice = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   useEffect(() => {
     getUsersdata();
   }, [getUsersdata]);
 
   const [formData, setFormData] = useState({
     search: '',
-    search1: 'pending',
+    search1: false,
     search2: 'yes',
     search3: 'no'
   });
 
   const date3 = new Date();
-  //create a date before 7 days = 604800000 in milliseconds
-  const date5 = new Date(date3 - 604800000);
+  //create a date before 60 days = 5184000000 in milliseconds
+  const date5 = new Date(date3 - 5184000000);
 
   const { search, search1, search2, search3 } = formData;
 
@@ -34,11 +34,7 @@ const UsersdataPCone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     //return all data before 60 days
     //add more filter using &&
     if (date4 >= date5) {
-      return (
-        usersdata.firstbenefitbycommis
-          .toLowerCase()
-          .indexOf(search1.toLowerCase()) !== -1
-      );
+      return usersdata.returntopolice === false;
     }
     //  return (
     //   usersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
@@ -51,28 +47,10 @@ const UsersdataPCone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <input
-        type='text'
-        placeholder='Search by serial..'
-        name='search'
-        value={search}
-        onChange={e => onChange(e)}
-      />
-      <input
-        type='text'
-        placeholder='Search by POLICE..'
-        name='search1'
-        value={search1}
-        onChange={e => onChange(e)}
-      />
+      <h2 style={{ color: 'black', fontSize: '20px' }}>
+        Cases returned to Police
+      </h2>
       <br />
-      <Link
-        to='create-userdata'
-        className='btn btn-primary'
-        style={{ marginBottom: '20px' }}
-      >
-        Create New FIR
-      </Link>
       <div className='userdata'>
         <table className='fl-table'>
           <thead>
@@ -105,7 +83,7 @@ const UsersdataPCone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   );
 };
 
-UsersdataPCone.propTypes = {
+ReturntoPolice.propTypes = {
   getUsersdata: PropTypes.func.isRequired,
   userdata: PropTypes.object.isRequired
 };
@@ -116,4 +94,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getUsersdata }
-)(UsersdataPCone);
+)(ReturntoPolice);

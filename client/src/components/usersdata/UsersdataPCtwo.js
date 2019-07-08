@@ -36,7 +36,7 @@ const UsersdataPCtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     //add more filter using &&
     if (date4 >= date5) {
       return (
-        usersdata.secondbenefitbycomm
+        usersdata.secondbenefitbycommis
           .toLowerCase()
           .indexOf(search1.toLowerCase()) !== -1
       );

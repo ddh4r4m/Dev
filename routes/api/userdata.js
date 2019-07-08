@@ -87,6 +87,7 @@ router.post(
       const newUserdata = new Userdata({
         text: req.body.text,
         year: req.body.year,
+        returntopolice: req.body.returntopolice,
         docImage:
           req.files['docImage'] == undefined
             ? ''
@@ -315,6 +316,7 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
     } else {
       userdata.text = req.body.text;
       userdata.year = req.body.year;
+      userdata.returntopolice = req.body.returntopolice;
       userdata.disabledata = req.body.disabledata;
       userdata.othersections = req.body.othersections;
       userdata.othersectionsv2 = req.body.othersectionsv2;

@@ -36,6 +36,8 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Footer from './components/layout/Footer';
+import Reference from './components/references/Reference';
+import ReturntoPolice from './components/usersdata/ReturntoPolice';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -61,11 +63,13 @@ const App = () => {
               <Route exact path='/usersdata' component={Usersdata} />
               <Route exact path='/deousersdata' component={Deousersdata} />
               <Route exact path='/createpdf' component={CreatePdf} />
+              <Route exact path='/references' component={Reference} />
               <PrivateRoute
                 exact
                 path='/usersdatastone'
                 component={UsersdataStone}
               />
+              <PrivateRoute exact path='/returned' component={ReturntoPolice} />
               <PrivateRoute
                 exact
                 path='/usersdatasttwo'

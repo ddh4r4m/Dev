@@ -35,6 +35,7 @@ const EditUserdataById = ({
   const [formData, setFormData] = useState({
     text: '',
     year: '',
+    returntopolice: false,
     policestation: 'Dhule City',
     crimeregisterno: '',
     dateofcrime: '',
@@ -151,6 +152,8 @@ const EditUserdataById = ({
     setFormData({
       text: loading || !userdata.text ? '' : userdata.text,
       year: loading || !userdata.year ? '' : userdata.year,
+      returntopolice:
+        loading || !userdata.returntopolice ? '' : userdata.returntopolice,
       policestation:
         loading || !userdata.policestation ? '' : userdata.policestation,
       crimeregisterno:
@@ -371,6 +374,9 @@ const EditUserdataById = ({
       medicalreport:
         loading || !userdata.medicalreport ? '' : userdata.medicalreport,
       abcSummary: loading || !userdata.abcSummary ? '' : userdata.abcSummary,
+      utrnumI: loading || !userdata.utrnumI ? '' : userdata.utrnumI,
+      utrnumII: loading || !userdata.utrnumII ? '' : userdata.utrnumII,
+      utrnumIII: loading || !userdata.utrnumIII ? '' : userdata.utrnumIII,
       docImage: loading || !userdata.docImage ? '' : userdata.docImage,
       doccImage: loading || !userdata.doccImage ? '' : userdata.doccImage,
       postmortem: loading || !userdata.postmortem ? '' : userdata.postmortem,
@@ -452,6 +458,7 @@ const EditUserdataById = ({
   const {
     text,
     year,
+    returntopolice,
     policestation,
     crimeregisterno,
     dateofcrime,
@@ -560,6 +567,7 @@ const EditUserdataById = ({
     formDataa.append('sectionsappliedv2', JSON.stringify(sectionsappliedv2));
     formDataa.append('text', formData.text);
     formDataa.append('year', year);
+    formDataa.append('returntopolice', formData.returntopolice);
     formDataa.append('policestation', policestation);
     formDataa.append('crimeregisterno', crimeregisterno);
     formDataa.append('dateofcrime', dateofcrime);
@@ -1892,8 +1900,7 @@ const EditUserdataById = ({
                         value={utrnumI}
                         onChange={e => onChange(e)}
                         disabled={
-                          (user && user.name === 'Asst. Commissioner') ||
-                          (user && user.name !== 'Data Entry Operator')
+                          (user && user.name === 'Asst. Commissioner') 
                         }
                       />
                     </div>
@@ -2334,7 +2341,8 @@ const EditUserdataById = ({
                         />
                       </div>
                       <div className='form-group'>
-                        Other non-monetary benefit for Stage II by Asst. Commisioner
+                        Other non-monetary benefit for Stage II by Asst.
+                        Commisioner
                         <textarea
                           type='text'
                           placeholder='Give the Reason for Recommendation'
@@ -2429,7 +2437,8 @@ const EditUserdataById = ({
                         />
                       </div>
                       <div className='form-group'>
-                        Other non-monetary benefit for Stage II by District Collector
+                        Other non-monetary benefit for Stage II by District
+                        Collector
                         <textarea
                           type='text'
                           placeholder='Give the Reason for Recommendation'
@@ -2744,7 +2753,8 @@ const EditUserdataById = ({
                           />
                         </div>
                         <div className='form-group'>
-                          Other non-monetary benefit for Stage III by Asst. Commisioner
+                          Other non-monetary benefit for Stage III by Asst.
+                          Commisioner
                           <textarea
                             type='text'
                             placeholder='Give the Reason for Recommendation'
@@ -2815,7 +2825,8 @@ const EditUserdataById = ({
                           />
                         </div>
                         <div className='form-group'>
-                          Other non-monetary benefit for Stage III by District Collector
+                          Other non-monetary benefit for Stage III by District
+                          Collector
                           <textarea
                             type='text'
                             placeholder='Give the Reason for Recommendation'
@@ -2928,7 +2939,6 @@ const EditUserdataById = ({
                           No
                         </div>
                       </div>
-                      
                     </Fragment>
                   )}
                 {!disabledata && user && user.name === 'District Collector' && (
@@ -3047,6 +3057,18 @@ const EditUserdataById = ({
                       type='submit'
                       className='btn btn-primary my-1'
                     />{' '}
+                    <Button
+                      variant='contained'
+                      color='secondary'
+                      className={classes.button}
+                      onClick={(e) => (
+                        (formData.returntopolice = true),
+                        console.log(returntopolice),
+                        onSubmit(e)
+                      )}
+                    >
+                      Return
+                    </Button>
                   </Fragment>
                 )}
                 <Link to='/dashboard' className='btn btn-light my-1'>

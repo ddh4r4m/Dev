@@ -337,6 +337,10 @@ const UserdataSchema = new mongoose.Schema({
   courtresults: {
     type: String
   },
+  returntopolice: {
+    type: Boolean,
+    default: false
+  },
   financialsupport: {
     type: String
   },

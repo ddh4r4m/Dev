@@ -34,6 +34,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
   const [formData, setFormData] = useState({
     text: '',
     year: '',
+    returntopolice: false,
     policestation: 'Dhule City',
     crimeregisterno: '',
     dateofcrime: '',
@@ -141,6 +142,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
   const {
     text,
     year,
+    returntopolice,
     policestation,
     crimeregisterno,
     dateofcrime,
@@ -280,6 +282,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     formDataa.append('sectionsappliedv2', JSON.stringify(sectionsappliedv2));
     formDataa.append('text', formData.text);
     formDataa.append('year', year);
+    formDataa.append('returntopolice', returntopolice);
     formDataa.append('policestation', policestation);
     formDataa.append('crimeregisterno', crimeregisterno);
     formDataa.append('dateofcrime', dateofcrime);
@@ -1362,7 +1365,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     />
                   </div>
                   <div className='form-group'>
-                    Other-monetary benefit for Stage I by Asst. Commisioner
+                    Other non-monetary benefit for Stage I by Asst. Commisioner
                     <textarea
                       type='text'
                       placeholder='Give the Reason for Recommendation'

@@ -91,6 +91,12 @@ const DashboardActions = () => {
           MEETING
         </Button>
       </Link>
+      <br />
+      <Link to='/references'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> REFERENCES
+        </Button>
+      </Link>
     </div>
   );
 };

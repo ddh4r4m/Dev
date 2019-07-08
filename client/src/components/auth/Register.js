@@ -30,9 +30,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   //If already logged in redirect to Dashboard
-  if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
-  }
+  // if (isAuthenticated) {
+  //   return <Redirect to='/dashboard' />;
+  // }
 
   return (
     <Fragment>
@@ -60,10 +60,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             onChange={e => onChange(e)}
             required
           />
-          <small className='form-text'>
-            This site uses Gravatar so if you want Link profile image, use Link
-            Gravatar email
-          </small>
         </div>
         <div className='form-group'>
           <input

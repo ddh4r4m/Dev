@@ -9,6 +9,7 @@ connectDB();
 //app.use('bosy-parser.json()');  <--- Old Version
 app.use(express.json({ extended: false }));
 app.use('/uploads', express.static('uploads'));
+app.use('/mofmeeting', express.static('mofmeeting'));
 
 app.get('/', (req, res) => res.send('API Running'));
 

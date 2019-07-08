@@ -2,7 +2,7 @@ import React from 'react';
 import './footer.css';
 const Footer = () => {
   return (
-    <footer className='footer'>
+    <footer className='footer' style={{ marginBottom: '-150px' }}>
       <div className='container bottom_border'>
         <div className='row'>
           <div className=' col-sm-4 col-md col-sm-4  col-12 col'>
@@ -29,22 +29,22 @@ const Footer = () => {
             {/* <!--headin5_amrc--> */}
             <ul className='footer_ul_amrc'>
               <li>
-                <a href='http://webenlance.com'>Image Rectoucing</a>
+                <a href='https://dhule.gov.in/'>Image Rectoucing</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Clipping Path</a>
+                <a href='https://dhule.gov.in/'>Clipping Path</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Hollow Man Montage</a>
+                <a href='https://dhule.gov.in/'>Hollow Man Montage</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Ebay & Amazon</a>
+                <a href='https://dhule.gov.in/'>Ebay & Amazon</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Hair Masking/Clipping</a>
+                <a href='https://dhule.gov.in/'>Hair Masking/Clipping</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Image Cropping</a>
+                <a href='https://dhule.gov.in/'>Image Cropping</a>
               </li>
             </ul>
             {/* <!--footer_ul_amrc ends here--> */}
@@ -55,61 +55,25 @@ const Footer = () => {
             {/* <!--headin5_amrc--> */}
             <ul className='footer_ul_amrc'>
               <li>
-                <a href='http://webenlance.com'>Remove Background</a>
+                <a href='https://dhule.gov.in/'>Remove Background</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Shadows & Mirror Reflection</a>
+                <a href='https://dhule.gov.in/'>Shadows & Mirror Reflection</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Logo Design</a>
+                <a href='https://dhule.gov.in/'>Logo Design</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Vectorization</a>
+                <a href='https://dhule.gov.in/'>Vectorization</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Hair Masking/Clipping</a>
+                <a href='https://dhule.gov.in/'>Hair Masking/Clipping</a>
               </li>
               <li>
-                <a href='http://webenlance.com'>Image Cropping</a>
+                <a href='https://dhule.gov.in/'>Image Cropping</a>
               </li>
             </ul>
             {/* <!--footer_ul_amrc ends here--> */}
-          </div>
-
-          <div className=' col-sm-4 col-md  col-12 col'>
-            <h5 className='headin5_amrc col_white_amrc pt2'>Follow us</h5>
-            {/* <!--headin5_amrc ends here--> */}
-
-            <ul className='footer_ul2_amrc'>
-              <li>
-                <a href='#!'>
-                  <i className='fab fa-twitter fleft padding-right' />{' '}
-                </a>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing...
-                  <a href='#!'>https://www.lipsum.com/</a>
-                </p>
-              </li>
-              <li>
-                <a href='#!'>
-                  <i className='fab fa-twitter fleft padding-right' />{' '}
-                </a>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing...
-                  <a href='#!'>https://www.lipsum.com/</a>
-                </p>
-              </li>
-              <li>
-                <a href='#!'>
-                  <i className='fab fa-twitter fleft padding-right' />{' '}
-                </a>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing...
-                  <a href='#!'>https://www.lipsum.com/</a>
-                </p>
-              </li>
-            </ul>
-            {/* <!--footer_ul2_amrc ends here--> */}
           </div>
         </div>
       </div>

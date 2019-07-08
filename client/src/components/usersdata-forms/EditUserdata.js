@@ -1711,7 +1711,7 @@ const EditUserdataById = ({
                     Monetary Compensation for Stage I by Asst. Commisioner
                     <textarea
                       type='text'
-                      placeholder='Give the Reason for Recommendation'
+                      placeholder='Amount to be Given'
                       name='monetarycompbyACI'
                       value={monetarycompbyACI}
                       onChange={e => onChange(e)}
@@ -1724,7 +1724,7 @@ const EditUserdataById = ({
                     />
                   </div>
                   <div className='form-group'>
-                    Any other benefit for Stage I by Asst. Commisioner
+                    Other-monetary non benefit for Stage I by Asst. Commisioner
                     <textarea
                       type='text'
                       placeholder='Give the Reason for Recommendation'
@@ -1743,7 +1743,7 @@ const EditUserdataById = ({
                     Other Comments by Asst. Commisioner
                     <textarea
                       type='text'
-                      placeholder='Give the Reason for Recommendation'
+                      placeholder='Any Other Comments'
                       name='firstbenefitbycommcomment'
                       value={firstbenefitbycommcomment}
                       onChange={e => onChange(e)}
@@ -1791,7 +1791,7 @@ const EditUserdataById = ({
                     Monetary Compensation for Stage I by District Collector
                     <textarea
                       type='text'
-                      placeholder='Give the Reason for Recommendation'
+                      placeholder='Amount to be Given'
                       name='monetarycompbyDCI'
                       value={monetarycompbyDCI}
                       onChange={e => onChange(e)}
@@ -1804,7 +1804,7 @@ const EditUserdataById = ({
                     />
                   </div>
                   <div className='form-group'>
-                    Any other benefit for Stage I by District Collector
+                    Other non-monetary benefit for Stage I by District Collector
                     <textarea
                       type='text'
                       placeholder='Give the Reason for Recommendation'
@@ -1823,7 +1823,7 @@ const EditUserdataById = ({
                     Other Comments by District Collector
                     <textarea
                       type='text'
-                      placeholder='Give the Reason for Recommendation'
+                      placeholder='Any Other Comments here'
                       name='firstbenefitbycollectorcomment'
                       value={firstbenefitbycollectorcomment}
                       onChange={e => onChange(e)}
@@ -2334,7 +2334,7 @@ const EditUserdataById = ({
                         />
                       </div>
                       <div className='form-group'>
-                        Any other benefit for Stage II by Asst. Commisioner
+                        Other non-monetary benefit for Stage II by Asst. Commisioner
                         <textarea
                           type='text'
                           placeholder='Give the Reason for Recommendation'
@@ -2353,7 +2353,7 @@ const EditUserdataById = ({
                         Other Comments by Asst. Commisioner
                         <textarea
                           type='text'
-                          placeholder='Give the Reason for Recommendation'
+                          placeholder='Any Other Comments here'
                           name='secondbenefitbycommcomment'
                           value={secondbenefitbycommcomment}
                           onChange={e => onChange(e)}
@@ -2429,7 +2429,7 @@ const EditUserdataById = ({
                         />
                       </div>
                       <div className='form-group'>
-                        Any other benefit for Stage II by District Collector
+                        Other non-monetary benefit for Stage II by District Collector
                         <textarea
                           type='text'
                           placeholder='Give the Reason for Recommendation'
@@ -2448,7 +2448,7 @@ const EditUserdataById = ({
                         Other Comments by District Collector
                         <textarea
                           type='text'
-                          placeholder='Give the Reason for Recommendation'
+                          placeholder='Any Other Comments here'
                           name='secondbenefitbycollectorcomment'
                           value={secondbenefitbycollectorcomment}
                           onChange={e => onChange(e)}
@@ -2744,7 +2744,7 @@ const EditUserdataById = ({
                           />
                         </div>
                         <div className='form-group'>
-                          Any other benefit for Stage III by Asst. Commisioner
+                          Other non-monetary benefit for Stage III by Asst. Commisioner
                           <textarea
                             type='text'
                             placeholder='Give the Reason for Recommendation'
@@ -2760,7 +2760,7 @@ const EditUserdataById = ({
                           Other Comments by Asst. Commisioner
                           <input
                             type='text'
-                            placeholder='Give the Reason for Recommendation'
+                            placeholder='Any Other Comments here'
                             name='thirdbenefitbycommcomment'
                             value={thirdbenefitbycommcomment}
                             onChange={e => onChange(e)}
@@ -2815,7 +2815,7 @@ const EditUserdataById = ({
                           />
                         </div>
                         <div className='form-group'>
-                          Any other benefit for Stage III by District Collector
+                          Other non-monetary benefit for Stage III by District Collector
                           <textarea
                             type='text'
                             placeholder='Give the Reason for Recommendation'
@@ -2831,7 +2831,7 @@ const EditUserdataById = ({
                           Other Comments by District Collector
                           <input
                             type='text'
-                            placeholder='Give the Reason for Recommendation'
+                            placeholder='Any Other Comments here'
                             name='thirdbenefitbycollectorcomment'
                             value={thirdbenefitbycollectorcomment}
                             onChange={e => onChange(e)}

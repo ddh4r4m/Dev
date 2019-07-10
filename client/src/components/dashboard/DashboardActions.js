@@ -97,6 +97,20 @@ const DashboardActions = () => {
           <i className='fas fa-graduation-cap text-primary' /> REFERENCES
         </Button>
       </Link>
+      <br />
+      <Link to='/mofmeeting'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> Add Minutes of
+          Meeting
+        </Button>
+      </Link>
+      <br />
+      <Link to='/mofmeetings'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> Minutes of
+          Meeting
+        </Button>
+      </Link>
     </div>
   );
 };

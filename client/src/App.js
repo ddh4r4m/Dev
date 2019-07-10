@@ -8,6 +8,8 @@ import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import CreateUserdata from './components/usersdata-forms/CreateUserdata';
+import Mofmeeting from './components/mofmeeting/Mofmeeting';
+import Mofmeetings from './components/mofmeeting/Mofmeetings';
 import EditUserdata from './components/usersdata-forms/EditUserdata';
 import CreateDeouserdata from './components/deousersdata-forms/CreateDeouserdata';
 import EditDeouserdata from './components/deousersdata-forms/EditDeouserdata';
@@ -28,6 +30,7 @@ import UsersdataPPthree from './components/usersdata/UsersdataPPthree';
 import Profile from './components/profile/Profile';
 import Userdata from './components/userdata/Userdata';
 import PrivateRoute from './components/routing/PrivateRoute';
+import WithNavbar from './components/routing/WithNavbar';
 import './App.css';
 
 //Redux
@@ -38,6 +41,7 @@ import setAuthToken from './utils/setAuthToken';
 import Footer from './components/layout/Footer';
 import Reference from './components/references/Reference';
 import ReturntoPolice from './components/usersdata/ReturntoPolice';
+import NoMatch from './components/noMatch/NoMatch';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -52,95 +56,122 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar />
-          <Route exact path='/' component={Landing} />
-          <section className='container'>
-            <Alert />
-            <Switch>
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/register' component={Register} />
-              <Route exact path='/profiles' component={Profiles} />
-              <Route exact path='/usersdata' component={Usersdata} />
-              <Route exact path='/deousersdata' component={Deousersdata} />
-              <Route exact path='/createpdf' component={CreatePdf} />
-              <Route exact path='/references' component={Reference} />
-              <PrivateRoute
-                exact
-                path='/usersdatastone'
-                component={UsersdataStone}
-              />
-              <PrivateRoute exact path='/returned' component={ReturntoPolice} />
-              <PrivateRoute
-                exact
-                path='/usersdatasttwo'
-                component={UsersdataStTwo}
-              />
-              <PrivateRoute
-                exact
-                path='/usersdatapcone'
-                component={UsersdataPCone}
-              />
-              <PrivateRoute
-                exact
-                path='/usersdatapctwo'
-                component={UsersdataPCtwo}
-              />
-              <PrivateRoute
-                exact
-                path='/usersdatappone'
-                component={UsersdataPPone}
-              />
-              <PrivateRoute
-                exact
-                path='/usersdatapptwo'
-                component={UsersdataPPtwo}
-              />
-              <PrivateRoute
-                exact
-                path='/usersdatappthree'
-                component={UsersdataPPthree}
-              />
-              <Route exact path='/profile/:id' component={Profile} />
-              <Route exact path='/userdata/:id' component={Userdata} />
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
-              <PrivateRoute exact path='/posts' component={Posts} />
-              <PrivateRoute
-                exact
-                path='/create-profile'
-                component={CreateProfile}
-              />
-              <PrivateRoute
-                exact
-                path='/create-userdata'
-                component={CreateUserdata}
-              />
-              <PrivateRoute
-                exact
-                path='/create-deouserdata'
-                component={CreateDeouserdata}
-              />
-              <PrivateRoute
-                exact
-                path='/edit-profile'
-                component={EditProfile}
-              />
-              <PrivateRoute
-                exact
-                path='/edit-userdata/:id'
-                component={EditUserdata}
-              />
-              <PrivateRoute
-                exact
-                path='/edit-deouserdata/:id'
-                component={EditDeouserdata}
-              />
-              <PrivateRoute
-                exact
-                path='/edit-profilebyid/:id'
-                component={EditProfileById}
-              />
-            </Switch>
-          </section>
+          {/* <Navbar /> */}
+          {/* <section className='container'> */}
+          <Alert />
+          <Switch>
+            <Route exact path='/' component={WithNavbar(Landing)} />
+            <Route exact path='/login' component={WithNavbar(Login)} />
+            <Route exact path='/register' component={WithNavbar(Register)} />
+            <Route exact path='/profiles' component={WithNavbar(Profiles)} />
+            <Route exact path='/usersdata' component={WithNavbar(Usersdata)} />
+            <Route
+              exact
+              path='/deousersdata'
+              component={WithNavbar(Deousersdata)}
+            />
+            <Route exact path='/createpdf' component={WithNavbar(CreatePdf)} />
+            <Route exact path='/references' component={WithNavbar(Reference)} />
+            <Route
+              exact
+              path='/mofmeeting'
+              component={WithNavbar(Mofmeeting)}
+            />
+            <Route
+              exact
+              path='/mofmeetings'
+              component={WithNavbar(Mofmeetings)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatastone'
+              component={WithNavbar(UsersdataStone)}
+            />
+            <PrivateRoute
+              exact
+              path='/returned'
+              component={WithNavbar(ReturntoPolice)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatasttwo'
+              component={WithNavbar(UsersdataStTwo)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatapcone'
+              component={WithNavbar(UsersdataPCone)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatapctwo'
+              component={WithNavbar(UsersdataPCtwo)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatappone'
+              component={WithNavbar(UsersdataPPone)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatapptwo'
+              component={WithNavbar(UsersdataPPtwo)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatappthree'
+              component={WithNavbar(UsersdataPPthree)}
+            />
+            <Route exact path='/profile/:id' component={WithNavbar(Profile)} />
+            <Route
+              exact
+              path='/userdata/:id'
+              component={WithNavbar(Userdata)}
+            />
+            <PrivateRoute
+              exact
+              path='/dashboard'
+              component={WithNavbar(Dashboard)}
+            />
+            <PrivateRoute exact path='/posts' component={WithNavbar(Posts)} />
+            <PrivateRoute
+              exact
+              path='/create-profile'
+              component={WithNavbar(CreateProfile)}
+            />
+            <PrivateRoute
+              exact
+              path='/create-userdata'
+              component={WithNavbar(CreateUserdata)}
+            />
+            <PrivateRoute
+              exact
+              path='/create-deouserdata'
+              component={WithNavbar(CreateDeouserdata)}
+            />
+            <PrivateRoute
+              exact
+              path='/edit-profile'
+              component={WithNavbar(EditProfile)}
+            />
+            <PrivateRoute
+              exact
+              path='/edit-userdata/:id'
+              component={WithNavbar(EditUserdata)}
+            />
+            <PrivateRoute
+              exact
+              path='/edit-deouserdata/:id'
+              component={WithNavbar(EditDeouserdata)}
+            />
+            <PrivateRoute
+              exact
+              path='/edit-profilebyid/:id'
+              component={WithNavbar(EditProfileById)}
+            />
+            <Route component={NoMatch} />
+          </Switch>
+          {/* </section> */}
         </Fragment>
       </Router>
     </Provider>

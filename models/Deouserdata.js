@@ -193,6 +193,9 @@ const DeouserdataSchema = new mongoose.Schema({
   benefitsgivenbyACI: {
     type: String
   },
+  approve: {
+    type: String
+  },
   benefitsgivenbyACII: {
     type: String
   },

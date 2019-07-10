@@ -9,6 +9,9 @@ const MofmeetingSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  name: {
+    type: String
+  },
   mofmeeting: {
     type: String,
     required: true

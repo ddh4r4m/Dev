@@ -192,6 +192,7 @@ router.post(
         crimeregisterno: req.body.crimeregisterno,
         dateofcrime: req.body.dateofcrime,
         regdateofcrime: req.body.regdateofcrime,
+        approve: req.body.approve,
         utrnumI: req.body.utrnumI,
         utrnumII: req.body.utrnumII,
         utrnumIII: req.body.utrnumIII,
@@ -322,6 +323,7 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       deouserdata.closethecase = req.body.closethecase;
       deouserdata.sectionschanged = req.body.sectionschanged;
       deouserdata.stagetwochange = req.body.stagetwochange;
+      deouserdata.approve = req.body.approve;
 
       // console.log(req.files['docImage'] !== undefined);
       if (req.files['docImage'] !== undefined) {

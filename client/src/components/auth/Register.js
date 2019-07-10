@@ -11,10 +11,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     name: '',
     email: '',
     password: '',
-    password2: ''
+    password2: '',
+    role: 'Police'
   });
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, password, password2, role } = formData;
 
   //Spread operator ...
   const onChange = e =>
@@ -25,7 +26,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert('Passwords do not Match', 'danger');
     } else {
-      register({ name, email, password });
+      register({ name, email, password, role });
     }
   };
 
@@ -35,7 +36,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   // }
 
   return (
-    <Fragment>
+    <div className='container'>
       <h1 className='large text-primary'>Sign Up</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Create Your Account
@@ -81,12 +82,19 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             onChange={e => onChange(e)}
           />
         </div>
+        <div className='form-group'>
+          <select name='role' value={role} onChange={e => onChange(e)}>
+            <option value='Police'>Police</option>
+            <option value='Asst. Commissioner'>Asst. Commissioner</option>
+            <option value='District Collector'>District Collector</option>
+          </select>
+        </div>
         <input type='submit' className='btn btn-primary' value='Register' />
       </form>
       <p className='my-1'>
         Already have an account? <Link to='`login'>Sign In</Link>
       </p>
-    </Fragment>
+    </div>
   );
 };
 

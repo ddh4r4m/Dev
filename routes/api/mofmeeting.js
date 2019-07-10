@@ -43,11 +43,11 @@ var cpUpload = upload.fields([{ name: 'mofmeeting', maxCount: 1 }]);
 //@access   Private
 router.post(
   '/',
-  cpUpload,
+  upload.single('mofmeeting'),
   [
     auth,
     [
-      check('text', 'Serial No is required')
+      check('title', 'Serial No is required')
         .not()
         .isEmpty()
     ]
@@ -59,15 +59,16 @@ router.post(
     }
 
     try {
-      // console.log(req.body);
+      console.log(req.body);
       const user = await User.findById(req.user.id).select('-password');
       const newMofmeeting = new Mofmeeting({
         title: req.body.title,
         description: req.body.description,
-        mofmeeting:
-          req.files['mofmeeting'] == undefined
-            ? ''
-            : req.files['mofmeeting'][0].path,
+        mofmeeting: req.file.path,
+        // mofmeeting:
+        //   req.files['mofmeeting'] == undefined
+        //     ? ''
+        //     : req.files['mofmeeting'][0].path,
         name: user.name,
         user: req.user.id
       });

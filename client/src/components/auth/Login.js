@@ -52,7 +52,7 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <Fragment>
       <div
-        className='loginbackmground'
+        className='loginbackground container'
         style={{
           display: 'flex',
           flexDirection: 'row',

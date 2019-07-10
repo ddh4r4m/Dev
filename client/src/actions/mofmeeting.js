@@ -90,7 +90,7 @@ export const editUserdata = (
     // dispatch(up, 'success');
 
     dispatch({
-      type: GET_USERDATA,
+      type: GET_MOFMEETING,
       payload: res.data
     });
 
@@ -108,7 +108,7 @@ export const editUserdata = (
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
-      type: USERDATA_ERROR,
+      type: MOFMEETING_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
@@ -156,14 +156,14 @@ export const deleteUserdata = id => async dispatch => {
     const res = await axios.delete(`/api/userdata/${id}`);
 
     dispatch({
-      type: DELETE_USERDATA,
+      type: DELETE_MOFMEETING,
       payload: id
     });
 
     dispatch(setAlert('Userdata Removed', 'success'));
   } catch (err) {
     dispatch({
-      type: USERDATA_ERROR,
+      type: MOFMEETING_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }

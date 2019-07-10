@@ -84,7 +84,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <Fragment>
+    <div className='container'>
       <input
         type='text'
         placeholder='Search by serial..'
@@ -182,7 +182,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           </tbody>
         </table>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

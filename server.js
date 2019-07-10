@@ -19,6 +19,7 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/userdata', require('./routes/api/userdata'));
 app.use('/api/deouserdata', require('./routes/api/deouserdata'));
+app.use('/api/mofmeeting', require('./routes/api/mofmeeting'));
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 

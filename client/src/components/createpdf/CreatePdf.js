@@ -31,10 +31,10 @@ Font.register({
 
 const styles = StyleSheet.create({
   body: {
-    paddingTop: 15,
-    paddingBottom: 35,
-    paddingRight: 14,
-    paddingLeft: 14
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 15
     // paddingHorizontal: 35
   },
   title: {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     color: 'grey'
   },
   content: {
-    margin: -2,
+    margin: 0,
     '@media max-width: 100': {
       flexDirection: 'column'
     },
@@ -114,7 +114,7 @@ const CreatePdf = ({ getUsersdata, userdata: { usersdata, loading } }) => {
 
   const Quixote = () => (
     <Document>
-      <Page style={styles.body} wrap size='A4' orientation='landscape'>
+      <Page style={styles.body} size='A4' orientation='landscape' wrap={true}>
         <Text style={styles.header} fixed>
           ~ GOVERNMENT Of INDIA ~
         </Text>
@@ -155,25 +155,7 @@ const CreatePdf = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             <Text style={styles.text}>natureofcrime </Text>
           </View>
         </View>
-        <View style={styles.content}>
-          {usersdata.length > 0 ? (
-            usersdata.map(userdata => (
-              <Createpdfitem key={userdata._id} userdata={userdata} />
-            ))
-          ) : (
-            <Text>No Data Found</Text>
-          )}
-        </View>
-        <View style={styles.content}>
-          {usersdata.length > 0 ? (
-            usersdata.map(userdata => (
-              <Createpdfitem key={userdata._id} userdata={userdata} />
-            ))
-          ) : (
-            <Text>No Data Found</Text>
-          )}
-        </View>
-        <View style={styles.content}>
+        <View>
           {usersdata.length > 0 ? (
             usersdata.map(userdata => (
               <Createpdfitem key={userdata._id} userdata={userdata} />

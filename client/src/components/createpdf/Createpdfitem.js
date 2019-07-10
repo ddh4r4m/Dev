@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
   body: {
     paddingTop: 15,
     paddingBottom: 35,
-    paddingHorizontal: 35
+    paddingRight: 14,
+    paddingLeft: 14
   },
   title: {
     fontSize: 24,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     color: 'grey'
   },
   content: {
-    margin: 1,
+    marginRight: 15,
     '@media max-width: 100': {
       flexDirection: 'column'
     },
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     border: 1
   },
-  unbreakable: { width: '100%', height: 400 }
+  unbreakable: { width: '100%', height: 'auto' }
 });
 
 const Createpdfitem = ({

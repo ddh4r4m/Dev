@@ -51,55 +51,57 @@ const UsersdataPCone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <input
-        type='text'
-        placeholder='Search by serial..'
-        name='search'
-        value={search}
-        onChange={e => onChange(e)}
-      />
-      <input
-        type='text'
-        placeholder='Search by POLICE..'
-        name='search1'
-        value={search1}
-        onChange={e => onChange(e)}
-      />
-      <br />
-      <Link
-        to='create-userdata'
-        className='btn btn-primary'
-        style={{ marginBottom: '20px' }}
-      >
-        Create New FIR
-      </Link>
-      <div className='userdata'>
-        <table className='fl-table'>
-          <thead>
-            <tr>
-              <th>YEAR</th>
-              <th>Serial No.</th>
-              <th>POLICE STATION</th>
-              <th>Register No.</th>
-              <th>Nature </th>
-              <th>Button </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtereddata.length > 0 ? (
-              filtereddata.map(userdata => (
-                <UserdataItem key={userdata._id} userdata={userdata} />
-              ))
-            ) : (
+      <div className='container'>
+        <input
+          type='text'
+          placeholder='Search by serial..'
+          name='search'
+          value={search}
+          onChange={e => onChange(e)}
+        />
+        <input
+          type='text'
+          placeholder='Search by POLICE..'
+          name='search1'
+          value={search1}
+          onChange={e => onChange(e)}
+        />
+        <br />
+        <Link
+          to='create-userdata'
+          className='btn btn-primary'
+          style={{ marginBottom: '20px' }}
+        >
+          Create New FIR
+        </Link>
+        <div className='userdata'>
+          <table className='fl-table'>
+            <thead>
               <tr>
-                <td>No FIR Data Found</td>
-                <td>No FIR Data Found</td>
-                <td>No FIR Data Found</td>
-                <td>No FIR Data Found</td>
+                <th>YEAR</th>
+                <th>Serial No.</th>
+                <th>POLICE STATION</th>
+                <th>Register No.</th>
+                <th>Nature </th>
+                <th>Button </th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filtereddata.length > 0 ? (
+                filtereddata.map(userdata => (
+                  <UserdataItem key={userdata._id} userdata={userdata} />
+                ))
+              ) : (
+                <tr>
+                  <td>No FIR Data Found</td>
+                  <td>No FIR Data Found</td>
+                  <td>No FIR Data Found</td>
+                  <td>No FIR Data Found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </Fragment>
   );

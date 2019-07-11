@@ -178,9 +178,18 @@ const CreatePdf = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <PDFViewer width={1000} height={900}>
-      <Quixote />
-    </PDFViewer>
+    <div className='container'>
+      <PDFViewer width={1000} height={900}>
+        <Quixote />
+      </PDFViewer>
+      <div>
+        <PDFDownloadLink document={<Quixote />} fileName='somename.pdf'>
+          {({ blob, url, loading, error }) =>
+            loading ? 'Loading document...' : 'Download now!'
+          }
+        </PDFDownloadLink>
+      </div>
+    </div>
   );
 };
 

@@ -20,6 +20,7 @@ import Posts from './components/posts/Posts';
 import Profiles from './components/profiles/Profiles';
 import Usersdata from './components/usersdata/Usersdata';
 import Deousersdata from './components/deousersdata/Deousersdata';
+import DeoApprove from './components/deousersdata/DeoApprove';
 import UsersdataStone from './components/usersdata/UsersdataStone';
 import UsersdataStTwo from './components/usersdata/UsersdataStTwo';
 import UsersdataPCone from './components/usersdata/UsersdataPCone';
@@ -72,6 +73,11 @@ const App = () => {
             />
             <Route exact path='/createpdf' component={WithNavbar(CreatePdf)} />
             <Route exact path='/references' component={WithNavbar(Reference)} />
+            <Route
+              exact
+              path='/deoapprove'
+              component={WithNavbar(DeoApprove)}
+            />
             <Route
               exact
               path='/mofmeeting'

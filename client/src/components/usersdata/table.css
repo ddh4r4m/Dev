@@ -17,6 +17,16 @@ h2 {
   padding: 30px 0;
 }
 
+input[type='text'],
+select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 2px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 /* Table Styles */
 
 .table-wrapper {

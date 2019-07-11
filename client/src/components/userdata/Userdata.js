@@ -52,7 +52,7 @@ const Userdata = ({
       ) : (
         <Fragment>
           {/* <Redirect to={`/edit-userdata/${match.params.id}`} /> */}
-          <div>
+          <div className='container'>
             <UserdataTop userdata={userdata} />
             <Button
               variant='contained'

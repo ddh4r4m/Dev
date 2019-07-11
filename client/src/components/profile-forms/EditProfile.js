@@ -66,7 +66,7 @@ const EditProfile = ({
     createProfile(formData, history, true);
   };
   return (
-    <Fragment>
+    <div className='container'>
       <h1 className='large text-primary'>Create Your Profile</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Let's get some information to make your
@@ -232,7 +232,7 @@ const EditProfile = ({
           Go Back
         </Link>
       </form>
-    </Fragment>
+    </div>
   );
 };
 

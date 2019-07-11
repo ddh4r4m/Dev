@@ -6,7 +6,7 @@ const Reference = () => {
       <div className='container'>
         <h3>REFERENCES</h3>
         <br />
-        <ul>
+        <ul style={{ listStyleType: 'disc' }}>
           <li>
             <a
               href='http://socialjustice.nic.in/ViewData/Details?mid=1242&catID=113'
@@ -22,6 +22,11 @@ const Reference = () => {
               target='_blank'
             >
               The Indian Penal Code, 1860
+            </a>
+          </li>
+          <li>
+            <a href='http://egazette.nic.in' target='_blank'>
+              The Gazette of India
             </a>
           </li>
         </ul>

@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../../components/layout/Spinner';
-import DashboardActions from './DashboardActions';
+import {
+  DashboardActions,
+  DashboardActionss,
+  DashboardActionse,
+  DashboardActionsee
+} from './DashboardActions';
 import { getCurrentProfile } from '../../actions/profile';
 import './dashboard.css';
 import circlee from './Ellipsecircle.svg';
@@ -60,6 +65,12 @@ const Dashboard = ({
                 </Button>
               </Link>
             </Fragment>
+          ) : user && user.name === 'Police' ? (
+            <DashboardActionse />
+          ) : user && user.name === 'Data Entry Operator' ? (
+            <DashboardActionsee />
+          ) : user && user.name === 'Asst. Commissioner' ? (
+            <DashboardActionss />
           ) : (
             <DashboardActions />
           )}

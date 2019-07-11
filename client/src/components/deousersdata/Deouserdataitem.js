@@ -44,6 +44,13 @@ const ProfileItem = ({
           </Button>
         </Link>
       </td>
+      <td>
+        <Link to={`/edit-deouserdata/${_id}`}>
+          <Button variant='contained' color='primary'>
+            Edit CASE
+          </Button>
+        </Link>
+      </td>
     </tr>
   </Fragment>
 );

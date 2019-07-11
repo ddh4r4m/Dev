@@ -26,11 +26,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const EditDeouserdataById = ({
+  getDeouserdataById,
   match,
   deouserdata: { deouserdata, loading },
   createUserdata,
   editDeouserdata,
-  getDeouserdataById,
   history,
   auth: { user }
 }) => {
@@ -370,6 +370,7 @@ const EditDeouserdataById = ({
         loading || !deouserdata.financialsupport
           ? ''
           : deouserdata.financialsupport,
+      approve: loading || !deouserdata.approve ? '' : deouserdata.approve,
       twitter: loading || !deouserdata.twitter ? '' : deouserdata.twitter,
       facebook: loading || !deouserdata.facebook ? '' : deouserdata.facebook,
       linkedin: loading || !deouserdata.linkedin ? '' : deouserdata.linkedin,
@@ -926,6 +927,8 @@ const EditDeouserdataById = ({
       }
     });
   }
+
+  // return deouserdata === null || loading ? <h1>loading</h1> : <h1>loaded</h1>;
   return (
     <Fragment>
       {deouserdata === null || loading ? (
@@ -3123,49 +3126,51 @@ const EditDeouserdataById = ({
           </Fragment>
         )} */}
                 {/* Sticky Button */}
-                <div className='form-group'>
-                  Approve
-                  <br />
-                  <Radio
-                    type='radio'
-                    name='approve'
-                    checked={approve === 'yes'}
-                    value='yes'
-                    onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
-                  />{' '}
-                  Yes
-                  <Radio
-                    type='radio'
-                    name='approve'
-                    checked={approve === 'no'}
-                    value='no'
-                    onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
-                  />{' '}
-                  No
-                  <Radio
-                    type='radio'
-                    name='approve'
-                    checked={approve === 'pending'}
-                    value='pending'
-                    onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
-                    }
-                  />{' '}
-                  Keep Pending
-                </div>
+                {user && user.name === 'Asst. Commissioner' && (
+                  <div className='form-group'>
+                    Approve
+                    <br />
+                    <Radio
+                      type='radio'
+                      name='approve'
+                      checked={approve === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='approve'
+                      checked={approve === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />{' '}
+                    No
+                    <Radio
+                      type='radio'
+                      name='approve'
+                      checked={approve === 'pending'}
+                      value='pending'
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.name !== 'Police' &&
+                        (user && user.name !== 'Data Entry Operator')
+                      }
+                    />{' '}
+                    Keep Pending
+                  </div>
+                )}
                 <div className='icon-bar'>
                   {!closethecase && (
                     <Fragment>

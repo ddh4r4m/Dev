@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import $ from 'jquery';
 import './NoMatch.scss';
+import style from './NoMatch.css';
 export default class NoMatch extends Component {
   componentDidMount() {
     //based on https://dribbble.com/shots/3913847-404-page
@@ -28,42 +29,44 @@ export default class NoMatch extends Component {
 
   render() {
     return (
-      <div class='box'>
-        <div class='box__ghost'>
-          <div class='symbol' />
-          <div class='symbol' />
-          <div class='symbol' />
-          <div class='symbol' />
-          <div class='symbol' />
-          <div class='symbol' />
+      <div style={{ backgroundColor: '#28254c', height: '100vh' }}>
+        <div className='box'>
+          <div className='box__ghost'>
+            <div className='symbol' />
+            <div className='symbol' />
+            <div className='symbol' />
+            <div className='symbol' />
+            <div className='symbol' />
+            <div className='symbol' />
 
-          <div class='box__ghost-container'>
-            <div class='box__ghost-eyes'>
-              <div class='box__eye-left' />
-              <div class='box__eye-right' />
+            <div className='box__ghost-container'>
+              <div className='box__ghost-eyes'>
+                <div className='box__eye-left' />
+                <div className='box__eye-right' />
+              </div>
+              <div className='box__ghost-bottom'>
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
             </div>
-            <div class='box__ghost-bottom'>
-              <div />
-              <div />
-              <div />
-              <div />
-              <div />
-            </div>
-          </div>
-          <div class='box__ghost-shadow' />
-        </div>
-
-        <div class='box__description'>
-          <div class='box__description-container'>
-            <div class='box__description-title'>Whoops!</div>
-            <div class='box__description-text'>
-              It seems like we couldn't find the page you were looking for
-            </div>
+            <div className='box__ghost-shadow' />
           </div>
 
-          <a href='/login' class='box__button'>
-            Go back
-          </a>
+          <div className='box__description'>
+            <div className='box__description-container'>
+              <div className='box__description-title'>Whoops!</div>
+              <div className='box__description-text'>
+                It seems like we couldn't find the page you were looking for
+              </div>
+            </div>
+
+            <a href='/login' className='box__button'>
+              Go back
+            </a>
+          </div>
         </div>
       </div>
     );

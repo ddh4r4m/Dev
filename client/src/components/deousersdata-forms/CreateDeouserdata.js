@@ -308,30 +308,13 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
     formDataa.append('otherbenefitycompbyACII', otherbenefitycompbyACII);
     formDataa.append('otherbenefitycompbyACIII', otherbenefitycompbyACIII);
     formDataa.append('firstbenefitbypolice', firstbenefitbypolice);
-    if (firstbenefitbypolice !== 'pending' && firstbenefitbypolicedate === '') {
-      const date = new Date();
-      formDataa.append('firstbenefitbypolicedate', date);
-    } else {
-      formDataa.append('firstbenefitbypolicedate', firstbenefitbypolicedate);
-    }
-    if (firstbenefitbycommis !== 'pending' && firstbenefitbycommisdate === '') {
-      const date = new Date();
-      formDataa.append('firstbenefitbycommisdate', date);
-    } else {
-      formDataa.append('firstbenefitbycommisdate', firstbenefitbycommisdate);
-    }
-    if (
-      firstbenefitbycollector !== 'pending' &&
-      firstbenefitbycollectordate === ''
-    ) {
-      const date = new Date();
-      formDataa.append('firstbenefitbycollectordate', date);
-    } else {
-      formDataa.append(
-        'firstbenefitbycollectordate',
-        firstbenefitbycollectordate
-      );
-    }
+
+    formDataa.append('firstbenefitbypolicedate', firstbenefitbypolicedate);
+
+    formDataa.append('firstbenefitbycommisdate', firstbenefitbypolicedate);
+
+    formDataa.append('firstbenefitbycollectordate', firstbenefitbypolicedate);
+
     formDataa.append('firstbenefitbycommis', firstbenefitbycommis);
     formDataa.append('firstbenefitbycollector', firstbenefitbycollector);
     formDataa.append(
@@ -343,36 +326,13 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
       'firstbenefitbycollectorcomment',
       firstbenefitbycollectorcomment
     );
-    if (
-      secondbenefitbypolice !== 'pending' &&
-      secondbenefitbypolicedate === ''
-    ) {
-      const date = new Date();
-      formDataa.append('secondbenefitbypolicedate', date);
-    } else {
-      formDataa.append('secondbenefitbypolicedate', secondbenefitbypolicedate);
-    }
-    if (
-      secondbenefitbycommis !== 'pending' &&
-      secondbenefitbycommisdate === ''
-    ) {
-      const date = new Date();
-      formDataa.append('secondbenefitbycommisdate', date);
-    } else {
-      formDataa.append('secondbenefitbycommisdate', secondbenefitbycommisdate);
-    }
-    if (
-      secondbenefitbycollector !== 'pending' &&
-      secondbenefitbycollectordate === ''
-    ) {
-      const date = new Date();
-      formDataa.append('secondbenefitbycollectordate', date);
-    } else {
-      formDataa.append(
-        'secondbenefitbycollectordate',
-        secondbenefitbycollectordate
-      );
-    }
+
+    formDataa.append('secondbenefitbypolicedate', secondbenefitbypolicedate);
+
+    formDataa.append('secondbenefitbycommisdate', secondbenefitbypolicedate);
+
+    formDataa.append('secondbenefitbycollectordate', secondbenefitbypolicedate);
+
     formDataa.append('secondbenefitbypolice', secondbenefitbypolice);
     formDataa.append('secondbenefitbycommis', secondbenefitbycommis);
     formDataa.append('secondbenefitbycollector', secondbenefitbycollector);
@@ -385,30 +345,13 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
       'secondbenefitbycollectorcomment',
       secondbenefitbycollectorcomment
     );
-    if (thirdbenefitbypolice !== 'pending' && thirdbenefitbypolicedate === '') {
-      const date = new Date();
-      formDataa.append('thirdbenefitbypolicedate', date);
-    } else {
-      formDataa.append('thirdbenefitbypolicedate', thirdbenefitbypolicedate);
-    }
-    if (thirdbenefitbycommis !== 'pending' && thirdbenefitbycommisdate === '') {
-      const date = new Date();
-      formDataa.append('thirdbenefitbycommisdate', date);
-    } else {
-      formDataa.append('thirdbenefitbycommisdate', thirdbenefitbycommisdate);
-    }
-    if (
-      thirdbenefitbycollector !== 'pending' &&
-      thirdbenefitbycollectordate === ''
-    ) {
-      const date = new Date();
-      formDataa.append('thirdbenefitbycollectordate', date);
-    } else {
-      formDataa.append(
-        'thirdbenefitbycollectordate',
-        thirdbenefitbycollectordate
-      );
-    }
+
+    formDataa.append('thirdbenefitbypolicedate', thirdbenefitbypolicedate);
+
+    formDataa.append('thirdbenefitbycommisdate', thirdbenefitbypolicedate);
+
+    formDataa.append('thirdbenefitbycollectordate', thirdbenefitbypolicedate);
+
     formDataa.append('thirdbenefitbypolice', thirdbenefitbypolice);
     formDataa.append('thirdbenefitbycommis', thirdbenefitbycommis);
     formDataa.append('thirdbenefitbycollector', thirdbenefitbycollector);
@@ -723,7 +666,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     name='othersections'
                     value={othersections}
                     onChange={e => onChange(e)}
-                    
                   />
                 </div>
                 {/*  */}
@@ -1225,6 +1167,16 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     </Paper>
                   </div>
                 </div>
+                <div className='form-group'>
+                  Date for Stage I Decisions
+                  <input
+                    type='date'
+                    placeholder='Date When Decision was taken'
+                    name='firstbenefitbypolicedate'
+                    value={firstbenefitbypolicedate}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
                 <div className='maindiv'>
                   <div className='form-group'>
                     Comment on First benefit Recommendation by Police
@@ -1274,7 +1226,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       name='monetarycompbyACI'
                       value={monetarycompbyACI}
                       onChange={e => onChange(e)}
-                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1285,7 +1236,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       name='otherbenefitycompbyACI'
                       value={otherbenefitycompbyACI}
                       onChange={e => onChange(e)}
-                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1296,7 +1246,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       name='firstbenefitbycommcomment'
                       value={firstbenefitbycommcomment}
                       onChange={e => onChange(e)}
-                      
                     />
                   </div>
                 </div>
@@ -1336,7 +1285,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       name='monetarycompbyDCI'
                       value={monetarycompbyDCI}
                       onChange={e => onChange(e)}
-                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1347,7 +1295,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       name='otherbenefitycompbyDCI'
                       value={otherbenefitycompbyDCI}
                       onChange={e => onChange(e)}
-                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1358,7 +1305,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       name='firstbenefitbycollectorcomment'
                       value={firstbenefitbycollectorcomment}
                       onChange={e => onChange(e)}
-                      
                     />
                   </div>
                 </div>
@@ -1370,7 +1316,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycollector === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    
                   />{' '}
                   Should be given
                   <Radio
@@ -1379,7 +1324,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycollector === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    
                   />{' '}
                   Should not be given
                   <Radio
@@ -1388,7 +1332,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     checked={firstbenefitbycollector === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    
                   />{' '}
                   Keep Pending
                 </div>
@@ -1401,7 +1344,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       name='utrnumI'
                       value={utrnumI}
                       onChange={e => onChange(e)}
-                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1413,7 +1355,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       name='benefitsgivenbyACI'
                       value={benefitsgivenbyACI}
                       onChange={e => onChange(e)}
-                      
                     />
                   </div>
                   <div className='form-group'>
@@ -1425,7 +1366,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={isbenefitsgivenbyACI === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      
                     />{' '}
                     Yes
                     <Radio
@@ -1434,7 +1374,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={isbenefitsgivenbyACI === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      
                     />{' '}
                     No
                   </div>
@@ -1449,7 +1388,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   checked={sectionschanged === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  
                 />{' '}
                 Yes
                 <Radio
@@ -1458,7 +1396,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   checked={sectionschanged === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  
                 />{' '}
                 No
               </div>
@@ -1480,7 +1417,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         isMulti
                         isSearchable
                         onChange={handleChangev2}
-                        
                       />
                     </div>
                     <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
@@ -1494,7 +1430,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         isMulti
                         isSearchable
                         onChange={handleIpcv2}
-                        
                       />
                     </div>
                     <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
@@ -1508,7 +1443,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         isMulti
                         isSearchable
                         onChange={handleSectionsv2}
-                        
                       />
                     </div>
                   </div>
@@ -1691,7 +1625,14 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     name='chargesheetdate'
                     value={chargesheetdate}
                     onChange={e => onChange(e)}
-                    
+                  />
+                  Date for Stage II Decisions
+                  <input
+                    type='date'
+                    placeholder='Date When Decision II was taken'
+                    name='secondbenefitbypolicedate'
+                    value={secondbenefitbypolicedate}
+                    onChange={e => onChange(e)}
                   />
                 </div>
                 <div className='form-group'>
@@ -1721,7 +1662,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     name='secondbenefitbypolicecomment'
                     value={secondbenefitbypolicecomment}
                     onChange={e => onChange(e)}
-                    
                   />
                 </div>
                 <div className='form-group'>
@@ -1733,7 +1673,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     checked={secondbenefitbypolice === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    
                   />{' '}
                   Should be given
                   <Radio
@@ -1742,7 +1681,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     checked={secondbenefitbypolice === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    
                   />{' '}
                   Should not be given
                   <Radio
@@ -1751,7 +1689,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     checked={secondbenefitbypolice === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    
                   />{' '}
                   Keep Pending
                 </div>
@@ -1796,7 +1733,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycommis === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  
                 />{' '}
                 Should be given
                 <Radio
@@ -1805,7 +1741,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycommis === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  
                 />{' '}
                 Should not be given
                 <Radio
@@ -1814,7 +1749,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycommis === 'pending'}
                   value='pending'
                   onChange={e => onChange(e)}
-                  
                 />{' '}
                 Keep Pending
               </div>
@@ -1827,7 +1761,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     name='monetarycompbyDCII'
                     value={monetarycompbyDCII}
                     onChange={e => onChange(e)}
-                    
                   />
                 </div>
                 <div className='form-group'>
@@ -1838,7 +1771,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     name='otherbenefitycompbyDCII'
                     value={otherbenefitycompbyDCII}
                     onChange={e => onChange(e)}
-                    
                   />
                 </div>
                 <div className='form-group'>
@@ -1849,7 +1781,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     name='secondbenefitbycollectorcomment'
                     value={secondbenefitbycollectorcomment}
                     onChange={e => onChange(e)}
-                    
                   />
                 </div>
               </div>
@@ -1861,7 +1792,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycollector === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  
                 />{' '}
                 Should be given
                 <Radio
@@ -1870,7 +1800,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycollector === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  
                 />{' '}
                 Should not be given
                 <Radio
@@ -1879,7 +1808,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   checked={secondbenefitbycollector === 'pending'}
                   value='pending'
                   onChange={e => onChange(e)}
-                  
                 />{' '}
                 Keep Pending
               </div>
@@ -1892,7 +1820,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     name='utrnumII'
                     value={utrnumII}
                     onChange={e => onChange(e)}
-                    
                   />
                 </div>
                 <div className='form-group'>
@@ -1915,7 +1842,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     checked={isbenefitsgivenbyACII === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    
                   />{' '}
                   Yes
                   <Radio
@@ -1924,7 +1850,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                     checked={isbenefitsgivenbyACII === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    
                   />{' '}
                   No
                 </div>
@@ -1943,10 +1868,17 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='dateofcourtorder'
                         value={dateofcourtorder}
                         onChange={e => onChange(e)}
-                        
+                      />
+                      Date for Stage III Decisions
+                      <input
+                        type='date'
+                        placeholder='Date of Court Order'
+                        name='thirdbenefitbypolicedate'
+                        value={thirdbenefitbypolicedate}
+                        onChange={e => onChange(e)}
                       />
                     </div>
-                    <div className='form-group' style={{ flexGrow: 6 }}>
+                    <div className='form-group' style={{ flexGrow: 2 }}>
                       Summary of Court Order
                       <textarea
                         rows='6'
@@ -1955,7 +1887,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='courtresults'
                         value={courtresults}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                     <div className='form-group'>
@@ -1988,7 +1919,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='thirdbenefitbypolicecomment'
                         value={thirdbenefitbypolicecomment}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                     <div className='form-group'>
@@ -1999,7 +1929,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         checked={thirdbenefitbypolice === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        
                       />{' '}
                       Should be given
                       <Radio
@@ -2008,7 +1937,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         checked={thirdbenefitbypolice === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        
                       />{' '}
                       Should not be given
                       <Radio
@@ -2017,7 +1945,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         checked={thirdbenefitbypolice === 'pending'}
                         value='pending'
                         onChange={e => onChange(e)}
-                        
                       />{' '}
                       Keep Pending
                     </div>
@@ -2031,7 +1958,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='monetarycompbyACIII'
                         value={monetarycompbyACIII}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2042,7 +1968,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='otherbenefitycompbyACIII'
                         value={otherbenefitycompbyACIII}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2053,7 +1978,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='thirdbenefitbycommcomment'
                         value={thirdbenefitbycommcomment}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                   </div>
@@ -2065,7 +1989,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      
                     />{' '}
                     Should be given
                     <Radio
@@ -2074,7 +1997,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      
                     />{' '}
                     Should not be given
                     <Radio
@@ -2083,7 +2005,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      
                     />{' '}
                     Keep Pending
                   </div>
@@ -2096,7 +2017,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='monetarycompbyDCIII'
                         value={monetarycompbyDCIII}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2107,7 +2027,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='otherbenefitycompbyDCIII'
                         value={otherbenefitycompbyDCIII}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2118,7 +2037,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='thirdbenefitbycollectorcomment'
                         value={thirdbenefitbycollectorcomment}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                   </div>
@@ -2131,7 +2049,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      
                     />{' '}
                     Should be given
                     <Radio
@@ -2140,7 +2057,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      
                     />{' '}
                     Should not be given
                     <Radio
@@ -2149,7 +2065,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      
                     />{' '}
                     Keep Pending
                   </div>
@@ -2162,7 +2077,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='utrnumIII'
                         value={utrnumIII}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2174,7 +2088,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         name='benefitsgivenbyACIII'
                         value={benefitsgivenbyACIII}
                         onChange={e => onChange(e)}
-                        
                       />
                     </div>
                     <div className='form-group'>
@@ -2187,7 +2100,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         checked={isbenefitsgivenbyACIII === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        
                       />{' '}
                       Yes
                       <Radio
@@ -2196,7 +2108,6 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                         checked={isbenefitsgivenbyACIII === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        
                       />{' '}
                       No
                     </div>

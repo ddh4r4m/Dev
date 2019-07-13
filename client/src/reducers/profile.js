@@ -2,7 +2,8 @@ import {
   GET_PROFILE,
   PROFILE_ERROR,
   CLEAR_PROFILE,
-  GET_PROFILES
+  GET_PROFILES,
+  DELETE_USER
 } from '../actions/types';
 
 const initialState = {
@@ -36,6 +37,13 @@ export default function(state = initialState, action) {
         loading: false
       };
     case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
+        repos: [],
+        loading: false
+      };
+    case DELETE_USER:
       return {
         ...state,
         profile: null,

@@ -86,10 +86,22 @@ router.delete('/', async (req, res) => {
     //Remove Profile
     // await User.findOneAndRemove({ user: req.user.id });
     //Remove User
-    await User.findOneAndRemove({ _id: req.user.id });
+    await User.findOneAndRemove({ _id: req.body.id });
+    res.status(200).send('User Removed');
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
+  }
+});
+
+//Get
+router.get('/', async (req, res) => {
+  try {
+    const user = await User.find();
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send('Server Error');
   }
 });
 

@@ -121,10 +121,10 @@ const Createpdfitem = ({
       <Text style={styles.text}>{crimeregisterno} </Text>
     </View>
     <View style={[styles.block, { backgroundColor: '' }]}>
-      <Text style={styles.text}>{natureofcrime} </Text>
+      <Text style={styles.text}>{} </Text>
     </View>
     <View style={[styles.block, { backgroundColor: '' }]}>
-      <Text style={styles.text}>{natureofcrime} </Text>
+      <Text style={styles.text}>{} </Text>
     </View>
   </View>
 );

@@ -47,37 +47,39 @@ const ReturntoPolice = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <h2 style={{ color: 'black', fontSize: '20px' }}>
-        Cases returned to Police
-      </h2>
-      <br />
-      <div className='userdata'>
-        <table className='fl-table'>
-          <thead>
-            <tr>
-              <th>YEAR</th>
-              <th>Serial No.</th>
-              <th>POLICE STATION</th>
-              <th>Register No.</th>
-              <th>Nature </th>
-              <th>Button </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtereddata.length > 0 ? (
-              filtereddata.map(userdata => (
-                <UserdataItem key={userdata._id} userdata={userdata} />
-              ))
-            ) : (
+      <div className='container'>
+        <h2 style={{ color: 'black', fontSize: '20px' }}>
+          Cases returned to Police
+        </h2>
+        <br />
+        <div className='userdata'>
+          <table className='fl-table'>
+            <thead>
               <tr>
-                <td>No FIR Data Found</td>
-                <td>No FIR Data Found</td>
-                <td>No FIR Data Found</td>
-                <td>No FIR Data Found</td>
+                <th>YEAR</th>
+                <th>Serial No.</th>
+                <th>POLICE STATION</th>
+                <th>Register No.</th>
+                <th>Nature </th>
+                <th>Button </th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filtereddata.length > 0 ? (
+                filtereddata.map(userdata => (
+                  <UserdataItem key={userdata._id} userdata={userdata} />
+                ))
+              ) : (
+                <tr>
+                  <td>No FIR Data Found</td>
+                  <td>No FIR Data Found</td>
+                  <td>No FIR Data Found</td>
+                  <td>No FIR Data Found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </Fragment>
   );

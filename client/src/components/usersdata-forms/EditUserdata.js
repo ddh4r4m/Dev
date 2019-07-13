@@ -567,7 +567,11 @@ const EditUserdataById = ({
     formDataa.append('sectionsappliedv2', JSON.stringify(sectionsappliedv2));
     formDataa.append('text', formData.text);
     formDataa.append('year', year);
-    formDataa.append('returntopolice', formData.returntopolice);
+    if (user && user.name === 'Police') {
+      formDataa.append('returntopolice', false);
+    } else {
+      formDataa.append('returntopolice', formData.returntopolice);
+    }
     formDataa.append('policestation', policestation);
     formDataa.append('crimeregisterno', crimeregisterno);
     formDataa.append('dateofcrime', dateofcrime);
@@ -1899,9 +1903,7 @@ const EditUserdataById = ({
                         name='utrnumI'
                         value={utrnumI}
                         onChange={e => onChange(e)}
-                        disabled={
-                          (user && user.name === 'Asst. Commissioner') 
-                        }
+                        disabled={user && user.name === 'Asst. Commissioner'}
                       />
                     </div>
                     <div className='form-group'>
@@ -3061,7 +3063,7 @@ const EditUserdataById = ({
                       variant='contained'
                       color='secondary'
                       className={classes.button}
-                      onClick={(e) => (
+                      onClick={e => (
                         (formData.returntopolice = true),
                         console.log(returntopolice),
                         onSubmit(e)

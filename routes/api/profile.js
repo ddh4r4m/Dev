@@ -128,12 +128,13 @@ router.get('/user/:user_id', async (req, res) => {
 //@route    DELETE api/profile
 //@desc     DELETE profile ,user & posts
 //@access   Private
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     //Remove Profile
-    await Profile.findOneAndRemove({ user: req.user.id });
+    await Profile.findOneAndRemove({ user: req.params.id });
     //Remove User
-    await User.findOneAndRemove({ _id: req.user.id });
+    await User.findOneAndRemove({ _id: req.params.id });
+    res.status(200).send('User Removed');
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

@@ -119,7 +119,7 @@ const CreatePdf = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           ~ GOVERNMENT Of INDIA ~
         </Text>
         <Text style={styles.title}>Atrocity Act</Text>
-        <Text style={styles.author}>Miguel de Cervantes</Text>
+        <Text style={styles.author}>Minutes of Meeting</Text>
         {/* <Image style={styles.image} src='/static/images/quijote1.jpg' /> */}
         <Text style={styles.subtitle}>
           Capítulo I: Que trata de la condición y ejercicio del famoso hidalgo

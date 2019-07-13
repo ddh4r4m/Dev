@@ -4,7 +4,9 @@ import {
   GET_PROFILE,
   PROFILE_ERROR,
   GET_PROFILES,
-  CLEAR_PROFILE
+  CLEAR_PROFILE,
+  DELETE_USER,
+  USER_ERROR
 } from './types';
 
 //Get Current Profile
@@ -91,6 +93,27 @@ export const getProfileById = userId => async dispatch => {
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+//Delete User
+export const deleteUser = id => async dispatch => {
+  try {
+    const res = await axios.delete(`/api/profile/${id}`, id);
+
+    // dispatch({
+    //   type: DELETE_USER
+    // });
+    dispatch({
+      type: CLEAR_PROFILE
+    });
+
+    dispatch(setAlert('User Removed Successfully', 'success'));
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }

@@ -55,7 +55,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li>
       <li>
-        <Link to='login'>
+        <Link to='/login'>
           <i className='fas fa-sign-in-alt' />
           <span className='hide-sm'> Login</span>
         </Link>

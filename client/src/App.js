@@ -1,5 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import { browserHistory } from 'react-router';
+import { createBrowserHistory } from 'history';
+
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
@@ -43,6 +46,11 @@ import Footer from './components/layout/Footer';
 import Reference from './components/references/Reference';
 import ReturntoPolice from './components/usersdata/ReturntoPolice';
 import NoMatch from './components/noMatch/NoMatch';
+import ResetPassword from './components/auth/ResetPassword';
+import ForgotPassword from './components/auth/ForgotPassword';
+import PrivateRouteI from './components/routing/PrivateRouteI';
+import PrivateRouteII from './components/routing/PrivateRouteII';
+import PrivateRouteIII from './components/routing/PrivateRouteIII';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -55,7 +63,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Router>
+      <Router history={createBrowserHistory}>
         <Fragment>
           {/* <Navbar /> */}
           {/* <section className='container'> */}
@@ -64,29 +72,55 @@ const App = () => {
             <Route exact path='/' component={WithNavbar(Landing)} />
             <Route exact path='/login' component={WithNavbar(Login)} />
             <Route exact path='/register' component={WithNavbar(Register)} />
-            <Route exact path='/profiles' component={WithNavbar(Profiles)} />
-            <Route exact path='/usersdata' component={WithNavbar(Usersdata)} />
-            <Route
+            <PrivateRoute
+              exact
+              path='/profiles'
+              component={WithNavbar(Profiles)}
+            />
+            <PrivateRouteI
+              exact
+              path='/usersdata'
+              component={WithNavbar(Usersdata)}
+            />
+            <PrivateRouteIII
               exact
               path='/deousersdata'
               component={WithNavbar(Deousersdata)}
             />
-            <Route exact path='/createpdf' component={WithNavbar(CreatePdf)} />
-            <Route exact path='/references' component={WithNavbar(Reference)} />
+            <PrivateRouteII
+              exact
+              path='/createpdf'
+              component={WithNavbar(CreatePdf)}
+            />
+            <PrivateRoute
+              exact
+              path='/references'
+              component={WithNavbar(Reference)}
+            />
             <Route
               exact
               path='/deoapprove'
               component={WithNavbar(DeoApprove)}
             />
-            <Route
+            <PrivateRouteII
               exact
               path='/mofmeeting'
               component={WithNavbar(Mofmeeting)}
             />
-            <Route
+            <PrivateRouteII
               exact
               path='/mofmeetings'
               component={WithNavbar(Mofmeetings)}
+            />
+            <Route
+              exact
+              path='/reset/:token'
+              component={WithNavbar(ResetPassword)}
+            />
+            <Route
+              exact
+              path='/forgotpassword'
+              component={WithNavbar(ForgotPassword)}
             />
             <PrivateRoute
               exact
@@ -128,8 +162,12 @@ const App = () => {
               path='/usersdatappthree'
               component={WithNavbar(UsersdataPPthree)}
             />
-            <Route exact path='/profile/:id' component={WithNavbar(Profile)} />
-            <Route
+            <PrivateRoute
+              exact
+              path='/profile/:id'
+              component={WithNavbar(Profile)}
+            />
+            <PrivateRouteI
               exact
               path='/userdata/:id'
               component={WithNavbar(Userdata)}
@@ -145,12 +183,12 @@ const App = () => {
               path='/create-profile'
               component={WithNavbar(CreateProfile)}
             />
-            <PrivateRoute
+            <PrivateRouteI
               exact
               path='/create-userdata'
               component={WithNavbar(CreateUserdata)}
             />
-            <PrivateRoute
+            <PrivateRouteIII
               exact
               path='/create-deouserdata'
               component={WithNavbar(CreateDeouserdata)}
@@ -160,12 +198,12 @@ const App = () => {
               path='/edit-profile'
               component={WithNavbar(EditProfile)}
             />
-            <PrivateRoute
+            <PrivateRouteI
               exact
               path='/edit-userdata/:id'
               component={WithNavbar(EditUserdata)}
             />
-            <PrivateRoute
+            <PrivateRouteIII
               exact
               path='/edit-deouserdata/:id'
               component={WithNavbar(EditDeouserdata)}

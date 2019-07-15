@@ -19,6 +19,16 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     search3: 'no'
   });
 
+  const myStyle = {
+    width: '30%',
+    padding: '12px 20px',
+    margin: '8px 2px',
+    display: 'inline-block',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxSizing: 'borderBox'
+  };
+
   const date3 = new Date();
   //create a date before 60 days = 5184000000 in milliseconds
   const date5 = new Date(date3 - 5184000000);
@@ -31,9 +41,9 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   const filtereddata = usersdata.filter(usersdata => {
     const date4 = new Date(usersdata.date);
     const date7 = new Date(usersdata.firstbenefitbypolicedate);
-    console.log('caee1', date7 > date4);
-    console.log('caee2', date7 < date4);
-    console.log(date7);
+    // console.log('caee1', date7 > date4);
+    // console.log('caee2', date7 < date4);
+    // console.log(date7);
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&
@@ -48,7 +58,8 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           .indexOf(search2.toLowerCase()) === -1 &&
         usersdata.firstbenefitbypolice
           .toLowerCase()
-          .indexOf(search2.toLowerCase()) === -1
+          .indexOf(search2.toLowerCase()) === -1 &&
+        usersdata.closethecase === false
       );
     }
     //  return (
@@ -64,6 +75,7 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Fragment>
       <div className='container'>
         <input
+          style={myStyle}
           type='text'
           placeholder='Search by serial..'
           name='search'
@@ -71,6 +83,7 @@ const UsersdataStone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           onChange={e => onChange(e)}
         />
         <input
+          style={myStyle}
           type='text'
           placeholder='Search by POLICE..'
           name='search1'

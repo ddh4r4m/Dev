@@ -153,7 +153,7 @@ const EditUserdataById = ({
       text: loading || !userdata.text ? '' : userdata.text,
       year: loading || !userdata.year ? '' : userdata.year,
       returntopolice:
-        loading || !userdata.returntopolice ? '' : userdata.returntopolice,
+        loading || !userdata.returntopolice ? false : userdata.returntopolice,
       policestation:
         loading || !userdata.policestation ? '' : userdata.policestation,
       crimeregisterno:

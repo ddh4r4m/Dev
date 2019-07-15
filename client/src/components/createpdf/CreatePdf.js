@@ -25,8 +25,8 @@ import {
 } from '@react-pdf/renderer';
 
 Font.register({
-  family: 'Oswald',
-  src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf'
+  family: 'Poppins',
+  src: 'https://fonts.googleapis.com/css?family=Poppins&display=swap'
 });
 
 const styles = StyleSheet.create({
@@ -112,6 +112,12 @@ const CreatePdf = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     getUsersdata();
   }, [getUsersdata]);
 
+  const [newtext, setnewText] = useState('');
+
+  const handleChange = e => {
+    e.preventDefault();
+    setnewText(e.target.value);
+  };
   const Quixote = () => (
     <Document>
       <Page style={styles.body} size='A4' orientation='landscape' wrap={true}>
@@ -179,13 +185,21 @@ const CreatePdf = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <div className='container'>
+      {/* <div>
+        <input
+          type='text'
+          name='newtext'
+          value={newtext}
+          onChange={handleChange}
+        />
+      </div> */}
       <PDFViewer width={1000} height={900}>
         <Quixote />
       </PDFViewer>
       <div>
         <PDFDownloadLink document={<Quixote />} fileName='somename.pdf'>
-          {({ blob, url, loading, error }) =>
-            loading ? 'Loading document...' : 'Download now!'
+          {({ blob, url, loadings, error }) =>
+            loadings ? 'Loading document...' : 'Download now!'
           }
         </PDFDownloadLink>
       </div>

@@ -2,6 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { deleteUserdata } from '../../actions/userdata';
+import { Route, Redirect } from 'react-router-dom';
+
+import { connect } from 'react-redux';
 import './mytable.css';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,44 +22,122 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const UserdataTop = ({
+  deleteUserdata,
   auth,
   userdata: {
     text,
     year,
+    returntopolice,
     policestation,
     crimeregisterno,
     dateofcrime,
     regdateofcrime,
     victimdetails,
     natureofcrime,
-    sections,
-    dateofcourtorder,
-    chargesheetdate,
-    policeinvestigation,
-    courtresults,
-    financialsupport,
+    utrnumI,
+    utrnumII,
+    utrnumIII,
+    benefitsgivenbyACI,
+    benefitsgivenbyACII,
+    benefitsgivenbyACIII,
+    isbenefitsgivenbyACI,
+    isbenefitsgivenbyACII,
+    isbenefitsgivenbyACIII,
+    monetarycompbyDCI,
+    monetarycompbyDCII,
+    monetarycompbyDCIII,
+    otherbenefitycompbyDCI,
+    otherbenefitycompbyDCII,
+    otherbenefitycompbyDCIII,
+    monetarycompbyACI,
+    monetarycompbyACII,
+    monetarycompbyACIII,
+    otherbenefitycompbyACI,
+    otherbenefitycompbyACII,
+    otherbenefitycompbyACIII,
     firstbenefitbypolice,
     firstbenefitbycommis,
     firstbenefitbycollector,
+    firstbenefitbypolicedate,
+    firstbenefitbycommisdate,
+    firstbenefitbycollectordate,
     firstbenefitbypolicecomment,
     firstbenefitbycommcomment,
     firstbenefitbycollectorcomment,
     secondbenefitbypolice,
     secondbenefitbycommis,
     secondbenefitbycollector,
+    secondbenefitbypolicedate,
+    secondbenefitbycommisdate,
+    secondbenefitbycollectordate,
     secondbenefitbypolicecomment,
     secondbenefitbycommcomment,
     secondbenefitbycollectorcomment,
     thirdbenefitbypolice,
     thirdbenefitbycommis,
     thirdbenefitbycollector,
+    thirdbenefitbypolicedate,
+    thirdbenefitbycommisdate,
+    thirdbenefitbycollectordate,
     thirdbenefitbypolicecomment,
     thirdbenefitbycommcomment,
     thirdbenefitbycollectorcomment,
+    sections,
+    chargesheetdate,
+    policeinvestigation,
+    dateofcourtorder,
+    courtresults,
+    financialsupport,
+    twitter,
+    facebook,
+    linkedin,
+    youtube,
+    instagram,
+    disabledata,
+    closecase,
+    othersections,
+    othersectionsv2,
+    sectionschanged,
+    stagetwochange,
+    docImage,
+    doccImage,
+    courtorder,
+    postmortem,
+    medicalreport,
+    abcSummary,
+    victimone,
+    victimtwo,
+    victimthree,
+    victimfour,
+    victimfive,
+    victimsix,
+    victimseven,
+    victimeight,
+    accusedone,
+    accusedtwo,
+    accusedthree,
+    accusedfour,
+    accusedfive,
+    accusedsix,
+    accusedseven,
+    accusedeight,
+    typeofatrocity,
+    ipcapplied,
+    sectionsapplied,
+    typeofatrocityv2,
+    ipcappliedv2,
+    sectionsappliedv2,
     _id
   }
 }) => {
   const classes = useStyles();
+
+  var ipcappliedd = JSON.parse(ipcapplied);
+
+  const handleClick = _id => {
+    deleteUserdata(_id);
+    return <Redirect to='/dashboard' />;
+  };
 
   return (
     <Fragment>
@@ -73,7 +154,7 @@ const UserdataTop = ({
 
         {/* {!auth.loading && user === auth.user._id && ( */}
         <button
-          onClick={e => window.confirm('Are You Sure?') && deleteUserdata(_id)}
+          onClick={e => window.confirm('Are You Sure?') && handleClick(_id)}
           type='button'
           className='btn btn-danger buttonn'
         >
@@ -83,84 +164,297 @@ const UserdataTop = ({
           Go Back
         </Link>
       </div>
-      <div className='mytable'>
-        <div style={{ margin: '0 5%' }}>
-          <h4>
-            SERIAL NO : <span style={{ float: 'right' }}> {text}</span>
+      <div style={{ display: 'flex' }}>
+        <div className='mytable' style={{ width: '50%' }}>
+          <div style={{ margin: '0 5%' }}>
+            <h4>
+              SERIAL NO : <span style={{ float: 'right' }}> {text}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              YEAR :<span style={{ float: 'right' }}> {year}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              POLICE STATION :
+              <span style={{ float: 'right' }}> {policestation}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              CRIME REGISTER NO :
+              <span style={{ float: 'right' }}> {crimeregisterno}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              DATE OF CRIME :
+              <span style={{ float: 'right' }}> {dateofcrime}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              REGISTRATION DATE OF CRIME :
+              <span style={{ float: 'right' }}> {regdateofcrime}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              VICTIM DETAILS :
+              <span style={{ float: 'right' }}> {victimdetails}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              NATURE OF CRIME :
+              <span style={{ float: 'right' }}> {natureofcrime}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              SECTIONS / PENAL CODES :
+              <span style={{ float: 'right' }}>
+                {' '}
+                {ipcappliedd !== null
+                  ? ipcappliedd.map((ipc, i) => (
+                      <span key={ipc.value}>{ipc.value},</span>
+                    ))
+                  : ''}
+              </span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              DATE OF COURT ORDER :
+              <span style={{ float: 'right' }}> {dateofcourtorder}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              CHARGE SHEET DATE :
+              <span style={{ float: 'right' }}> {chargesheetdate}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              POLICE INVESTIGATION :
+              <span style={{ float: 'right' }}> {policeinvestigation}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              COURT RESULTS :
+              <span style={{ float: 'right' }}> {courtresults}</span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              FIR FILE :
+              <span style={{ float: 'right' }}>
+                {docImage !== '' ? (
+                  <Link to={`/${docImage}`}> Download here </Link>
+                ) : (
+                  <span style={{ float: 'right' }}>No File Found</span>
+                )}
+              </span>
+            </h4>
+            <hr />
+            <h4 className='display'>
+              CHARGESHEET FILE :
+              <span style={{ float: 'right' }}>
+                {doccImage !== '' ? (
+                  <Link to={`/${doccImage}`}> Download here </Link>
+                ) : (
+                  <span style={{ float: 'right' }}>No File Found</span>
+                )}
+              </span>
+            </h4>
+            <hr />
+          </div>
+        </div>
+        <div className='mytable' style={{ width: '50%' }}>
+          <h4 className='display'>
+            VICTIM ONE :
+            <span style={{ float: 'right' }}>
+              {victimone !== '' ? (
+                <Link to={`/${victimone}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            YEAR :<span style={{ float: 'right' }}> {year}</span>
+            VICTIM TWO :
+            <span style={{ float: 'right' }}>
+              {victimtwo !== '' ? (
+                <Link to={`/${victimtwo}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            POLICE STATION :
-            <span style={{ float: 'right' }}> {policestation}</span>
+            VICTIM THREE :
+            <span style={{ float: 'right' }}>
+              {victimthree !== '' ? (
+                <Link to={`/${victimthree}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            CRIME REGISTER NO :
-            <span style={{ float: 'right' }}> {crimeregisterno}</span>
+            VICTIM FOUR :
+            <span style={{ float: 'right' }}>
+              {victimfour !== '' ? (
+                <Link to={`/${victimfour}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            DATE OF CRIME :
-            <span style={{ float: 'right' }}> {dateofcrime}</span>
+            VICTIM FIVE :
+            <span style={{ float: 'right' }}>
+              {victimfive !== '' ? (
+                <Link to={`/${victimfive}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            REGISTRATION DATE OF CRIME :
-            <span style={{ float: 'right' }}> {regdateofcrime}</span>
+            VICTIM SIX :
+            <span style={{ float: 'right' }}>
+              {victimsix !== '' ? (
+                <Link to={`/${victimsix}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            VICTIM DETAILS :
-            <span style={{ float: 'right' }}> {victimdetails}</span>
+            VICTIM SEVEN :
+            <span style={{ float: 'right' }}>
+              {victimseven !== '' ? (
+                <Link to={`/${victimseven}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            NATURE OF CRIME :
-            <span style={{ float: 'right' }}> {natureofcrime}</span>
+            VICTIM EIGHT :
+            <span style={{ float: 'right' }}>
+              {victimeight !== '' ? (
+                <Link to={`/${victimeight}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            SECTIONS / PENAL CODES :
-            <span style={{ float: 'right' }}> {sections}</span>
+            ACCUSED ONE :
+            <span style={{ float: 'right' }}>
+              {accusedone !== '' ? (
+                <Link to={`/${accusedone}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            DATE OF COURT ORDER :
-            <span style={{ float: 'right' }}> {dateofcourtorder}</span>
+            ACCUSED TWO :
+            <span style={{ float: 'right' }}>
+              {accusedtwo !== '' ? (
+                <Link to={`/${accusedtwo}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            CHARGE SHEET DATE :
-            <span style={{ float: 'right' }}> {chargesheetdate}</span>
+            ACCUSED THREE :
+            <span style={{ float: 'right' }}>
+              {accusedthree !== '' ? (
+                <Link to={`/${accusedthree}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            POLICE INVESTIGATION :
-            <span style={{ float: 'right' }}> {policeinvestigation}</span>
+            ACCUSED FOUR :
+            <span style={{ float: 'right' }}>
+              {accusedfour !== '' ? (
+                <Link to={`/${accusedfour}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            COURT RESULTS :
-            <span style={{ float: 'right' }}> {courtresults}</span>
+            ACCUSED FIVE :
+            <span style={{ float: 'right' }}>
+              {accusedfive !== '' ? (
+                <Link to={`/${accusedfive}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
           <h4 className='display'>
-            FINANCIAL SUPPORT :
-            <span style={{ float: 'right' }}> {financialsupport}</span>
+            ACCUSED SIX :
+            <span style={{ float: 'right' }}>
+              {accusedsix !== '' ? (
+                <Link to={`/${accusedsix}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            ACCUSED SEVEN :
+            <span style={{ float: 'right' }}>
+              {accusedseven !== '' ? (
+                <Link to={`/${accusedseven}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
+          </h4>
+          <hr />
+          <h4 className='display'>
+            ACCUSED EIGHT :
+            <span style={{ float: 'right' }}>
+              {accusedeight !== '' ? (
+                <Link to={`/${accusedeight}`}> Download here </Link>
+              ) : (
+                <span style={{ float: 'right' }}>No File Found</span>
+              )}
+            </span>
           </h4>
           <hr />
         </div>
-
-        <br />
       </div>
     </Fragment>
   );
 };
 
-UserdataTop.propTypes = {};
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
-export default UserdataTop;
+UserdataTop.propTypes = {
+  userdata: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  deleteUserdata: PropTypes.func.isRequired
+};
+
+export default connect(
+  mapStateToProps,
+  { deleteUserdata }
+)(UserdataTop);

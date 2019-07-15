@@ -7,7 +7,7 @@ import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
 import './table.css';
 
-const UsersdataPPone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
+const UsersdataACtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   useEffect(() => {
     getUsersdata();
   }, [getUsersdata]);
@@ -30,26 +30,26 @@ const UsersdataPPone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   };
 
   const date3 = new Date();
-  //create a date before 60 days = 5184000000 in milliseconds
-  const date5 = new Date(date3 - 5184000000);
+  //create a date before 7 days = 604800000 in milliseconds
+  //create a date before 7 days = 604800000 in milliseconds
+  const date5 = new Date(date3 - 604800000);
 
-  const { search, search1, search2, serach3 } = formData;
+  const { search, search1, search2, search3 } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const filtereddata = usersdata.filter(usersdata => {
-    // const date4 = new Date(usersdata.date);
-    const date4 = new Date(usersdata.firstbenefitbypolicedate);
+    //change date to firstdecisionbycommdate
+    const date4 = new Date(usersdata.date);
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&
     if (date4 <= date5) {
       return (
-        usersdata.firstbenefitbypolice
+        usersdata.firstbenefitbycollector
           .toLowerCase()
-          .indexOf(search1.toLowerCase()) !== -1 &&
-        usersdata.closethecase === false
+          .indexOf(search2.toLowerCase()) === -1
       );
     }
     //  return (
@@ -89,7 +89,9 @@ const UsersdataPPone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           Create New FIR
         </Link>
         <div className='userdata'>
-          <h3>Cases Pending for 60 days or More by Police : Stage I</h3>
+          <h3>
+            Cases Pending for 7 days or More by Asst. Commissioner : Stage II
+          </h3>
           <table className='fl-table'>
             <thead>
               <tr>
@@ -122,7 +124,7 @@ const UsersdataPPone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   );
 };
 
-UsersdataPPone.propTypes = {
+UsersdataACtwo.propTypes = {
   getUsersdata: PropTypes.func.isRequired,
   userdata: PropTypes.object.isRequired
 };
@@ -133,4 +135,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getUsersdata }
-)(UsersdataPPone);
+)(UsersdataACtwo);

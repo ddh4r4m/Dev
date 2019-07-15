@@ -22,9 +22,20 @@ const UsersdataPPthree = ({
     search3: 'no'
   });
 
+  const myStyle = {
+    width: '30%',
+    padding: '12px 20px',
+    margin: '8px 2px',
+    display: 'inline-block',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxSizing: 'borderBox'
+  };
+
   const date3 = new Date();
   //create a date before 60 days = 5184000000 in milliseconds
-  const date5 = new Date(date3 - 5184000000);
+  //create a date before 1 year =  31556952000 in milliseconds
+  const date5 = new Date(date3 - 31556952000);
 
   const { search, search1, search2, search3 } = formData;
 
@@ -36,14 +47,15 @@ const UsersdataPPthree = ({
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&
-    if (date4 >= date5) {
+    if (date4 <= date5) {
       return (
         usersdata.thirdbenefitbypolice
           .toLowerCase()
           .indexOf(search1.toLowerCase()) !== -1 &&
         usersdata.secondbenefitbycollector
           .toLowerCase()
-          .indexOf(search2.toLowerCase()) !== -1
+          .indexOf(search2.toLowerCase()) !== -1 &&
+        usersdata.closethecase === false
       );
     }
     //  return (
@@ -59,6 +71,7 @@ const UsersdataPPthree = ({
     <Fragment>
       <div className='container'>
         <input
+          style={myStyle}
           type='text'
           placeholder='Search by serial..'
           name='search'
@@ -66,6 +79,7 @@ const UsersdataPPthree = ({
           onChange={e => onChange(e)}
         />
         <input
+          style={myStyle}
           type='text'
           placeholder='Search by POLICE..'
           name='search1'
@@ -81,6 +95,8 @@ const UsersdataPPthree = ({
           Create New FIR
         </Link>
         <div className='userdata'>
+          <h3>Cases Pending for 1 Year or More by Police : Stage III</h3>
+
           <table className='fl-table'>
             <thead>
               <tr>

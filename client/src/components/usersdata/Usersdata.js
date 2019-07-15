@@ -18,6 +18,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const myStyle = {
+  width: '30%',
+  padding: '12px 20px',
+  margin: '8px 2px',
+  display: 'inline-block',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
+  boxSizing: 'borderBox'
+};
+
 const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   useEffect(() => {
     getUsersdata();
@@ -90,6 +100,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
       {searchbox && (
         <div>
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by serial..'
             name='search'
@@ -97,6 +108,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Court Results..'
             name='courtresults'
@@ -104,6 +116,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Register No..'
             name='crimeregisterno'
@@ -111,6 +124,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Victim..'
             name='victimdetails'
@@ -118,6 +132,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Date of Court Order..'
             name='dateofcourtorder'
@@ -125,6 +140,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Sections Applied..'
             name='sectionsapplied'
@@ -132,6 +148,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by IPC Sections..'
             name='ipcapplied'
@@ -139,6 +156,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Type of Atrocity..'
             name='typeofatrocity'
@@ -146,6 +164,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Police Station..'
             name='policestation'

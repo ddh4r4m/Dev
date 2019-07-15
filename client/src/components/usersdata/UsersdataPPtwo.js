@@ -19,9 +19,20 @@ const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     search3: 'no'
   });
 
+  const myStyle = {
+    width: '30%',
+    padding: '12px 20px',
+    margin: '8px 2px',
+    display: 'inline-block',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxSizing: 'borderBox'
+  };
+
   const date3 = new Date();
   //create a date before 60 days = 5184000000 in milliseconds
-  const date5 = new Date(date3 - 5184000000);
+  //create a date before 1 year =  31556952000 in milliseconds
+  const date5 = new Date(date3 - 31556952000);
 
   const { search, search1, search2, search3 } = formData;
 
@@ -29,18 +40,19 @@ const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const filtereddata = usersdata.filter(usersdata => {
-    const date4 = new Date(usersdata.date);
+    const date4 = new Date(usersdata.secondbenefitbypolicedate);
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&
-    if (date4 >= date5) {
+    if (date4 <= date5) {
       return (
         usersdata.secondbenefitbypolice
           .toLowerCase()
           .indexOf(search1.toLowerCase()) !== -1 &&
         usersdata.firstbenefitbycollector
           .toLowerCase()
-          .indexOf(search2.toLowerCase()) === -1
+          .indexOf(search2.toLowerCase()) !== -1 &&
+        usersdata.closethecase === false
       );
     }
     //  return (
@@ -56,6 +68,7 @@ const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Fragment>
       <div className='container'>
         <input
+          style={myStyle}
           type='text'
           placeholder='Search by serial..'
           name='search'
@@ -63,6 +76,7 @@ const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           onChange={e => onChange(e)}
         />
         <input
+          style={myStyle}
           type='text'
           placeholder='Search by POLICE..'
           name='search1'
@@ -78,6 +92,8 @@ const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           Create New FIR
         </Link>
         <div className='userdata'>
+          <h3>Cases Pending for 1 Year or More by Police : Stage II</h3>
+
           <table className='fl-table'>
             <thead>
               <tr>

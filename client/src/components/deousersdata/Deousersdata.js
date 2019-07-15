@@ -26,6 +26,16 @@ const Deousersdata = ({
     getDeousersdata();
   }, [getDeousersdata]);
 
+  const myStyle = {
+    width: '30%',
+    padding: '12px 20px',
+    margin: '8px 2px',
+    display: 'inline-block',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxSizing: 'borderBox'
+  };
+
   const [formData, setFormData] = useState({
     search: '',
     courtresults: '',
@@ -94,6 +104,7 @@ const Deousersdata = ({
       {searchbox && (
         <div>
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by serial..'
             name='search'
@@ -101,6 +112,7 @@ const Deousersdata = ({
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Court Results..'
             name='courtresults'
@@ -108,6 +120,7 @@ const Deousersdata = ({
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Register No..'
             name='crimeregisterno'
@@ -115,6 +128,7 @@ const Deousersdata = ({
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Victim..'
             name='victimdetails'
@@ -122,6 +136,7 @@ const Deousersdata = ({
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Date of Court Order..'
             name='dateofcourtorder'
@@ -129,6 +144,7 @@ const Deousersdata = ({
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Sections Applied..'
             name='sectionsapplied'
@@ -136,6 +152,7 @@ const Deousersdata = ({
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by IPC Sections..'
             name='ipcapplied'
@@ -143,6 +160,7 @@ const Deousersdata = ({
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Type of Atrocity..'
             name='typeofatrocity'
@@ -150,6 +168,7 @@ const Deousersdata = ({
             onChange={e => onChange(e)}
           />
           <input
+            style={myStyle}
             type='text'
             placeholder='Search by Police Station..'
             name='policestation'

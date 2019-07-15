@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1e2c20fc.chunk.css",
+    "main.js": "/static/js/main.8644b3f3.chunk.js",
+    "main.js.map": "/static/js/main.8644b3f3.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.e222f761.chunk.js": "/static/js/2.e222f761.chunk.js",
+    "static/js/2.e222f761.chunk.js.map": "/static/js/2.e222f761.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.30b0105e57b77bd6f0dcc600358c646a.js": "/precache-manifest.30b0105e57b77bd6f0dcc600358c646a.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.1e2c20fc.chunk.css.map": "/static/css/main.1e2c20fc.chunk.css.map",
+    "static/media/main.css": "/static/media/Componentformbg.7d23a296.png",
+    "static/media/Ellipsecircle.svg": "/static/media/Ellipsecircle.cb951145.svg",
+    "static/media/Polygontriangle.svg": "/static/media/Polygontriangle.14b5230f.svg",
+    "static/media/Rectanglesquare.svg": "/static/media/Rectanglesquare.e2345439.svg",
+    "static/media/dashboard.css": "/static/media/Vectorbackground.000bb44e.svg"
+  }
+}

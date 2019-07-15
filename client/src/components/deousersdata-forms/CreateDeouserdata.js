@@ -136,7 +136,7 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
   const [displayAccused, toggledisplayAccused] = useState(false);
   var [closethecase, toggleclossecase] = useState(false);
 
-  // console.log(user && user.name === 'Sara');
+  // console.log(user && user.role === 'Sara');
 
   const {
     text,
@@ -671,8 +671,8 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                 {/*  */}
                 {(sectionsapplied !== null || typeofatrocity !== null) &&
                   (user &&
-                    user.name === 'District Collector' &&
-                    (user && user.name === 'Asst. Commissioner')) && (
+                    user.role === 'District Collector' &&
+                    (user && user.role === 'Asst. Commissioner')) && (
                     <div>
                       <table className='fl-table'>
                         <thead>
@@ -1462,8 +1462,8 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
               )}
               {(sectionsappliedv2 !== null || typeofatrocityv2 !== null) &&
                 (user &&
-                  user.name === 'District Collector' &&
-                  (user && user.name === 'Asst. Commissioner')) && (
+                  user.role === 'District Collector' &&
+                  (user && user.role === 'Asst. Commissioner')) && (
                   <div>
                     <h3>
                       Since Sections have Changed, Please Verify Whether less or
@@ -2114,7 +2114,7 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                   </div>
                 </Fragment>
               )}
-              {!disabledata && user && user.name === 'District Collector' && (
+              {!disabledata && user && user.role === 'District Collector' && (
                 <Fragment>
                   <div className='form-group'>
                     Do You want to close the Case{'    '}
@@ -2124,7 +2124,7 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={closecase === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'District Collector'}
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     Yes{' '}
                     <Radio
@@ -2133,7 +2133,7 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       checked={closecase === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'District Collector'}
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     No
                     <small>

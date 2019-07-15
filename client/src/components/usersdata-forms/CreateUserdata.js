@@ -137,7 +137,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
   const [displayAccused, toggledisplayAccused] = useState(false);
   var [closethecase, toggleclossecase] = useState(false);
 
-  // console.log(user && user.name === 'Sara');
+  // console.log(user && user.role === 'Sara');
 
   const {
     text,
@@ -562,8 +562,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                     <small className='form-text'>
@@ -580,8 +580,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -593,8 +593,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     >
                       <option value='Dhule City'>Dhule City </option>
@@ -632,8 +632,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -647,8 +647,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -662,8 +662,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -681,8 +681,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -698,8 +698,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -726,8 +726,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={handleChange}
                       isDisabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -747,8 +747,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={handleIpc}
                       isDisabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -765,8 +765,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={handleSections}
                       isDisabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>{' '}
@@ -783,16 +783,16 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />
                 </div>
                 {/*  */}
                 {(sectionsapplied !== null || typeofatrocity !== null) &&
                   (user &&
-                    user.name === 'District Collector' &&
-                    (user && user.name === 'Asst. Commissioner')) && (
+                    user.role === 'District Collector' &&
+                    (user && user.role === 'Asst. Commissioner')) && (
                     <div>
                       <table className='fl-table'>
                         <thead>
@@ -1298,8 +1298,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -1314,8 +1314,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Should be given
@@ -1327,8 +1327,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Should not be given
@@ -1340,8 +1340,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Keep Pending
@@ -1358,9 +1358,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1374,9 +1374,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1390,9 +1390,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1407,9 +1407,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should be given
@@ -1421,9 +1421,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should not be given
@@ -1435,9 +1435,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Keep Pending
@@ -1453,9 +1453,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1469,9 +1469,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1485,9 +1485,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1502,9 +1502,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should be given
@@ -1516,9 +1516,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should not be given
@@ -1530,9 +1530,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Keep Pending
@@ -1547,8 +1547,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       value={utrnumI}
                       onChange={e => onChange(e)}
                       disabled={
-                        (user && user.name === 'Asst. Commissioner') ||
-                        (user && user.name !== 'Data Entry Operator')
+                        (user && user.role === 'Asst. Commissioner') ||
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -1563,9 +1563,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1580,9 +1580,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Yes
@@ -1594,9 +1594,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     No
@@ -1614,8 +1614,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   onChange={e => onChange(e)}
                   disabled={
                     user &&
-                    user.name !== 'Police' &&
-                    (user && user.name !== 'Data Entry Operator')
+                    user.role !== 'Police' &&
+                    (user && user.role !== 'Data Entry Operator')
                   }
                 />{' '}
                 Yes
@@ -1627,8 +1627,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   onChange={e => onChange(e)}
                   disabled={
                     user &&
-                    user.name !== 'Police' &&
-                    (user && user.name !== 'Data Entry Operator')
+                    user.role !== 'Police' &&
+                    (user && user.role !== 'Data Entry Operator')
                   }
                 />{' '}
                 No
@@ -1653,8 +1653,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={handleChangev2}
                         isDisabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1671,8 +1671,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={handleIpcv2}
                         isDisabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1689,8 +1689,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={handleSectionsv2}
                         isDisabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1707,8 +1707,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -1716,8 +1716,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
               )}
               {(sectionsappliedv2 !== null || typeofatrocityv2 !== null) &&
                 (user &&
-                  user.name === 'District Collector' &&
-                  (user && user.name === 'Asst. Commissioner')) && (
+                  user.role === 'District Collector' &&
+                  (user && user.role === 'Asst. Commissioner')) && (
                   <div>
                     <h3>
                       Since Sections have Changed, Please Verify Whether less or
@@ -1881,8 +1881,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />
                 </div>
@@ -1915,8 +1915,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />
                 </div>
@@ -1931,8 +1931,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />{' '}
                   Should be given
@@ -1944,8 +1944,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />{' '}
                   Should not be given
@@ -1957,8 +1957,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />{' '}
                   Keep Pending
@@ -1975,9 +1975,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />
                 </div>
@@ -1991,9 +1991,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />
                 </div>
@@ -2007,9 +2007,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />
                 </div>
@@ -2024,9 +2024,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   onChange={e => onChange(e)}
                   disabled={
                     user &&
-                    user.name !== 'Asst. Commissioner' &&
+                    user.role !== 'Asst. Commissioner' &&
                     user &&
-                    user.name !== 'Data Entry Operator'
+                    user.role !== 'Data Entry Operator'
                   }
                 />{' '}
                 Should be given
@@ -2038,9 +2038,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   onChange={e => onChange(e)}
                   disabled={
                     user &&
-                    user.name !== 'Asst. Commissioner' &&
+                    user.role !== 'Asst. Commissioner' &&
                     user &&
-                    user.name !== 'Data Entry Operator'
+                    user.role !== 'Data Entry Operator'
                   }
                 />{' '}
                 Should not be given
@@ -2052,9 +2052,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   onChange={e => onChange(e)}
                   disabled={
                     user &&
-                    user.name !== 'Asst. Commissioner' &&
+                    user.role !== 'Asst. Commissioner' &&
                     user &&
-                    user.name !== 'Data Entry Operator'
+                    user.role !== 'Data Entry Operator'
                   }
                 />{' '}
                 Keep Pending
@@ -2070,9 +2070,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />
                 </div>
@@ -2086,9 +2086,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />
                 </div>
@@ -2102,9 +2102,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />
                 </div>
@@ -2119,9 +2119,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   onChange={e => onChange(e)}
                   disabled={
                     user &&
-                    user.name !== 'District Collector' &&
+                    user.role !== 'District Collector' &&
                     user &&
-                    user.name !== 'Data Entry Operator'
+                    user.role !== 'Data Entry Operator'
                   }
                 />{' '}
                 Should be given
@@ -2133,9 +2133,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   onChange={e => onChange(e)}
                   disabled={
                     user &&
-                    user.name !== 'District Collector' &&
+                    user.role !== 'District Collector' &&
                     user &&
-                    user.name !== 'Data Entry Operator'
+                    user.role !== 'Data Entry Operator'
                   }
                 />{' '}
                 Should not be given
@@ -2147,9 +2147,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   onChange={e => onChange(e)}
                   disabled={
                     user &&
-                    user.name !== 'District Collector' &&
+                    user.role !== 'District Collector' &&
                     user &&
-                    user.name !== 'Data Entry Operator'
+                    user.role !== 'Data Entry Operator'
                   }
                 />{' '}
                 Keep Pending
@@ -2164,8 +2164,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     value={utrnumII}
                     onChange={e => onChange(e)}
                     disabled={
-                      (user && user.name === 'Asst. Commissioner') ||
-                      (user && user.name !== 'Data Entry Operator')
+                      (user && user.role === 'Asst. Commissioner') ||
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />
                 </div>
@@ -2180,9 +2180,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />
                 </div>
@@ -2197,9 +2197,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Yes
@@ -2211,9 +2211,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   No
@@ -2235,8 +2235,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -2251,8 +2251,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -2288,8 +2288,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -2303,8 +2303,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />{' '}
                       Should be given
@@ -2316,8 +2316,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />{' '}
                       Should not be given
@@ -2329,8 +2329,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />{' '}
                       Keep Pending
@@ -2347,9 +2347,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -2364,9 +2364,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -2380,9 +2380,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -2397,9 +2397,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Should be given
@@ -2411,9 +2411,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Should not be given
@@ -2425,9 +2425,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Keep Pending
@@ -2443,9 +2443,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -2460,9 +2460,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -2476,9 +2476,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -2494,9 +2494,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Should be given
@@ -2508,9 +2508,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Should not be given
@@ -2522,9 +2522,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Keep Pending
@@ -2539,8 +2539,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         value={utrnumIII}
                         onChange={e => onChange(e)}
                         disabled={
-                          (user && user.name === 'Asst. Commissioner') ||
-                          (user && user.name !== 'Data Entry Operator')
+                          (user && user.role === 'Asst. Commissioner') ||
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -2555,9 +2555,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -2573,9 +2573,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Yes
@@ -2587,9 +2587,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       No
@@ -2597,7 +2597,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   </div>
                 </Fragment>
               )}
-              {!disabledata && user && user.name === 'District Collector' && (
+              {!disabledata && user && user.role === 'District Collector' && (
                 <Fragment>
                   <div className='form-group'>
                     Do You want to close the Case{'    '}
@@ -2607,7 +2607,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={closecase === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'District Collector'}
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     Yes{' '}
                     <Radio
@@ -2616,7 +2616,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={closecase === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'District Collector'}
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     No
                     <small>

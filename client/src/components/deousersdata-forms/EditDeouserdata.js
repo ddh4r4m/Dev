@@ -963,8 +963,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                       <small className='form-text'>
@@ -981,8 +981,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -994,8 +994,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       >
                         <option value='Dhule City'>Dhule City </option>
@@ -1033,8 +1033,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1048,8 +1048,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1063,8 +1063,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1082,8 +1082,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1099,8 +1099,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1127,8 +1127,8 @@ const EditDeouserdataById = ({
                         onChange={handleChange}
                         isDisabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1148,8 +1148,8 @@ const EditDeouserdataById = ({
                         onChange={handleIpc}
                         isDisabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1166,8 +1166,8 @@ const EditDeouserdataById = ({
                         onChange={handleSections}
                         isDisabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>{' '}
@@ -1184,16 +1184,16 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
                   {/*  */}
                   {(sectionsapplied !== null || typeofatrocity !== null) &&
                     (user &&
-                      user.name === 'District Collector' &&
-                      (user && user.name === 'Asst. Commissioner')) && (
+                      user.role === 'District Collector' &&
+                      (user && user.role === 'Asst. Commissioner')) && (
                       <div>
                         <table className='fl-table'>
                           <thead>
@@ -1718,8 +1718,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1734,8 +1734,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />{' '}
                       Should be given
@@ -1747,8 +1747,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />{' '}
                       Should not be given
@@ -1760,8 +1760,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />{' '}
                       Keep Pending
@@ -1778,9 +1778,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -1795,9 +1795,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -1811,9 +1811,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -1828,9 +1828,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Should be given
@@ -1842,9 +1842,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Should not be given
@@ -1856,9 +1856,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Keep Pending
@@ -1874,9 +1874,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -1891,9 +1891,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -1907,9 +1907,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -1925,9 +1925,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Should be given
@@ -1939,9 +1939,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Should not be given
@@ -1953,9 +1953,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Keep Pending
@@ -1970,8 +1970,8 @@ const EditDeouserdataById = ({
                         value={utrnumI}
                         onChange={e => onChange(e)}
                         disabled={
-                          (user && user.name === 'Asst. Commissioner') ||
-                          (user && user.name !== 'Data Entry Operator')
+                          (user && user.role === 'Asst. Commissioner') ||
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -1986,9 +1986,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -2003,9 +2003,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Yes
@@ -2017,9 +2017,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       No
@@ -2037,8 +2037,8 @@ const EditDeouserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />{' '}
                   Yes
@@ -2050,8 +2050,8 @@ const EditDeouserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />{' '}
                   No
@@ -2076,8 +2076,8 @@ const EditDeouserdataById = ({
                           onChange={handleChangev2}
                           isDisabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2094,8 +2094,8 @@ const EditDeouserdataById = ({
                           onChange={handleIpcv2}
                           isDisabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2112,8 +2112,8 @@ const EditDeouserdataById = ({
                           onChange={handleSectionsv2}
                           isDisabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2130,8 +2130,8 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Police' &&
-                          (user && user.name !== 'Data Entry Operator')
+                          user.role !== 'Police' &&
+                          (user && user.role !== 'Data Entry Operator')
                         }
                       />
                     </div>
@@ -2139,8 +2139,8 @@ const EditDeouserdataById = ({
                 )}
                 {(sectionsappliedv2 !== null || typeofatrocityv2 !== null) &&
                   (user &&
-                    user.name === 'District Collector' &&
-                    (user && user.name === 'Asst. Commissioner')) && (
+                    user.role === 'District Collector' &&
+                    (user && user.role === 'Asst. Commissioner')) && (
                     <div>
                       <h3>
                         Since Sections have Changed, Please Verify Whether less
@@ -2306,8 +2306,8 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -2342,8 +2342,8 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -2358,8 +2358,8 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Should be given
@@ -2371,8 +2371,8 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Should not be given
@@ -2384,8 +2384,8 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Keep Pending
@@ -2402,9 +2402,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -2418,9 +2418,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -2434,9 +2434,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -2451,9 +2451,9 @@ const EditDeouserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should be given
@@ -2465,9 +2465,9 @@ const EditDeouserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should not be given
@@ -2479,9 +2479,9 @@ const EditDeouserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Asst. Commissioner' &&
+                      user.role !== 'Asst. Commissioner' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Keep Pending
@@ -2497,9 +2497,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -2514,9 +2514,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -2530,9 +2530,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -2547,9 +2547,9 @@ const EditDeouserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should be given
@@ -2561,9 +2561,9 @@ const EditDeouserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should not be given
@@ -2575,9 +2575,9 @@ const EditDeouserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Keep Pending
@@ -2592,8 +2592,8 @@ const EditDeouserdataById = ({
                       value={utrnumII}
                       onChange={e => onChange(e)}
                       disabled={
-                        (user && user.name === 'Asst. Commissioner') ||
-                        (user && user.name !== 'Data Entry Operator')
+                        (user && user.role === 'Asst. Commissioner') ||
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -2608,9 +2608,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -2625,9 +2625,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     Yes
@@ -2639,9 +2639,9 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />{' '}
                     No
@@ -2663,8 +2663,8 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2679,8 +2679,8 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2716,8 +2716,8 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2731,8 +2731,8 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />{' '}
                         Should be given
@@ -2744,8 +2744,8 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />{' '}
                         Should not be given
@@ -2757,8 +2757,8 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />{' '}
                         Keep Pending
@@ -2775,9 +2775,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Asst. Commissioner' &&
+                            user.role !== 'Asst. Commissioner' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2792,9 +2792,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Asst. Commissioner' &&
+                            user.role !== 'Asst. Commissioner' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2808,9 +2808,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Asst. Commissioner' &&
+                            user.role !== 'Asst. Commissioner' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2825,9 +2825,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Should be given
@@ -2839,9 +2839,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Should not be given
@@ -2853,9 +2853,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Keep Pending
@@ -2871,9 +2871,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2888,9 +2888,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2904,9 +2904,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2922,9 +2922,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Should be given
@@ -2936,9 +2936,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Should not be given
@@ -2950,9 +2950,9 @@ const EditDeouserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Keep Pending
@@ -2967,8 +2967,8 @@ const EditDeouserdataById = ({
                           value={utrnumIII}
                           onChange={e => onChange(e)}
                           disabled={
-                            (user && user.name === 'Asst. Commissioner') ||
-                            (user && user.name !== 'Data Entry Operator')
+                            (user && user.role === 'Asst. Commissioner') ||
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2983,9 +2983,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Asst. Commissioner' &&
+                            user.role !== 'Asst. Commissioner' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -3001,9 +3001,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />{' '}
                         Yes
@@ -3015,9 +3015,9 @@ const EditDeouserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />{' '}
                         No
@@ -3025,7 +3025,7 @@ const EditDeouserdataById = ({
                     </div>
                   </Fragment>
                 )}
-                {!disabledata && user && user.name === 'District Collector' && (
+                {!disabledata && user && user.role === 'District Collector' && (
                   <Fragment>
                     <div className='form-group'>
                       Do You want to close the Case{'    '}
@@ -3035,7 +3035,7 @@ const EditDeouserdataById = ({
                         checked={closecase === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={user && user.name !== 'District Collector'}
+                        disabled={user && user.role !== 'District Collector'}
                       />{' '}
                       Yes{' '}
                       <Radio
@@ -3044,7 +3044,7 @@ const EditDeouserdataById = ({
                         checked={closecase === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={user && user.name !== 'District Collector'}
+                        disabled={user && user.role !== 'District Collector'}
                       />{' '}
                       No
                       <small>
@@ -3126,7 +3126,7 @@ const EditDeouserdataById = ({
           </Fragment>
         )} */}
                 {/* Sticky Button */}
-                {user && user.name === 'Asst. Commissioner' && (
+                {user && user.role === 'Asst. Commissioner' && (
                   <div className='form-group'>
                     Approve
                     <br />
@@ -3138,8 +3138,8 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Yes
@@ -3151,8 +3151,8 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     No
@@ -3164,8 +3164,8 @@ const EditDeouserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Keep Pending

@@ -567,7 +567,7 @@ const EditUserdataById = ({
     formDataa.append('sectionsappliedv2', JSON.stringify(sectionsappliedv2));
     formDataa.append('text', formData.text);
     formDataa.append('year', year);
-    if (user && user.name === 'Police') {
+    if (user && user.role === 'Police') {
       formDataa.append('returntopolice', false);
     } else {
       formDataa.append('returntopolice', formData.returntopolice);
@@ -933,7 +933,7 @@ const EditUserdataById = ({
                       name='text'
                       value={text}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.role !== 'Police'}
                     />
                     <small className='form-text'>
                       Could be the defined format of serial no
@@ -947,7 +947,7 @@ const EditUserdataById = ({
                       name='year'
                       value={year}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -956,7 +956,7 @@ const EditUserdataById = ({
                       name='policestation'
                       value={policestation}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.role !== 'Police'}
                     >
                       <option value='Dhule City'>Dhule City </option>
                       <option value='Aazadnagar' defaultValue>
@@ -991,7 +991,7 @@ const EditUserdataById = ({
                       name='crimeregisterno'
                       value={crimeregisterno}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1002,7 +1002,7 @@ const EditUserdataById = ({
                       name='dateofcrime'
                       value={dateofcrime}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1013,7 +1013,7 @@ const EditUserdataById = ({
                       name='regdateofcrime'
                       value={regdateofcrime}
                       onChange={e => onChange(e)}
-                      disabled={user && user.name !== 'Police'}
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                 </div>
@@ -1030,8 +1030,8 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -1047,8 +1047,8 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -1073,7 +1073,7 @@ const EditUserdataById = ({
                       isMulti
                       isSearchable
                       onChange={handleChange}
-                      isDisabled={user && user.name !== 'Police'}
+                      isDisabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
@@ -1090,7 +1090,7 @@ const EditUserdataById = ({
                       isMulti
                       isSearchable
                       onChange={handleIpc}
-                      isDisabled={user && user.name !== 'Police'}
+                      isDisabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
@@ -1104,7 +1104,7 @@ const EditUserdataById = ({
                       isMulti
                       isSearchable
                       onChange={handleSections}
-                      isDisabled={user && user.name !== 'Police'}
+                      isDisabled={user && user.role !== 'Police'}
                     />
                   </div>{' '}
                 </div>
@@ -1120,15 +1120,15 @@ const EditUserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'Police' &&
-                      (user && user.name !== 'Data Entry Operator')
+                      user.role !== 'Police' &&
+                      (user && user.role !== 'Data Entry Operator')
                     }
                   />
                 </div>
                 {/*  */}
                 {(sectionsapplied !== null || typeofatrocity !== null) &&
-                  ((user && user.name === 'District Collector') ||
-                    (user && user.name === 'Asst. Commissioner')) && (
+                  ((user && user.role === 'District Collector') ||
+                    (user && user.role === 'Asst. Commissioner')) && (
                     <div>
                       <br />
                       <h3>Benefits to be given if Approved at this Stage</h3>
@@ -1669,8 +1669,8 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />
                   </div>
@@ -1685,8 +1685,8 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Should be given
@@ -1698,8 +1698,8 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Should not be given
@@ -1711,8 +1711,8 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Police' &&
-                        (user && user.name !== 'Data Entry Operator')
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
                       }
                     />{' '}
                     Keep Pending
@@ -1729,9 +1729,9 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1745,9 +1745,9 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1761,9 +1761,9 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'Asst. Commissioner' &&
+                        user.role !== 'Asst. Commissioner' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1776,7 +1776,7 @@ const EditUserdataById = ({
                     checked={firstbenefitbycommis === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
+                    disabled={user && user.role !== 'Asst. Commissioner'}
                   />{' '}
                   Yes
                   <Radio
@@ -1785,7 +1785,7 @@ const EditUserdataById = ({
                     checked={firstbenefitbycommis === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
+                    disabled={user && user.role !== 'Asst. Commissioner'}
                   />{' '}
                   No
                   <Radio
@@ -1794,7 +1794,7 @@ const EditUserdataById = ({
                     checked={firstbenefitbycommis === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    disabled={user && user.name !== 'Asst. Commissioner'}
+                    disabled={user && user.role !== 'Asst. Commissioner'}
                   />{' '}
                   Pending
                 </div>
@@ -1809,9 +1809,9 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1825,9 +1825,9 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1841,9 +1841,9 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.name !== 'District Collector' &&
+                        user.role !== 'District Collector' &&
                         user &&
-                        user.name !== 'Data Entry Operator'
+                        user.role !== 'Data Entry Operator'
                       }
                     />
                   </div>
@@ -1858,9 +1858,9 @@ const EditUserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should be given
@@ -1872,9 +1872,9 @@ const EditUserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Should not be given
@@ -1886,9 +1886,9 @@ const EditUserdataById = ({
                     onChange={e => onChange(e)}
                     disabled={
                       user &&
-                      user.name !== 'District Collector' &&
+                      user.role !== 'District Collector' &&
                       user &&
-                      user.name !== 'Data Entry Operator'
+                      user.role !== 'Data Entry Operator'
                     }
                   />{' '}
                   Keep Pending
@@ -1903,7 +1903,7 @@ const EditUserdataById = ({
                         name='utrnumI'
                         value={utrnumI}
                         onChange={e => onChange(e)}
-                        disabled={user && user.name === 'Asst. Commissioner'}
+                        disabled={user && user.role === 'Asst. Commissioner'}
                       />
                     </div>
                     <div className='form-group'>
@@ -1917,9 +1917,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />
                     </div>
@@ -1934,9 +1934,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Yes
@@ -1948,9 +1948,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       No
@@ -1969,7 +1969,7 @@ const EditUserdataById = ({
                         checked={sectionschanged === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={user && user.name !== 'Police'}
+                        disabled={user && user.role !== 'Police'}
                       />{' '}
                       Yes
                       <Radio
@@ -1978,7 +1978,7 @@ const EditUserdataById = ({
                         checked={sectionschanged === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={user && user.name !== 'Police'}
+                        disabled={user && user.role !== 'Police'}
                       />{' '}
                       No
                     </div>
@@ -1999,7 +1999,7 @@ const EditUserdataById = ({
                             isMulti
                             isSearchable
                             onChange={handleChangev2}
-                            isDisabled={user && user.name !== 'Police'}
+                            isDisabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
@@ -2013,7 +2013,7 @@ const EditUserdataById = ({
                             isMulti
                             isSearchable
                             onChange={handleIpcv2}
-                            isDisabled={user && user.name !== 'Police'}
+                            isDisabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
@@ -2027,15 +2027,15 @@ const EditUserdataById = ({
                             isMulti
                             isSearchable
                             onChange={handleSectionsv2}
-                            isDisabled={user && user.name !== 'Police'}
+                            isDisabled={user && user.role !== 'Police'}
                           />
                         </div>
                       </div>
                     )}
                     {(sectionsappliedv2 !== null ||
                       typeofatrocityv2 !== null) &&
-                      ((user && user.name === 'District Collector') ||
-                        (user && user.name === 'Asst. Commissioner')) && (
+                      ((user && user.role === 'District Collector') ||
+                        (user && user.role === 'Asst. Commissioner')) && (
                         <Fragment>
                           <div>
                             <h3>
@@ -2241,7 +2241,7 @@ const EditUserdataById = ({
                           name='chargesheetdate'
                           value={chargesheetdate}
                           onChange={e => onChange(e)}
-                          disabled={user && user.name !== 'Police'}
+                          disabled={user && user.role !== 'Police'}
                         />
                       </div>
                       <div className='form-group'>
@@ -2276,8 +2276,8 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2292,8 +2292,8 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />{' '}
                         Should be given
@@ -2305,8 +2305,8 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />{' '}
                         Should not be given
@@ -2318,8 +2318,8 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Police' &&
-                            (user && user.name !== 'Data Entry Operator')
+                            user.role !== 'Police' &&
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />{' '}
                         Keep Pending
@@ -2336,9 +2336,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Asst. Commissioner' &&
+                            user.role !== 'Asst. Commissioner' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2353,9 +2353,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Asst. Commissioner' &&
+                            user.role !== 'Asst. Commissioner' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2369,9 +2369,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Asst. Commissioner' &&
+                            user.role !== 'Asst. Commissioner' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2386,9 +2386,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Should be given
@@ -2400,9 +2400,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Should not be given
@@ -2414,9 +2414,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'Asst. Commissioner' &&
+                          user.role !== 'Asst. Commissioner' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Keep Pending
@@ -2432,9 +2432,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2449,9 +2449,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2465,9 +2465,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2483,9 +2483,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Should be given
@@ -2497,9 +2497,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Should not be given
@@ -2511,9 +2511,9 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={
                           user &&
-                          user.name !== 'District Collector' &&
+                          user.role !== 'District Collector' &&
                           user &&
-                          user.name !== 'Data Entry Operator'
+                          user.role !== 'Data Entry Operator'
                         }
                       />{' '}
                       Keep Pending
@@ -2528,8 +2528,8 @@ const EditUserdataById = ({
                           value={utrnumII}
                           onChange={e => onChange(e)}
                           disabled={
-                            (user && user.name === 'Asst. Commissioner') ||
-                            (user && user.name !== 'Data Entry Operator')
+                            (user && user.role === 'Asst. Commissioner') ||
+                            (user && user.role !== 'Data Entry Operator')
                           }
                         />
                       </div>
@@ -2544,9 +2544,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'Asst. Commissioner' &&
+                            user.role !== 'Asst. Commissioner' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />
                       </div>
@@ -2561,9 +2561,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />{' '}
                         Yes
@@ -2575,9 +2575,9 @@ const EditUserdataById = ({
                           onChange={e => onChange(e)}
                           disabled={
                             user &&
-                            user.name !== 'District Collector' &&
+                            user.role !== 'District Collector' &&
                             user &&
-                            user.name !== 'Data Entry Operator'
+                            user.role !== 'Data Entry Operator'
                           }
                         />{' '}
                         No
@@ -2596,7 +2596,7 @@ const EditUserdataById = ({
                             value={benefitsgivenbyACII}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'Asst. Commissioner'
+                              user && user.role !== 'Asst. Commissioner'
                             }
                           />
                         </div>
@@ -2610,7 +2610,7 @@ const EditUserdataById = ({
                             value='yes'
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'District Collector'
+                              user && user.role !== 'District Collector'
                             }
                           />{' '}
                           Yes
@@ -2621,7 +2621,7 @@ const EditUserdataById = ({
                             value='no'
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'District Collector'
+                              user && user.role !== 'District Collector'
                             }
                           />{' '}
                           No
@@ -2648,7 +2648,7 @@ const EditUserdataById = ({
                             name='dateofcourtorder'
                             value={dateofcourtorder}
                             onChange={e => onChange(e)}
-                            disabled={user && user.name !== 'Police'}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group' style={{ flexGrow: 6 }}>
@@ -2660,7 +2660,7 @@ const EditUserdataById = ({
                             name='courtresults'
                             value={courtresults}
                             onChange={e => onChange(e)}
-                            disabled={user && user.name !== 'Police'}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -2693,7 +2693,7 @@ const EditUserdataById = ({
                             name='thirdbenefitbypolicecomment'
                             value={thirdbenefitbypolicecomment}
                             onChange={e => onChange(e)}
-                            disabled={user && user.name !== 'Police'}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -2706,8 +2706,8 @@ const EditUserdataById = ({
                             onChange={e => onChange(e)}
                             disabled={
                               user &&
-                              user.name !== 'Police' &&
-                              (user && user.name !== 'Data Entry Operator')
+                              user.role !== 'Police' &&
+                              (user && user.role !== 'Data Entry Operator')
                             }
                           />{' '}
                           Should be given
@@ -2719,8 +2719,8 @@ const EditUserdataById = ({
                             onChange={e => onChange(e)}
                             disabled={
                               user &&
-                              user.name !== 'Police' &&
-                              (user && user.name !== 'Data Entry Operator')
+                              user.role !== 'Police' &&
+                              (user && user.role !== 'Data Entry Operator')
                             }
                           />{' '}
                           Should not be given
@@ -2732,8 +2732,8 @@ const EditUserdataById = ({
                             onChange={e => onChange(e)}
                             disabled={
                               user &&
-                              user.name !== 'Police' &&
-                              (user && user.name !== 'Data Entry Operator')
+                              user.role !== 'Police' &&
+                              (user && user.role !== 'Data Entry Operator')
                             }
                           />{' '}
                           Keep Pending
@@ -2750,7 +2750,7 @@ const EditUserdataById = ({
                             value={monetarycompbyACIII}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'Asst. Commissioner'
+                              user && user.role !== 'Asst. Commissioner'
                             }
                           />
                         </div>
@@ -2764,7 +2764,7 @@ const EditUserdataById = ({
                             value={otherbenefitycompbyACIII}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'Asst. Commissioner'
+                              user && user.role !== 'Asst. Commissioner'
                             }
                           />
                         </div>
@@ -2777,7 +2777,7 @@ const EditUserdataById = ({
                             value={thirdbenefitbycommcomment}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'Asst. Commissioner'
+                              user && user.role !== 'Asst. Commissioner'
                             }
                           />
                         </div>
@@ -2790,7 +2790,7 @@ const EditUserdataById = ({
                           checked={thirdbenefitbycommis === 'yes'}
                           value='yes'
                           onChange={e => onChange(e)}
-                          disabled={user && user.name !== 'Asst. Commissioner'}
+                          disabled={user && user.role !== 'Asst. Commissioner'}
                         />{' '}
                         Should be given
                         <Radio
@@ -2799,7 +2799,7 @@ const EditUserdataById = ({
                           checked={thirdbenefitbycommis === 'no'}
                           value='no'
                           onChange={e => onChange(e)}
-                          disabled={user && user.name !== 'Asst. Commissioner'}
+                          disabled={user && user.role !== 'Asst. Commissioner'}
                         />{' '}
                         Should not be given
                         <Radio
@@ -2808,7 +2808,7 @@ const EditUserdataById = ({
                           checked={thirdbenefitbycommis === 'pending'}
                           value='pending'
                           onChange={e => onChange(e)}
-                          disabled={user && user.name !== 'Asst. Commissioner'}
+                          disabled={user && user.role !== 'Asst. Commissioner'}
                         />{' '}
                         Keep Pending
                       </div>
@@ -2822,7 +2822,7 @@ const EditUserdataById = ({
                             value={monetarycompbyDCIII}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'District Collector'
+                              user && user.role !== 'District Collector'
                             }
                           />
                         </div>
@@ -2836,7 +2836,7 @@ const EditUserdataById = ({
                             value={otherbenefitycompbyDCIII}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'District Collector'
+                              user && user.role !== 'District Collector'
                             }
                           />
                         </div>
@@ -2849,7 +2849,7 @@ const EditUserdataById = ({
                             value={thirdbenefitbycollectorcomment}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'District Collector'
+                              user && user.role !== 'District Collector'
                             }
                           />
                         </div>
@@ -2863,7 +2863,7 @@ const EditUserdataById = ({
                           checked={thirdbenefitbycollector === 'yes'}
                           value='yes'
                           onChange={e => onChange(e)}
-                          disabled={user && user.name !== 'District Collector'}
+                          disabled={user && user.role !== 'District Collector'}
                         />{' '}
                         Should be given
                         <Radio
@@ -2872,7 +2872,7 @@ const EditUserdataById = ({
                           checked={thirdbenefitbycollector === 'no'}
                           value='no'
                           onChange={e => onChange(e)}
-                          disabled={user && user.name !== 'District Collector'}
+                          disabled={user && user.role !== 'District Collector'}
                         />{' '}
                         Should not be given
                         <Radio
@@ -2881,7 +2881,7 @@ const EditUserdataById = ({
                           checked={thirdbenefitbycollector === 'pending'}
                           value='pending'
                           onChange={e => onChange(e)}
-                          disabled={user && user.name !== 'District Collector'}
+                          disabled={user && user.role !== 'District Collector'}
                         />{' '}
                         Keep Pending
                       </div>
@@ -2895,7 +2895,7 @@ const EditUserdataById = ({
                             value={utrnumIII}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name === 'Asst. Commissioner'
+                              user && user.role === 'Asst. Commissioner'
                             }
                           />
                         </div>
@@ -2909,7 +2909,7 @@ const EditUserdataById = ({
                             value={benefitsgivenbyACIII}
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'Asst. Commissioner'
+                              user && user.role !== 'Asst. Commissioner'
                             }
                           />
                         </div>
@@ -2924,7 +2924,7 @@ const EditUserdataById = ({
                             value='yes'
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'District Collector'
+                              user && user.role !== 'District Collector'
                             }
                           />{' '}
                           Yes
@@ -2935,7 +2935,7 @@ const EditUserdataById = ({
                             value='no'
                             onChange={e => onChange(e)}
                             disabled={
-                              user && user.name !== 'District Collector'
+                              user && user.role !== 'District Collector'
                             }
                           />{' '}
                           No
@@ -2943,7 +2943,7 @@ const EditUserdataById = ({
                       </div>
                     </Fragment>
                   )}
-                {!disabledata && user && user.name === 'District Collector' && (
+                {!disabledata && user && user.role === 'District Collector' && (
                   <Fragment>
                     <div className='form-group'>
                       Do You want to close the Case{'    '}

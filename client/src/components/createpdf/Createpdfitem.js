@@ -1,18 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import './table.css';
-import {
-  Page,
-  Text,
-  View,
-  Image,
-  Font,
-  Document,
-  StyleSheet,
-  PDFViewer,
-  PDFDownloadLink
-} from '@react-pdf/renderer';
+import { Text, View, StyleSheet } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
   body: {

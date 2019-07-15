@@ -10,10 +10,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+// import FormHelperText from '@material-ui/core/FormHelperText';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormLabel from '@material-ui/core/FormLabel';
 import './main.css';
 
 const useStyles = makeStyles(theme => ({
@@ -132,7 +132,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
 
   const animatedComponents = makeAnimated();
 
-  const [displaySocialInputs, toggleSocialInputs] = useState(false);
+  // const [displaySocialInputs, toggleSocialInputs] = useState(false);
   const [displayVictim, toggledisplayVictim] = useState(false);
   const [displayAccused, toggledisplayAccused] = useState(false);
   var [closethecase, toggleclossecase] = useState(false);

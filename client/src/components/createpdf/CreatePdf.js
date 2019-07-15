@@ -1,13 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import ReactDOM from 'react-dom';
+// import { Link } from 'react-router-dom';
+// import ReactDOM from 'react-dom';
 import { getUsersdata } from '../../actions/userdata';
 import Spinner from '../layout/Spinner';
 import Createpdfitem from '../../components/createpdf/Createpdfitem';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+// import Button from '@material-ui/core/Button';
+// import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router';
 
 // import './table.css';
@@ -15,18 +15,16 @@ import {
   Page,
   Text,
   View,
-  Image,
   Font,
   Document,
   StyleSheet,
   PDFViewer,
-  PDFDownloadLink,
-  BlobProvider
+  PDFDownloadLink
 } from '@react-pdf/renderer';
 
 Font.register({
-  family: 'Poppins',
-  src: 'https://fonts.googleapis.com/css?family=Poppins&display=swap'
+  family: 'Oswald',
+  src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf'
 });
 
 const styles = StyleSheet.create({

@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createMofmeeting } from '../../actions/mofmeeting';
-import makeAnimated from 'react-select/animated';
+// import makeAnimated from 'react-select/animated';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 // import Select from 'react-select';
@@ -38,7 +38,7 @@ const Mofmeeting = ({ createMofmeeting, history, auth: { user } }) => {
     description: ''
   });
 
-  const animatedComponents = makeAnimated();
+  // const animatedComponents = makeAnimated();
 
   // console.log(user && user.name === 'Sara');
 

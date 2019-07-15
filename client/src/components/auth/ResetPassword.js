@@ -4,16 +4,7 @@ import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 
-import {
-  LinkButtons,
-  updateButton,
-  homeButton,
-  loginButton,
-  HeaderBar,
-  forgotButton,
-  inputStyle,
-  SubmitButtons
-} from '../../components';
+import { HeaderBar, inputStyle } from '../../components';
 import { Button } from '@material-ui/core';
 
 const loading = {

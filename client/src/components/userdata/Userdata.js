@@ -7,15 +7,11 @@ import UserdataTop from '../userdata/UserdataTop';
 import CommentForm from '../userdata/CommentForm';
 import CommentItem from '../userdata/CommentItem';
 import RecommUser from '../userdata/RecommUser';
-import { Redirect } from 'react-router-dom';
-import {
-  createMuiTheme,
-  withStyles,
-  makeStyles
-} from '@material-ui/core/styles';
+// import { Redirect } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
-import { lightGreen, purple } from '@material-ui/core/colors';
+import { lightGreen } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -27,11 +23,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const theme = createMuiTheme({
-  palette: {
-    primary: lightGreen
-  }
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: lightGreen
+//   }
+// });
 
 const Userdata = ({
   getUserdataById,

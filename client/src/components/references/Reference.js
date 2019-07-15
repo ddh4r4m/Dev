@@ -11,6 +11,7 @@ const Reference = () => {
             <a
               href='http://socialjustice.nic.in/ViewData/Details?mid=1242&catID=113'
               target='_blank'
+              rel='noopener noreferrer'
             >
               The Scheduled Castes and the Scheduled Tribes (Prevention of
               Atrocities) Act, 1989 and its Amendment
@@ -20,12 +21,17 @@ const Reference = () => {
             <a
               href='https://indiacode.nic.in/handle/123456789/2263'
               target='_blank'
+              rel='noopener noreferrer'
             >
               The Indian Penal Code, 1860
             </a>
           </li>
           <li>
-            <a href='http://egazette.nic.in' target='_blank'>
+            <a
+              href='http://egazette.nic.in'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               The Gazette of India
             </a>
           </li>

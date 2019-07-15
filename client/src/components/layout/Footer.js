@@ -13,8 +13,8 @@ const Footer = () => {
         </h3>
 
         <p className='footer-links'>
-          <a href='#'>Home</a>·<a href='#'>Blog</a>
-          <a href='#'>About</a>·<a href='#'>Contact</a>
+          <a href='#!'>Home</a>·<a href='#!'>Blog</a>
+          <a href='#!'>About</a>·<a href='#!'>Contact</a>
         </p>
 
         <p className='footer-company-name'>

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { browserHistory } from 'react-router';
 import { createBrowserHistory } from 'history';
 
-import Navbar from './components/layout/Navbar';
+// import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
@@ -42,7 +42,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
-import Footer from './components/layout/Footer';
+// import Footer from './components/layout/Footer';
 import Reference from './components/references/Reference';
 import ReturntoPolice from './components/usersdata/ReturntoPolice';
 import NoMatch from './components/noMatch/NoMatch';

@@ -5,7 +5,6 @@ import {
   PROFILE_ERROR,
   GET_PROFILES,
   CLEAR_PROFILE,
-  DELETE_USER,
   USER_ERROR
 } from './types';
 
@@ -101,7 +100,7 @@ export const getProfileById = userId => async dispatch => {
 //Delete User
 export const deleteUser = id => async dispatch => {
   try {
-    const res = await axios.delete(`/api/profile/${id}`, id);
+    await axios.delete(`/api/profile/${id}`, id);
 
     // dispatch({
     //   type: DELETE_USER

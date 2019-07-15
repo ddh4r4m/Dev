@@ -4,7 +4,6 @@ import {
   GET_USERSDATA,
   USERDATA_ERROR,
   GET_USERDATA,
-  CLEAR_USERSDATA,
   DELETE_USERDATA,
   ADD_COMMENT,
   REMOVE_COMMENT
@@ -79,7 +78,7 @@ export const editUserdata = (
         // 'Content-Type': 'application/json'
       },
       onUploadProgress: progressEvent => {
-        var up = (progressEvent.loaded * 100) / progressEvent.total;
+        // var up = (progressEvent.loaded * 100) / progressEvent.total;
         console.log((progressEvent.loaded * 100) / progressEvent.total);
       }
     };
@@ -151,7 +150,7 @@ export const getUserdataById = userdataId => async dispatch => {
 //Delete Userdata
 export const deleteUserdata = id => async dispatch => {
   try {
-    const res = await axios.delete(`/api/userdata/${id}`);
+    await axios.delete(`/api/userdata/${id}`);
 
     dispatch({
       type: DELETE_USERDATA,
@@ -199,9 +198,7 @@ export const addComment = (userdataId, formData) => async dispatch => {
 //Delete Comment
 export const deleteComment = (userdataId, commentId) => async dispatch => {
   try {
-    const res = await axios.delete(
-      `/api/userdata/comment/${userdataId}/${commentId}`
-    );
+    await axios.delete(`/api/userdata/comment/${userdataId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMENT,

@@ -3,8 +3,6 @@ import { setAlert } from './alert';
 import {
   GET_MOFMEETING,
   MOFMEETING_ERROR,
-  CLEAR_MOFMEETING,
-  CLEAR_MOFMEETINGS,
   GET_MOFMEETINGS,
   DELETE_MOFMEETING
 } from './types';
@@ -81,7 +79,7 @@ export const editUserdata = (
         // 'Content-Type': 'application/json'
       },
       onUploadProgress: progressEvent => {
-        var up = (progressEvent.loaded * 100) / progressEvent.total;
+        // var up = (progressEvent.loaded * 100) / progressEvent.total;
         console.log((progressEvent.loaded * 100) / progressEvent.total);
       }
     };
@@ -153,7 +151,7 @@ export const getMofmeetingById = mofmeetingId => async dispatch => {
 //Delete Userdata
 export const deleteUserdata = id => async dispatch => {
   try {
-    const res = await axios.delete(`/api/userdata/${id}`);
+    await axios.delete(`/api/userdata/${id}`);
 
     dispatch({
       type: DELETE_MOFMEETING,

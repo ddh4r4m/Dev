@@ -4,7 +4,6 @@ import {
   GET_DEOUSERSDATA,
   DEOUSERDATA_ERROR,
   GET_DEOUSERDATA,
-  CLEAR_USERSDATA,
   DELETE_DEOUSERDATA,
   ADD_COMMENT,
   REMOVE_COMMENT
@@ -79,7 +78,7 @@ export const editDeouserdata = (
         // 'Content-Type': 'application/json'
       },
       onUploadProgress: progressEvent => {
-        var up = (progressEvent.loaded * 100) / progressEvent.total;
+        // var up = (progressEvent.loaded * 100) / progressEvent.total;
         console.log((progressEvent.loaded * 100) / progressEvent.total);
       }
     };
@@ -151,7 +150,7 @@ export const getDeouserdataById = deouserdataId => async dispatch => {
 //Delete Deouserdata
 export const deleteDeouserdata = id => async dispatch => {
   try {
-    const res = await axios.delete(`/api/deouserdata/${id}`);
+    await axios.delete(`/api/deouserdata/${id}`);
 
     dispatch({
       type: DELETE_DEOUSERDATA,
@@ -199,7 +198,7 @@ export const addComment = (deouserdataId, formData) => async dispatch => {
 //Delete Comment
 export const deleteComment = (deouserdataId, commentId) => async dispatch => {
   try {
-    const res = await axios.delete(
+    await axios.delete(
       `/api/deouserdata/comment/${deouserdataId}/${commentId}`
     );
 

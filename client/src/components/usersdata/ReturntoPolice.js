@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { getUsersdata } from '../../actions/userdata';
 import Spinner from '../layout/Spinner';
 import UserdataItem from '../../components/usersdata/UserdataItem';
@@ -12,30 +12,30 @@ const ReturntoPolice = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     getUsersdata();
   }, [getUsersdata]);
 
-  const [formData, setFormData] = useState({
-    search: '',
-    search1: false,
-    search2: 'yes',
-    search3: 'no'
-  });
+  // const [formData, setFormData] = useState({
+  //   search: '',
+  //   search1: false,
+  //   search2: 'yes',
+  //   search3: 'no'
+  // });
 
-  const date3 = new Date();
+  // const date3 = new Date();
   //create a date before 60 days = 5184000000 in milliseconds
-  const date5 = new Date(date3 - 5184000000);
+  // const date5 = new Date(date3 - 5184000000);
 
-  const { search, search1, search2, search3 } = formData;
+  // const { search, search1, search2, search3 } = formData;
 
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // const onChange = e =>
+  // setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const filtereddata = usersdata.filter(usersdata => {
-    const date4 = new Date(usersdata.date);
+    // const date4 = new Date(usersdata.date);
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&
-    if (date4 >= date5) {
-      return usersdata.returntopolice === false;
-    }
+    // if (date4 >= date5) {
+    return usersdata.returntopolice === false;
+    // }
     //  return (
     //   usersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
     //   usersdata.policestation.toLowerCase().indexOf(search1.toLowerCase()) !==

@@ -28,42 +28,13 @@ export const DashboardActions = () => {
           <i className='fas fa-user-circle text-primary' /> Edit Profile
         </Button>
       </Link>
-      <Link to='/create-userdata'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fab fa-black-tie text-primary' /> ADD CASE
-        </Button>
-      </Link>
-      <Link to='/usersdata'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> EDIT/VIEW CASE
-        </Button>
-      </Link>
-      <br />
-      <Link to='/usersdatastone'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> NO ACTION : 60
-          Days POLICE
-        </Button>
-      </Link>
+
       {/* <Link to='/usersdatasttwo'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES :
           60 Days POLICE
         </Button>
       </Link> */}
-      <br />
-      <Link to='/usersdatapcone'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES I:
-          Asst. Comm.
-        </Button>
-      </Link>
-      <Link to='/usersdatapctwo'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES II:
-          Asst. Comm.
-        </Button>
-      </Link>
       <br />
       <Link to='/usersdatappone'>
         <Button variant='contained' className={classes.button}>
@@ -77,11 +48,48 @@ export const DashboardActions = () => {
           60 Days POLICE
         </Button>
       </Link>
-      <br />
       <Link to='/usersdatappthree'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES
-          III: 60 Days POLICE
+          III: 1 year POLICE
+        </Button>
+      </Link>
+      <br />
+      <Link to='/usersdatapcone'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES I:
+          7 days Asst. Comm.
+        </Button>
+      </Link>
+      <Link to='/usersdatapctwo'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES II:
+          7 days Asst. Comm.
+        </Button>
+      </Link>
+      <Link to='/usersdatapcthree'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES
+          III: 7 days Asst. Comm.
+        </Button>
+      </Link>
+      <br />
+      <Link to='/usersdatadcone'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES I:
+          District Collector
+        </Button>
+      </Link>
+      <Link to='/usersdatadctwo'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES II:
+          District Collector
+        </Button>
+      </Link>
+      <Link to='/usersdatadcthree'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES
+          III: District Collector
         </Button>
       </Link>
       <br />
@@ -133,12 +141,7 @@ export const DashboardActionss = () => {
         </Button>
       </Link>
       <br />
-      <Link to='/usersdatastone'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> NO ACTION : 60
-          Days POLICE
-        </Button>
-      </Link>
+
       {/* <Link to='/usersdatasttwo'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES :
@@ -223,12 +226,7 @@ export const DashboardActionse = () => {
         </Button>
       </Link>
       <br />
-      <Link to='/usersdatastone'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> NO ACTION : 60
-          Days POLICE
-        </Button>
-      </Link>
+
       {/* <Link to='/usersdatasttwo'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES :

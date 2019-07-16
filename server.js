@@ -2,12 +2,15 @@ const express = require('express');
 const app = express();
 const connectDB = require('./config/db');
 const path = require('path');
-//Connect Database
-connectDB();
 
 //Init MiddlewARE
 //app.use('bosy-parser.json()');  <--- Old Version
+
+// app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.json({ extended: false }));
+//Connect Database
+connectDB();
+
 app.use('/uploads', express.static('uploads'));
 app.use('/mofmeeting', express.static('mofmeeting'));
 
@@ -20,6 +23,11 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/userdata', require('./routes/api/userdata'));
 app.use('/api/deouserdata', require('./routes/api/deouserdata'));
 app.use('/api/mofmeeting', require('./routes/api/mofmeeting'));
+
+//fix cannot GET
+// app.get('*', function (request, response){
+//     response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+//   })
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 

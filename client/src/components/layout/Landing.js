@@ -29,7 +29,7 @@ const Landing = ({ isAuthenticated }) => {
           <div className='landing-inner'>
             <Typist cursor={{ show: false, blink: true }}>
               <h1 className='x-large'>
-                Atrocity <br /> Act Help
+                Atrocity Cases <br /> Monitoring <br /> System
               </h1>
             </Typist>
             {/* <img src="" alt=""/> */}
@@ -38,10 +38,10 @@ const Landing = ({ isAuthenticated }) => {
               alt='Emblem of India'
               src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/256px-Emblem_of_India.svg.png'
             />
-            <p className='lead'>
-              File a FIR under Atrocity Act Protection and get help from other
-              officials
+            <p className='lead' style={{ fontSize: '37px' }}>
+              Official Software for Dhule District, Maharashtra
             </p>
+            <p className='lead'>Strictly for Officials Only</p>
             <div style={{ marginLeft: '5px' }}>
               <Button
                 variant='contained'

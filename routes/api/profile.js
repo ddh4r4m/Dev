@@ -38,7 +38,7 @@ router.post(
     check('status', 'Status is required')
       .not()
       .isEmpty(),
-    check('skills', 'Skills is required')
+    check('designation', 'Designation is required')
       .not()
       .isEmpty()
   ],
@@ -49,11 +49,18 @@ router.post(
     }
 
     const {
+      name,
+      officeaddrss,
+      personalmobno,
+      officemobno,
+      emailidpersonal,
+      emailidoffice,
+      dateofjoining,
       company,
       website,
       location,
       status,
-      skills,
+      designation,
       githubusername,
       bio
     } = req.body;
@@ -61,8 +68,15 @@ router.post(
     //Build Profile object
     const profileFields = {};
     profileFields.user = req.user.id;
+    if (name) profileFields.name = name;
+    if (officeaddrss) profileFields.officeaddrss = officeaddrss;
+    if (personalmobno) profileFields.personalmobno = personalmobno;
+    if (officemobno) profileFields.officemobno = officemobno;
+    if (emailidpersonal) profileFields.emailidpersonal = emailidpersonal;
+    if (emailidoffice) profileFields.emailidoffice = emailidoffice;
+    if (dateofjoining) profileFields.dateofjoining = dateofjoining;
     if (status) profileFields.status = status;
-    if (skills) profileFields.skills = skills;
+    if (designation) profileFields.designation = designation;
     if (company) profileFields.company = company;
     if (website) profileFields.website = website;
     if (location) profileFields.location = location;

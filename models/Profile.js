@@ -4,6 +4,34 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
+  name: {
+    type: String,
+    default: ''
+  },
+  officeaddrss: {
+    type: String,
+    default: ''
+  },
+  personalmobno: {
+    type: String,
+    default: ''
+  },
+  officemobno: {
+    type: String,
+    default: ''
+  },
+  emailidpersonal: {
+    type: String,
+    default: ''
+  },
+  emailidoffice: {
+    type: String,
+    default: ''
+  },
+  dateofjoining: {
+    type: String,
+    default: ''
+  },
   company: {
     type: String
   },
@@ -23,7 +51,7 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  skills: {
+  designation: {
     type: String,
     required: true
   },

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { browserHistory } from 'react-router';
-import { createBrowserHistory } from 'history';
+//} from 'history';
 
 // import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
@@ -51,6 +51,10 @@ import ForgotPassword from './components/auth/ForgotPassword';
 import PrivateRouteI from './components/routing/PrivateRouteI';
 import PrivateRouteII from './components/routing/PrivateRouteII';
 import PrivateRouteIII from './components/routing/PrivateRouteIII';
+import UsersdataPCthree from './components/usersdata/UsersdataPCthree';
+import UsersdataDCone from './components/usersdata/UsersdataDCone';
+import UsersdataDCthree from './components/usersdata/UsersdataDCthree';
+import UsersdataDCtwo from './components/usersdata/UsersdataDCtwo';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -63,7 +67,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Router history={createBrowserHistory}>
+      <Router>
         <Fragment>
           {/* <Navbar /> */}
           {/* <section className='container'> */}
@@ -146,6 +150,26 @@ const App = () => {
               exact
               path='/usersdatapctwo'
               component={WithNavbar(UsersdataPCtwo)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatapcthree'
+              component={WithNavbar(UsersdataPCthree)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatadcone'
+              component={WithNavbar(UsersdataDCone)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatadctwo'
+              component={WithNavbar(UsersdataDCtwo)}
+            />
+            <PrivateRoute
+              exact
+              path='/usersdatadcthree'
+              component={WithNavbar(UsersdataDCthree)}
             />
             <PrivateRoute
               exact

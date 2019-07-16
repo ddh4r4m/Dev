@@ -96,7 +96,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <div className='container'>
+    <div style={{ margin: '100px 50px' }}>
       {searchbox && (
         <div>
           <input
@@ -190,11 +190,15 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
         <table className='fl-table'>
           <thead>
             <tr>
-              <th>YEAR</th>
               <th>Serial No.</th>
+              <th>YEAR</th>
               <th>POLICE STATION</th>
-              <th>Register No.</th>
-              <th>Nature </th>
+              <th>DATE OF CRIME</th>
+              <th>FIR No.</th>
+              <th>SUMMARY </th>
+              <th>TYPE OF CRIME </th>
+              <th>IPC </th>
+              <th>Sections </th>
               <th>Button </th>
             </tr>
           </thead>

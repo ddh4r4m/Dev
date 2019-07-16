@@ -52,7 +52,7 @@ const UserdataSchema = new mongoose.Schema({
       }
     }
   ],
-  year: {
+  firno: {
     type: String
   },
   disabledata: {

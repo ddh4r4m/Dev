@@ -86,7 +86,7 @@ router.post(
       const user = await User.findById(req.user.id).select('-password');
       const newUserdata = new Userdata({
         text: req.body.text,
-        year: req.body.year,
+        firno: req.body.firno,
         returntopolice: req.body.returntopolice,
         docImage:
           req.files['docImage'] == undefined
@@ -315,7 +315,7 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       return res.status(404).json({ msg: 'userdata not found' });
     } else {
       userdata.text = req.body.text;
-      userdata.year = req.body.year;
+      userdata.firno = req.body.firno;
       userdata.returntopolice = req.body.returntopolice;
       userdata.disabledata = req.body.disabledata;
       userdata.othersections = req.body.othersections;

@@ -33,7 +33,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
   const classes = useStyles();
   const [formData, setFormData] = useState({
     text: '',
-    year: '',
+    firno: '',
     returntopolice: false,
     policestation: 'Dhule City',
     crimeregisterno: '',
@@ -141,7 +141,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
 
   const {
     text,
-    year,
+    firno,
     returntopolice,
     policestation,
     crimeregisterno,
@@ -281,7 +281,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     formDataa.append('ipcappliedv2', JSON.stringify(ipcappliedv2));
     formDataa.append('sectionsappliedv2', JSON.stringify(sectionsappliedv2));
     formDataa.append('text', formData.text);
-    formDataa.append('year', year);
+    formDataa.append('firno', firno);
     formDataa.append('returntopolice', returntopolice);
     formDataa.append('policestation', policestation);
     formDataa.append('crimeregisterno', crimeregisterno);
@@ -571,12 +571,12 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     </small>
                   </div>
                   <div className='form-group'>
-                    Year of Crime
+                    FIR No
                     <input
-                      type='date'
-                      placeholder='Year of Crime'
-                      name='year'
-                      value={year}
+                      type='text'
+                      placeholder='FIR No.'
+                      name='firno'
+                      value={firno}
                       onChange={e => onChange(e)}
                       disabled={
                         user &&

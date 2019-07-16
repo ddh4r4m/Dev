@@ -86,7 +86,7 @@ router.post(
       const user = await User.findById(req.user.id).select('-password');
       const newDeouserdata = new Deouserdata({
         text: req.body.text,
-        year: req.body.year,
+        firno: req.body.firno,
         docImage:
           req.files['docImage'] == undefined
             ? ''
@@ -315,7 +315,7 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       return res.status(404).json({ msg: 'userdata not found' });
     } else {
       deouserdata.text = req.body.text;
-      deouserdata.year = req.body.year;
+      deouserdata.firno = req.body.firno;
       deouserdata.disabledata = req.body.disabledata;
       deouserdata.othersections = req.body.othersections;
       deouserdata.othersectionsv2 = req.body.othersectionsv2;

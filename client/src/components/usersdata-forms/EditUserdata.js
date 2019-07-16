@@ -34,7 +34,7 @@ const EditUserdataById = ({
 }) => {
   const [formData, setFormData] = useState({
     text: '',
-    year: '',
+    firno: '',
     returntopolice: false,
     policestation: 'Dhule City',
     crimeregisterno: '',
@@ -151,7 +151,7 @@ const EditUserdataById = ({
 
     setFormData({
       text: loading || !userdata.text ? '' : userdata.text,
-      year: loading || !userdata.year ? '' : userdata.year,
+      firno: loading || !userdata.firno ? '' : userdata.firno,
       returntopolice:
         loading || !userdata.returntopolice ? false : userdata.returntopolice,
       policestation:
@@ -457,7 +457,7 @@ const EditUserdataById = ({
 
   const {
     text,
-    year,
+    firno,
     returntopolice,
     policestation,
     crimeregisterno,
@@ -566,7 +566,7 @@ const EditUserdataById = ({
     formDataa.append('ipcappliedv2', JSON.stringify(ipcappliedv2));
     formDataa.append('sectionsappliedv2', JSON.stringify(sectionsappliedv2));
     formDataa.append('text', formData.text);
-    formDataa.append('year', year);
+    formDataa.append('firno', firno);
     if (user && user.role === 'Police') {
       formDataa.append('returntopolice', false);
     } else {
@@ -940,12 +940,12 @@ const EditUserdataById = ({
                     </small>
                   </div>
                   <div className='form-group'>
-                    Year of Crime
+                    FIR No
                     <input
-                      type='date'
-                      placeholder='Year of Crime'
-                      name='year'
-                      value={year}
+                      type='text'
+                      placeholder='FIR No.'
+                      name='firno'
+                      value={firno}
                       onChange={e => onChange(e)}
                       disabled={user && user.role !== 'Police'}
                     />
@@ -1129,6 +1129,147 @@ const EditUserdataById = ({
                 {(sectionsapplied !== null || typeofatrocity !== null) &&
                   ((user && user.role === 'District Collector') ||
                     (user && user.role === 'Asst. Commissioner')) && (
+                    <Fragment>
+                      <div>
+                        <br />
+                        <h3>Benefits to be given if Approved at this Stage</h3>
+                        <table className='fl-table'>
+                          <thead>
+                            <tr>
+                              <th>Section</th>
+                              <th>Compensation</th>
+                              <th>First Stage</th>
+                              <th>Second Stage</th>
+                              <th>Third Stage</th>
+                              <th>Extra Details/Benefits</th>
+                            </tr>
+                          </thead>
+                          <tbody style={{ overflow: 'scroll' }}>
+                            {sectionsapplied !== null ? (
+                              sectionsapplied.map((sectionn, i) => (
+                                <Fragment>
+                                  <tr>
+                                    <td>{sectionn.label}</td>
+                                    <td>
+                                      {sectionn.compensation <= 0
+                                        ? '-'
+                                        : sectionn.compensation}
+                                    </td>
+                                    <td>
+                                      {sectionn.firststage <= 0
+                                        ? '-'
+                                        : sectionn.compensation *
+                                          sectionn.firststage}
+                                    </td>
+                                    <td>
+                                      {sectionn.secondstage <= 0
+                                        ? '-'
+                                        : sectionn.compensation *
+                                          sectionn.secondstage}
+                                    </td>
+                                    <td>
+                                      {sectionn.thirdstage <= 0
+                                        ? '-'
+                                        : sectionn.compensation *
+                                          sectionn.thirdstage}
+                                    </td>
+                                    <td>{sectionn.extradetails}</td>
+                                  </tr>
+                                </Fragment>
+                              ))
+                            ) : (
+                              <tr>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                              </tr>
+                            )}
+                            {typeofatrocity !== null ? (
+                              typeofatrocity.map((sectionn, i) => (
+                                <Fragment>
+                                  <tr>
+                                    <td>{sectionn.label}</td>
+                                    <td>
+                                      {sectionn.compensation <= 0
+                                        ? '-'
+                                        : sectionn.compensation}
+                                    </td>
+                                    <td>
+                                      {sectionn.firststage <= 0
+                                        ? '-'
+                                        : sectionn.compensation *
+                                          sectionn.firststage}
+                                    </td>
+                                    <td>
+                                      {sectionn.secondstage <= 0
+                                        ? '-'
+                                        : sectionn.compensation *
+                                          sectionn.secondstage}
+                                    </td>
+                                    <td>
+                                      {sectionn.thirdstage <= 0
+                                        ? '-'
+                                        : sectionn.compensation *
+                                          sectionn.thirdstage}
+                                    </td>
+                                    <td>{sectionn.extradetails}</td>
+                                  </tr>
+                                </Fragment>
+                              ))
+                            ) : (
+                              <tr>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                                <td>No Data</td>
+                              </tr>
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Recommendation</h4>
+                        {maxCompensation !== 0 ? (
+                          <Fragment>
+                            <table className='fl-table'>
+                              <thead>
+                                <tr>
+                                  <th>Compensation</th>
+                                  <th>First Stage</th>
+                                  <th>Second Stage</th>
+                                  <th>Third Stage</th>
+                                  <th>Extra Details/Benefits</th>
+                                </tr>
+                              </thead>
+                              <tbody style={{ overflow: 'scroll' }}>
+                                <tr>
+                                  <td>{maxCompensation}</td>
+                                  <td>{maxCompI === 0 ? '-' : maxCompI}</td>
+                                  <td>{maxCompII === 0 ? '-' : maxCompII}</td>
+                                  <td>{maxCompIII === 0 ? '-' : maxCompIII}</td>
+                                  <td style={{ textAlign: 'left' }}>
+                                    {extrabenefits.map((e1da, i) => (
+                                      <li>{extrabenefits[i]}</li>
+                                    ))}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </Fragment>
+                        ) : (
+                          ''
+                        )}
+                      </div>
+                    </Fragment>
+                  )}
+                {/* {(sectionsapplied !== null || typeofatrocity !== null) &&
+                  ((user && user.role === 'District Collector') ||
+                    (user && user.role === 'Asst. Commissioner')) && (
                     <div>
                       <br />
                       <h3>Benefits to be given if Approved at this Stage</h3>
@@ -1265,7 +1406,7 @@ const EditUserdataById = ({
                         ''
                       )}
                     </div>
-                  )}
+                  )} */}
                 <div className='my-2'>
                   <Button
                     onClick={() => toggledisplayVictim(!displayVictim)}
@@ -3059,18 +3200,20 @@ const EditUserdataById = ({
                       type='submit'
                       className='btn btn-primary my-1'
                     />{' '}
-                    <Button
-                      variant='contained'
-                      color='secondary'
-                      className={classes.button}
-                      onClick={e => (
-                        (formData.returntopolice = true),
-                        console.log(returntopolice),
-                        onSubmit(e)
-                      )}
-                    >
-                      Return
-                    </Button>
+                    {user && user.role === 'Asst. Commissioner' && (
+                      <Button
+                        variant='contained'
+                        color='secondary'
+                        className={classes.button}
+                        onClick={e => (
+                          (formData.returntopolice = true),
+                          console.log(returntopolice),
+                          onSubmit(e)
+                        )}
+                      >
+                        Return
+                      </Button>
+                    )}
                   </Fragment>
                 )}
                 <Link to='/dashboard' className='btn btn-light my-1'>

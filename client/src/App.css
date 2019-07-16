@@ -310,6 +310,59 @@ button {
 .form .social-input i.fa-linkedin {
   color: #0077b5;
 }
+/* Forms v2 */
+.formv .formv-group {
+  margin: 1.2rem 1rem;
+}
+
+.formv .formv-text {
+  display: flex;
+  margin-top: 0.3rem;
+  color: #888;
+}
+
+.formv input[type='text'],
+.formv input[type='email'],
+.formv input[type='password'],
+.formv input[type='date'],
+.formv select,
+.formv textarea {
+  display: flex;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+
+.formv input[type='submit'],
+button {
+  font: inherit;
+}
+
+.formv .social-input {
+  display: flex;
+}
+
+.formv .social-input i {
+  padding: 0.5rem;
+  width: 4rem;
+}
+
+.formv .social-input i.fa-twitter {
+  color: #38a1f3;
+}
+.formv .social-input i.fa-facebook {
+  color: #3b5998;
+}
+.formv .social-input i.fa-instagram {
+  color: #3f729b;
+}
+.formv .social-input i.fa-youtube {
+  color: #c4302b;
+}
+.formv .social-input i.fa-linkedin {
+  color: #0077b5;
+}
 
 .table th,
 .table td {

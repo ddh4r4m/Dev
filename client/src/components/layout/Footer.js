@@ -31,13 +31,15 @@ const Footer = () => {
 
         <div>
           <i className='fa fa-phone' />
-          <p>+1 555 123456</p>
+          <p>02562 288 701</p>
         </div>
 
         <div>
           <i className='fa fa-envelope' />
           <p>
-            <a href='mailto:support@company.com'>support@atrocityact.com</a>
+            <a href='mailto:collector.dhule@maharashtra.gov.in'>
+              collector.dhule@maharashtra.gov.in
+            </a>
           </p>
         </div>
       </div>

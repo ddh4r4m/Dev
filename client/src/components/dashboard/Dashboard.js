@@ -47,7 +47,7 @@ const Dashboard = ({
   ) : (
     <Fragment>
       <div className='dashboardbackground'>
-        <div style={{ margin: '10% 15%' }}>
+        <div style={{ margin: '10% 10%' }}>
           <img className='circlee' alt='circle' src={circlee} />
           <img className='square' alt='circle' src={square} />
           <img className='triangle' alt='circle' src={triangle} />

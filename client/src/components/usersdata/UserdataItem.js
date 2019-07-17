@@ -31,7 +31,8 @@ const ProfileItem = ({
     dateofcrime,
     typeofatrocity,
     ipcapplied,
-    sectionsapplied
+    sectionsapplied,
+    othersections
   }
 }) => {
   const tatro = JSON.parse(typeofatrocity);
@@ -45,7 +46,6 @@ const ProfileItem = ({
         <td>{policestation}</td>
         <td>{dateofcrime}</td>
         <td>{firno}</td>
-        <td>{natureofcrime}</td>
 
         <td style={{ textAlign: 'left' }}>
           {tatro !== null
@@ -68,6 +68,7 @@ const ProfileItem = ({
               })
             : ''}
         </td>
+        <td>{othersections}</td>
         <td>
           <Link to={`/userdata/${_id}`}>
             <Button variant='contained' color='primary'>

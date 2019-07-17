@@ -10,6 +10,7 @@ const EditProfile = ({
   getCurrentProfile,
   history
 }) => {
+  var formDataa = new FormData();
   const [formData, setFormData] = useState({
     name: '',
     officeaddrss: '',
@@ -29,7 +30,8 @@ const EditProfile = ({
     facebook: '',
     linkedin: '',
     youtube: '',
-    instagram: ''
+    instagram: '',
+    photo: ''
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -40,6 +42,7 @@ const EditProfile = ({
     //Fill the form with Current VAlues
     setFormData({
       name: loading || !profile.name ? '' : profile.name,
+      photo: loading || !profile.photo ? '' : profile.photo,
       officeaddrss:
         loading || !profile.officeaddrss ? '' : profile.officeaddrss,
       personalmobno:
@@ -81,7 +84,8 @@ const EditProfile = ({
     facebook,
     linkedin,
     youtube,
-    instagram
+    instagram,
+    photo
   } = formData;
 
   const onChange = e =>
@@ -89,7 +93,27 @@ const EditProfile = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    createProfile(formData, history, true);
+    formDataa.append('name', name);
+    formDataa.append('officeaddrss', officeaddrss);
+    formDataa.append('personalmobno', personalmobno);
+    formDataa.append('officemobno', officemobno);
+    formDataa.append('emailidpersonal', emailidpersonal);
+    formDataa.append('emailidoffice', emailidoffice);
+    formDataa.append('dateofjoining', dateofjoining);
+    formDataa.append('company', company);
+    formDataa.append('website', website);
+    formDataa.append('location', location);
+    formDataa.append('status', status);
+    formDataa.append('designation', designation);
+    formDataa.append('githubusername', githubusername);
+    formDataa.append('bio', bio);
+    formDataa.append('twitter', twitter);
+    formDataa.append('facebook', facebook);
+    formDataa.append('linkedin', linkedin);
+    formDataa.append('youtube', youtube);
+    formDataa.append('instagram', instagram);
+    formDataa.append('photo', formData.photo);
+    createProfile(formDataa, history, true);
   };
   return (
     <div className='container'>
@@ -104,9 +128,9 @@ const EditProfile = ({
           <div className='form-group'>
             <select name='status' value={status} onChange={e => onChange(e)}>
               <option value='0'>* Select Professional Status</option>
-              <option value='Developer'>Police</option>
-              <option value='Junior Developer'>Asst. Commisioner</option>
-              <option value='Senior Developer'>District Collector</option>
+              <option value='Police'>Police</option>
+              <option value='Asst. Commisioner'>Asst. Commisioner</option>
+              <option value='District Collector'>District Collector</option>
               <option value='Other'>Other</option>
             </select>
             <small className='form-text'>
@@ -124,6 +148,22 @@ const EditProfile = ({
               name='name'
               value={name}
               onChange={e => onChange(e)}
+            />
+          </div>
+          <div className='form-group'>
+            <h4>
+              {' '}
+              Upload Profile Pic <br />
+            </h4>
+            <input
+              type='file'
+              name='photo'
+              onChange={e => {
+                const vall = e.target.files[0];
+                setFormData(prevState => {
+                  return { ...prevState, photo: vall };
+                });
+              }}
             />
           </div>
           <div className='form-group'>

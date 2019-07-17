@@ -26,9 +26,9 @@ const Landing = ({ isAuthenticated }) => {
     <Fragment>
       <section className='landing'>
         <div className='light-overlay'>
-          <div className='landing-inner'>
+          <div className='landing-inner' style={{ marginTop: '2%' }}>
             <Typist cursor={{ show: false, blink: true }}>
-              <h1 className='x-large'>
+              <h1 style={{ fontSize: '75px', lineHeight: '105%' }}>
                 Atrocity Cases <br /> Monitoring <br /> System
               </h1>
             </Typist>
@@ -38,10 +38,12 @@ const Landing = ({ isAuthenticated }) => {
               alt='Emblem of India'
               src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/256px-Emblem_of_India.svg.png'
             />
-            <p className='lead' style={{ fontSize: '37px' }}>
+            <p className='lead' style={{ fontSize: '30px' }}>
               Official Software for Dhule District, Maharashtra
             </p>
-            <p className='lead'>Strictly for Officials Only</p>
+            <p className='lead' style={{ marginTop: '-15px' }}>
+              Strictly for Officials Only
+            </p>
             <div style={{ marginLeft: '5px' }}>
               <Button
                 variant='contained'

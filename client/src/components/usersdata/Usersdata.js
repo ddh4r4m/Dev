@@ -195,10 +195,10 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
               <th>POLICE STATION</th>
               <th>DATE OF CRIME</th>
               <th>FIR No.</th>
-              <th>SUMMARY </th>
               <th>TYPE OF CRIME </th>
               <th>IPC </th>
               <th>Sections </th>
+              <th>Other Sections </th>
               <th>Button </th>
             </tr>
           </thead>

@@ -36,11 +36,14 @@ const EditUserdataById = ({
     text: '',
     firno: '',
     returntopolice: false,
+    returntopolicecomment: '',
     policestation: 'Dhule City',
     crimeregisterno: '',
     dateofcrime: '',
     regdateofcrime: '',
     victimdetails: '',
+    accuseddetails: '',
+    complainantdetails: '',
     natureofcrime: '',
     utrnumI: '',
     utrnumII: '',
@@ -63,27 +66,27 @@ const EditUserdataById = ({
     otherbenefitycompbyACI: '',
     otherbenefitycompbyACII: '',
     otherbenefitycompbyACIII: '',
-    firstbenefitbypolice: '',
-    firstbenefitbycommis: '',
-    firstbenefitbycollector: '',
+    firstbenefitbypolice: 'pending',
+    firstbenefitbycommis: 'pending',
+    firstbenefitbycollector: 'pending',
     firstbenefitbypolicedate: '',
     firstbenefitbycommisdate: '',
     firstbenefitbycollectordate: '',
     firstbenefitbypolicecomment: '',
     firstbenefitbycommcomment: '',
     firstbenefitbycollectorcomment: '',
-    secondbenefitbypolice: '',
-    secondbenefitbycommis: '',
-    secondbenefitbycollector: '',
+    secondbenefitbypolice: 'pending',
+    secondbenefitbycommis: 'pending',
+    secondbenefitbycollector: 'pending',
     secondbenefitbypolicedate: '',
     secondbenefitbycommisdate: '',
     secondbenefitbycollectordate: '',
     secondbenefitbypolicecomment: '',
     secondbenefitbycommcomment: '',
     secondbenefitbycollectorcomment: '',
-    thirdbenefitbypolice: '',
-    thirdbenefitbycommis: '',
-    thirdbenefitbycollector: '',
+    thirdbenefitbypolice: 'pending',
+    thirdbenefitbycommis: 'pending',
+    thirdbenefitbycollector: 'pending',
     thirdbenefitbypolicedate: '',
     thirdbenefitbycommisdate: '',
     thirdbenefitbycollectordate: '',
@@ -152,8 +155,16 @@ const EditUserdataById = ({
     setFormData({
       text: loading || !userdata.text ? '' : userdata.text,
       firno: loading || !userdata.firno ? '' : userdata.firno,
+      othersections:
+        loading || !userdata.othersections ? '' : userdata.othersections,
+      othersectionsv2:
+        loading || !userdata.othersectionsv2 ? '' : userdata.othersectionsv2,
       returntopolice:
         loading || !userdata.returntopolice ? false : userdata.returntopolice,
+      returntopolicecomment:
+        loading || !userdata.returntopolicecomment
+          ? ''
+          : userdata.returntopolicecomment,
       policestation:
         loading || !userdata.policestation ? '' : userdata.policestation,
       crimeregisterno:
@@ -163,17 +174,23 @@ const EditUserdataById = ({
         loading || !userdata.regdateofcrime ? '' : userdata.regdateofcrime,
       victimdetails:
         loading || !userdata.victimdetails ? '' : userdata.victimdetails,
+      accuseddetails:
+        loading || !userdata.accuseddetails ? '' : userdata.accuseddetails,
+      complainantdetails:
+        loading || !userdata.complainantdetails
+          ? ''
+          : userdata.complainantdetails,
       firstbenefitbypolice:
         loading || !userdata.firstbenefitbypolice
-          ? ''
+          ? 'pending'
           : userdata.firstbenefitbypolice,
       firstbenefitbycommis:
         loading || !userdata.firstbenefitbycommis
-          ? ''
+          ? 'pending'
           : userdata.firstbenefitbycommis,
       firstbenefitbycollector:
         loading || !userdata.firstbenefitbycollector
-          ? ''
+          ? 'pending'
           : userdata.firstbenefitbycollector,
       firstbenefitbypolicedate:
         loading || !userdata.firstbenefitbypolicedate
@@ -201,15 +218,15 @@ const EditUserdataById = ({
           : userdata.firstbenefitbycollectorcomment,
       secondbenefitbypolice:
         loading || !userdata.secondbenefitbypolice
-          ? ''
+          ? 'pendingpending'
           : userdata.secondbenefitbypolice,
       secondbenefitbycommis:
         loading || !userdata.secondbenefitbycommis
-          ? ''
+          ? 'pendingpending'
           : userdata.secondbenefitbycommis,
       secondbenefitbycollector:
         loading || !userdata.secondbenefitbycollector
-          ? ''
+          ? 'pendingpending'
           : userdata.secondbenefitbycollector,
       secondbenefitbypolicedate:
         loading || !userdata.secondbenefitbypolicedate
@@ -459,11 +476,14 @@ const EditUserdataById = ({
     text,
     firno,
     returntopolice,
+    returntopolicecomment,
     policestation,
     crimeregisterno,
     dateofcrime,
     regdateofcrime,
     victimdetails,
+    accuseddetails,
+    complainantdetails,
     natureofcrime,
     utrnumI,
     utrnumII,
@@ -571,12 +591,15 @@ const EditUserdataById = ({
       formDataa.append('returntopolice', false);
     } else {
       formDataa.append('returntopolice', formData.returntopolice);
+      formDataa.append('returntopolicecomment', formData.returntopolicecomment);
     }
     formDataa.append('policestation', policestation);
     formDataa.append('crimeregisterno', crimeregisterno);
     formDataa.append('dateofcrime', dateofcrime);
     formDataa.append('regdateofcrime', regdateofcrime);
     formDataa.append('victimdetails', victimdetails);
+    formDataa.append('accuseddetails', accuseddetails);
+    formDataa.append('complainantdetails', complainantdetails);
     formDataa.append('natureofcrime', natureofcrime);
     formDataa.append('utrnumI', utrnumI);
     formDataa.append('utrnumII', utrnumII);
@@ -1027,6 +1050,42 @@ const EditUserdataById = ({
                       placeholder='Details of Victim'
                       name='victimdetails'
                       value={victimdetails}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Details of Accused
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Details of Accused'
+                      name='accuseddetails'
+                      value={accuseddetails}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Details of Complainant
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Details of Complainant'
+                      name='complainantdetails'
+                      value={complainantdetails}
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
@@ -3182,6 +3241,39 @@ const EditUserdataById = ({
             </div>
           </Fragment>
         )} */}
+                {user && user.role === 'Asst. Commissioner' && (
+                  <Fragment>
+                    <div className='form-group'>
+                      Comment for Return/Re-Examination of this Case
+                      <textarea
+                        type='text'
+                        placeholder='Reason for re-examination of this Case '
+                        name='returntopolicecomment'
+                        value={returntopolicecomment}
+                        onChange={e => onChange(e)}
+                        disabled={
+                          user &&
+                          user.role !== 'Asst. Commissioner' &&
+                          user &&
+                          user.role !== 'Data Entry Operator'
+                        }
+                      />
+                    </div>
+                    <Button
+                      variant='contained'
+                      color='secondary'
+                      className={classes.button}
+                      onClick={e => (
+                        (formData.returntopolice = true),
+                        console.log(returntopolice),
+                        onSubmit(e)
+                      )}
+                    >
+                      Return
+                    </Button>
+                    or
+                  </Fragment>
+                )}
                 <div className='icon-bar'>
                   {!closethecase && (
                     <Fragment>
@@ -3200,20 +3292,6 @@ const EditUserdataById = ({
                       type='submit'
                       className='btn btn-primary my-1'
                     />{' '}
-                    {user && user.role === 'Asst. Commissioner' && (
-                      <Button
-                        variant='contained'
-                        color='secondary'
-                        className={classes.button}
-                        onClick={e => (
-                          (formData.returntopolice = true),
-                          console.log(returntopolice),
-                          onSubmit(e)
-                        )}
-                      >
-                        Return
-                      </Button>
-                    )}
                   </Fragment>
                 )}
                 <Link to='/dashboard' className='btn btn-light my-1'>

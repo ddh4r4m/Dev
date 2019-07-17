@@ -40,6 +40,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     dateofcrime: '',
     regdateofcrime: '',
     victimdetails: '',
+    accuseddetails: '',
+    complainantdetails: '',
     natureofcrime: '',
     utrnumI: '',
     utrnumII: '',
@@ -148,6 +150,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     dateofcrime,
     regdateofcrime,
     victimdetails,
+    accuseddetails,
+    complainantdetails,
     natureofcrime,
     utrnumI,
     utrnumII,
@@ -288,6 +292,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     formDataa.append('dateofcrime', dateofcrime);
     formDataa.append('regdateofcrime', regdateofcrime);
     formDataa.append('victimdetails', victimdetails);
+    formDataa.append('accuseddetails', accuseddetails);
+    formDataa.append('complainantdetails', complainantdetails);
     formDataa.append('natureofcrime', natureofcrime);
     formDataa.append('utrnumI', utrnumI);
     formDataa.append('utrnumII', utrnumII);
@@ -678,6 +684,42 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       placeholder='Details of Victim'
                       name='victimdetails'
                       value={victimdetails}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                  <div className='form-group'>
+                    Details of Accused
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Details of Accused'
+                      name='accuseddetails'
+                      value={accuseddetails}
+                      onChange={e => onChange(e)}
+                      disabled={
+                        user &&
+                        user.role !== 'Police' &&
+                        (user && user.role !== 'Data Entry Operator')
+                      }
+                    />
+                  </div>
+                </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Details of Complainant
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Details of Complainant'
+                      name='complainantdetails'
+                      value={complainantdetails}
                       onChange={e => onChange(e)}
                       disabled={
                         user &&

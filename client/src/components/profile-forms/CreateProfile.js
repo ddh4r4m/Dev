@@ -72,9 +72,9 @@ const CreateProfile = ({ createProfile, history }) => {
           <div className='form-group'>
             <select name='status' value={status} onChange={e => onChange(e)}>
               <option value='0'>* Select Professional Status</option>
-              <option value='Developer'>Police</option>
-              <option value='Junior Developer'>Asst. Commisioner</option>
-              <option value='Senior Developer'>District Collector</option>
+              <option value='Police'>Police</option>
+              <option value='Asst. Commisioner'>Asst. Commisioner</option>
+              <option value='District Collector'>District Collector</option>
               <option value='Other'>Other</option>
             </select>
             <small className='form-text'>

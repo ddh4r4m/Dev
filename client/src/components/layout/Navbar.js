@@ -30,7 +30,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <span className='hide-sm'> Profiles</span>
         </Link>
       </li>
-
+      <li>
+        <a href='/references'>
+          <i className='fas fa-file-alt' />
+          <span className='hide-sm'> References</span>
+        </a>
+      </li>
       <li>
         <a onClick={logout} href='/login'>
           <i className='fas fa-sign-out-alt' />{' '}
@@ -46,6 +51,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <a href='#!'>
           <i className='fas fa-home' />
           <span className='hide-sm'> Home</span>
+        </a>
+      </li>
+      <li>
+        <a href='/references'>
+          <i className='fas fa-file-alt' />
+          <span className='hide-sm'> References</span>
         </a>
       </li>
       <li>

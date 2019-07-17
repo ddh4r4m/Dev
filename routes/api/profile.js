@@ -5,7 +5,37 @@ const { check, validationResult } = require('express-validator/check');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './profilepics');
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
 
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'image/jpeg' ||
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'application/pdf'
+  ) {
+    cb(null, true);
+  } else {
+    cb(new Error('Only .jpeg or .png or pdf files are accepted'), false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 6
+  },
+  fileFilter: fileFilter
+});
+
+var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }]);
 //@route    GET api/profile/me
 //@desc     Get Current Users Profile
 //@access   Private
@@ -33,6 +63,7 @@ router.get('/me', auth, async (req, res) => {
 
 router.post(
   '/',
+  upload.single('photo'),
   auth,
   [
     check('status', 'Status is required')
@@ -65,10 +96,15 @@ router.post(
       bio
     } = req.body;
 
+    const photo = req.file;
     //Build Profile object
     const profileFields = {};
+    // console.log(req.file.path);
     profileFields.user = req.user.id;
+    if (photo !== undefined) profileFields.photo = req.file.path;
+    // profileFields.photo = req.file == undefined ? '' : req.file.path;
     if (name) profileFields.name = name;
+    if (photo) profileFields.photo = photo;
     if (officeaddrss) profileFields.officeaddrss = officeaddrss;
     if (personalmobno) profileFields.personalmobno = personalmobno;
     if (officemobno) profileFields.officemobno = officemobno;

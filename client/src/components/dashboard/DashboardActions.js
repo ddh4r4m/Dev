@@ -28,7 +28,17 @@ export const DashboardActions = () => {
           <i className='fas fa-user-circle text-primary' /> Edit Profile
         </Button>
       </Link>
-
+      <Link to='/returned'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> Returned Cases
+        </Button>
+      </Link>
+      <Link to='/usersdatasttwo'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> Advanced Search :
+          Cases
+        </Button>
+      </Link>
       {/* <Link to='/usersdatasttwo'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES :
@@ -99,22 +109,17 @@ export const DashboardActions = () => {
           MEETING
         </Button>
       </Link>
-      <br />
-      <Link to='/references'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> REFERENCES
-        </Button>
-      </Link>
-      <br />
       <Link to='/mofmeetings'>
         <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> Minutes of
-          Meeting
+          <i className='fas fa-graduation-cap text-primary' />
+          Upload Minutes of Meeting
         </Button>
       </Link>
     </div>
   );
 };
+
+//Asst. Commisioner
 export const DashboardActionss = () => {
   const classes = useStyles();
 
@@ -130,24 +135,17 @@ export const DashboardActionss = () => {
           <i className='fab fa-black-tie text-primary' /> ADD CASE
         </Button>
       </Link>
-      <Link to='/usersdata'>
-        <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> EDIT/VIEW CASE
-        </Button>
-      </Link>
       <Link to='/deousersdata'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> APPROVE CASE
         </Button>
       </Link>
-      <br />
 
-      {/* <Link to='/usersdatasttwo'>
+      <Link to='/returned'>
         <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES :
-          60 Days POLICE
+          <i className='fas fa-graduation-cap text-primary' /> Returned Cases
         </Button>
-      </Link> */}
+      </Link>
       <br />
       <Link to='/usersdatapcone'>
         <Button variant='contained' className={classes.button}>
@@ -205,6 +203,7 @@ export const DashboardActionss = () => {
   );
 };
 
+//POlice
 export const DashboardActionse = () => {
   const classes = useStyles();
 
@@ -220,13 +219,11 @@ export const DashboardActionse = () => {
           <i className='fab fa-black-tie text-primary' /> ADD CASE
         </Button>
       </Link>
-      <Link to='/usersdata'>
+      <Link to='/returned'>
         <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> EDIT/VIEW CASE
+          <i className='fas fa-graduation-cap text-primary' /> Returned Cases
         </Button>
       </Link>
-      <br />
-
       {/* <Link to='/usersdatasttwo'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES :
@@ -250,7 +247,7 @@ export const DashboardActionse = () => {
       <Link to='/usersdatappthree'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES
-          III: 60 Days POLICE
+          III: 1 Year POLICE
         </Button>
       </Link>
 
@@ -265,6 +262,7 @@ export const DashboardActionse = () => {
   );
 };
 
+//Data Entry OPerator
 export const DashboardActionsee = () => {
   const classes = useStyles();
 

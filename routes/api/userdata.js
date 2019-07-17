@@ -88,6 +88,7 @@ router.post(
         text: req.body.text,
         firno: req.body.firno,
         returntopolice: req.body.returntopolice,
+        returntopolicecomment: req.body.returntopolicecomment,
         docImage:
           req.files['docImage'] == undefined
             ? ''
@@ -243,6 +244,8 @@ router.post(
         thirdbenefitbycommcomment: req.body.thirdbenefitbycommcomment,
         thirdbenefitbycollectorcomment: req.body.thirdbenefitbycollectorcomment,
         victimdetails: req.body.victimdetails,
+        accuseddetails: req.body.accuseddetails,
+        complainantdetails: req.body.complainantdetails,
         natureofcrime: req.body.natureofcrime,
         sections: req.body.sections,
         chargesheetdate: req.body.chargesheetdate,
@@ -317,6 +320,7 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.text = req.body.text;
       userdata.firno = req.body.firno;
       userdata.returntopolice = req.body.returntopolice;
+      userdata.returntopolicecomment = req.body.returntopolicecomment;
       userdata.disabledata = req.body.disabledata;
       userdata.othersections = req.body.othersections;
       userdata.othersectionsv2 = req.body.othersectionsv2;
@@ -475,6 +479,8 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       userdata.thirdbenefitbycollectorcomment =
         req.body.thirdbenefitbycollectorcomment;
       userdata.victimdetails = req.body.victimdetails;
+      userdata.accuseddetails = req.body.accuseddetails;
+      userdata.complainantdetails = req.body.complainantdetails;
       userdata.natureofcrime = req.body.natureofcrime;
       userdata.sections = req.body.sections;
       userdata.chargesheetdate = req.body.chargesheetdate;

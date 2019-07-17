@@ -40,7 +40,7 @@ const UsersdataPPone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
 
   const filtereddata = usersdata.filter(usersdata => {
     // const date4 = new Date(usersdata.date);
-    const date4 = new Date(usersdata.firstbenefitbypolicedate);
+    const date4 = new Date(usersdata.regdateofcrime);
     // console.log(date4 <= date3);
     //return all data before 60 days
     //add more filter using &&

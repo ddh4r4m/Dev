@@ -17,7 +17,8 @@ const EditProfileById = ({ createProfile, history }) => {
     facebook: '',
     linkedin: '',
     youtube: '',
-    instagram: ''
+    instagram: '',
+    photo: ''
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -40,7 +41,8 @@ const EditProfileById = ({ createProfile, history }) => {
     facebook,
     linkedin,
     youtube,
-    instagram
+    instagram,
+    photo
   } = formData;
 
   const onChange = e =>
@@ -74,6 +76,19 @@ const EditProfileById = ({ createProfile, history }) => {
           <small className='form-text'>
             Give us an idea of where you are at in your career
           </small>
+        </div>
+        <div className='form-group'>
+          Upload Profile Pic <br />
+          <input
+            type='file'
+            name='photo'
+            onChange={e => {
+              const vall = e.target.files[0];
+              setFormData(prevState => {
+                return { ...prevState, photo: vall };
+              });
+            }}
+          />
         </div>
         <div className='form-group'>
           <input

@@ -15,6 +15,7 @@
 
 .pulse-button {
   position: relative;
+  margin-top: 135%;
   border: none;
   box-shadow: 0 0 0 0 rgba(9, 66, 236, 0.776);
   width: 90px;

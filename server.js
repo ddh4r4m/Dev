@@ -12,6 +12,7 @@ app.use(express.json({ extended: false }));
 connectDB();
 
 app.use('/uploads', express.static('uploads'));
+app.use('/profilepics', express.static('profilepics'));
 app.use('/mofmeeting', express.static('mofmeeting'));
 
 app.get('/', (req, res) => res.send('API Running'));

@@ -3136,11 +3136,7 @@ const EditDeouserdataById = ({
                       checked={approve === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />{' '}
                     Yes
                     <Radio
@@ -3149,11 +3145,7 @@ const EditDeouserdataById = ({
                       checked={approve === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />{' '}
                     No
                     <Radio
@@ -3162,11 +3154,7 @@ const EditDeouserdataById = ({
                       checked={approve === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />{' '}
                     Keep Pending
                   </div>

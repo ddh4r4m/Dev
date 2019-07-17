@@ -32,9 +32,9 @@ export const createProfile = (
 ) => async dispatch => {
   try {
     const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      // headers: {
+      //   'Content-Type': 'application/json'
+      // }
     };
 
     const res = await axios.post('/api/profile', formData, config);

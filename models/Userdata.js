@@ -178,6 +178,12 @@ const UserdataSchema = new mongoose.Schema({
   victimdetails: {
     type: String
   },
+  accuseddetails: {
+    type: String
+  },
+  complainantdetails: {
+    type: String
+  },
   natureofcrime: {
     type: String
   },
@@ -340,6 +346,9 @@ const UserdataSchema = new mongoose.Schema({
   returntopolice: {
     type: Boolean,
     default: false
+  },
+  returntopolicecomment: {
+    type: String
   },
   financialsupport: {
     type: String

@@ -27,33 +27,59 @@ const ProfileItem = ({
     policestation,
     _id,
     natureofcrime,
-    crimeregisterno
+    firno,
+    dateofcrime,
+    typeofatrocity,
+    ipcapplied,
+    sectionsapplied,
+    othersections
   }
-}) => (
-  <Fragment>
-    <tr>
-      <td>{year}</td>
-      <td>{text}</td>
-      <td>{policestation}</td>
-      <td>{crimeregisterno}</td>
-      <td>{natureofcrime}</td>
-      <td>
-        <Link to={`/deouserdata/${_id}`}>
-          <Button variant='contained' color='primary'>
-            View CASE
-          </Button>
-        </Link>
-      </td>
-      <td>
-        <Link to={`/edit-deouserdata/${_id}`}>
-          <Button variant='contained' color='primary'>
-            Edit CASE
-          </Button>
-        </Link>
-      </td>
-    </tr>
-  </Fragment>
-);
+}) => {
+  const tatro = JSON.parse(typeofatrocity);
+  const ipcsapp = JSON.parse(ipcapplied);
+  const sectapp = JSON.parse(sectionsapplied);
+  return (
+    <Fragment>
+      <tr>
+        <td>{text}</td>
+        <td>{year}</td>
+        <td>{policestation}</td>
+        <td>{dateofcrime}</td>
+        <td>{firno}</td>
+
+        <td style={{ textAlign: 'left' }}>
+          {tatro !== null
+            ? tatro.map((tatr, i) => {
+                return <li key={i}>{tatr.value}</li>;
+              })
+            : ''}
+        </td>
+        <td>
+          {ipcsapp !== null
+            ? ipcsapp.map((ipcs, i) => {
+                return <li key={i}>{ipcs.value}</li>;
+              })
+            : ''}
+        </td>
+        <td>
+          {sectapp !== null
+            ? sectapp.map((sections, i) => {
+                return <li key={i}>{sections.value}</li>;
+              })
+            : ''}
+        </td>
+        <td>{othersections}</td>
+        <td>
+          <Link to={`/deouserdata/${_id}`}>
+            <Button variant='contained' color='primary'>
+              View CASE
+            </Button>
+          </Link>
+        </td>
+      </tr>
+    </Fragment>
+  );
+};
 
 ProfileItem.propTypes = {
   deouserdata: PropTypes.object.isRequired

@@ -32,7 +32,7 @@ const UsersdataPPtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
   const date3 = new Date();
   //create a date before 60 days = 5184000000 in milliseconds
   //create a date before 1 year =  31556952000 in milliseconds
-  const date5 = new Date(date3 - 31556952000);
+  const date5 = new Date(date3 - 5184000000);
 
   const { search, search1, search2, search3 } = formData;
 

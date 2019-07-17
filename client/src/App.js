@@ -33,6 +33,7 @@ import UsersdataPPtwo from './components/usersdata/UsersdataPPtwo';
 import UsersdataPPthree from './components/usersdata/UsersdataPPthree';
 import Profile from './components/profile/Profile';
 import Userdata from './components/userdata/Userdata';
+import Deouserdata from './components/deouserdata/Deouserdata';
 import PrivateRoute from './components/routing/PrivateRoute';
 import WithNavbar from './components/routing/WithNavbar';
 import './App.css';
@@ -96,11 +97,7 @@ const App = () => {
               path='/createpdf'
               component={WithNavbar(CreatePdf)}
             />
-            <PrivateRoute
-              exact
-              path='/references'
-              component={WithNavbar(Reference)}
-            />
+            <Route exact path='/references' component={WithNavbar(Reference)} />
             <Route
               exact
               path='/deoapprove'
@@ -195,6 +192,11 @@ const App = () => {
               exact
               path='/userdata/:id'
               component={WithNavbar(Userdata)}
+            />
+            <PrivateRoute
+              exact
+              path='/deouserdata/:id'
+              component={WithNavbar(Deouserdata)}
             />
             <PrivateRoute
               exact

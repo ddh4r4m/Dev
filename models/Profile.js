@@ -8,6 +8,10 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  photo: {
+    type: String,
+    default: 'profilepics/defaultprofilepic.jpg'
+  },
   officeaddrss: {
     type: String,
     default: ''

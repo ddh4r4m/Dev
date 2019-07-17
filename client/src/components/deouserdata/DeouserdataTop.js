@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { deleteUserdata } from '../../actions/userdata';
+import { deleteDeouserdata } from '../../actions/deouserdata';
 import { Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -21,10 +21,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UserdataTop = ({
-  deleteUserdata,
+const DeouserdataTop = ({
+  deleteDeouserdata,
   auth,
-  userdata: {
+  deouserdata: {
     text,
     year,
     returntopolice,
@@ -135,14 +135,14 @@ const UserdataTop = ({
   var ipcappliedd = JSON.parse(ipcapplied);
 
   const handleClick = _id => {
-    deleteUserdata(_id);
+    deleteDeouserdata(_id);
     return <Redirect to='/dashboard' />;
   };
 
   return (
     <Fragment>
       <div className='mybuttons'>
-        <Link to={`/edit-userdata/${_id}`}>
+        <Link to={`/edit-deouserdata/${_id}`}>
           <Button
             variant='contained'
             color='primary'
@@ -514,13 +514,13 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-UserdataTop.propTypes = {
-  userdata: PropTypes.object.isRequired,
+DeouserdataTop.propTypes = {
+  deouserdata: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  deleteUserdata: PropTypes.func.isRequired
+  deleteDeouserdata: PropTypes.func.isRequired
 };
 
 export default connect(
   mapStateToProps,
-  { deleteUserdata }
-)(UserdataTop);
+  { deleteDeouserdata }
+)(DeouserdataTop);

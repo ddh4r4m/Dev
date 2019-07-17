@@ -19,7 +19,8 @@ const ProfileItem = ({
     designation,
     company,
     location,
-    skills
+    skills,
+    photo
   }
 }) => {
   const onSubmit = e => {
@@ -30,7 +31,7 @@ const ProfileItem = ({
   return (
     <Fragment>
       <div className='profile bg-light'>
-        <img src={avatar} alt='' className='round-img' />
+        <img src={photo} alt='' className='round-img' />
         <div>
           <p style={{ color: 'blue' }}>{name}</p>
           <p>

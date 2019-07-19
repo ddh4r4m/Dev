@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createDeouserdata } from '../../actions/deouserdata';
 import Select from 'react-select';
-import { ipcOptions, sectionsopts, options } from './ipcdata';
+import {
+  ipcOptions,
+  sectionsopts1995,
+  sectionsopts2013,
+  sectionsopts,
+  options2011,
+  options2013,
+  options2016
+} from './ipcdata';
 import makeAnimated from 'react-select/animated';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -618,7 +626,15 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       classNamePrefix='select'
                       closeMenuOnSelect={false}
                       components={animatedComponents}
-                      options={options}
+                      options={
+                        Date.parse(dateofcrime) >=
+                        Date.parse('13 Dec 2011 00:00:00 GMT')
+                          ? Date.parse(dateofcrime) >=
+                            Date.parse('24 Apr 2016 00:00:00 GMT')
+                            ? options2016
+                            : options2013
+                          : options2011
+                      }
                       name='typeofatrocity'
                       value={typeofatrocity}
                       isMulti
@@ -1411,7 +1427,15 @@ const CreateDeouserdata = ({ createDeouserdata, history, auth: { user } }) => {
                       <Select
                         closeMenuOnSelect={false}
                         components={animatedComponents}
-                        options={options}
+                        options={
+                          Date.parse(dateofcrime) >=
+                          Date.parse('13 Dec 2011 00:00:00 GMT')
+                            ? Date.parse(dateofcrime) >=
+                              Date.parse('24 Apr 2016 00:00:00 GMT')
+                              ? options2016
+                              : options2013
+                            : options2011
+                        }
                         name='typeofatrocityv2'
                         value={typeofatrocityv2}
                         isMulti

@@ -6,6 +6,7 @@ import post from './post';
 import userdata from './userdata';
 import deouserdata from './deouserdata';
 import mofmeeting from './mofmeeting';
+import reference from './reference';
 
 export default combineReducers({
   alert,
@@ -14,5 +15,6 @@ export default combineReducers({
   post,
   userdata,
   deouserdata,
-  mofmeeting
+  mofmeeting,
+  reference
 });

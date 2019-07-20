@@ -45,6 +45,7 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 // import Footer from './components/layout/Footer';
 import Reference from './components/references/Reference';
+import References from './components/references/References';
 import ReturntoPolice from './components/usersdata/ReturntoPolice';
 import NoMatch from './components/noMatch/NoMatch';
 import ResetPassword from './components/auth/ResetPassword';
@@ -97,7 +98,12 @@ const App = () => {
               path='/createpdf'
               component={WithNavbar(CreatePdf)}
             />
-            <Route exact path='/references' component={WithNavbar(Reference)} />
+            <Route exact path='/reference' component={WithNavbar(Reference)} />
+            <Route
+              exact
+              path='/references'
+              component={WithNavbar(References)}
+            />
             <Route
               exact
               path='/deoapprove'

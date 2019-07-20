@@ -182,7 +182,7 @@ const UserdataSchema = new mongoose.Schema({
     type: Object
   },
   complainantdetails: {
-    type: String
+    type: Object
   },
   natureofcrime: {
     type: String

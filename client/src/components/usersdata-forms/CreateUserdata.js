@@ -36,10 +36,10 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     firno: '',
     returntopolice: false,
     policestation: 'Dhule City',
+    complainanttype: 'no',
     crimeregisterno: '',
     dateofcrime: '',
     regdateofcrime: '',
-    complainantdetails: '',
     natureofcrime: '',
     utrnumI: '',
     utrnumII: '',
@@ -145,9 +145,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     returntopolice,
     policestation,
     crimeregisterno,
+    complainanttype,
     dateofcrime,
     regdateofcrime,
-    complainantdetails,
     natureofcrime,
     utrnumI,
     utrnumII,
@@ -249,10 +249,24 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
       village: '',
       taluka: '',
       district: '',
+      utrnumone: '',
+      utrnumtwo: '',
+      utrnumthree: '',
       otherinfo: ''
     }
   ]);
   const [accuseddetails, setAccusedFields] = useState([
+    {
+      name: '',
+      age: '',
+      sex: '',
+      village: '',
+      taluka: '',
+      district: '',
+      otherinfo: ''
+    }
+  ]);
+  const [complainantdetails, setComplainantFields] = useState([
     {
       name: '',
       age: '',
@@ -291,6 +305,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
       village: '',
       taluka: '',
       district: '',
+      utrnumone: '',
+      utrnumtwo: '',
+      utrnumthree: '',
       otherinfo: ''
     });
     setVictimFields(values);
@@ -301,6 +318,47 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     console.log(values);
     values.splice(i, 1);
     setVictimFields(values);
+  }
+  //Dynamic
+  function handleChangeComplainantInput(i, event) {
+    const values = [...complainantdetails];
+    const { name, value } = event.target;
+    // values[i].value = value;
+    // values[i].value1 = value1;
+    values[i][name] = value;
+    setComplainantFields(values);
+    if (complainanttype === 'yes') {
+      handleChangeVictimInput(i, event);
+    }
+    // console.log(complainantdetails);
+    // console.log(JSON.stringify(complainantdetails));
+  }
+
+  function handleAddComplainantInput() {
+    const values = [...complainantdetails];
+    values.push({
+      name: '',
+      age: '',
+      sex: '',
+      village: '',
+      taluka: '',
+      district: '',
+      otherinfo: ''
+    });
+    setComplainantFields(values);
+    if (complainanttype === 'yes') {
+      handleAddVictimInput();
+    }
+  }
+
+  function handleRemoveComplainantInput(i) {
+    const values = [...complainantdetails];
+    console.log(values);
+    values.splice(i, 1);
+    setComplainantFields(values);
+    if (complainanttype === 'yes') {
+      handleRemoveVictimInput(i);
+    }
   }
   //Dynamic Input
   function handleChangeAccusedInput(i, event) {
@@ -374,7 +432,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     formDataa.append('regdateofcrime', regdateofcrime);
     formDataa.append('victimdetails', JSON.stringify(victimdetails));
     formDataa.append('accuseddetails', JSON.stringify(accuseddetails));
-    formDataa.append('complainantdetails', complainantdetails);
+    formDataa.append('complainantdetails', JSON.stringify(complainantdetails));
     formDataa.append('natureofcrime', natureofcrime);
     formDataa.append('utrnumI', utrnumI);
     formDataa.append('utrnumII', utrnumII);
@@ -757,23 +815,6 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                 </div>
                 <div className='maindiv'>
                   <div className='form-group'>
-                    Details of Complainant
-                    <textarea
-                      rows='4'
-                      cols='2'
-                      type='text'
-                      placeholder='Details of Complainant'
-                      name='complainantdetails'
-                      value={complainantdetails}
-                      onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
-                    />
-                  </div>
-                  <div className='form-group'>
                     Summary of Crime
                     <textarea
                       rows='4'
@@ -790,6 +831,130 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       }
                     />
                   </div>
+                </div>
+                <div className=''>
+                  <div style={{ margin: '18px 20px' }}>
+                    {' '}
+                    <b>Complainant Details</b>
+                    <Button
+                      type='button'
+                      onClick={() => handleAddComplainantInput()}
+                    >
+                      <i className='fa fa-plus' aria-hidden='true' />
+                    </Button>
+                    Are the Complainant and Victim Same?
+                    <Radio
+                      type='radio'
+                      name='complainanttype'
+                      checked={complainanttype === 'yes'}
+                      value='yes'
+                      onChange={e => onChange(e)}
+                    />{' '}
+                    Yes
+                    <Radio
+                      type='radio'
+                      name='complainanttype'
+                      checked={complainanttype === 'no'}
+                      value='no'
+                      onChange={e => onChange(e)}
+                    />{' '}
+                    No
+                    <br />
+                    <small style={{ marginLeft: '16%' }}>
+                      Select <b>'Yes'</b> to copy/duplicate complainant details
+                      to victim details and <b>'No'</b> to disable duplication.
+                    </small>
+                  </div>
+                  {complainantdetails.map((field, idx) => {
+                    return (
+                      <div key={`${field}-${idx}`} className='maindiv'>
+                        <div className='form-group'>
+                          Name
+                          <input
+                            type='text'
+                            name='name'
+                            value={accuseddetails.name}
+                            placeholder='Enter Name'
+                            onChange={e => {
+                              handleChangeComplainantInput(idx, e);
+                            }}
+                          />
+                        </div>
+                        <div className='form-group'>
+                          Age
+                          <input
+                            type='text'
+                            name='age'
+                            value={accuseddetails.age}
+                            placeholder='Enter Age'
+                            onChange={e => handleChangeComplainantInput(idx, e)}
+                          />
+                        </div>
+                        <div className='form-group'>
+                          Sex
+                          <input
+                            type='text'
+                            name='sex'
+                            value={accuseddetails.sex}
+                            placeholder='Enter Sex'
+                            onChange={e => handleChangeComplainantInput(idx, e)}
+                          />
+                        </div>
+                        <div className='form-group'>
+                          Village
+                          <input
+                            type='text'
+                            name='village'
+                            value={accuseddetails.village}
+                            placeholder='Enter Village'
+                            onChange={e => handleChangeComplainantInput(idx, e)}
+                          />
+                        </div>
+                        <div className='form-group'>
+                          Taluka
+                          <input
+                            type='text'
+                            name='taluka'
+                            value={accuseddetails.taluka}
+                            placeholder='Enter Taluka'
+                            onChange={e => handleChangeComplainantInput(idx, e)}
+                          />
+                        </div>
+                        <div className='form-group'>
+                          District
+                          <input
+                            type='text'
+                            name='district'
+                            value={accuseddetails.district}
+                            placeholder='Enter District'
+                            onChange={e => handleChangeComplainantInput(idx, e)}
+                          />
+                        </div>
+                        <div className='form-group'>
+                          Other Info
+                          <textarea
+                            type='text'
+                            name='otherinfo'
+                            value={accuseddetails.otherinfo}
+                            placeholder='Enter Other Info'
+                            onChange={e => handleChangeComplainantInput(idx, e)}
+                          />
+                        </div>
+                        <Button
+                          type='button'
+                          onClick={() => handleAddComplainantInput()}
+                        >
+                          <i className='fa fa-plus' aria-hidden='true' />
+                        </Button>
+                        <Button
+                          type='button'
+                          onClick={() => handleRemoveComplainantInput(idx)}
+                        >
+                          <i className='fa fa-times' aria-hidden='true' />
+                        </Button>
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className=''>
                   <div style={{ margin: '18px 20px' }}>
@@ -1824,6 +1989,22 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   />{' '}
                   Keep Pending
                 </div>
+                {victimdetails.map((field, idx) => {
+                  return (
+                    <div key={`${field}-${idx}`} className='maindiv'>
+                      <div className='form-group'>
+                        UTR Number for Money Transfer for Victim {idx + 1}
+                        <input
+                          type='text'
+                          name='utrnumone'
+                          value={field.utrnumone}
+                          placeholder='Enter 22 digit UTR Number'
+                          onChange={e => handleChangeVictimInput(idx, e)}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
                 <div className='maindiv'>
                   <div className='form-group'>
                     UTR Number for Money Transfer
@@ -2441,6 +2622,22 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                 />{' '}
                 Keep Pending
               </div>
+              {victimdetails.map((field, idx) => {
+                return (
+                  <div key={`${field}-${idx}`} className='maindiv'>
+                    <div className='form-group'>
+                      UTR Number for Money Transfer for Victim {idx + 1}
+                      <input
+                        type='text'
+                        name='utrnumtwo'
+                        value={field.utrnumtwo}
+                        placeholder='Enter 22 digit UTR Number'
+                        onChange={e => handleChangeVictimInput(idx, e)}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
               <div className='maindiv'>
                 <div className='form-group'>
                   UTR Number for Money Transfer for Stage II
@@ -2816,6 +3013,22 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     />{' '}
                     Keep Pending
                   </div>
+                  {victimdetails.map((field, idx) => {
+                    return (
+                      <div key={`${field}-${idx}`} className='maindiv'>
+                        <div className='form-group'>
+                          UTR Number for Money Transfer for Victim {idx + 1}
+                          <input
+                            type='text'
+                            name='utrnumthree'
+                            value={field.utrnumthree}
+                            placeholder='Enter 22 digit UTR Number'
+                            onChange={e => handleChangeVictimInput(idx, e)}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
                   <div className='maindiv'>
                     <div className='form-group'>
                       UTR Number for Money Transfer for Stage III

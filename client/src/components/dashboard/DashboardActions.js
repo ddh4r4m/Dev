@@ -187,9 +187,10 @@ export const DashboardActionss = () => {
         </Button>
       </Link>
       <br />
-      <Link to='/references'>
+      <Link to='/reference'>
         <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> REFERENCES
+          <i className='fas fa-graduation-cap text-primary' />
+          ADD REFERENCES
         </Button>
       </Link>
       <br />
@@ -252,9 +253,10 @@ export const DashboardActionse = () => {
       </Link>
 
       <br />
-      <Link to='/references'>
+      <Link to='/reference'>
         <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> REFERENCES
+          <i className='fas fa-graduation-cap text-primary' />
+          ADD REFERENCES
         </Button>
       </Link>
       <br />
@@ -286,7 +288,8 @@ export const DashboardActionsee = () => {
       <br />
       <Link to='/references'>
         <Button variant='contained' className={classes.button}>
-          <i className='fas fa-graduation-cap text-primary' /> REFERENCES
+          <i className='fas fa-graduation-cap text-primary' />
+          ADD REFERENCES
         </Button>
       </Link>
       <br />

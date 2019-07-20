@@ -32,6 +32,7 @@ const UserdataTop = ({
     crimeregisterno,
     dateofcrime,
     regdateofcrime,
+    accuseddetails,
     victimdetails,
     natureofcrime,
     utrnumI,
@@ -197,7 +198,10 @@ const UserdataTop = ({
             <hr />
             <h4 className='display'>
               VICTIM DETAILS :
-              <span style={{ float: 'right' }}> {victimdetails}</span>
+              <span style={{ float: 'right' }}>
+                {' '}
+                {victimdetails} {accuseddetails}
+              </span>
             </h4>
             <hr />
             <h4 className='display'>

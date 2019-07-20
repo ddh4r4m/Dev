@@ -176,10 +176,10 @@ const UserdataSchema = new mongoose.Schema({
     type: String
   },
   victimdetails: {
-    type: String
+    type: Object
   },
   accuseddetails: {
-    type: String
+    type: Object
   },
   complainantdetails: {
     type: String

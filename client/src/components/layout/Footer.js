@@ -18,7 +18,7 @@ const Footer = () => {
         </p>
 
         <p className='footer-company-name'>
-          Social Welfare Department &copy; 2018
+          Social Welfare Department &copy; 2019
         </p>
       </div>
       <div className='footer-center'>

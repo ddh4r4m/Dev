@@ -103,7 +103,7 @@ export const DashboardActions = () => {
         </Button>
       </Link>
       <br />
-      <Link to='/createpdf'>
+      <Link to='/createmeeting'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PRINT MINUTES OF
           MEETING
@@ -159,6 +159,12 @@ export const DashboardActionss = () => {
           Asst. Comm.
         </Button>
       </Link>
+      <Link to='/usersdatapcthree'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' /> PENDING CASES
+          III: Asst. Comm.
+        </Button>
+      </Link>
       <br />
       <Link to='/usersdatappone'>
         <Button variant='contained' className={classes.button}>
@@ -172,7 +178,6 @@ export const DashboardActionss = () => {
           60 Days POLICE
         </Button>
       </Link>
-      <br />
       <Link to='/usersdatappthree'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PENDING CASES
@@ -180,7 +185,7 @@ export const DashboardActionss = () => {
         </Button>
       </Link>
       <br />
-      <Link to='/createpdf'>
+      <Link to='/createmeeting'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' /> PRINT MINUTES OF
           MEETING
@@ -191,6 +196,18 @@ export const DashboardActionss = () => {
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' />
           ADD REFERENCES
+        </Button>
+      </Link>
+      <Link to='/create-atrocitydata'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' />
+          ADD DATA
+        </Button>
+      </Link>
+      <Link to='/edit-atrocitydata'>
+        <Button variant='contained' className={classes.button}>
+          <i className='fas fa-graduation-cap text-primary' />
+          EDIT DATA
         </Button>
       </Link>
       <br />
@@ -289,7 +306,7 @@ export const DashboardActionsee = () => {
       <Link to='/references'>
         <Button variant='contained' className={classes.button}>
           <i className='fas fa-graduation-cap text-primary' />
-          ADD REFERENCES
+          REFERENCES
         </Button>
       </Link>
       <br />

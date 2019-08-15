@@ -26,6 +26,7 @@ app.use('/api/userdata', require('./routes/api/userdata'));
 app.use('/api/deouserdata', require('./routes/api/deouserdata'));
 app.use('/api/mofmeeting', require('./routes/api/mofmeeting'));
 app.use('/api/reference', require('./routes/api/reference'));
+app.use('/api/atrocitydata', require('./routes/api/atrocitydata'));
 
 //fix cannot GET
 // app.get('*', function (request, response){

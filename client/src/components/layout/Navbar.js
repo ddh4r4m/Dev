@@ -48,7 +48,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
-        <a href='#!'>
+        <a href='/'>
           <i className='fas fa-home' />
           <span className='hide-sm'> Home</span>
         </a>

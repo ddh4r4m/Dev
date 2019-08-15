@@ -63,7 +63,7 @@ const UsersdataACtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className='container'>
+      <div style={{ margin: '100px 50px' }}>
         <input
           style={myStyle}
           type='text'

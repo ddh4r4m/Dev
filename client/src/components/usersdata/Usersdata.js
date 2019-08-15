@@ -191,7 +191,7 @@ const Usersdata = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           <thead>
             <tr>
               <th>Serial No.</th>
-              <th>YEAR</th>
+              <th>DATE OF FIR</th>
               <th>POLICE STATION</th>
               <th>DATE OF CRIME</th>
               <th>FIR No.</th>

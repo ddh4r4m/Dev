@@ -34,7 +34,7 @@ const ReturntoPolice = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     //return all data before 60 days
     //add more filter using &&
     // if (date4 >= date5) {
-    return usersdata.returntopolice === false;
+    return usersdata.returntopolice === true;
     // }
     //  return (
     //   usersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&

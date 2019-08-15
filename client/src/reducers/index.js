@@ -7,6 +7,7 @@ import userdata from './userdata';
 import deouserdata from './deouserdata';
 import mofmeeting from './mofmeeting';
 import reference from './reference';
+import atrocitydata from './atrocitydata';
 
 export default combineReducers({
   alert,
@@ -16,5 +17,6 @@ export default combineReducers({
   userdata,
   deouserdata,
   mofmeeting,
-  reference
+  reference,
+  atrocitydata
 });

@@ -46,11 +46,11 @@ const EditDeouserdataById = ({
     text: '',
     firno: '',
     returntopolice: false,
+    complainanttype: 'no',
     policestation: 'Dhule City',
     crimeregisterno: '',
     dateofcrime: '',
     regdateofcrime: '',
-    victimdetails: '',
     natureofcrime: '',
     utrnumI: '',
     utrnumII: '',
@@ -141,6 +141,44 @@ const EditDeouserdataById = ({
     accusedseven: '',
     accusedeight: ''
   });
+
+  const [victimdetails, setVictimFields] = useState([
+    {
+      name: '',
+      age: '',
+      sex: '',
+      village: '',
+      taluka: '',
+      district: '',
+      utrnumone: '',
+      utrnumtwo: '',
+      utrnumthree: '',
+      otherinfo: ''
+    }
+  ]);
+  const [accuseddetails, setAccusedFields] = useState([
+    {
+      name: '',
+      age: '',
+      sex: '',
+      village: '',
+      taluka: '',
+      district: '',
+      otherinfo: ''
+    }
+  ]);
+  const [complainantdetails, setComplainantFields] = useState([
+    {
+      name: '',
+      age: '',
+      sex: '',
+      village: '',
+      taluka: '',
+      district: '',
+      otherinfo: ''
+    }
+  ]);
+
   const [typeofatrocity, setTypeofatrocity] = useState(null);
   const [ipcapplied, setIpc] = useState(null);
   const [sectionsapplied, setSections] = useState(null);
@@ -175,8 +213,7 @@ const EditDeouserdataById = ({
         loading || !deouserdata.regdateofcrime
           ? ''
           : deouserdata.regdateofcrime,
-      victimdetails:
-        loading || !deouserdata.victimdetails ? '' : deouserdata.victimdetails,
+
       firstbenefitbypolice:
         loading || !deouserdata.firstbenefitbypolice
           ? 'pending'
@@ -438,6 +475,49 @@ const EditDeouserdataById = ({
       //   loading || !deouserdata.closethecase ? false : deouserdata.closethecase
       //   text: 'Helo'
     });
+
+    setVictimFields(
+      loading || !deouserdata.victimdetails
+        ? {
+            name: '',
+            age: '',
+            sex: '',
+            village: '',
+            taluka: '',
+            district: '',
+            utrnumone: '',
+            utrnumtwo: '',
+            utrnumthree: '',
+            otherinfo: ''
+          }
+        : JSON.parse(deouserdata.victimdetails)
+    );
+    setAccusedFields(
+      loading || !deouserdata.accuseddetails
+        ? {
+            name: '',
+            age: '',
+            sex: '',
+            village: '',
+            taluka: '',
+            district: '',
+            otherinfo: ''
+          }
+        : JSON.parse(deouserdata.accuseddetails)
+    );
+    setComplainantFields(
+      loading || !deouserdata.complainantdetails
+        ? {
+            name: '',
+            age: '',
+            sex: '',
+            village: '',
+            taluka: '',
+            district: '',
+            otherinfo: ''
+          }
+        : JSON.parse(deouserdata.complainantdetails)
+    );
     setTypeofatrocity(
       loading || !deouserdata.typeofatrocity
         ? null
@@ -473,6 +553,115 @@ const EditDeouserdataById = ({
     );
   }, [loading, getDeouserdataById, match]);
 
+  //Dynamic Input
+  function handleChangeVictimInput(i, event) {
+    const values = [...victimdetails];
+    const { name, value } = event.target;
+    // values[i].value = value;
+    // values[i].value1 = value1;
+    values[i][name] = value;
+    setVictimFields(values);
+    console.log(victimdetails);
+  }
+
+  function handleAddVictimInput() {
+    const values = [...victimdetails];
+    values.push({
+      name: '',
+      age: '',
+      sex: '',
+      village: '',
+      taluka: '',
+      district: '',
+      utrnumone: '',
+      utrnumtwo: '',
+      utrnumthree: '',
+      otherinfo: ''
+    });
+    setVictimFields(values);
+  }
+
+  function handleRemoveVictimInput(i) {
+    const values = [...victimdetails];
+    console.log(values);
+    values.splice(i, 1);
+    setVictimFields(values);
+  }
+
+  //Dynamic
+  //Dynamic
+  function handleChangeComplainantInput(i, event) {
+    const values = [...complainantdetails];
+    const { name, value } = event.target;
+    // values[i].value = value;
+    // values[i].value1 = value1;
+    values[i][name] = value;
+    setComplainantFields(values);
+    if (complainanttype === 'yes') {
+      handleChangeVictimInput(i, event);
+    }
+    // console.log(complainantdetails);
+    // console.log(JSON.stringify(complainantdetails));
+  }
+
+  function handleAddComplainantInput() {
+    const values = [...complainantdetails];
+    values.push({
+      name: '',
+      age: '',
+      sex: '',
+      village: '',
+      taluka: '',
+      district: '',
+      otherinfo: ''
+    });
+    setComplainantFields(values);
+    if (complainanttype === 'yes') {
+      handleAddVictimInput();
+    }
+  }
+
+  function handleRemoveComplainantInput(i) {
+    const values = [...complainantdetails];
+    console.log(values);
+    values.splice(i, 1);
+    setComplainantFields(values);
+    if (complainanttype === 'yes') {
+      handleRemoveVictimInput(i);
+    }
+  }
+  //Dynamic Input
+  function handleChangeAccusedInput(i, event) {
+    const values = [...accuseddetails];
+    const { name, value } = event.target;
+    // values[i].value = value;
+    // values[i].value1 = value1;
+    values[i][name] = value;
+    setAccusedFields(values);
+    console.log(accuseddetails);
+  }
+
+  function handleAddAccusedInput() {
+    const values = [...accuseddetails];
+    values.push({
+      name: '',
+      age: '',
+      sex: '',
+      village: '',
+      taluka: '',
+      district: '',
+      otherinfo: ''
+    });
+    setAccusedFields(values);
+  }
+
+  function handleRemoveAccusedInput(i) {
+    const values = [...accuseddetails];
+    console.log(values);
+    values.splice(i, 1);
+    setAccusedFields(values);
+  }
+
   const handleChange = typeofatrocity => {
     setTypeofatrocity(typeofatrocity);
   };
@@ -496,10 +685,11 @@ const EditDeouserdataById = ({
     firno,
     returntopolice,
     policestation,
+    complainanttype,
+
     crimeregisterno,
     dateofcrime,
     regdateofcrime,
-    victimdetails,
     natureofcrime,
     utrnumI,
     utrnumII,
@@ -608,7 +798,9 @@ const EditDeouserdataById = ({
     formDataa.append('crimeregisterno', crimeregisterno);
     formDataa.append('dateofcrime', dateofcrime);
     formDataa.append('regdateofcrime', regdateofcrime);
-    formDataa.append('victimdetails', victimdetails);
+    formDataa.append('victimdetails', JSON.stringify(victimdetails));
+    formDataa.append('accuseddetails', JSON.stringify(accuseddetails));
+    formDataa.append('complainantdetails', JSON.stringify(complainantdetails));
     formDataa.append('natureofcrime', natureofcrime);
     formDataa.append('benefitsgivenbyACI', benefitsgivenbyACI);
     formDataa.append('benefitsgivenbyACII', benefitsgivenbyACII);
@@ -786,6 +978,7 @@ const EditDeouserdataById = ({
     formDataa.append('approve', approve);
     if (approve === 'yes') {
       createUserdata(formDataa, history);
+      editDeouserdata(match.params.id, formDataa, history);
       console.log('addeds');
     } else {
       editDeouserdata(match.params.id, formDataa, history);
@@ -1077,24 +1270,344 @@ const EditDeouserdataById = ({
                       />
                     </div>
                   </div>
-                  <div className='maindiv'>
-                    <div className='form-group'>
-                      Details of Victim
-                      <textarea
-                        rows='4'
-                        cols='2'
-                        type='text'
-                        placeholder='Details of Victim'
-                        name='victimdetails'
-                        value={victimdetails}
+                  <div className=''>
+                    <div style={{ margin: '18px 20px' }}>
+                      {' '}
+                      <b>Complainant Details</b>
+                      <Button
+                        type='button'
+                        onClick={() => handleAddComplainantInput()}
+                      >
+                        <i className='fa fa-plus' aria-hidden='true' />
+                      </Button>
+                      Are the Complainant and Victim Same?
+                      <Radio
+                        type='radio'
+                        name='complainanttype'
+                        checked={complainanttype === 'yes'}
+                        value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'Police' &&
-                          (user && user.role !== 'Data Entry Operator')
-                        }
-                      />
+                      />{' '}
+                      Yes
+                      <Radio
+                        type='radio'
+                        name='complainanttype'
+                        checked={complainanttype === 'no'}
+                        value='no'
+                        onChange={e => onChange(e)}
+                      />{' '}
+                      No
+                      <br />
+                      <small style={{ marginLeft: '16%' }}>
+                        Select <b>'Yes'</b> to copy/duplicate complainant
+                        details to victim details and <b>'No'</b> to disable
+                        duplication.
+                      </small>
                     </div>
+                    {complainantdetails.map((field, idx) => {
+                      return (
+                        <div key={`${field}-${idx}`} className='maindiv'>
+                          <div className='form-group'>
+                            Name
+                            <input
+                              type='text'
+                              name='name'
+                              value={accuseddetails.name}
+                              placeholder='Enter Name'
+                              onChange={e => {
+                                handleChangeComplainantInput(idx, e);
+                              }}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Age
+                            <input
+                              type='text'
+                              name='age'
+                              value={accuseddetails.age}
+                              placeholder='Enter Age'
+                              onChange={e =>
+                                handleChangeComplainantInput(idx, e)
+                              }
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Sex
+                            <input
+                              type='text'
+                              name='sex'
+                              value={accuseddetails.sex}
+                              placeholder='Enter Sex'
+                              onChange={e =>
+                                handleChangeComplainantInput(idx, e)
+                              }
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Village
+                            <input
+                              type='text'
+                              name='village'
+                              value={accuseddetails.village}
+                              placeholder='Enter Village'
+                              onChange={e =>
+                                handleChangeComplainantInput(idx, e)
+                              }
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Taluka
+                            <input
+                              type='text'
+                              name='taluka'
+                              value={accuseddetails.taluka}
+                              placeholder='Enter Taluka'
+                              onChange={e =>
+                                handleChangeComplainantInput(idx, e)
+                              }
+                            />
+                          </div>
+                          <div className='form-group'>
+                            District
+                            <input
+                              type='text'
+                              name='district'
+                              value={accuseddetails.district}
+                              placeholder='Enter District'
+                              onChange={e =>
+                                handleChangeComplainantInput(idx, e)
+                              }
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Other Info
+                            <textarea
+                              type='text'
+                              name='otherinfo'
+                              value={accuseddetails.otherinfo}
+                              placeholder='Enter Other Info'
+                              onChange={e =>
+                                handleChangeComplainantInput(idx, e)
+                              }
+                            />
+                          </div>
+                          <Button
+                            type='button'
+                            onClick={() => handleAddComplainantInput()}
+                          >
+                            <i className='fa fa-plus' aria-hidden='true' />
+                          </Button>
+                          <Button
+                            type='button'
+                            onClick={() => handleRemoveComplainantInput(idx)}
+                          >
+                            <i className='fa fa-times' aria-hidden='true' />
+                          </Button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className=''>
+                    <div style={{ margin: '18px 20px' }}>
+                      {' '}
+                      <b>Victim Details</b>
+                      <Button
+                        type='button'
+                        onClick={() => handleAddVictimInput()}
+                      >
+                        <i className='fa fa-plus' aria-hidden='true' />
+                      </Button>
+                    </div>
+                    {victimdetails.map((field, idx) => {
+                      return (
+                        <div key={`${field}-${idx}`} className='maindiv'>
+                          <div className='form-group'>
+                            Name
+                            <input
+                              type='text'
+                              name='name'
+                              value={field.name}
+                              placeholder='Enter Name'
+                              onChange={e => handleChangeVictimInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Age
+                            <input
+                              type='text'
+                              name='age'
+                              value={field.age}
+                              placeholder='Enter Age'
+                              onChange={e => handleChangeVictimInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Sex
+                            <input
+                              type='text'
+                              name='sex'
+                              value={field.sex}
+                              placeholder='Enter Sex'
+                              onChange={e => handleChangeVictimInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Village
+                            <input
+                              type='text'
+                              name='village'
+                              value={field.village}
+                              placeholder='Enter Village'
+                              onChange={e => handleChangeVictimInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Taluka
+                            <input
+                              type='text'
+                              name='taluka'
+                              value={field.taluka}
+                              placeholder='Enter Taluka'
+                              onChange={e => handleChangeVictimInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            District
+                            <input
+                              type='text'
+                              name='district'
+                              value={field.district}
+                              placeholder='Enter District'
+                              onChange={e => handleChangeVictimInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Other Info
+                            <textarea
+                              type='text'
+                              name='otherinfo'
+                              value={field.otherinfo}
+                              placeholder='Enter Other Info'
+                              onChange={e => handleChangeVictimInput(idx, e)}
+                            />
+                          </div>
+                          <Button
+                            type='button'
+                            onClick={() => handleAddVictimInput()}
+                          >
+                            <i className='fa fa-plus' aria-hidden='true' />
+                          </Button>
+                          <Button
+                            type='button'
+                            onClick={() => handleRemoveVictimInput(idx)}
+                          >
+                            <i className='fa fa-times' aria-hidden='true' />
+                          </Button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className=''>
+                    <div style={{ margin: '18px 20px' }}>
+                      {' '}
+                      <b>Accused Details</b>
+                      <Button
+                        type='button'
+                        onClick={() => handleAddAccusedInput()}
+                      >
+                        <i className='fa fa-plus' aria-hidden='true' />
+                      </Button>
+                    </div>
+                    {accuseddetails.map((field, idx) => {
+                      return (
+                        <div key={`${field}-${idx}`} className='maindiv'>
+                          <div className='form-group'>
+                            Name
+                            <input
+                              type='text'
+                              name='name'
+                              value={accuseddetails.name}
+                              placeholder='Enter Name'
+                              onChange={e => handleChangeAccusedInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Age
+                            <input
+                              type='text'
+                              name='age'
+                              value={accuseddetails.age}
+                              placeholder='Enter Age'
+                              onChange={e => handleChangeAccusedInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Sex
+                            <input
+                              type='text'
+                              name='sex'
+                              value={accuseddetails.sex}
+                              placeholder='Enter Sex'
+                              onChange={e => handleChangeAccusedInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Village
+                            <input
+                              type='text'
+                              name='village'
+                              value={accuseddetails.village}
+                              placeholder='Enter Village'
+                              onChange={e => handleChangeAccusedInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Taluka
+                            <input
+                              type='text'
+                              name='taluka'
+                              value={accuseddetails.taluka}
+                              placeholder='Enter Taluka'
+                              onChange={e => handleChangeAccusedInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            District
+                            <input
+                              type='text'
+                              name='district'
+                              value={accuseddetails.district}
+                              placeholder='Enter District'
+                              onChange={e => handleChangeAccusedInput(idx, e)}
+                            />
+                          </div>
+                          <div className='form-group'>
+                            Other Info
+                            <textarea
+                              type='text'
+                              name='otherinfo'
+                              value={accuseddetails.otherinfo}
+                              placeholder='Enter Other Info'
+                              onChange={e => handleChangeAccusedInput(idx, e)}
+                            />
+                          </div>
+                          <Button
+                            type='button'
+                            onClick={() => handleAddAccusedInput()}
+                          >
+                            <i className='fa fa-plus' aria-hidden='true' />
+                          </Button>
+                          <Button
+                            type='button'
+                            onClick={() => handleRemoveAccusedInput(idx)}
+                          >
+                            <i className='fa fa-times' aria-hidden='true' />
+                          </Button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className='maindiv'>
                     <div className='form-group'>
                       Summary of Crime
                       <textarea
@@ -1977,7 +2490,7 @@ const EditDeouserdataById = ({
                     Keep Pending
                   </div>
                   <div className='maindiv'>
-                    <div className='form-group'>
+                    {/* <div className='form-group'>
                       UTR Number for Money Transfer
                       <input
                         type='text'
@@ -1990,7 +2503,7 @@ const EditDeouserdataById = ({
                           (user && user.role !== 'Data Entry Operator')
                         }
                       />
-                    </div>
+                    </div> */}
                     <div className='form-group'>
                       Details of non Monetary Benefits for Stage I given by
                       Asst. Commisioner
@@ -2091,7 +2604,8 @@ const EditDeouserdataById = ({
                                 Date.parse('24 Apr 2016 00:00:00 GMT')
                                 ? sectionsopts
                                 : sectionsopts2013
-                              : sectionsopts1995}
+                              : sectionsopts1995
+                          }
                           name='typeofatrocityv2'
                           value={typeofatrocityv2}
                           isMulti
@@ -2327,11 +2841,16 @@ const EditDeouserdataById = ({
                       name='chargesheetdate'
                       value={chargesheetdate}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Data Entry Operator'}
+                    />
+                    Date for Stage II Decisions
+                    <input
+                      type='date'
+                      placeholder='Date When Decision II was taken'
+                      name='secondbenefitbypolicedate'
+                      value={secondbenefitbypolicedate}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.role !== 'Data Entry Operator'}
                     />
                   </div>
                   <div className='form-group'>
@@ -2606,7 +3125,7 @@ const EditDeouserdataById = ({
                   Keep Pending
                 </div>
                 <div className='maindiv'>
-                  <div className='form-group'>
+                  {/* <div className='form-group'>
                     UTR Number for Money Transfer for Stage II
                     <input
                       type='text'
@@ -2619,7 +3138,7 @@ const EditDeouserdataById = ({
                         (user && user.role !== 'Data Entry Operator')
                       }
                     />
-                  </div>
+                  </div> */}
                   <div className='form-group'>
                     Details of Non Monetary Benefits given for Stage II by Asst.
                     Commisioner
@@ -2981,7 +3500,7 @@ const EditDeouserdataById = ({
                       Keep Pending
                     </div>
                     <div className='maindiv'>
-                      <div className='form-group'>
+                      {/* <div className='form-group'>
                         UTR Number for Money Transfer for Stage III
                         <input
                           type='text'
@@ -2994,7 +3513,7 @@ const EditDeouserdataById = ({
                             (user && user.role !== 'Data Entry Operator')
                           }
                         />
-                      </div>
+                      </div> */}
                       <div className='form-group'>
                         Details of Non Monetary Benefits given for Stage III by
                         Asst. Commisioner

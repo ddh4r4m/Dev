@@ -3,13 +3,24 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
-
-import { HeaderBar, inputStyle } from '../../components';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
 
 const loading = {
   margin: '1em',
   fontSize: '24px'
+};
+
+const inputStyle = {
+  margin: '.5em'
+};
+
+const headerStyle = {
+  background:
+    'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba(8,177,5,1) 62%, rgba(0,212,255,1) 100%)',
+  color: 'white'
 };
 
 const title = {
@@ -103,7 +114,16 @@ export default class ResetPassword extends Component {
     if (error) {
       return (
         <div className='container'>
-          <HeaderBar title={title} />
+          {/* <HeaderBar title={title} /> */}
+          <div className='header'>
+            <AppBar position='static' color='default' style={headerStyle}>
+              <Toolbar>
+                <Typography variant='title' color='inherit'>
+                  {title.pageTitle || 'Page Title Placeholder'}
+                </Typography>
+              </Toolbar>
+            </AppBar>
+          </div>
           <div style={loading}>
             <h4>Problem resetting password. Please send another reset link.</h4>
             <Link to='/'>

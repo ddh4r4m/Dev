@@ -47,7 +47,7 @@ router.post(
   [
     auth,
     [
-      check('title', 'Serial No is required')
+      check('description', 'Description is required')
         .not()
         .isEmpty()
     ]
@@ -62,7 +62,6 @@ router.post(
       console.log(req.body);
       const user = await User.findById(req.user.id).select('-password');
       const newReference = new Reference({
-        title: req.body.title,
         description: req.body.description,
         reference: req.file.path,
         // reference:

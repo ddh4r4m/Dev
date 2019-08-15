@@ -33,16 +33,36 @@ const ProfileItem = ({
       <div className='profile bg-light'>
         <img src={photo} alt='' className='round-img' />
         <div>
-          <p style={{ color: 'blue' }}>{name}</p>
+          <p style={{ color: 'blue' }}>
+            <strong>{name}</strong>
+          </p>
           <p>
             {status} {company && <span>at {company}</span>}
           </p>
-          <p>{officeaddrss}</p>
-          <p>{personalmobno}</p>
-          <p>{officemobno}</p>
-          <p>{emailidpersonal}</p>
-          <p>{emailidoffice}</p>
-          <p>{dateofjoining}</p>
+          <p>
+            <b>Office Address : </b>
+            {officeaddrss}
+          </p>
+          <p>
+            <b>Personal Contact : </b>
+            {personalmobno}
+          </p>
+          <p>
+            <b>Office Contact : </b>
+            {officemobno}
+          </p>
+          <p>
+            <b>Email : </b>
+            {emailidpersonal}
+          </p>
+          <p>
+            <b>Email : </b>
+            {emailidoffice}
+          </p>
+          <p>
+            <b>DOJ : </b>
+            {dateofjoining}
+          </p>
           <p>{location && <span>{location}</span>}</p>
 
           {auth.user && auth.user.role === 'Asst. Commissioner' ? (

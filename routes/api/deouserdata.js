@@ -243,6 +243,8 @@ router.post(
         thirdbenefitbycommcomment: req.body.thirdbenefitbycommcomment,
         thirdbenefitbycollectorcomment: req.body.thirdbenefitbycollectorcomment,
         victimdetails: req.body.victimdetails,
+        accuseddetails: req.body.accuseddetails,
+        complainantdetails: req.body.complainantdetails,
         natureofcrime: req.body.natureofcrime,
         sections: req.body.sections,
         chargesheetdate: req.body.chargesheetdate,
@@ -480,6 +482,8 @@ router.put('/:id', cpUpload, auth, async (req, res) => {
       deouserdata.thirdbenefitbycollectorcomment =
         req.body.thirdbenefitbycollectorcomment;
       deouserdata.victimdetails = req.body.victimdetails;
+      deouserdata.accuseddetails = req.body.accuseddetails;
+      deouserdata.complainantdetails = req.body.complainantdetails;
       deouserdata.natureofcrime = req.body.natureofcrime;
       deouserdata.sections = req.body.sections;
       deouserdata.chargesheetdate = req.body.chargesheetdate;

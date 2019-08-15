@@ -3,7 +3,13 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
-import { editUserdata, getUserdataById } from '../../actions/userdata';
+import {
+  editUserdata,
+  getUserdataById,
+  addCommentaci
+} from '../../actions/userdata';
+import CommentForm from './CommentForm';
+import CommentItem from './CommentItem';
 import Select from 'react-select';
 import { ipcOptions, sectionsopts, options } from './ipcdata';
 import makeAnimated from 'react-select/animated';
@@ -11,6 +17,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
+import {
+  ADD_COMMENTACI,
+  ADD_COMMENTACII,
+  ADD_COMMENTDCI,
+  ADD_COMMENTACIII,
+  ADD_COMMENTDCIII,
+  ADD_COMMENTDCII
+} from '../../actions/types';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -132,6 +146,16 @@ const EditUserdataById = ({
     accusedeight: ''
   });
 
+  var firstbenefitbypolicev;
+  var firstbenefitbycommisv;
+  var firstbenefitbycollectorv;
+  var secondbenefitbypolicev;
+  var secondbenefitbycommisv;
+  var secondbenefitbycollectorv;
+  var thirdbenefitbypolicev;
+  var thirdbenefitbycommisv;
+  var thirdbenefitbycollectorv;
+
   const [victimdetails, setVictimFields] = useState([
     {
       name: '',
@@ -219,6 +243,18 @@ const EditUserdataById = ({
         loading || !userdata.firstbenefitbycollector
           ? 'pending'
           : userdata.firstbenefitbycollector,
+      firstbenefitbypolicev:
+        loading || !userdata.firstbenefitbypolice
+          ? 'pending'
+          : userdata.firstbenefitbypolice,
+      firstbenefitbycommisv:
+        loading || !userdata.firstbenefitbycommis
+          ? 'pending'
+          : userdata.firstbenefitbycommis,
+      firstbenefitbycollectorv:
+        loading || !userdata.firstbenefitbycollector
+          ? 'pending'
+          : userdata.firstbenefitbycollector,
       firstbenefitbypolicedate:
         loading || !userdata.firstbenefitbypolicedate
           ? ''
@@ -255,6 +291,18 @@ const EditUserdataById = ({
         loading || !userdata.secondbenefitbycollector
           ? 'pendingpending'
           : userdata.secondbenefitbycollector,
+      secondbenefitbypolicev:
+        loading || !userdata.secondbenefitbypolice
+          ? 'pendingpending'
+          : userdata.secondbenefitbypolice,
+      secondbenefitbycommisv:
+        loading || !userdata.secondbenefitbycommis
+          ? 'pendingpending'
+          : userdata.secondbenefitbycommis,
+      secondbenefitbycollectorv:
+        loading || !userdata.secondbenefitbycollector
+          ? 'pendingpending'
+          : userdata.secondbenefitbycollector,
       secondbenefitbypolicedate:
         loading || !userdata.secondbenefitbypolicedate
           ? ''
@@ -288,6 +336,18 @@ const EditUserdataById = ({
           ? 'pending'
           : userdata.thirdbenefitbycommis,
       thirdbenefitbycollector:
+        loading || !userdata.thirdbenefitbycollector
+          ? 'pending'
+          : userdata.thirdbenefitbycollector,
+      thirdbenefitbypolicev:
+        loading || !userdata.thirdbenefitbypolice
+          ? 'pending'
+          : userdata.thirdbenefitbypolice,
+      thirdbenefitbycommisv:
+        loading || !userdata.thirdbenefitbycommis
+          ? 'pending'
+          : userdata.thirdbenefitbycommis,
+      thirdbenefitbycollectorv:
         loading || !userdata.thirdbenefitbycollector
           ? 'pending'
           : userdata.thirdbenefitbycollector,
@@ -532,7 +592,7 @@ const EditUserdataById = ({
     // values[i].value1 = value1;
     values[i][name] = value;
     setVictimFields(values);
-    console.log(victimdetails);
+    // console.log(victimdetails);
   }
 
   function handleAddVictimInput() {
@@ -752,8 +812,9 @@ const EditUserdataById = ({
     accusedeight
   } = formData;
 
-  const onChange = e =>
+  const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const onSubmit = e => {
     e.preventDefault();
@@ -801,22 +862,19 @@ const EditUserdataById = ({
     formDataa.append('otherbenefitycompbyACII', otherbenefitycompbyACII);
     formDataa.append('otherbenefitycompbyACIII', otherbenefitycompbyACIII);
     formDataa.append('firstbenefitbypolice', firstbenefitbypolice);
-    if (firstbenefitbypolice !== 'pending' && firstbenefitbypolicedate === '') {
+    if (firstbenefitbypolice !== firstbenefitbypolicev) {
       const date = new Date();
       formDataa.append('firstbenefitbypolicedate', date);
     } else {
       formDataa.append('firstbenefitbypolicedate', firstbenefitbypolicedate);
     }
-    if (firstbenefitbycommis !== 'pending' && firstbenefitbycommisdate === '') {
+    if (firstbenefitbycommis !== firstbenefitbycommisv) {
       const date = new Date();
       formDataa.append('firstbenefitbycommisdate', date);
     } else {
       formDataa.append('firstbenefitbycommisdate', firstbenefitbycommisdate);
     }
-    if (
-      firstbenefitbycollector !== 'pending' &&
-      firstbenefitbycollectordate === ''
-    ) {
+    if (firstbenefitbycollector !== firstbenefitbycollectorv) {
       const date = new Date();
       formDataa.append('firstbenefitbycollectordate', date);
     } else {
@@ -836,28 +894,19 @@ const EditUserdataById = ({
       'firstbenefitbycollectorcomment',
       firstbenefitbycollectorcomment
     );
-    if (
-      secondbenefitbypolice !== 'pending' &&
-      secondbenefitbypolicedate === ''
-    ) {
+    if (secondbenefitbypolice !== secondbenefitbypolicev) {
       const date = new Date();
       formDataa.append('secondbenefitbypolicedate', date);
     } else {
       formDataa.append('secondbenefitbypolicedate', secondbenefitbypolicedate);
     }
-    if (
-      secondbenefitbycommis !== 'pending' &&
-      secondbenefitbycommisdate === ''
-    ) {
+    if (secondbenefitbycommis !== secondbenefitbycommisv) {
       const date = new Date();
       formDataa.append('secondbenefitbycommisdate', date);
     } else {
       formDataa.append('secondbenefitbycommisdate', secondbenefitbycommisdate);
     }
-    if (
-      secondbenefitbycollector !== 'pending' &&
-      secondbenefitbycollectordate === ''
-    ) {
+    if (secondbenefitbycollector !== secondbenefitbycollectorv) {
       const date = new Date();
       formDataa.append('secondbenefitbycollectordate', date);
     } else {
@@ -878,22 +927,19 @@ const EditUserdataById = ({
       'secondbenefitbycollectorcomment',
       secondbenefitbycollectorcomment
     );
-    if (thirdbenefitbypolice !== 'pending' && thirdbenefitbypolicedate === '') {
+    if (thirdbenefitbypolice !== thirdbenefitbypolicev) {
       const date = new Date();
       formDataa.append('thirdbenefitbypolicedate', date);
     } else {
       formDataa.append('thirdbenefitbypolicedate', thirdbenefitbypolicedate);
     }
-    if (thirdbenefitbycommis !== 'pending' && thirdbenefitbycommisdate === '') {
+    if (thirdbenefitbycommis !== thirdbenefitbycommisv) {
       const date = new Date();
       formDataa.append('thirdbenefitbycommisdate', date);
     } else {
       formDataa.append('thirdbenefitbycommisdate', thirdbenefitbycommisdate);
     }
-    if (
-      thirdbenefitbycollector !== 'pending' &&
-      thirdbenefitbycollectordate === ''
-    ) {
+    if (thirdbenefitbycollector !== thirdbenefitbycollectorv) {
       const date = new Date();
       formDataa.append('thirdbenefitbycollectordate', date);
     } else {
@@ -958,9 +1004,9 @@ const EditUserdataById = ({
     formDataa.append('accusedseven', accusedseven);
     formDataa.append('accusedeight', accusedeight);
     editUserdata(match.params.id, formDataa, history);
-    for (const value of formDataa.values()) {
-      console.log(value);
-    }
+    // for (const value of formDataa.values()) {
+    //   console.log(value);
+    // }
   };
 
   var dpmedical = false;
@@ -1225,6 +1271,7 @@ const EditUserdataById = ({
                     <Button
                       type='button'
                       onClick={() => handleAddComplainantInput()}
+                      disabled={user && user.role !== 'Police'}
                     >
                       <i className='fa fa-plus' aria-hidden='true' />
                     </Button>
@@ -1251,6 +1298,7 @@ const EditUserdataById = ({
                       to victim details and <b>'No'</b> to disable duplication.
                     </small>
                   </div>
+
                   {complainantdetails.map((field, idx) => {
                     return (
                       <div key={`${field}-${idx}`} className='maindiv'>
@@ -1262,6 +1310,7 @@ const EditUserdataById = ({
                             value={field.name}
                             placeholder='Enter Name'
                             onChange={e => handleChangeComplainantInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1271,6 +1320,7 @@ const EditUserdataById = ({
                             name='age'
                             value={field.age}
                             placeholder='Enter Age'
+                            disabled={user && user.role !== 'Police'}
                             onChange={e => handleChangeComplainantInput(idx, e)}
                           />
                         </div>
@@ -1282,6 +1332,7 @@ const EditUserdataById = ({
                             value={field.sex}
                             placeholder='Enter Sex'
                             onChange={e => handleChangeComplainantInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1292,6 +1343,7 @@ const EditUserdataById = ({
                             value={field.village}
                             placeholder='Enter Village'
                             onChange={e => handleChangeComplainantInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1302,6 +1354,7 @@ const EditUserdataById = ({
                             value={field.taluka}
                             placeholder='Enter Taluka'
                             onChange={e => handleChangeComplainantInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1312,6 +1365,7 @@ const EditUserdataById = ({
                             value={field.district}
                             placeholder='Enter District'
                             onChange={e => handleChangeComplainantInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1322,17 +1376,20 @@ const EditUserdataById = ({
                             value={field.otherinfo}
                             placeholder='Enter Other Info'
                             onChange={e => handleChangeComplainantInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <Button
                           type='button'
                           onClick={() => handleAddComplainantInput()}
+                          disabled={user && user.role !== 'Police'}
                         >
                           <i className='fa fa-plus' aria-hidden='true' />
                         </Button>
                         <Button
                           type='button'
                           onClick={() => handleRemoveComplainantInput(idx)}
+                          disabled={user && user.role !== 'Police'}
                         >
                           <i className='fa fa-times' aria-hidden='true' />
                         </Button>
@@ -1347,6 +1404,7 @@ const EditUserdataById = ({
                     <Button
                       type='button'
                       onClick={() => handleAddVictimInput()}
+                      disabled={user && user.role !== 'Police'}
                     >
                       <i className='fa fa-plus' aria-hidden='true' />
                     </Button>
@@ -1362,6 +1420,7 @@ const EditUserdataById = ({
                             value={field.name}
                             placeholder='Enter Name'
                             onChange={e => handleChangeVictimInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1372,6 +1431,7 @@ const EditUserdataById = ({
                             value={field.age}
                             placeholder='Enter Age'
                             onChange={e => handleChangeVictimInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1382,6 +1442,7 @@ const EditUserdataById = ({
                             value={field.sex}
                             placeholder='Enter Sex'
                             onChange={e => handleChangeVictimInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1392,6 +1453,7 @@ const EditUserdataById = ({
                             value={field.village}
                             placeholder='Enter Village'
                             onChange={e => handleChangeVictimInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1402,6 +1464,7 @@ const EditUserdataById = ({
                             value={field.taluka}
                             placeholder='Enter Taluka'
                             onChange={e => handleChangeVictimInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1412,6 +1475,7 @@ const EditUserdataById = ({
                             value={field.district}
                             placeholder='Enter District'
                             onChange={e => handleChangeVictimInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1422,17 +1486,20 @@ const EditUserdataById = ({
                             value={field.otherinfo}
                             placeholder='Enter Other Info'
                             onChange={e => handleChangeVictimInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <Button
                           type='button'
                           onClick={() => handleAddVictimInput()}
+                          disabled={user && user.role !== 'Police'}
                         >
                           <i className='fa fa-plus' aria-hidden='true' />
                         </Button>
                         <Button
                           type='button'
                           onClick={() => handleRemoveVictimInput(idx)}
+                          disabled={user && user.role !== 'Police'}
                         >
                           <i className='fa fa-times' aria-hidden='true' />
                         </Button>
@@ -1447,6 +1514,7 @@ const EditUserdataById = ({
                     <Button
                       type='button'
                       onClick={() => handleAddAccusedInput()}
+                      disabled={user && user.role !== 'Police'}
                     >
                       <i className='fa fa-plus' aria-hidden='true' />
                     </Button>
@@ -1462,6 +1530,7 @@ const EditUserdataById = ({
                             value={field.name}
                             placeholder='Enter Name'
                             onChange={e => handleChangeAccusedInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1472,6 +1541,7 @@ const EditUserdataById = ({
                             value={field.age}
                             placeholder='Enter Age'
                             onChange={e => handleChangeAccusedInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1482,6 +1552,7 @@ const EditUserdataById = ({
                             value={field.sex}
                             placeholder='Enter Sex'
                             onChange={e => handleChangeAccusedInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1492,6 +1563,7 @@ const EditUserdataById = ({
                             value={field.village}
                             placeholder='Enter Village'
                             onChange={e => handleChangeAccusedInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1502,6 +1574,7 @@ const EditUserdataById = ({
                             value={field.taluka}
                             placeholder='Enter Taluka'
                             onChange={e => handleChangeAccusedInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1512,6 +1585,7 @@ const EditUserdataById = ({
                             value={field.district}
                             placeholder='Enter District'
                             onChange={e => handleChangeAccusedInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <div className='form-group'>
@@ -1522,17 +1596,20 @@ const EditUserdataById = ({
                             value={field.otherinfo}
                             placeholder='Enter Other Info'
                             onChange={e => handleChangeAccusedInput(idx, e)}
+                            disabled={user && user.role !== 'Police'}
                           />
                         </div>
                         <Button
                           type='button'
                           onClick={() => handleAddAccusedInput()}
+                          disabled={user && user.role !== 'Police'}
                         >
                           <i className='fa fa-plus' aria-hidden='true' />
                         </Button>
                         <Button
                           type='button'
                           onClick={() => handleRemoveAccusedInput(idx)}
+                          disabled={user && user.role !== 'Police'}
                         >
                           <i className='fa fa-times' aria-hidden='true' />
                         </Button>
@@ -1551,11 +1628,7 @@ const EditUserdataById = ({
                       name='natureofcrime'
                       value={natureofcrime}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                 </div>
@@ -1624,11 +1697,7 @@ const EditUserdataById = ({
                     name='othersections'
                     value={othersections}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.role !== 'Police' &&
-                      (user && user.role !== 'Data Entry Operator')
-                    }
+                    disabled={user && user.role !== 'Police'}
                   />
                 </div>
                 {/*  */}
@@ -1653,8 +1722,8 @@ const EditUserdataById = ({
                           <tbody style={{ overflow: 'scroll' }}>
                             {sectionsapplied !== null ? (
                               sectionsapplied.map((sectionn, i) => (
-                                <Fragment>
-                                  <tr>
+                                <Fragment key={i}>
+                                  <tr key={i}>
                                     <td>{sectionn.label}</td>
                                     <td>
                                       {sectionn.compensation <= 0
@@ -1695,7 +1764,7 @@ const EditUserdataById = ({
                             )}
                             {typeofatrocity !== null ? (
                               typeofatrocity.map((sectionn, i) => (
-                                <Fragment>
+                                <Fragment key={i}>
                                   <tr>
                                     <td>{sectionn.label}</td>
                                     <td>
@@ -1760,7 +1829,7 @@ const EditUserdataById = ({
                                   <td>{maxCompIII === 0 ? '-' : maxCompIII}</td>
                                   <td style={{ textAlign: 'left' }}>
                                     {extrabenefits.map((e1da, i) => (
-                                      <li>{extrabenefits[i]}</li>
+                                      <li key={i}>{extrabenefits[i]}</li>
                                     ))}
                                   </td>
                                 </tr>
@@ -2065,7 +2134,8 @@ const EditUserdataById = ({
                       </div>
                       <div className='form-group'>
                         <Paper className={classes.root}>
-                          Upload other Victim's Caste Certificate File <br />
+                          Upload all other Victim's Caste Certificate File{' '}
+                          <br />
                           <small>
                             Note : File Size Should not exceed 6 Mb{'  '} <br />
                             <small>Upload jpeg/pdf file here : {'   '}</small>
@@ -2244,8 +2314,8 @@ const EditUserdataById = ({
                       </div>
                       <div className='form-group'>
                         <Paper className={classes.root}>
-                          Upload other Accused Person's Caste Certificate File{' '}
-                          <br />
+                          Upload all other Accused Person's Caste Certificate
+                          File <br />
                           <small>
                             <small>Upload jpeg/pdf file here : {'   '}</small>
                             <br /> Note : File Size Should not exceed 6 Mb{'  '}
@@ -2314,11 +2384,7 @@ const EditUserdataById = ({
                       name='firstbenefitbypolicecomment'
                       value={firstbenefitbypolicecomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -2330,11 +2396,7 @@ const EditUserdataById = ({
                       checked={firstbenefitbypolice === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />{' '}
                     Should be given
                     <Radio
@@ -2343,11 +2405,7 @@ const EditUserdataById = ({
                       checked={firstbenefitbypolice === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />{' '}
                     Should not be given
                     <Radio
@@ -2356,11 +2414,7 @@ const EditUserdataById = ({
                       checked={firstbenefitbypolice === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />{' '}
                     Keep Pending
                   </div>
@@ -2374,12 +2428,7 @@ const EditUserdataById = ({
                       name='monetarycompbyACI'
                       value={monetarycompbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
@@ -2390,17 +2439,17 @@ const EditUserdataById = ({
                       name='otherbenefitycompbyACI'
                       value={otherbenefitycompbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
                     Other Comments by Asst. Commisioner
-                    <textarea
+                    <CommentForm
+                      userdataId={userdata._id}
+                      commentType={'commentaci'}
+                      dispType={ADD_COMMENTACI}
+                    />
+                    {/* <textarea
                       type='text'
                       placeholder='Any Other Comments'
                       name='firstbenefitbycommcomment'
@@ -2408,12 +2457,19 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
+                        user.role !== 'Asst. Commissioner' 
                       }
-                    />
+                    /> */}
                   </div>
+                </div>
+                <div className='comments'>
+                  {userdata.commentsaci.map(comment => (
+                    <CommentItem
+                      key={comment._id}
+                      comment={comment}
+                      userdataId={userdata._id}
+                    />
+                  ))}
                 </div>
                 <div className='form-group'>
                   First Benefit Recommendation by Assistant Commisioner
@@ -2454,12 +2510,7 @@ const EditUserdataById = ({
                       name='monetarycompbyDCI'
                       value={monetarycompbyDCI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
@@ -2470,16 +2521,17 @@ const EditUserdataById = ({
                       name='otherbenefitycompbyDCI'
                       value={otherbenefitycompbyDCI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
                     Other Comments by District Collector
+                    <CommentForm
+                      userdataId={userdata._id}
+                      commentType={'commentdci'}
+                      dispType={ADD_COMMENTDCI}
+                    />
+                    {/* Other Comments by District Collector
                     <textarea
                       type='text'
                       placeholder='Any Other Comments here'
@@ -2488,12 +2540,19 @@ const EditUserdataById = ({
                       onChange={e => onChange(e)}
                       disabled={
                         user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
+                        user.role !== 'District Collector' 
                       }
-                    />
+                    /> */}
                   </div>
+                </div>
+                <div className='comments'>
+                  {userdata.commentsdci.map(comment => (
+                    <CommentItem
+                      key={comment._id}
+                      comment={comment}
+                      userdataId={userdata._id}
+                    />
+                  ))}
                 </div>
                 <div className='form-group'>
                   Decision for distribution of first Benefit District Collector
@@ -2503,12 +2562,7 @@ const EditUserdataById = ({
                     checked={firstbenefitbycollector === 'yes'}
                     value='yes'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.role !== 'District Collector' &&
-                      user &&
-                      user.role !== 'Data Entry Operator'
-                    }
+                    disabled={user && user.role !== 'District Collector'}
                   />{' '}
                   Should be given
                   <Radio
@@ -2517,12 +2571,7 @@ const EditUserdataById = ({
                     checked={firstbenefitbycollector === 'no'}
                     value='no'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.role !== 'District Collector' &&
-                      user &&
-                      user.role !== 'Data Entry Operator'
-                    }
+                    disabled={user && user.role !== 'District Collector'}
                   />{' '}
                   Should not be given
                   <Radio
@@ -2531,12 +2580,7 @@ const EditUserdataById = ({
                     checked={firstbenefitbycollector === 'pending'}
                     value='pending'
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.role !== 'District Collector' &&
-                      user &&
-                      user.role !== 'Data Entry Operator'
-                    }
+                    disabled={user && user.role !== 'District Collector'}
                   />{' '}
                   Keep Pending
                 </div>
@@ -2544,7 +2588,8 @@ const EditUserdataById = ({
                   return (
                     <div key={`${field}-${idx}`} className='maindiv'>
                       <div className='form-group'>
-                        UTR Number for Money Transfer for Victim {idx + 1}
+                        UTR Number for Money Transfer for Victim {idx + 1}{' '}
+                        (Stage I)
                         <input
                           type='text'
                           name='utrnumone'
@@ -2558,7 +2603,7 @@ const EditUserdataById = ({
                 })}
                 {firstbenefitbycollector !== 'no' && (
                   <div className='maindiv'>
-                    <div className='form-group'>
+                    {/* <div className='form-group'>
                       UTR Number for Money Transfer
                       <input
                         type='text'
@@ -2568,7 +2613,7 @@ const EditUserdataById = ({
                         onChange={e => onChange(e)}
                         disabled={user && user.role === 'Asst. Commissioner'}
                       />
-                    </div>
+                    </div> */}
                     <div className='form-group'>
                       Details of non Monetary Benefits for Stage I given by
                       Asst. Commisioner
@@ -2578,12 +2623,7 @@ const EditUserdataById = ({
                         name='benefitsgivenbyACI'
                         value={benefitsgivenbyACI}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'Asst. Commissioner' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'Asst. Commissioner'}
                       />
                     </div>
                     <div className='form-group'>
@@ -2595,12 +2635,7 @@ const EditUserdataById = ({
                         checked={isbenefitsgivenbyACI === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'District Collector' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'District Collector'}
                       />{' '}
                       Yes
                       <Radio
@@ -2609,12 +2644,7 @@ const EditUserdataById = ({
                         checked={isbenefitsgivenbyACI === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'District Collector' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'District Collector'}
                       />{' '}
                       No
                     </div>
@@ -2646,54 +2676,74 @@ const EditUserdataById = ({
                       No
                     </div>
                     {sectionschanged === 'yes' && (
-                      <div
-                        style={{
-                          display: 'flex'
-                        }}
-                      >
-                        <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
-                          Type of Crime
-                          <Select
-                            closeMenuOnSelect={false}
-                            components={animatedComponents}
-                            options={options}
-                            name='typeofatrocityv2'
-                            value={typeofatrocityv2}
-                            isMulti
-                            isSearchable
-                            onChange={handleChangev2}
-                            isDisabled={user && user.role !== 'Police'}
+                      <Fragment>
+                        <div
+                          style={{
+                            display: 'flex'
+                          }}
+                        >
+                          <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
+                            Type of Crime
+                            <Select
+                              closeMenuOnSelect={false}
+                              components={animatedComponents}
+                              options={options}
+                              name='typeofatrocityv2'
+                              value={typeofatrocityv2}
+                              isMulti
+                              isSearchable
+                              onChange={handleChangev2}
+                              isDisabled={user && user.role !== 'Police'}
+                            />
+                          </div>
+                          <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
+                            Select IPC Sections
+                            <Select
+                              closeMenuOnSelect={false}
+                              components={animatedComponents}
+                              options={ipcOptions}
+                              name='ipcappliedv2'
+                              value={ipcappliedv2}
+                              isMulti
+                              isSearchable
+                              onChange={handleIpcv2}
+                              isDisabled={user && user.role !== 'Police'}
+                            />
+                          </div>
+                          <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
+                            Select Atrocity Act Sections
+                            <Select
+                              closeMenuOnSelect={false}
+                              components={animatedComponents}
+                              options={sectionsopts}
+                              name='sectionsappliedv2'
+                              value={sectionsappliedv2}
+                              isMulti
+                              isSearchable
+                              onChange={handleSectionsv2}
+                              isDisabled={user && user.role !== 'Police'}
+                            />
+                          </div>
+                        </div>
+
+                        <div className='form-group'>
+                          Other Sections
+                          <textarea
+                            rows='4'
+                            cols='2'
+                            type='text'
+                            placeholder='Details of Other Sections Applied'
+                            name='othersectionsv2'
+                            value={othersectionsv2}
+                            onChange={e => onChange(e)}
+                            disabled={
+                              user &&
+                              user.role !== 'Police' &&
+                              (user && user.role !== 'Data Entry Operator')
+                            }
                           />
                         </div>
-                        <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
-                          Select IPC Sections
-                          <Select
-                            closeMenuOnSelect={false}
-                            components={animatedComponents}
-                            options={ipcOptions}
-                            name='ipcappliedv2'
-                            value={ipcappliedv2}
-                            isMulti
-                            isSearchable
-                            onChange={handleIpcv2}
-                            isDisabled={user && user.role !== 'Police'}
-                          />
-                        </div>
-                        <div style={{ flex: 1, margin: '0px 5px 15px 12px' }}>
-                          Select Atrocity Act Sections
-                          <Select
-                            closeMenuOnSelect={false}
-                            components={animatedComponents}
-                            options={sectionsopts}
-                            name='sectionsappliedv2'
-                            value={sectionsappliedv2}
-                            isMulti
-                            isSearchable
-                            onChange={handleSectionsv2}
-                            isDisabled={user && user.role !== 'Police'}
-                          />
-                        </div>
-                      </div>
+                      </Fragment>
                     )}
                     {(sectionsappliedv2 !== null ||
                       typeofatrocityv2 !== null) &&
@@ -3024,6 +3074,12 @@ const EditUserdataById = ({
                       </div>
                       <div className='form-group'>
                         Other Comments by Asst. Commisioner
+                        <CommentForm
+                          userdataId={userdata._id}
+                          commentType={'commentacii'}
+                          dispType={ADD_COMMENTACII}
+                        />
+                        {/* Other Comments by Asst. Commisioner
                         <textarea
                           type='text'
                           placeholder='Any Other Comments here'
@@ -3036,8 +3092,17 @@ const EditUserdataById = ({
                             user &&
                             user.role !== 'Data Entry Operator'
                           }
-                        />
+                        /> */}
                       </div>
+                    </div>
+                    <div className='comments'>
+                      {userdata.commentsacii.map(comment => (
+                        <CommentItem
+                          key={comment._id}
+                          comment={comment}
+                          userdataId={userdata._id}
+                        />
+                      ))}
                     </div>
                     <div className='form-group'>
                       Second Benefit Recommendation by Assistant Commisioner
@@ -3047,12 +3112,7 @@ const EditUserdataById = ({
                         checked={secondbenefitbycommis === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'Asst. Commissioner' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'Asst. Commissioner'}
                       />{' '}
                       Should be given
                       <Radio
@@ -3061,12 +3121,7 @@ const EditUserdataById = ({
                         checked={secondbenefitbycommis === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'Asst. Commissioner' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'Asst. Commissioner'}
                       />{' '}
                       Should not be given
                       <Radio
@@ -3075,12 +3130,7 @@ const EditUserdataById = ({
                         checked={secondbenefitbycommis === 'pending'}
                         value='pending'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'Asst. Commissioner' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'Asst. Commissioner'}
                       />{' '}
                       Keep Pending
                     </div>
@@ -3120,6 +3170,12 @@ const EditUserdataById = ({
                       </div>
                       <div className='form-group'>
                         Other Comments by District Collector
+                        <CommentForm
+                          userdataId={userdata._id}
+                          commentType={'commentdcii'}
+                          dispType={ADD_COMMENTDCII}
+                        />
+                        {/* Other Comments by District Collector
                         <textarea
                           type='text'
                           placeholder='Any Other Comments here'
@@ -3132,8 +3188,17 @@ const EditUserdataById = ({
                             user &&
                             user.role !== 'Data Entry Operator'
                           }
-                        />
+                        /> */}
                       </div>
+                    </div>
+                    <div className='comments'>
+                      {userdata.commentsdcii.map(comment => (
+                        <CommentItem
+                          key={comment._id}
+                          comment={comment}
+                          userdataId={userdata._id}
+                        />
+                      ))}
                     </div>
                     <div className='form-group'>
                       Decision for distribution of second Benefit District
@@ -3144,12 +3209,7 @@ const EditUserdataById = ({
                         checked={secondbenefitbycollector === 'yes'}
                         value='yes'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'District Collector' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'District Collector'}
                       />{' '}
                       Should be given
                       <Radio
@@ -3158,12 +3218,7 @@ const EditUserdataById = ({
                         checked={secondbenefitbycollector === 'no'}
                         value='no'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'District Collector' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'District Collector'}
                       />{' '}
                       Should not be given
                       <Radio
@@ -3172,12 +3227,7 @@ const EditUserdataById = ({
                         checked={secondbenefitbycollector === 'pending'}
                         value='pending'
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'District Collector' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'District Collector'}
                       />{' '}
                       Keep Pending
                     </div>
@@ -3185,7 +3235,8 @@ const EditUserdataById = ({
                       return (
                         <div key={`${field}-${idx}`} className='maindiv'>
                           <div className='form-group'>
-                            UTR Number for Money Transfer for Victim {idx + 1}
+                            UTR Number for Money Transfer for Victim {idx + 1}{' '}
+                            (Stage II)
                             <input
                               type='text'
                               name='utrnumtwo'
@@ -3198,7 +3249,7 @@ const EditUserdataById = ({
                       );
                     })}
                     <div className='maindiv'>
-                      <div className='form-group'>
+                      {/* <div className='form-group'>
                         UTR Number for Money Transfer for Stage II
                         <input
                           type='text'
@@ -3211,7 +3262,7 @@ const EditUserdataById = ({
                             (user && user.role !== 'Data Entry Operator')
                           }
                         />
-                      </div>
+                      </div> */}
                       <div className='form-group'>
                         Details of Non Monetary Benefits given for Stage II by
                         Asst. Commisioner
@@ -3279,7 +3330,7 @@ const EditUserdataById = ({
                             }
                           />
                         </div>
-                        <div className='form-group'>
+                        {/* <div className='form-group'>
                           Whether all benefits were given for Stage II by Asst.
                           Commisioner
                           <Radio
@@ -3304,7 +3355,7 @@ const EditUserdataById = ({
                             }
                           />{' '}
                           No
-                        </div>
+                        </div> */}
                       </div>
                     )}
                   </Fragment>
@@ -3449,6 +3500,12 @@ const EditUserdataById = ({
                         </div>
                         <div className='form-group'>
                           Other Comments by Asst. Commisioner
+                          <CommentForm
+                            userdataId={userdata._id}
+                            commentType={'commentaciii'}
+                            dispType={ADD_COMMENTACIII}
+                          />
+                          {/* Other Comments by Asst. Commisioner
                           <input
                             type='text'
                             placeholder='Any Other Comments here'
@@ -3458,8 +3515,17 @@ const EditUserdataById = ({
                             disabled={
                               user && user.role !== 'Asst. Commissioner'
                             }
-                          />
+                          /> */}
                         </div>
+                      </div>
+                      <div className='comments'>
+                        {userdata.commentsaciii.map(comment => (
+                          <CommentItem
+                            key={comment._id}
+                            comment={comment}
+                            userdataId={userdata._id}
+                          />
+                        ))}
                       </div>
                       <div className='form-group'>
                         Third Benefit Recommendation by Assistant Commisioner
@@ -3521,6 +3587,12 @@ const EditUserdataById = ({
                         </div>
                         <div className='form-group'>
                           Other Comments by District Collector
+                          <CommentForm
+                            userdataId={userdata._id}
+                            commentType={'commentdciii'}
+                            dispType={ADD_COMMENTDCIII}
+                          />
+                          {/* Other Comments by District Collector
                           <input
                             type='text'
                             placeholder='Any Other Comments here'
@@ -3530,8 +3602,17 @@ const EditUserdataById = ({
                             disabled={
                               user && user.role !== 'District Collector'
                             }
-                          />
+                          /> */}
                         </div>
+                      </div>
+                      <div className='comments'>
+                        {userdata.commentsdciii.map(comment => (
+                          <CommentItem
+                            key={comment._id}
+                            comment={comment}
+                            userdataId={userdata._id}
+                          />
+                        ))}
                       </div>
                       <div className='form-group'>
                         Decision for distribution of third Benefit District
@@ -3568,7 +3649,8 @@ const EditUserdataById = ({
                         return (
                           <div key={`${field}-${idx}`} className='maindiv'>
                             <div className='form-group'>
-                              UTR Number for Money Transfer for Victim {idx + 1}
+                              UTR Number for Money Transfer for Victim {idx + 1}{' '}
+                              (Stage III)
                               <input
                                 type='text'
                                 name='utrnumthree'
@@ -3581,7 +3663,7 @@ const EditUserdataById = ({
                         );
                       })}
                       <div className='maindiv'>
-                        <div className='form-group'>
+                        {/* <div className='form-group'>
                           UTR Number for Money Transfer for Stage III
                           <input
                             type='text'
@@ -3593,7 +3675,7 @@ const EditUserdataById = ({
                               user && user.role === 'Asst. Commissioner'
                             }
                           />
-                        </div>
+                        </div> */}
                         <div className='form-group'>
                           Details of Non Monetary Benefits given for Stage III
                           by Asst. Commisioner
@@ -3736,7 +3818,8 @@ const EditUserdataById = ({
             </div>
           </Fragment>
         )} */}
-                {user && user.role === 'Asst. Commissioner' && (
+                {((user && user.role === 'Asst. Commissioner') ||
+                  (user && user.role === 'Police')) && (
                   <Fragment>
                     <div className='form-group'>
                       Comment for Return/Re-Examination of this Case
@@ -3746,27 +3829,26 @@ const EditUserdataById = ({
                         name='returntopolicecomment'
                         value={returntopolicecomment}
                         onChange={e => onChange(e)}
-                        disabled={
-                          user &&
-                          user.role !== 'Asst. Commissioner' &&
-                          user &&
-                          user.role !== 'Data Entry Operator'
-                        }
+                        disabled={user && user.role !== 'Asst. Commissioner'}
                       />
                     </div>
-                    <Button
-                      variant='contained'
-                      color='secondary'
-                      className={classes.button}
-                      onClick={e => (
-                        (formData.returntopolice = true),
-                        console.log(returntopolice),
-                        onSubmit(e)
-                      )}
-                    >
-                      Return
-                    </Button>
-                    or
+                    {user && user.role === 'Asst. Commissioner' && (
+                      <Fragment>
+                        <Button
+                          variant='contained'
+                          color='secondary'
+                          className={classes.button}
+                          onClick={e => (
+                            (formData.returntopolice = true),
+                            console.log(returntopolice),
+                            onSubmit(e)
+                          )}
+                        >
+                          Return
+                        </Button>
+                        {'or'}
+                      </Fragment>
+                    )}
                   </Fragment>
                 )}
                 <div className='icon-bar'>

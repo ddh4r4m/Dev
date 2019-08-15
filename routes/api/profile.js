@@ -96,12 +96,13 @@ router.post(
       bio
     } = req.body;
 
-    const photo = req.file;
+    const photo = null;
+    // const photo = req.file;
     //Build Profile object
     const profileFields = {};
     // console.log(req.file.path);
     profileFields.user = req.user.id;
-    if (photo !== undefined) profileFields.photo = req.file.path;
+    if (req.file !== undefined) profileFields.photo = req.file.path;
     // profileFields.photo = req.file == undefined ? '' : req.file.path;
     if (name) profileFields.name = name;
     if (photo) profileFields.photo = photo;

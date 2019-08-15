@@ -45,7 +45,8 @@ const Deousersdata = ({
     sectionsapplied: '',
     ipcapplied: '',
     typeofatrocity: '',
-    policestation: ''
+    policestation: '',
+    approval: 'no'
   });
 
   const {
@@ -57,7 +58,8 @@ const Deousersdata = ({
     sectionsapplied,
     ipcapplied,
     typeofatrocity,
-    policestation
+    policestation,
+    approval
   } = formData;
 
   const onChange = e =>
@@ -66,6 +68,8 @@ const Deousersdata = ({
   const filtereddata = deousersdata.filter(deousersdata => {
     return (
       deousersdata.text.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
+      deousersdata.approve.toLowerCase().indexOf(approval.toLowerCase()) !==
+        -1 &&
       deousersdata.courtresults
         .toLowerCase()
         .indexOf(courtresults.toLowerCase()) !== -1 &&
@@ -100,7 +104,7 @@ const Deousersdata = ({
   return loading ? (
     <Spinner />
   ) : (
-    <div className='container'>
+    <div style={{ margin: '100px 50px' }}>
       {searchbox && (
         <div>
           <input
@@ -177,7 +181,6 @@ const Deousersdata = ({
           />
         </div>
       )}
-      <br />
       <Link to='create-deouserdata' style={{ marginBottom: '20px' }}>
         <Button variant='contained' color='primary' className={classes.button}>
           Create New Case
@@ -191,6 +194,16 @@ const Deousersdata = ({
       >
         Search
       </Button>
+
+      <br />
+      <div className='form-group'>
+        Select Type : Approved/Non Approved Cases{' '}
+        <select name='approval' value={approval} onChange={e => onChange(e)}>
+          <option value='yes'>Approved Cases</option>
+          <option value='no'>Non Approved Cases</option>
+          <option value=''>All Cases</option>
+        </select>
+      </div>
       <div className='userdata'>
         <table className='fl-table'>
           <thead>

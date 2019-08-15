@@ -50,9 +50,12 @@ const UsersdataPCtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
         usersdata.secondbenefitbycommis
           .toLowerCase()
           .indexOf(search1.toLowerCase()) !== -1 &&
-        usersdata.firstbenefitbycollector
+        (usersdata.firstbenefitbycollector
           .toLowerCase()
-          .indexOf(search2.toLowerCase()) !== -1 &&
+          .indexOf(search1.toLowerCase()) !== -1 ||
+          usersdata.firstbenefitbycollector
+            .toLowerCase()
+            .indexOf(search2.toLowerCase()) !== -1) &&
         usersdata.closethecase === false
       );
     }
@@ -67,7 +70,7 @@ const UsersdataPCtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className='container'>
+      <div style={{ margin: '100px 50px' }}>
         <input
           style={myStyle}
           type='text'
@@ -99,11 +102,15 @@ const UsersdataPCtwo = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           <table className='fl-table'>
             <thead>
               <tr>
-                <th>YEAR</th>
                 <th>Serial No.</th>
+                <th>YEAR</th>
                 <th>POLICE STATION</th>
-                <th>Register No.</th>
-                <th>Nature </th>
+                <th>DATE OF CRIME</th>
+                <th>FIR No.</th>
+                <th>TYPE OF CRIME </th>
+                <th>IPC </th>
+                <th>Sections </th>
+                <th>Other Sections </th>
                 <th>Button </th>
               </tr>
             </thead>

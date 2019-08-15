@@ -10,6 +10,8 @@ import Alert from './components/layout/Alert';
 import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
+import CreateAtrocitydata from './components/atrocitydata-forms/CreateAtrocitydata';
+import EditAtrocitydata from './components/atrocitydata-forms/EditAtrocitydata';
 import CreateUserdata from './components/usersdata-forms/CreateUserdata';
 import Mofmeeting from './components/mofmeeting/Mofmeeting';
 import Mofmeetings from './components/mofmeeting/Mofmeetings';
@@ -19,6 +21,8 @@ import EditDeouserdata from './components/deousersdata-forms/EditDeouserdata';
 import EditProfile from './components/profile-forms/EditProfile';
 import EditProfileById from './components/profile/EditProfileById';
 import CreatePdf from './components/createpdf/CreatePdf';
+import CreateMeeting from './components/createpdf/CreateMeeting';
+import Example from './components/createpdf/Example';
 import Posts from './components/posts/Posts';
 import Profiles from './components/profiles/Profiles';
 import Usersdata from './components/usersdata/Usersdata';
@@ -97,6 +101,16 @@ const App = () => {
               exact
               path='/createpdf'
               component={WithNavbar(CreatePdf)}
+            />
+            <PrivateRoute
+              exact
+              path='/createmeeting'
+              component={WithNavbar(CreateMeeting)}
+            />
+            <PrivateRoute
+              exact
+              path='/createmeetings'
+              component={WithNavbar(Example)}
             />
             <Route exact path='/reference' component={WithNavbar(Reference)} />
             <Route
@@ -214,6 +228,16 @@ const App = () => {
               exact
               path='/create-profile'
               component={WithNavbar(CreateProfile)}
+            />
+            <PrivateRoute
+              exact
+              path='/create-atrocitydata'
+              component={WithNavbar(CreateAtrocitydata)}
+            />
+            <PrivateRoute
+              exact
+              path='/edit-atrocitydata'
+              component={WithNavbar(EditAtrocitydata)}
             />
             <PrivateRouteI
               exact

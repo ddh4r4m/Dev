@@ -82,6 +82,7 @@ const Login = ({ login, isAuthenticated }) => {
                 onChange={e => onChange(e)}
                 value={email}
                 name='email'
+                pattern='[a-z0-9._%+-]+@[gov]+.[nic]+\.[nic]{2,}$'
                 InputLabelProps={{
                   shrink: true
                 }}
@@ -152,7 +153,7 @@ const Login = ({ login, isAuthenticated }) => {
             {/* <input type='submit' className='btn btn-primary' value='Login' /> */}
           </form>
           <p className='my-1'>
-            Don't have an account? <Link to='register'>Sign Up</Link>
+            Forgot Your Password? <Link to='forgotpassword'>Reset Here</Link>
           </p>
         </Paper>
       </div>

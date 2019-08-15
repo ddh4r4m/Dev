@@ -63,7 +63,7 @@ const UsersdataPPone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div className='container'>
+      <div style={{ margin: '100px 50px' }}>
         <input
           style={myStyle}
           type='text'
@@ -93,11 +93,15 @@ const UsersdataPPone = ({ getUsersdata, userdata: { usersdata, loading } }) => {
           <table className='fl-table'>
             <thead>
               <tr>
-                <th>YEAR</th>
                 <th>Serial No.</th>
+                <th>YEAR</th>
                 <th>POLICE STATION</th>
-                <th>Register No.</th>
-                <th>Nature </th>
+                <th>DATE OF CRIME</th>
+                <th>FIR No.</th>
+                <th>TYPE OF CRIME </th>
+                <th>IPC </th>
+                <th>Sections </th>
+                <th>Other Sections </th>
                 <th>Button </th>
               </tr>
             </thead>

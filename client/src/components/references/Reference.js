@@ -104,18 +104,6 @@ const Reference = ({ createReferences, history, auth: { user } }) => {
               <div style={{ backgroundColor: 'white' }}>
                 <div className='maindiv'>
                   <div className='form-group'>
-                    Title
-                    <input
-                      type='text'
-                      placeholder='Title'
-                      name='title'
-                      value={title}
-                      onChange={e => onChange(e)}
-                    />
-                    <small className='form-text'>Could be a short Name</small>
-                  </div>
-
-                  <div className='form-group'>
                     Description
                     <textarea
                       type='text'
@@ -123,7 +111,11 @@ const Reference = ({ createReferences, history, auth: { user } }) => {
                       name='description'
                       value={description}
                       onChange={e => onChange(e)}
+                      required
                     />
+                    <small className='form-text'>
+                      This will appear as heading in the References Tab
+                    </small>
                   </div>
                 </div>
                 {/*  */}

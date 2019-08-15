@@ -6,6 +6,12 @@ import {
   GET_USERSDATA,
   DELETE_USERDATA,
   ADD_COMMENT,
+  ADD_COMMENTACI,
+  ADD_COMMENTACII,
+  ADD_COMMENTACIII,
+  ADD_COMMENTDCI,
+  ADD_COMMENTDCII,
+  ADD_COMMENTDCIII,
   REMOVE_COMMENT
 } from '../actions/types';
 
@@ -63,6 +69,42 @@ export default function(state = initialState, action) {
       return {
         ...state,
         userdata: { ...state.userdata, comments: payload },
+        loading: false
+      };
+    case ADD_COMMENTACI:
+      return {
+        ...state,
+        userdata: { ...state.userdata, commentsaci: payload },
+        loading: false
+      };
+    case ADD_COMMENTACII:
+      return {
+        ...state,
+        userdata: { ...state.userdata, commentsacii: payload },
+        loading: false
+      };
+    case ADD_COMMENTACIII:
+      return {
+        ...state,
+        userdata: { ...state.userdata, commentsaciii: payload },
+        loading: false
+      };
+    case ADD_COMMENTDCI:
+      return {
+        ...state,
+        userdata: { ...state.userdata, commentsdci: payload },
+        loading: false
+      };
+    case ADD_COMMENTDCII:
+      return {
+        ...state,
+        userdata: { ...state.userdata, commentsdcii: payload },
+        loading: false
+      };
+    case ADD_COMMENTDCIII:
+      return {
+        ...state,
+        userdata: { ...state.userdata, commentsdciii: payload },
         loading: false
       };
     case REMOVE_COMMENT:

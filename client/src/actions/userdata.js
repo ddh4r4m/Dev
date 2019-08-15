@@ -213,3 +213,177 @@ export const deleteComment = (userdataId, commentId) => async dispatch => {
     });
   }
 };
+
+//Add Comment userwise
+export const addCommentaci = (
+  userdataId,
+  formData,
+  commentType,
+  dispType
+) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  try {
+    const res = await axios.post(
+      `/api/userdata/${commentType}/${userdataId}`,
+      formData,
+      config
+    );
+
+    dispatch({
+      type: dispType,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Comment Added', 'success'));
+  } catch (err) {
+    dispatch({
+      type: USERDATA_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+// //Add Comment userwise
+// export const addCommentacii = (userdataId, formData) => async dispatch => {
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
+
+//   try {
+//     const res = await axios.post(
+//       `/api/userdata/commentacii/${userdataId}`,
+//       formData,
+//       config
+//     );
+
+//     dispatch({
+//       type: ADD_COMMENTACII,
+//       payload: res.data
+//     });
+
+//     dispatch(setAlert('Comment Added', 'success'));
+//   } catch (err) {
+//     dispatch({
+//       type: USERDATA_ERROR,
+//       payload: { msg: err.response.statusText, status: err.response.status }
+//     });
+//   }
+// };
+// //Add Comment userwise
+// export const addCommentaciii = (userdataId, formData) => async dispatch => {
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
+
+//   try {
+//     const res = await axios.post(
+//       `/api/userdata/commentaciii/${userdataId}`,
+//       formData,
+//       config
+//     );
+
+//     dispatch({
+//       type: ADD_COMMENTACIII,
+//       payload: res.data
+//     });
+
+//     dispatch(setAlert('Comment Added', 'success'));
+//   } catch (err) {
+//     dispatch({
+//       type: USERDATA_ERROR,
+//       payload: { msg: err.response.statusText, status: err.response.status }
+//     });
+//   }
+// };
+// //Add Comment userwise
+// export const addCommentdci = (userdataId, formData) => async dispatch => {
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
+
+//   try {
+//     const res = await axios.post(
+//       `/api/userdata/commentdci/${userdataId}`,
+//       formData,
+//       config
+//     );
+
+//     dispatch({
+//       type: ADD_COMMENTDCI,
+//       payload: res.data
+//     });
+
+//     dispatch(setAlert('Comment Added', 'success'));
+//   } catch (err) {
+//     dispatch({
+//       type: USERDATA_ERROR,
+//       payload: { msg: err.response.statusText, status: err.response.status }
+//     });
+//   }
+// };
+// //Add Comment userwise
+// export const addCommentdcii = (userdataId, formData) => async dispatch => {
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
+
+//   try {
+//     const res = await axios.post(
+//       `/api/userdata/commentdcii/${userdataId}`,
+//       formData,
+//       config
+//     );
+
+//     dispatch({
+//       type: ADD_COMMENTDCII,
+//       payload: res.data
+//     });
+
+//     dispatch(setAlert('Comment Added', 'success'));
+//   } catch (err) {
+//     dispatch({
+//       type: USERDATA_ERROR,
+//       payload: { msg: err.response.statusText, status: err.response.status }
+//     });
+//   }
+// };
+// //Add Comment userwise
+// export const addCommentdciii = (userdataId, formData) => async dispatch => {
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
+
+//   try {
+//     const res = await axios.post(
+//       `/api/userdata/commentdciii/${userdataId}`,
+//       formData,
+//       config
+//     );
+
+//     dispatch({
+//       type: ADD_COMMENTDCIII,
+//       payload: res.data
+//     });
+
+//     dispatch(setAlert('Comment Added', 'success'));
+//   } catch (err) {
+//     dispatch({
+//       type: USERDATA_ERROR,
+//       payload: { msg: err.response.statusText, status: err.response.status }
+//     });
+//   }
+// };

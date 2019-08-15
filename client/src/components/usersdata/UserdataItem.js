@@ -23,7 +23,7 @@ import Button from '@material-ui/core/Button';
 const ProfileItem = ({
   userdata: {
     text,
-    year,
+    regdateofcrime,
     policestation,
     _id,
     natureofcrime,
@@ -42,7 +42,7 @@ const ProfileItem = ({
     <Fragment>
       <tr>
         <td>{text}</td>
-        <td>{year}</td>
+        <td>{regdateofcrime}</td>
         <td>{policestation}</td>
         <td>{dateofcrime}</td>
         <td>{firno}</td>

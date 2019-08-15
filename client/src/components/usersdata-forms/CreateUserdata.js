@@ -10,6 +10,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
+import {
+  ADD_COMMENTACI,
+  ADD_COMMENTACII,
+  ADD_COMMENTDCI,
+  ADD_COMMENTACIII,
+  ADD_COMMENTDCIII,
+  ADD_COMMENTDCII
+} from '../../actions/types';
 // import RadioGroup from '@material-ui/core/RadioGroup';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -62,27 +70,27 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
     otherbenefitycompbyACI: '',
     otherbenefitycompbyACII: '',
     otherbenefitycompbyACIII: '',
-    firstbenefitbypolice: '',
-    firstbenefitbycommis: '',
-    firstbenefitbycollector: '',
+    firstbenefitbypolice: 'pending',
+    firstbenefitbycommis: 'pending',
+    firstbenefitbycollector: 'pending',
     firstbenefitbypolicedate: '',
     firstbenefitbycommisdate: '',
     firstbenefitbycollectordate: '',
     firstbenefitbypolicecomment: '',
     firstbenefitbycommcomment: '',
     firstbenefitbycollectorcomment: '',
-    secondbenefitbypolice: '',
-    secondbenefitbycommis: '',
-    secondbenefitbycollector: '',
+    secondbenefitbypolice: 'pending',
+    secondbenefitbycommis: 'pending',
+    secondbenefitbycollector: 'pending',
     secondbenefitbypolicedate: '',
     secondbenefitbycommisdate: '',
     secondbenefitbycollectordate: '',
     secondbenefitbypolicecomment: '',
     secondbenefitbycommcomment: '',
     secondbenefitbycollectorcomment: '',
-    thirdbenefitbypolice: '',
-    thirdbenefitbycommis: '',
-    thirdbenefitbycollector: '',
+    thirdbenefitbypolice: 'pending',
+    thirdbenefitbycommis: 'pending',
+    thirdbenefitbycollector: 'pending',
     thirdbenefitbypolicedate: '',
     thirdbenefitbycommisdate: '',
     thirdbenefitbycollectordate: '',
@@ -705,11 +713,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='text'
                       value={text}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                     <small className='form-text'>
                       Could be the defined format of serial no
@@ -723,11 +727,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='firno'
                       value={firno}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -736,11 +736,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='policestation'
                       value={policestation}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     >
                       <option value='Dhule City'>Dhule City </option>
                       <option value='Aazadnagar' defaultValue>
@@ -775,11 +771,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='crimeregisterno'
                       value={crimeregisterno}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -790,11 +782,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='dateofcrime'
                       value={dateofcrime}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -805,30 +793,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='regdateofcrime'
                       value={regdateofcrime}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
-                    />
-                  </div>
-                </div>
-                <div className='maindiv'>
-                  <div className='form-group'>
-                    Summary of Crime
-                    <textarea
-                      rows='4'
-                      cols='2'
-                      type='text'
-                      placeholder='Summary of Crime'
-                      name='natureofcrime'
-                      value={natureofcrime}
-                      onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                 </div>
@@ -1156,6 +1121,21 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     );
                   })}
                 </div>
+                <div className='maindiv'>
+                  <div className='form-group'>
+                    Summary of Crime
+                    <textarea
+                      rows='4'
+                      cols='2'
+                      type='text'
+                      placeholder='Summary of Crime'
+                      name='natureofcrime'
+                      value={natureofcrime}
+                      onChange={e => onChange(e)}
+                      disabled={user && user.role !== 'Police'}
+                    />
+                  </div>
+                </div>
                 <div
                   style={{
                     display: 'flex'
@@ -1176,11 +1156,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       isMulti
                       isSearchable
                       onChange={handleChange}
-                      isDisabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      isDisabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
@@ -1197,11 +1173,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       isMulti
                       isSearchable
                       onChange={handleIpc}
-                      isDisabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      isDisabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div style={{ flex: 1, margin: '19px 5px -5px 12px' }}>
@@ -1215,14 +1187,11 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       isMulti
                       isSearchable
                       onChange={handleSections}
-                      isDisabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      isDisabled={user && user.role !== 'Police'}
                     />
                   </div>{' '}
                 </div>
+                <br />
                 <div className='form-group'>
                   Other Sections
                   <textarea
@@ -1233,11 +1202,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     name='othersections'
                     value={othersections}
                     onChange={e => onChange(e)}
-                    disabled={
-                      user &&
-                      user.role !== 'Police' &&
-                      (user && user.role !== 'Data Entry Operator')
-                    }
+                    disabled={user && user.role !== 'Police'}
                   />
                 </div>
                 {/*  */}
@@ -1499,7 +1464,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       </div>
                       <div className='form-group'>
                         <Paper className={classes.root}>
-                          Upload other Victim's Caste Certificate File <br />
+                          Upload all other Victim's Caste Certificate File{' '}
+                          <br />
                           <small>
                             Note : File Size Should not exceed 6 Mb{'  '} <br />
                             <small>Upload jpeg/pdf file here : {'   '}</small>
@@ -1678,8 +1644,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       </div>
                       <div className='form-group'>
                         <Paper className={classes.root}>
-                          Upload other Accused Person's Caste Certificate File{' '}
-                          <br />
+                          Upload all other Accused Person's Caste Certificate
+                          File <br />
                           <small>
                             <small>Upload jpeg/pdf file here : {'   '}</small>
                             <br /> Note : File Size Should not exceed 6 Mb{'  '}
@@ -1748,11 +1714,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='firstbenefitbypolicecomment'
                       value={firstbenefitbypolicecomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1764,11 +1726,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={firstbenefitbypolice === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />{' '}
                     Should be given
                     <Radio
@@ -1777,11 +1735,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={firstbenefitbypolice === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />{' '}
                     Should not be given
                     <Radio
@@ -1790,11 +1744,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={firstbenefitbypolice === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />{' '}
                     Keep Pending
                   </div>
@@ -1808,12 +1758,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='monetarycompbyACI'
                       value={monetarycompbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1824,12 +1769,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='otherbenefitycompbyACI'
                       value={otherbenefitycompbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1840,12 +1780,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='firstbenefitbycommcomment'
                       value={firstbenefitbycommcomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />
                   </div>
                 </div>
@@ -1903,12 +1838,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='monetarycompbyDCI'
                       value={monetarycompbyDCI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1919,12 +1849,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='otherbenefitycompbyDCI'
                       value={otherbenefitycompbyDCI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />
                   </div>
                   <div className='form-group'>
@@ -1935,12 +1860,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='firstbenefitbycollectorcomment'
                       value={firstbenefitbycollectorcomment}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />
                   </div>
                 </div>
@@ -1993,7 +1913,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   return (
                     <div key={`${field}-${idx}`} className='maindiv'>
                       <div className='form-group'>
-                        UTR Number for Money Transfer for Victim {idx + 1}
+                        UTR Number for Money Transfer for Victim {idx + 1}{' '}
+                        (Stage I)
                         <input
                           type='text'
                           name='utrnumone'
@@ -2006,7 +1927,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   );
                 })}
                 <div className='maindiv'>
-                  <div className='form-group'>
+                  {/* <div className='form-group'>
                     UTR Number for Money Transfer
                     <input
                       type='text'
@@ -2014,12 +1935,9 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='utrnumI'
                       value={utrnumI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        (user && user.role === 'Asst. Commissioner') ||
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role === 'Asst. Commissioner'}
                     />
-                  </div>
+                  </div> */}
                   <div className='form-group'>
                     Details of non Monetary Benefits for Stage I given by Asst.
                     Commisioner
@@ -2029,12 +1947,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='benefitsgivenbyACI'
                       value={benefitsgivenbyACI}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />
                   </div>
                   <div className='form-group'>
@@ -2046,12 +1959,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={isbenefitsgivenbyACI === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     Yes
                     <Radio
@@ -2060,12 +1968,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={isbenefitsgivenbyACI === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     No
                   </div>
@@ -2080,11 +1983,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={sectionschanged === 'yes'}
                   value='yes'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.role !== 'Police' &&
-                    (user && user.role !== 'Data Entry Operator')
-                  }
+                  disabled={user && user.role !== 'Police'}
                 />{' '}
                 Yes
                 <Radio
@@ -2093,11 +1992,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                   checked={sectionschanged === 'no'}
                   value='no'
                   onChange={e => onChange(e)}
-                  disabled={
-                    user &&
-                    user.role !== 'Police' &&
-                    (user && user.role !== 'Data Entry Operator')
-                  }
+                  disabled={user && user.role !== 'Police'}
                 />{' '}
                 No
               </div>
@@ -2173,11 +2068,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       name='othersectionsv2'
                       value={othersectionsv2}
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Police' &&
-                        (user && user.role !== 'Data Entry Operator')
-                      }
+                      disabled={user && user.role !== 'Police'}
                     />
                   </div>
                 </Fragment>
@@ -2626,7 +2517,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                 return (
                   <div key={`${field}-${idx}`} className='maindiv'>
                     <div className='form-group'>
-                      UTR Number for Money Transfer for Victim {idx + 1}
+                      UTR Number for Money Transfer for Victim {idx + 1} (Stage
+                      II)
                       <input
                         type='text'
                         name='utrnumtwo'
@@ -2639,7 +2531,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                 );
               })}
               <div className='maindiv'>
-                <div className='form-group'>
+                {/* <div className='form-group'>
                   UTR Number for Money Transfer for Stage II
                   <input
                     type='text'
@@ -2652,7 +2544,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       (user && user.role !== 'Data Entry Operator')
                     }
                   />
-                </div>
+                </div> */}
                 <div className='form-group'>
                   Details of Non Monetary Benefits given for Stage II by Asst.
                   Commisioner
@@ -2879,12 +2771,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />{' '}
                     Should be given
                     <Radio
@@ -2893,12 +2780,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />{' '}
                     Should not be given
                     <Radio
@@ -2907,12 +2789,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycommis === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'Asst. Commissioner' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'Asst. Commissioner'}
                     />{' '}
                     Keep Pending
                   </div>
@@ -2976,12 +2853,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'yes'}
                       value='yes'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     Should be given
                     <Radio
@@ -2990,12 +2862,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'no'}
                       value='no'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     Should not be given
                     <Radio
@@ -3004,12 +2871,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                       checked={thirdbenefitbycollector === 'pending'}
                       value='pending'
                       onChange={e => onChange(e)}
-                      disabled={
-                        user &&
-                        user.role !== 'District Collector' &&
-                        user &&
-                        user.role !== 'Data Entry Operator'
-                      }
+                      disabled={user && user.role !== 'District Collector'}
                     />{' '}
                     Keep Pending
                   </div>
@@ -3017,7 +2879,8 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     return (
                       <div key={`${field}-${idx}`} className='maindiv'>
                         <div className='form-group'>
-                          UTR Number for Money Transfer for Victim {idx + 1}
+                          UTR Number for Money Transfer for Victim {idx + 1}{' '}
+                          (Stage III)
                           <input
                             type='text'
                             name='utrnumthree'
@@ -3030,7 +2893,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                     );
                   })}
                   <div className='maindiv'>
-                    <div className='form-group'>
+                    {/* <div className='form-group'>
                       UTR Number for Money Transfer for Stage III
                       <input
                         type='text'
@@ -3043,7 +2906,7 @@ const CreateUserdata = ({ createUserdata, history, auth: { user } }) => {
                           (user && user.role !== 'Data Entry Operator')
                         }
                       />
-                    </div>
+                    </div> */}
                     <div className='form-group'>
                       Details of Non Monetary Benefits given for Stage III by
                       Asst. Commisioner

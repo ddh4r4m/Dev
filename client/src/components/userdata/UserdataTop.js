@@ -132,7 +132,8 @@ const UserdataTop = ({
   }
 }) => {
   const classes = useStyles();
-
+  const objVictimDetails = JSON.parse(victimdetails);
+  const objAccusedDetails = JSON.parse(accuseddetails);
   var ipcappliedd = JSON.parse(ipcapplied);
 
   const handleClick = _id => {
@@ -196,16 +197,46 @@ const UserdataTop = ({
               <span style={{ float: 'right' }}> {regdateofcrime}</span>
             </h4>
             <hr />
+            <br />
             <h4 className='display'>
               VICTIM DETAILS :
               <span style={{ float: 'right' }}>
                 {' '}
-                {victimdetails} {accuseddetails}
+                {objVictimDetails.map((details, i) => {
+                  return (
+                    <li key={i}>
+                      Name :
+                      <span style={{ color: 'green' }}> {details.name}</span>
+                      {'   '}&nbsp; Age :{' '}
+                      <span style={{ color: 'green' }}> {details.age} </span>
+                    </li>
+                  );
+                })}
               </span>
             </h4>
+            <br />
+            <hr />
+            <br />
+            <h4 className='display'>
+              ACCUSED DETAILS :
+              <span style={{ float: 'right' }}>
+                {' '}
+                {objAccusedDetails.map((details, i) => {
+                  return (
+                    <li key={i}>
+                      Name :
+                      <span style={{ color: 'green' }}> {details.name}</span>
+                      {'   '}&nbsp; Age :{' '}
+                      <span style={{ color: 'green' }}> {details.age} </span>
+                    </li>
+                  );
+                })}
+              </span>
+            </h4>
+            <br />
             <hr />
             <h4 className='display'>
-              NATURE OF CRIME :
+              SUMMARY OF CRIME :
               <span style={{ float: 'right' }}> {natureofcrime}</span>
             </h4>
             <hr />

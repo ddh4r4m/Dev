@@ -201,7 +201,7 @@ const DeouserdataTop = ({
             </h4>
             <hr />
             <h4 className='display'>
-              NATURE OF CRIME :
+              SUMMARY OF CRIME :
               <span style={{ float: 'right' }}> {natureofcrime}</span>
             </h4>
             <hr />

@@ -176,7 +176,16 @@ const DeouserdataSchema = new mongoose.Schema({
     type: String
   },
   victimdetails: {
-    type: String
+    type: Object,
+    default: '[]'
+  },
+  accuseddetails: {
+    type: Object,
+    default: '[]'
+  },
+  complainantdetails: {
+    type: Object,
+    default: '[]'
   },
   natureofcrime: {
     type: String
@@ -194,7 +203,8 @@ const DeouserdataSchema = new mongoose.Schema({
     type: String
   },
   approve: {
-    type: String
+    type: String,
+    default: 'no'
   },
   benefitsgivenbyACII: {
     type: String

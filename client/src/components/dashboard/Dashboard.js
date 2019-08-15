@@ -10,6 +10,7 @@ import {
   DashboardActionsee
 } from './DashboardActions';
 import { getCurrentProfile } from '../../actions/profile';
+import { getAtrocityDatas } from '../../actions/atrocitydata';
 import './dashboard.css';
 import circlee from './Ellipsecircle.svg';
 import triangle from './Polygontriangle.svg';
@@ -34,12 +35,14 @@ const useStyles = makeStyles(theme => ({
 
 const Dashboard = ({
   getCurrentProfile,
+  getAtrocityDatas,
   auth: { user },
   profile: { profile, loading }
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, [getCurrentProfile]);
+    getAtrocityDatas();
+  }, [getCurrentProfile, getAtrocityDatas]);
 
   const classes = useStyles();
   return loading && profile === null ? (
@@ -82,16 +85,18 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  getAtrocityDatas: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
+  atrocitydata: state.atrocitydata
 });
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getCurrentProfile, getAtrocityDatas }
 )(Dashboard);

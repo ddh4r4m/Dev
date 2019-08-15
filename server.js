@@ -6,7 +6,7 @@ const path = require('path');
 //Init MiddlewARE
 //app.use('bosy-parser.json()');  <--- Old Version
 
-// app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.json({ extended: false }));
 //Connect Database
 connectDB();
@@ -29,9 +29,9 @@ app.use('/api/reference', require('./routes/api/reference'));
 app.use('/api/atrocitydata', require('./routes/api/atrocitydata'));
 
 //fix cannot GET
-// app.get('*', function (request, response){
-//     response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-//   })
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 

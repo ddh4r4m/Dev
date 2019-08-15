@@ -30,10 +30,10 @@ app.use('/api/atrocitydata', require('./routes/api/atrocitydata'));
 
 //fix cannot GET
 app.get('*', function(request, response) {
-  response.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+  response.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+//app.use(express.static(path.join(__dirname, 'client/build')));
 
 const PORT = process.env.PORT || 5000;
 

@@ -97,21 +97,21 @@ const App = () => {
               path='/deousersdata'
               component={WithNavbar(Deousersdata)}
             />
-            <PrivateRouteII
+            {/* <PrivateRouteII
               exact
               path='/createpdf'
               component={WithNavbar(CreatePdf)}
-            />
+            /> */}
             <PrivateRoute
               exact
               path='/createmeeting'
               component={WithNavbar(CreateMeeting)}
             />
-            <PrivateRoute
+            {/* <PrivateRoute
               exact
               path='/createmeetings'
               component={WithNavbar(Example)}
-            />
+            /> */}
             <Route exact path='/reference' component={WithNavbar(Reference)} />
             <Route
               exact

@@ -32,6 +32,7 @@ const DeouserdataTop = ({
     crimeregisterno,
     dateofcrime,
     regdateofcrime,
+    accuseddetails,
     victimdetails,
     natureofcrime,
     utrnumI,
@@ -131,7 +132,8 @@ const DeouserdataTop = ({
   }
 }) => {
   const classes = useStyles();
-
+  const objVictimDetails = JSON.parse(victimdetails);
+  const objAccusedDetails = JSON.parse(accuseddetails);
   var ipcappliedd = JSON.parse(ipcapplied);
 
   const handleClick = _id => {
@@ -197,8 +199,40 @@ const DeouserdataTop = ({
             <hr />
             <h4 className='display'>
               VICTIM DETAILS :
-              <span style={{ float: 'right' }}> {victimdetails}</span>
+              <span style={{ float: 'right' }}>
+                {' '}
+                {objVictimDetails.map((details, i) => {
+                  return (
+                    <li key={i}>
+                      Name :
+                      <span style={{ color: 'green' }}> {details.name}</span>
+                      {'   '}&nbsp; Age :{' '}
+                      <span style={{ color: 'green' }}> {details.age} </span>
+                    </li>
+                  );
+                })}
+              </span>
             </h4>
+            <br />
+            <hr />
+            <br />
+            <h4 className='display'>
+              ACCUSED DETAILS :
+              <span style={{ float: 'right' }}>
+                {' '}
+                {objAccusedDetails.map((details, i) => {
+                  return (
+                    <li key={i}>
+                      Name :
+                      <span style={{ color: 'green' }}> {details.name}</span>
+                      {'   '}&nbsp; Age :{' '}
+                      <span style={{ color: 'green' }}> {details.age} </span>
+                    </li>
+                  );
+                })}
+              </span>
+            </h4>
+            <br />
             <hr />
             <h4 className='display'>
               SUMMARY OF CRIME :

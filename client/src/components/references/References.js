@@ -78,7 +78,7 @@ const References = ({ getReferences, reference: { references, loading } }) => {
               // <UserdataItem key={reference._id} reference={reference} />
             )
           ) : (
-            <p>No Minutes of Meeting Found...</p>
+            <p>...</p>
           )}
         </ul>
       </div>
